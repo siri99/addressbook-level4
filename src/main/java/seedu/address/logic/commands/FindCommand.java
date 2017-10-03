@@ -17,7 +17,6 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " alice bob charlie";
 
     private final NameContainsKeywordsPredicate predicate;
-    
     public FindCommand(NameContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }
