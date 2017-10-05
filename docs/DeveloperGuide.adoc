@@ -765,13 +765,13 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |novice user |add a photo to a contact |just as an extra aesthetic feature
 
-|`*` |novice user |see a nice loading animation at the start of this program |I will feel this program is more professional 
+|`*` |novice user |see a nice loading animation at the start of this program |I will feel this program is more professional
 
 |`* *` |experienced user| import other data into my addressbook| I can easily manage my all of my data
 
 |`* *` |experienced user| export my data as csv, json, spreedsheet file| I can backup my data or make it clearer to view
 
-|`* *` |experienced user| print all of my data | I can use them in real-life 
+|`* *` |experienced user| print all of my data | I can use them in real-life
 
 |=======================================================================
 
