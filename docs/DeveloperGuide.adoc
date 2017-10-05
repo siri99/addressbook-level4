@@ -1,4 +1,4 @@
-= AddressBook Level 4 - Developer Guide
+﻿= AddressBook Level 4 - Developer Guide
 :toc:
 :toc-title:
 :toc-placement: preamble
@@ -732,9 +732,50 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
 |`*` |user with many persons in the address book |sort persons by name |locate a person easily
+
+|`* *` |novice user |use commands by using shortcuts (example 'f' instead of 'find') | I can use the features more easily/ fastly
+
+|`* * *` |novice user |be given suggestions for commands close to what I type when commands are entered incorrectly |I can learn quickly from my mistakes
+
+|`*` |novice user |Log out of my own addressbook and into another |I can set up an account for my friend
+
+|`* *` |novice user |remove people by clicking on a 'remove' icon on the list |I can remove people easier
+
+|`* *` |experienced user |edit people's details by double clicking on them in the list |I can modify details easily
+
+|`* *` |novice user |search by tags |I can find my friends faster
+
+|`*` |experienced user |duplicate a person |When I discover my contact has an identical twin with whom he shares his name, home, and phone I can add him quickly
+
+|`* *` |experienced user |add some contacts to a favourite list |they are easier to find
+
+|`* *` |experienced user| add more labels to the find feature (more customized find)| I can add multiple conditions to find
+
+|`* *` |novice user |sort list results by any keywords in addressbook |I can easily find the right information
+
+|`* *` |experienced user| check when the last time I logged in| I can make sure if my account is still secure
+
+|`* *` |experienced user| cselect and delete my historical operations| I can easily protect my privacy in case that other people might see it
+
+|`* *` |experienced user| create custom lists/folders like 'family', 'work' etc| I can organize contacts into folders so that it is more easy to retrieve
+
+|`*` |experienced user| can share a contact folder with another friend who is using addressbook| can have a shared database of contacts common to both of us
+
+|`* *` |experienced user| hide some contacts in the Addressbook (using a passwod etc)| I can store personal contacts which I might not want anyone to see
+
+|`*` |novice user |add a photo to a contact |just as an extra aesthetic feature
+
+|`*` |novice user |see a nice loading animation at the start of this program |I will feel this program is more professional
+
+|`* *` |experienced user| import other data into my addressbook| I can easily manage my all of my data
+
+|`* *` |experienced user| export my data as csv, json, spreedsheet file| I can backup my data or make it clearer to view
+
+|`* *` |experienced user| print all of my data | I can use them in real-life
+
 |=======================================================================
 
-{More to be added}
+
 
 [appendix]
 == Use Cases
