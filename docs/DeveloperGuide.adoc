@@ -808,6 +808,74 @@ Use case ends.
 +
 Use case resumes at step 2.
 
+=== Use Case: UC1 Display Contacts after customized find (custom search)
+
+*MSS*
+
+1. User enters keywords for different categories he wants to search by (eg. name, tags)
+2. AddressBook finds the list of people who satisfy all the conditions entered by the user
+3. AddressBook displays all these contacts and details
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. No people are found satisfying the given conditions
++
+Use case ends.
+
+=== Use Case: UC2 Import Contacts
+
+*MSS*
+
+1. User receives the contact file
+2. User selects import contacts option
+3. The Address Book app prompts user for location of this contact file
+4. User enters location
+5. Address Book merges the contact file into existing contact file
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 4a. File address entered by user does not exist
+1. Eror message displayed
+2. User prompted to re-enter correct location
++
+Use case ends.
+
+=== Use Case: Use Case: UC3 Export Contacts
+
+*MSS*
+
+1. User selects contacts to export
+2. AddressBook creates file with list of contacts that user selected
+3. User specifices location to store this file of contacts
+4. AddressBook stores data as indicated
+5. User sends data to intended receiever
++
+Use case ends.
+
+=== Use Case: UC4 Adding Contacts to Favourite List
+
+*MSS*
+
+1. User selects contacts to add to favourite list
+2. AddressBook adds contacts to list
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. Duplicate contact
+1. AddressBook prompts user if it can merge duplicate contacts
+2. If user allows, it will merge duplicate contacts
++
+Use case ends.
+
 {More to be added}
 
 [appendix]
@@ -816,7 +884,9 @@ Use case resumes at step 2.
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
+.  The system should not take more than 3 seconds to complete a command.
+.  The system should automatically log out after 30 mins of inactivity (security)
+.  The system should have easily accesible walkthrough/ guide for novice users to familiarise themselves with the environment.
 {More to be added}
 
 [appendix]
