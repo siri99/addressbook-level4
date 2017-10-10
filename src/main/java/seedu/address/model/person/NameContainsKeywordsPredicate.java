@@ -25,7 +25,7 @@ public class NameContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> 
         String[] tagList = person.getOnlyTags().split(" ");
         Set<String> s2 = new HashSet<String>(Arrays.asList(tagList));
 
-        return((keywords.stream()
+        return ((keywords.stream()
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)))
                 || (!Collections.disjoint(s2, s1)));
     }
