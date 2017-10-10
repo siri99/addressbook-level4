@@ -1,10 +1,12 @@
 package seedu.address.model.person;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.function.Predicate;
-
 import seedu.address.commons.util.StringUtil;
-import seedu.address.model.tag.Tag;
 
 /**
  * Tests that a {@code ReadOnlyPerson}'s {@code Name} matches any of the keywords given.
@@ -19,11 +21,13 @@ public class NameContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> 
     @Override
     public boolean test(ReadOnlyPerson person) {
         Set<String> s1 = new HashSet<String>(keywords);
-        String[] tagList=person.getOnlyTags().split(" ");
+        String[] tagList = person.getOnlyTags().split(" ");
         Set<String> s2 = new HashSet<String>(Arrays.asList(tagList));
 
-      return((keywords.stream()
-              .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)))||(!Collections.disjoint(s2, s1)));
+        return((keywords.stream()
+              .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)))
+                || (!Collections.disjoint(s2, s1)));
+
     }
 
     @Override
