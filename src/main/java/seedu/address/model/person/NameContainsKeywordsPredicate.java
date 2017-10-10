@@ -1,10 +1,10 @@
 package seedu.address.model.person;
 
-import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
@@ -26,7 +26,7 @@ public class NameContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> 
         Set<String> s2 = new HashSet<String>(Arrays.asList(tagList));
 
         return((keywords.stream()
-              .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)))
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)))
                 || (!Collections.disjoint(s2, s1)));
     }
 
