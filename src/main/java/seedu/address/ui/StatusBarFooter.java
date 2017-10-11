@@ -5,15 +5,17 @@ import java.util.Date;
 import java.util.logging.Logger;
 
 import org.controlsfx.control.StatusBar;
+
 import com.google.common.eventbus.Subscribe;
 
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.model.AddressBookChangedEvent;
-import seedu.address.model.person.ReadOnlyPerson;
 import javafx.collections.ObservableList;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.person.ReadOnlyPerson;
+
 
 /**
  * A ui for the status bar that is displayed at the footer of the application.
@@ -51,9 +53,9 @@ public class StatusBarFooter extends UiPart<Region> {
         registerAsAnEventHandler(this);
     }
 
-    public StatusBarFooter(String saveLocation, ObservableList<ReadOnlyPerson> FilteredPersonList) {
+    public StatusBarFooter(String saveLocation, ObservableList<ReadOnlyPerson> filteredPersonList) {
         super(FXML);
-        this.filteredPersonList = FilteredPersonList;
+        this.filteredPersonList = filteredPersonList;
         setSyncStatus(SYNC_STATUS_INITIAL);
         setSaveLocation("./" + saveLocation);
         registerAsAnEventHandler(this);
