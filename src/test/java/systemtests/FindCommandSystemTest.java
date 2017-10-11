@@ -127,7 +127,7 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         persons found */
         List<Tag> tags = new ArrayList<>(DANIEL.getTags());
         command = FindCommand.COMMAND_WORD + " " + tags.get(0).tagName;
-        ModelHelper.setFilteredList(expectedModel,DANIEL,ALICE,BENSON,CARL,ELLE,FIONA,GEORGE);
+        ModelHelper.setFilteredList(expectedModel, DANIEL, ALICE, BENSON, CARL, ELLE, FIONA, GEORGE);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
