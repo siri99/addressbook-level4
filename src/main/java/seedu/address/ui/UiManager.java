@@ -38,12 +38,12 @@ public class UiManager extends ComponentManager implements Ui {
     private Config config;
     private UserPrefs prefs;
     private MainWindow mainWindow;
-    private ObservableList<ReadOnlyPerson> FilteredPersonList;
+    private ObservableList<ReadOnlyPerson> filteredPersonList;
 
     public UiManager(Logic logic, Config config, UserPrefs prefs) {
         super();
         this.logic = logic;
-        this.FilteredPersonList = logic.getFilteredPersonList();
+        this.filteredPersonList = logic.getFilteredPersonList();
         this.config = config;
         this.prefs = prefs;
     }
@@ -59,7 +59,7 @@ public class UiManager extends ComponentManager implements Ui {
         try {
             mainWindow = new MainWindow(primaryStage, config, prefs, logic);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts(FilteredPersonList);
+            mainWindow.fillInnerParts(filteredPersonList);
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));

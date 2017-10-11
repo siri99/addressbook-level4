@@ -3,17 +3,17 @@ package seedu.address.ui;
 import java.time.Clock;
 import java.util.Date;
 import java.util.logging.Logger;
-import javafx.collections.ObservableList;
-import org.controlsfx.control.StatusBar;
 
+import org.controlsfx.control.StatusBar;
 import com.google.common.eventbus.Subscribe;
 
-import javafx.application.Platform;
-import javafx.fxml.FXML;
-import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.ReadOnlyPerson;
+import javafx.collections.ObservableList;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.scene.layout.Region;
 
 /**
  * A ui for the status bar that is displayed at the footer of the application.
@@ -37,7 +37,7 @@ public class StatusBarFooter extends UiPart<Region> {
 
     private static final String FXML = "StatusBarFooter.fxml";
 
-    private ObservableList<ReadOnlyPerson> FilteredPersonList;
+    private ObservableList<ReadOnlyPerson> filteredPersonList;
 
     @FXML
     private StatusBar syncStatus;
@@ -53,7 +53,7 @@ public class StatusBarFooter extends UiPart<Region> {
 
     public StatusBarFooter(String saveLocation, ObservableList<ReadOnlyPerson> FilteredPersonList) {
         super(FXML);
-        this.FilteredPersonList = FilteredPersonList;
+        this.filteredPersonList = FilteredPersonList;
         setSyncStatus(SYNC_STATUS_INITIAL);
         setSaveLocation("./" + saveLocation);
         registerAsAnEventHandler(this);
@@ -86,7 +86,7 @@ public class StatusBarFooter extends UiPart<Region> {
         long now = clock.millis();
         String lastUpdated = new Date(now).toString();
         logger.info(LogsCenter.getEventHandlingLogMessage(abce, "Setting last updated status to " + lastUpdated));
-        setSyncStatus(String.format(SYNC_STATUS_UPDATED, this.FilteredPersonList.size(), lastUpdated));
+        setSyncStatus(String.format(SYNC_STATUS_UPDATED, this.filteredPersonList.size(), lastUpdated));
     }
 
 }
