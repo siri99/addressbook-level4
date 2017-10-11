@@ -2,7 +2,6 @@ package seedu.address.ui;
 
 import java.util.HashMap;
 import java.util.logging.Logger;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,8 +15,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
 
-
-
+import javafx.beans.binding.Bindings;
 
 
 /**
@@ -26,10 +24,10 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
+    private final Logic logic;
     private static String[] colors = { "red", "orange", "yellow", "green", "blue", "purple"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
-    private final Logic logic;
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -101,9 +99,9 @@ public class PersonCard extends UiPart<Region> {
      */
     private void initTags(ReadOnlyPerson person) {
         person.getTags().forEach(tag -> {
-           Label tagLabel = new Label(tag.tagName);
-           tagLabel.setStyle("-fx-background-color: " + mapTagToColor(tag.tagName));
-           tags.getChildren().add(tagLabel);
+            Label tagLabel = new Label(tag.tagName);
+            tagLabel.setStyle("-fx-background-color: " + mapTagToColor(tag.tagName));
+            tags.getChildren().add(tagLabel);
         });
     }
 
