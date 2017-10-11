@@ -1,7 +1,11 @@
 package seedu.address.ui;
 
+import java.util.HashMap;
+import java.util.logging.Logger;
 import javafx.beans.binding.Bindings;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import seedu.address.commons.core.LogsCenter;
@@ -11,11 +15,10 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
-import java.util.HashMap;
-import java.util.logging.Logger;
 
-import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
+
+
+
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -71,8 +74,8 @@ public class PersonCard extends UiPart<Region> {
      */
 
     private String mapTagToColor(String tagValue) {
-        if(!colorMapping.containsKey(tagValue)){
-            colorMapping.put(tagValue, colors[tagValue.length()%colors.length]);
+        if (!colorMapping.containsKey(tagValue)) {
+            colorMapping.put(tagValue, colors[tagValue.length() % colors.length]);
         }
         return colorMapping.get(tagValue);
     }
@@ -92,6 +95,10 @@ public class PersonCard extends UiPart<Region> {
         });
     }
 
+    /**
+     * initializes tags for the person
+     * @param person
+     */
     private void initTags(ReadOnlyPerson person) {
         person.getTags().forEach(tag -> {
            Label tagLabel = new Label(tag.tagName);
@@ -100,6 +107,11 @@ public class PersonCard extends UiPart<Region> {
         });
     }
 
+    /**
+     * checks equality to the person
+     * @param other
+     * @return if the person equals the param
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
@@ -118,8 +130,12 @@ public class PersonCard extends UiPart<Region> {
                 && person.equals(card.person);
     }
 
+    /**
+     * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
+     * @param buttonEvent
+     */
     @FXML
-    private void handleDeletebuttonAction(ActionEvent buttonEvent){
+    private void handleDeletebuttonAction(ActionEvent buttonEvent) {
         try {
             String justIndex = id.getText().substring(0, id.getText().length() - 2);
             String delCommand = "delete " + justIndex;
@@ -127,7 +143,7 @@ public class PersonCard extends UiPart<Region> {
             logger.info("Result: " + commandResult.feedbackToUser);
         } catch (CommandException | ParseException e) {
             // handle command failure
-            logger.info("Delete call failed on index "+id.getText());
+            logger.info("Delete call failed on index " + id.getText());
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
 
