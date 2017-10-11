@@ -2,10 +2,7 @@ package systemtests;
 
 import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.testutil.TypicalPersons.BENSON;
-import static seedu.address.testutil.TypicalPersons.CARL;
-import static seedu.address.testutil.TypicalPersons.DANIEL;
-import static seedu.address.testutil.TypicalPersons.KEYWORD_MATCHING_MEIER;
+import static seedu.address.testutil.TypicalPersons.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,9 +127,9 @@ public class FindCommandSystemTest extends AddressBookSystemTest {
         persons found */
         List<Tag> tags = new ArrayList<>(DANIEL.getTags());
         command = FindCommand.COMMAND_WORD + " " + tags.get(0).tagName;
-        //ModelHelper.setFilteredList(expectedModel,null);
-        //assertCommandSuccess(command, expectedModel);
-        //assertSelectedCardUnchanged();
+        ModelHelper.setFilteredList(expectedModel,DANIEL,ALICE,BENSON,CARL,ELLE,FIONA,GEORGE);
+        assertCommandSuccess(command, expectedModel);
+        assertSelectedCardUnchanged();
 
         /* Case: find while a person is selected -> selected card deselected */
         showAllPersons();
