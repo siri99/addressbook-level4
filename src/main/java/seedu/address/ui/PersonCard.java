@@ -4,8 +4,18 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.NewResultAvailableEvent;
+import seedu.address.logic.Logic;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
 import java.util.HashMap;
+import java.util.logging.Logger;
+
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -15,7 +25,8 @@ public class PersonCard extends UiPart<Region> {
     private static final String FXML = "PersonListCard.fxml";
     private static String[] colors = { "red", "orange", "yellow", "green", "blue", "purple"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
-    private int colorMapIndex = 0;
+    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
+    private final Logic logic;
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -32,6 +43,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label name;
     @FXML
+    private Button delete;
+    @FXML
     private Label id;
     @FXML
     private Label phone;
@@ -42,9 +55,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-    public PersonCard(ReadOnlyPerson person, int displayedIndex) {
+
+    public PersonCard(ReadOnlyPerson person, int displayedIndex, Logic inlogic) {
         super(FXML);
         this.person = person;
+        logic = inlogic;
         id.setText(displayedIndex + ". ");
         initTags(person);
         bindListeners(person);
@@ -59,7 +74,6 @@ public class PersonCard extends UiPart<Region> {
         if(!colorMapping.containsKey(tagValue)){
             colorMapping.put(tagValue, colors[tagValue.length()%colors.length]);
         }
-        colorMapIndex++;
         return colorMapping.get(tagValue);
     }
 
@@ -102,5 +116,20 @@ public class PersonCard extends UiPart<Region> {
         PersonCard card = (PersonCard) other;
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
+    }
+
+    @FXML
+    private void handleDeletebuttonAction(ActionEvent buttonEvent){
+        try {
+            String justIndex = id.getText().substring(0, id.getText().length() - 2);
+            String delCommand = "delete " + justIndex;
+            CommandResult commandResult = logic.execute(delCommand);
+            logger.info("Result: " + commandResult.feedbackToUser);
+        } catch (CommandException | ParseException e) {
+            // handle command failure
+            logger.info("Delete call failed on index "+id.getText());
+            raise(new NewResultAvailableEvent(e.getMessage()));
+        }
+
     }
 }
