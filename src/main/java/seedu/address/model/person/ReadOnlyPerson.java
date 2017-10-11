@@ -55,7 +55,7 @@ public interface ReadOnlyPerson {
     default String getOnlyTags() {
         final StringBuilder builder = new StringBuilder();
         for (Tag tag : getTags()) {
-            builder.append(" " + tag.tagName);
+            builder.append(" " + (tag.tagName).toLowerCase());
         }
         return builder.toString();
     }

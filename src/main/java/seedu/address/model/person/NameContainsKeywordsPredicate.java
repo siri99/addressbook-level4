@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.util.StringUtil;
 
@@ -16,6 +17,8 @@ public class NameContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> 
     private final List<String> keywords;
 
     public NameContainsKeywordsPredicate(List<String> keywords) {
+        keywords = keywords.stream().map(String::toLowerCase)
+                .collect(Collectors.toList());
         this.keywords = keywords;
     }
 
