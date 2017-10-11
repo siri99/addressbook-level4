@@ -10,7 +10,6 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Date;
 
-import javafx.collections.ObservableList;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
