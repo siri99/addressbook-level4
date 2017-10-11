@@ -59,7 +59,8 @@ public class StatusBarFooterTest extends GuiUnitTest {
         // after address book is updated
         postNow(EVENT_STUB);
         assertStatusBarContent(RELATIVE_PATH + STUB_SAVE_LOCATION,
-                String.format(SYNC_STATUS_UPDATED, EVENT_STUB.data.getPersonList().size(), new Date(injectedClock.millis()).toString()));
+                String.format(SYNC_STATUS_UPDATED, EVENT_STUB.data.getPersonList().size(),
+                        new Date(injectedClock.millis()).toString()));
     }
 
     /**
