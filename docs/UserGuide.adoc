@@ -132,6 +132,24 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+=== Deleting a person : via 'Delete' button
+
+Deletes the associated person from the address book.
+Can be undone using `undo` normally.
+
+****
+* Deletes the person
+****
+
+Examples:
+
+* `list` +
+`delete 2` +
+Deletes the 2nd person in the address book.
+* `find Betsy` +
+`delete 1` +
+Deletes the 1st person in the results of the `find` command.
+
 === Selecting a person : `select`
 
 Selects the person identified by the index number used in the last person listing. +
