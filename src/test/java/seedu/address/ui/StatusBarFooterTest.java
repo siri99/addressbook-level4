@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
+import static seedu.address.ui.StatusBarFooter.SYNC_PERSONLIST_UPADTED_SIZE;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -59,7 +60,8 @@ public class StatusBarFooterTest extends GuiUnitTest {
         // after address book is updated
         postNow(EVENT_STUB);
         assertStatusBarContent(RELATIVE_PATH + STUB_SAVE_LOCATION,
-                String.format(SYNC_STATUS_UPDATED, EVENT_STUB.data.getPersonList().size(),
+                String.format(SYNC_PERSONLIST_UPADTED_SIZE, EVENT_STUB.data.getPersonList().size())
+                        + String.format(SYNC_STATUS_UPDATED,
                         new Date(injectedClock.millis()).toString()));
     }
 

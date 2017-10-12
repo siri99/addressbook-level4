@@ -23,7 +23,8 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class StatusBarFooter extends UiPart<Region> {
 
     public static final String SYNC_STATUS_INITIAL = "Not updated yet in this session";
-    public static final String SYNC_STATUS_UPDATED = "Total size: %d, Last Updated: %s";
+    public static final String SYNC_PERSONLIST_UPADTED_SIZE = "Total size: %d, ";
+    public static final String SYNC_STATUS_UPDATED = "Last Updated: %s";
 
     /**
      * Used to generate time stamps.
@@ -88,7 +89,7 @@ public class StatusBarFooter extends UiPart<Region> {
         long now = clock.millis();
         String lastUpdated = new Date(now).toString();
         logger.info(LogsCenter.getEventHandlingLogMessage(abce, "Setting last updated status to " + lastUpdated));
-        setSyncStatus(String.format(SYNC_STATUS_UPDATED, this.filteredPersonList.size(), lastUpdated));
+        setSyncStatus(String.format(SYNC_PERSONLIST_UPADTED_SIZE, filteredPersonList.size()) + String.format(SYNC_STATUS_UPDATED, lastUpdated));
     }
 
 }
