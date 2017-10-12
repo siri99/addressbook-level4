@@ -19,12 +19,12 @@ Role: UI
 
 '''
 
-=== John Roe
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+=== Sirisha Kommareddi
+image::siri.jpg[width="150", align="left"]
+{empty}[https://github.com/siri99[github]]
 
 Role: Team Lead +
-Responsibilities: UI
+Responsibilities: Logic
 
 '''
 
