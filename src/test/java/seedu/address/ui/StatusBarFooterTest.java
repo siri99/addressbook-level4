@@ -3,8 +3,8 @@ package seedu.address.ui;
 import static org.junit.Assert.assertEquals;
 import static seedu.address.testutil.EventsUtil.postNow;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
-import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
 import static seedu.address.ui.StatusBarFooter.SYNC_PERSONLIST_UPADTED_SIZE;
+import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -25,10 +25,10 @@ public class StatusBarFooterTest extends GuiUnitTest {
     private static final String STUB_SAVE_LOCATION = "Stub";
     private static final String RELATIVE_PATH = "./";
 
-    private static final AddressBookChangedEvent EVENT_STUB = new AddressBookChangedEvent(new AddressBook());
-
     private static final Clock originalClock = StatusBarFooter.getClock();
     private static final Clock injectedClock = Clock.fixed(Instant.now(), ZoneId.systemDefault());
+
+    private static final AddressBookChangedEvent EVENT_STUB = new AddressBookChangedEvent(new AddressBook());
 
     private StatusBarFooterHandle statusBarFooterHandle;
 
