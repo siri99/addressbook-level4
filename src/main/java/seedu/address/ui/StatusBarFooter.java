@@ -88,8 +88,10 @@ public class StatusBarFooter extends UiPart<Region> {
     public void handleAddressBookChangedEvent(AddressBookChangedEvent abce) {
         long now = clock.millis();
         String lastUpdated = new Date(now).toString();
-        logger.info(LogsCenter.getEventHandlingLogMessage(abce, "Setting last updated status to " + lastUpdated));
-        setSyncStatus(String.format(SYNC_PERSONLIST_UPADTED_SIZE, filteredPersonList.size()) + String.format(SYNC_STATUS_UPDATED, lastUpdated));
+        logger.info(LogsCenter.getEventHandlingLogMessage(abce,
+                "Setting last updated status to " + lastUpdated));
+        setSyncStatus(String.format(SYNC_PERSONLIST_UPADTED_SIZE, filteredPersonList.size())
+                + String.format(SYNC_STATUS_UPDATED, lastUpdated));
     }
 
 }
