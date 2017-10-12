@@ -17,6 +17,10 @@ import seedu.address.model.person.ReadOnlyPerson;
 
 import javafx.beans.binding.Bindings;
 
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
+import seedu.address.model.person.ReadOnlyPerson;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -89,7 +93,7 @@ public class PersonCard extends UiPart<Region> {
         email.textProperty().bind(Bindings.convert(person.emailProperty()));
         person.tagProperty().addListener((observable, oldValue, newValue) -> {
             tags.getChildren().clear();
-            initTags(person);
+            person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         });
     }
 
@@ -103,6 +107,7 @@ public class PersonCard extends UiPart<Region> {
             tagLabel.setStyle("-fx-background-color: " + mapTagToColor(tag.tagName));
             tags.getChildren().add(tagLabel);
         });
+        person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
 
     /**
