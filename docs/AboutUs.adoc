@@ -23,7 +23,7 @@ Role: Project Advisor
 image::linus.jpg[width="150", align="left"]
 {empty}[http://github.com/LinusMelb[github]] [<<Linus#, portfolio>>]
 
-Role: Team Lead +
+Role: Developer +
 Responsibilities: Storage
 
 '''
