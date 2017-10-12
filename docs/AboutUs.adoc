@@ -19,12 +19,12 @@ Role: Project Advisor
 
 '''
 
-=== John Roe
-image::lejolly.jpg[width="150", align="left"]
-{empty}[http://github.com/lejolly[github]] [<<johndoe#, portfolio>>]
+=== Linus Peng
+image::linus.jpg[width="150", align="left"]
+{empty}[http://github.com/LinusMelb[github]] [<<Linus#, portfolio>>]
 
 Role: Team Lead +
-Responsibilities: UI
+Responsibilities: Storage
 
 '''
 
