@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import static seedu.address.testutil.TypicalPersons.HOON;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
-import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
 import static seedu.address.ui.StatusBarFooter.SYNC_PERSONLIST_UPADTED_SIZE;
+import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -31,7 +31,6 @@ public class StatusBarFooterTest extends AddressBookGuiTest {
 
     private Clock originalClock;
     private Clock injectedClock;
-    private static final AddressBookChangedEvent EVENT_STUB = new AddressBookChangedEvent(new AddressBook());
 
     @Before
     public void injectFixedClock() {
