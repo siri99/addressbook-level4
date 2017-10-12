@@ -23,8 +23,17 @@ Role: Project Advisor
 image::siri.jpg[width="150", align="left"]
 {empty}[https://github.com/siri99[github]]
 
-Role: Team Lead +
+Role: Developer
 Responsibilities: Logic
+
+'''
+
+=== Linus Peng
+image::linus.jpg[width="150", align="left"]
+{empty}[http://github.com/LinusMelb[github]] [<<Linus#, portfolio>>]
+
+Role: Developer +
+Responsibilities: Storage
 
 '''
 
