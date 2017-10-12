@@ -96,7 +96,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 
 === Locating persons by name: `find` or `f`
 
-Finds persons whose names contain any of the given keywords. +
+Finds persons whose names or tags contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
         `f KEYWORD [MORE_KEYWORDS]`
 
@@ -114,6 +114,8 @@ Examples:
 Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
+* `find friends family` +
+Returns any person having tag `friends` or `family`
 
 === Deleting a person : `delete` or `d`
 
