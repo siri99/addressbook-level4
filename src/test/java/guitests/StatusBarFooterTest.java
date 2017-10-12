@@ -5,8 +5,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import static seedu.address.testutil.TypicalPersons.HOON;
-import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_PERSONLIST_UPADTED_SIZE;
+import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_INITIAL;
 import static seedu.address.ui.StatusBarFooter.SYNC_STATUS_UPDATED;
 
 import java.time.Clock;
@@ -18,9 +18,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.logic.commands.ListCommand;
-import seedu.address.model.AddressBook;
 import seedu.address.testutil.PersonUtil;
 import seedu.address.ui.StatusBarFooter;
 
@@ -53,7 +51,8 @@ public class StatusBarFooterTest extends AddressBookGuiTest {
     public void syncStatus_mutatingCommandSucceeds_syncStatusUpdated() {
 
         String timestamp = new Date(injectedClock.millis()).toString();
-        String expected = String.format(SYNC_PERSONLIST_UPADTED_SIZE, 8) + String.format(SYNC_STATUS_UPDATED, timestamp);
+        String expected = String.format(SYNC_PERSONLIST_UPADTED_SIZE, 8) +
+                String.format(SYNC_STATUS_UPDATED, timestamp);
         assertTrue(runCommand(PersonUtil.getAddCommand(HOON))); // mutating command succeeds
         assertEquals(expected, getStatusBarFooter().getSyncStatus());
     }
