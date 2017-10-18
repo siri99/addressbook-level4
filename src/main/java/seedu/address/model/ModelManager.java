@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.commons.events.ui.ChangeInternalListEvent;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -24,7 +25,8 @@ public class ModelManager extends ComponentManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
-    private final FilteredList<ReadOnlyPerson> filteredPersons;
+    private FilteredList<ReadOnlyPerson> filteredPersons;
+    private final FilteredList<ReadOnlyPerson> filteredFavouritePersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -37,6 +39,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredFavouritePersons = new FilteredList<>(this.addressBook.getFavouritePersonList());
     }
 
     public ModelManager() {
@@ -66,8 +69,22 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public synchronized void removeFavouritePerson(ReadOnlyPerson person) throws PersonNotFoundException {
+        addressBook.removeFavouritePerson(person);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        indicateAddressBookChanged();
+    }
+
+    @Override
     public synchronized void addPerson(ReadOnlyPerson person) throws DuplicatePersonException {
         addressBook.addPerson(person);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public synchronized void addFavouritePerson(ReadOnlyPerson person) throws DuplicatePersonException {
+        addressBook.addFavouritePerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         indicateAddressBookChanged();
     }
@@ -81,6 +98,17 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
+    /* @Override
+    public void deleteTag(Tag tag) throws PersonNotFoundException, DuplicatePersonException {
+        addressBook.removeTag(tag);
+    }*/
+
+    @Override
+    public void changeListTo(String listName) {
+        raise(new ChangeInternalListEvent(listName));
+    }
+
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -93,15 +121,27 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public ObservableList<ReadOnlyPerson> getFilteredFavouritePersonList() {
+        return FXCollections.unmodifiableObservableList(filteredFavouritePersons);
+    }
+
     @Override
     public void sortFilteredPersonList() {
         this.addressBook.sortPersons();
         ObservableList<ReadOnlyPerson> sortedList = this.addressBook.getPersonList();
         filteredPersons = new FilteredList<>(sortedList);
     }
+
+    @Override
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredFavouritePersonList(Predicate<ReadOnlyPerson> predicate) {
+        requireNonNull(predicate);
+        filteredFavouritePersons.setPredicate(predicate);
     }
 
     @Override
@@ -119,7 +159,8 @@ public class ModelManager extends ComponentManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
-                && filteredPersons.equals(other.filteredPersons);
+                && filteredPersons.equals(other.filteredPersons)
+                && filteredFavouritePersons.equals(other.filteredFavouritePersons);
     }
 
 }

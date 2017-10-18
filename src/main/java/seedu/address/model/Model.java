@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -14,6 +15,8 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<ReadOnlyPerson> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
+    Predicate<ReadOnlyPerson> PREDICATE_SHOW_ALL_FAVOURITE_PERSONS = unused -> true;
+
     /** Clears existing backing model and replaces with the provided new data. */
     void resetData(ReadOnlyAddressBook newData);
 
@@ -23,8 +26,14 @@ public interface Model {
     /** Deletes the given person. */
     void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException;
 
+    /** Deletes the given person from Favourite List. */
+    void removeFavouritePerson(ReadOnlyPerson target) throws PersonNotFoundException;
+
     /** Adds the given person */
     void addPerson(ReadOnlyPerson person) throws DuplicatePersonException;
+
+    /** Adds the given person into blacklist */
+    void addFavouritePerson(ReadOnlyPerson person) throws DuplicatePersonException;
 
     /**
      * Replaces the given person {@code target} with {@code editedPerson}.
@@ -39,11 +48,19 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<ReadOnlyPerson> getFilteredPersonList();
 
+    ObservableList<ReadOnlyPerson> getFilteredFavouritePersonList();
+
     void sortFilteredPersonList();
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate);
+
+    void updateFilteredFavouritePersonList(Predicate<ReadOnlyPerson> predicate);
+
+    //void deleteTag(Tag tag) throws PersonNotFoundException, DuplicatePersonException, TargetLostException;
+
+    void changeListTo(String listName);
 
 }

@@ -50,8 +50,9 @@ public class AddressBookTest {
     public void resetData_withDuplicatePersons_throwsAssertionError() {
         // Repeat ALICE twice
         List<Person> newPersons = Arrays.asList(new Person(ALICE), new Person(ALICE));
+        List<Person> newFavPersons = Arrays.asList();
         List<Tag> newTags = new ArrayList<>(ALICE.getTags());
-        AddressBookStub newData = new AddressBookStub(newPersons, newTags);
+        AddressBookStub newData = new AddressBookStub(newPersons, newFavPersons, newTags);
 
         thrown.expect(AssertionError.class);
         addressBook.resetData(newData);
@@ -74,10 +75,12 @@ public class AddressBookTest {
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<ReadOnlyPerson> persons = FXCollections.observableArrayList();
+        private final ObservableList<ReadOnlyPerson> favouritePersons = FXCollections.observableArrayList();
         private final ObservableList<Tag> tags = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<? extends ReadOnlyPerson> persons, Collection<? extends Tag> tags) {
+        AddressBookStub(Collection<? extends ReadOnlyPerson> persons, Collection<? extends ReadOnlyPerson> favouritePersons, Collection<? extends Tag> tags) {
             this.persons.setAll(persons);
+            this.favouritePersons.setAll(persons);
             this.tags.setAll(tags);
         }
 
@@ -85,6 +88,9 @@ public class AddressBookTest {
         public ObservableList<ReadOnlyPerson> getPersonList() {
             return persons;
         }
+
+        @Override
+        public ObservableList<ReadOnlyPerson>getFavouritePersonList() { return favouritePersons; };
 
         @Override
         public ObservableList<Tag> getTagList() {

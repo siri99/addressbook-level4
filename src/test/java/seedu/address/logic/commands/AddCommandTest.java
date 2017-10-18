@@ -102,12 +102,43 @@ public class AddCommandTest {
         }
 
         @Override
+        public void sortFilteredPersonList() {
+            fail("This method should not be called.");
+        }
+
+        @Override
         public void resetData(ReadOnlyAddressBook newData) {
             fail("This method should not be called.");
         }
 
         @Override
         public ReadOnlyAddressBook getAddressBook() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override // edited test
+        public void addFavouritePerson(ReadOnlyPerson target) {
+            fail("This method should not be called.");
+        }
+
+        @Override // edited test
+        public void removeFavouritePerson(ReadOnlyPerson target) {
+            fail("This method should not be called.");
+        }
+
+        @Override // edited test
+        public void changeListTo(String listName) {
+            fail("This method should not be called.");
+        }
+
+        @Override // edited test
+        public void updateFilteredFavouritePersonList(Predicate<ReadOnlyPerson> predicate) {
+            fail("This method should not be called.");
+        }
+
+        @Override // edited test
+        public ObservableList<ReadOnlyPerson> getFilteredFavouritePersonList() {
             fail("This method should not be called.");
             return null;
         }
