@@ -144,6 +144,7 @@ public class PersonCard extends UiPart<Region> {
             String delCommand = "delete " + justIndex;
             CommandResult commandResult = logic.execute(delCommand);
             logger.info("Result: " + commandResult.feedbackToUser);
+            raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
         } catch (CommandException | ParseException e) {
             // handle command failure
             logger.info("Delete call failed on index " + id.getText());

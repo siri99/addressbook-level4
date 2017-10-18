@@ -163,6 +163,7 @@ public class CommandBox extends UiPart<Region> {
         try {
             CommandResult commandResult = logic.execute("undo");
             logger.info("Result: " + commandResult.feedbackToUser);
+            raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
         } catch (CommandException | ParseException e) {
             // handle command failure
             logger.info("Delete call failed on index undo");
@@ -180,6 +181,7 @@ public class CommandBox extends UiPart<Region> {
         try {
             CommandResult commandResult = logic.execute("redo");
             logger.info("Result: " + commandResult.feedbackToUser);
+            raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
         } catch (CommandException | ParseException e) {
             // handle command failure
             logger.info("Delete call failed on index redo");
