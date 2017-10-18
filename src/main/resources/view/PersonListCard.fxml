@@ -27,6 +27,8 @@
           </minWidth>
         </Label>
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+        <Region prefHeight="10.0" prefWidth="1.0" HBox.hgrow="ALWAYS" />
+        <Button onAction='#handleDeleteButtonAction' fx:id="delete" text="X"/>
       </HBox>
       <FlowPane fx:id="tags" />
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
@@ -34,7 +36,6 @@
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
       <HBox spacing="10" alignment="bottom_right"
             GridPane.columnIndex="1" GridPane.rowIndex="4">
-        <Button onAction='#handleDeletebuttonAction' fx:id="delete" text="Delete"/>
       </HBox>
     </VBox>
   </GridPane>

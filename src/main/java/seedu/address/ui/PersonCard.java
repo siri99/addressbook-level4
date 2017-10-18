@@ -138,7 +138,7 @@ public class PersonCard extends UiPart<Region> {
      * @param buttonEvent
      */
     @FXML
-    private void handleDeletebuttonAction(ActionEvent buttonEvent) {
+    private void handleDeleteButtonAction(ActionEvent buttonEvent) {
         try {
             String justIndex = id.getText().substring(0, id.getText().length() - 2);
             String delCommand = "delete " + justIndex;
