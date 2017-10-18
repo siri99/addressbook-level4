@@ -25,11 +25,11 @@ import seedu.address.model.person.ReadOnlyPerson;
  */
 public class PersonCard extends UiPart<Region> {
 
-    public final ReadOnlyPerson person;
-
     private static final String FXML = "PersonListCard.fxml";
     private static String[] colors = { "red", "orange", "yellow", "green", "blue", "purple"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
+
+    public final ReadOnlyPerson person;
 
     private final Logic logic;
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
