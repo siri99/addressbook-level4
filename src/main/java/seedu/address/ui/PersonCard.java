@@ -28,7 +28,7 @@ public class PersonCard extends UiPart<Region> {
     private static final String FXML = "PersonListCard.fxml";
     private static String[] colors = { "red", "orange", "yellow", "green", "blue", "purple"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
-    
+
     private final Logic logic;
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
 
