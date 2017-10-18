@@ -23,25 +23,24 @@ Role: UI
 image::siri.jpg[width="150", align="left"]
 {empty}[https://github.com/siri99[github]]
 
-Role: Team Lead +
+Role: Developer
 Responsibilities: Logic
 
 '''
 
-=== Johnny Doe
-image::yijinl.jpg[width="150", align="left"]
-{empty}[http://github.com/yijinl[github]] [<<johndoe#, portfolio>>]
+=== Linus Peng
+image::linus.jpg[width="150", align="left"]
+{empty}[http://github.com/LinusMelb[github]] [<<Linus#, portfolio>>]
 
 Role: Developer +
-Responsibilities: Data
+Responsibilities: Storage
 
 '''
 
-=== Benson Meier
-image::yl_coder.jpg[width="150", align="left"]
-{empty}[http://github.com/yl-coder[github]] [<<johndoe#, portfolio>>]
+=== Henning 
+image::henning.jpg[width="150", align="left"]
+{empty}[https://github.com/coolpotato1[github]]
 
 Role: Developer +
-Responsibilities: UI
+Responsibilities: Model
 
-'''
