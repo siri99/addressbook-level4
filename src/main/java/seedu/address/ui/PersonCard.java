@@ -27,7 +27,8 @@ public class PersonCard extends UiPart<Region> {
      */
 
 
-    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "brown", "#00e68a", "#ff80ff", "black", "grey" };
+    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "brown", "#00e68a",
+            "#ff80ff", "black", "grey" };
     private static HashMap<String, String> tagColors = new HashMap<String, String>();
     private static Random random = new Random();
 
@@ -80,6 +81,9 @@ public class PersonCard extends UiPart<Region> {
         });
     }
 
+    /**
+     * Initializes color tags
+     */
     private void initTags(ReadOnlyPerson person) {
         person.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
