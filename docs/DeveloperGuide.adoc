@@ -929,9 +929,9 @@ Author: Siri
 
 Added a Favourite List feature.
 
-The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index 
-instead of name to add/remove a person from the Favourite List. While the delete (eg. ‘delete 2’) 
-command removes that particular Person Object from the list, the favourite command (eg. ‘fav 3’) adds the person at that index to the favourite List. 
+The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
+instead of name to add/remove a person from the Favourite List. While the delete (eg. ‘delete 2’)
+command removes that particular Person Object from the list, the favourite command (eg. ‘fav 3’) adds the person at that index to the favourite List.
 
 The Favourite List feature is split into 3 commands:
 
