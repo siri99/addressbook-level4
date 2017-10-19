@@ -933,6 +933,6 @@ The feature is that assign different colors to each tag of person card. Every ti
 == Enhancement Description
 Author: Peng Xu
 
-Added theme change menu item
+Added theme change menu item.
 
 The feature is that user can change background color via the theme buttons on the menubar.
