@@ -173,6 +173,70 @@ Selects the 2nd person in the address book.
 `select 1` +
 Selects the 1st person in the results of the `find` command.
 
+=== Sorting the list : `sort` or `so`
+
+Deletes the specified person from the address book. +
+Format: `sort`
+        `sort name`
+
+****
+* Sorts the person by name (default).
+* Also sorts the person by name when the command given is 'sort name'.
+****
+
+Examples:
+
+* `sort` or `sort name` +
+Sorts the persons in the address book by alphabhetical name order.
+
+=== Displaying Favourite List : `flist` or `fl`
+
+Deletes the specified person from the address book. +
+Format: `flist`
+        `fl`
+
+Examples:
+
+* `flist` or `fl` +
+Displays the Favourite List.
+
+
+=== Adding a person to Favourite List: `fav` or `fv`
+
+Selects the person identified by the index number used in the last person listing. +
+Format: `fav INDEX`
+        `fv INDEX`
+
+****
+* Adds the person at the specified `INDEX` to the Favourite List.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `fav 1` +
+`fv 2` +
+Adds the 1st the 2nd person in the address book to the Favourite List.
+
+=== Removing a person from Favourite List: `unfav` or `ufv`
+
+Selects the person identified by the index number used in the last person listing. +
+Format: `unfav INDEX`
+        `ufv INDEX`
+
+****
+* Removes the person at the specified `INDEX` from the Favourite List.
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `unfav 1` +
+`ufv 3` +
+Removes the 1st the 3rd person in the address book from the Favourite List.
+
 === Listing entered commands : `history` or `h`
 
 Lists all the commands that you have entered in reverse chronological order. +

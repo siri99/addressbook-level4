@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import seedu.address.logic.commands.SortCommand;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +22,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FavouriteCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
@@ -110,10 +112,23 @@ public class AddressBookParserTest {
     }
 
     @Test
+    public void parseCommand_favouritelist() throws Exception {
+        assertTrue(parser.parseCommand(FavouriteCommand.COMMAND_WORD)instanceof FavouriteCommand);
+        assertTrue(parser.parseCommand(FavouriteCommand.COMMAND_WORD + " 3 ")instanceof FavouriteCommand);
+    }
+
+    @Test
     public void parseCommand_select() throws Exception {
         SelectCommand command = (SelectCommand) parser.parseCommand(
                 SelectCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new SelectCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_sort() throws Exception {
+        final String filterType = "name";
+        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " " + filterType);
+        assertEquals(new SortCommand(filterType), command);
     }
 
     @Test

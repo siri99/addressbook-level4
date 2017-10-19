@@ -723,17 +723,17 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |Priority |As a ... |I want to ... |So that I can...
 |`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
 
-|`* * *` |user |add a new person |
+|`* * *` |user |add a new person | - implemented v1.0
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* * *` |user |delete a person |remove entries that I no longer need - implemented v1.0
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list - implemented v1.0
 
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`*` |user with many persons in the address book |sort persons by name |locate a person easily - implemented - implemented v1.2
 
-|`* *` |novice user |use commands by using shortcuts (example 'f' instead of 'find') | I can use the features more easily/ fastly
+|`* *` |novice user |use commands by using shortcuts (example 'f' instead of 'find') | I can use the features more easily/ fastly - implemented v1.1
 
 |`* * *` |novice user |be given suggestions for commands close to what I type when commands are entered incorrectly |I can learn quickly from my mistakes
 
@@ -743,11 +743,11 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |experienced user |edit people's details by double clicking on them in the list |I can modify details easily
 
-|`* *` |novice user |search by tags |I can find my friends faster
+|`* *` |novice user |search by tags |I can find my friends faster - implemented v1.1
 
 |`*` |experienced user |duplicate a person |When I discover my contact has an identical twin with whom he shares his name, home, and phone I can add him quickly
 
-|`* *` |experienced user |add some contacts to a favourite list |they are easier to find
+|`* *` |experienced user |add some contacts to a favourite list |they are easier to find - mostly implemented v1.2
 
 |`* *` |experienced user| add more labels to the find feature (more customized find)| I can add multiple conditions to find
 
@@ -922,3 +922,34 @@ Cons:
 
 * ...
 * ...
+
+[appendix]
+== Enhancement Description
+
+*Added Favourite List feature*
+
+Developer: Siri
+
+The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
+instead of name to add/remove a person from the Favourite List. While the delete (eg. ‘delete 2’)
+command removes that particular Person Object from the list, the favourite command (eg. ‘fav 3’)
+adds the person at that index to the favourite List.
+
+The Favourite List feature is split into 3 commands:
+
+1.	favlist – This command displays the favourite list. The command favlist raises an event called InternalListEvent which is handled by displaying the favourite list instead of the normal Persons list.
+2.	Fav – This command calls the favCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
+3.	Unfav – This command calls the favCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
+
+A simple workflow for favlist command would be:
+
+Command entered: ‘favlist’
+
+1. AddresBookParser returns FavouriteCommand class to Main method.
+2. FavouriteCommand class executes CommandResult method
+3. ChangeListTo method in Commandesult calls the ChangeInternalListEvent with the command word ‘favlist’ as the parameter which returns the updated List.
+
+In a similar way, the ‘fav [index]’ and ‘unfav [index]’ commands also call various classes and methods in order to add/ remove a person from the favourite List respectively.
+
+This feature will make it more convenient for Users to organize their contacts so that they can access their favourite contacts by simply using the flist command instead of searching for
+contacts individually using name or tags.

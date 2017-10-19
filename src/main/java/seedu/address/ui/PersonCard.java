@@ -1,22 +1,21 @@
 package seedu.address.ui;
 
 import java.util.HashMap;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.NewResultAvailableEvent;
-import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.ReadOnlyPerson;
+//import java.util.logging.Logger;
+//import javafx.event.ActionEvent;
+
+//import javafx.scene.control.Button;
+//import javafx.scene.layout.*;
+//import seedu.address.commons.core.LogsCenter;
+//import seedu.address.commons.events.ui.NewResultAvailableEvent;
+//import seedu.address.logic.Logic;
+//import seedu.address.logic.commands.CommandResult;
+//import seedu.address.logic.commands.exceptions.CommandException;
+//import seedu.address.logic.parser.exceptions.ParseException; */
 
 import javafx.beans.binding.Bindings;
-
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -27,11 +26,16 @@ import seedu.address.model.person.ReadOnlyPerson;
  */
 public class PersonCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
-    private final Logic logic;
     private static String[] colors = { "red", "orange", "yellow", "green", "blue", "purple"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
-    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
+    private static final String FXML = "PersonListCard.fxml";
+
+    public final ReadOnlyPerson person;
+
+    private int colorMapIndex = 0;
+
+    //private final Logic logic;
+    //private final Logger logger = LogsCenter.getLogger(CommandBox.class);
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -41,14 +45,12 @@ public class PersonCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final ReadOnlyPerson person;
-
     @FXML
     private HBox cardPane;
     @FXML
     private Label name;
-    @FXML
-    private Button delete;
+    //@FXML
+    //private Button delete;
     @FXML
     private Label id;
     @FXML
@@ -60,11 +62,11 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-
-    public PersonCard(ReadOnlyPerson person, int displayedIndex, Logic inlogic) {
+    //public PersonCard(ReadOnlyPerson person, int displayedIndex, Logic inlogic) {
+    public PersonCard(ReadOnlyPerson person, int displayedIndex) {
         super(FXML);
         this.person = person;
-        logic = inlogic;
+        //logic = inlogic;
         id.setText(displayedIndex + ". ");
         initTags(person);
         bindListeners(person);
@@ -79,6 +81,7 @@ public class PersonCard extends UiPart<Region> {
         if (!colorMapping.containsKey(tagValue)) {
             colorMapping.put(tagValue, colors[tagValue.length() % colors.length]);
         }
+        colorMapIndex++;
         return colorMapping.get(tagValue);
     }
 
@@ -137,7 +140,7 @@ public class PersonCard extends UiPart<Region> {
      * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
      * @param buttonEvent
      */
-    @FXML
+    /*@FXML
     private void handleDeletebuttonAction(ActionEvent buttonEvent) {
         try {
             String justIndex = id.getText().substring(0, id.getText().length() - 2);
@@ -150,5 +153,5 @@ public class PersonCard extends UiPart<Region> {
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
 
-    }
+    }*/
 }

@@ -15,7 +15,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.JumpToListRequestEvent;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
-import seedu.address.logic.Logic;
+//import seedu.address.logic.Logic;
 import seedu.address.model.person.ReadOnlyPerson;
 
 /**
@@ -24,21 +24,23 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonListPanel extends UiPart<Region> {
     private static final String FXML = "PersonListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(PersonListPanel.class);
-    private final Logic logic;
+    //private final Logic logic;
 
     @FXML
     private ListView<PersonCard> personListView;
 
-    public PersonListPanel(ObservableList<ReadOnlyPerson> personList, Logic inlogic) {
+    //public PersonListPanel(ObservableList<ReadOnlyPerson> personList, Logic inlogic) {
+    public PersonListPanel(ObservableList<ReadOnlyPerson> personList) {
         super(FXML);
-        logic=inlogic;
+        //logic=inlogic;
         setConnections(personList);
         registerAsAnEventHandler(this);
     }
 
     private void setConnections(ObservableList<ReadOnlyPerson> personList) {
         ObservableList<PersonCard> mappedList = EasyBind.map(
-                personList, (person) -> new PersonCard(person, personList.indexOf(person) + 1, logic));
+                personList, (person) -> new PersonCard(person, personList.indexOf(person) + 1));
+        //personList, (person) -> new PersonCard(person, personList.indexOf(person) + 1, logic));
         personListView.setItems(mappedList);
         personListView.setCellFactory(listView -> new PersonListViewCell());
         setEventHandlerForSelectionChangeEvent();
