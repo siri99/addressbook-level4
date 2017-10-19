@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javafx.beans.binding.Bindings;
@@ -43,6 +44,13 @@ public class PersonCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
+    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
+    private static HashMap<String, String> tagColors = new HashMap<String, String>();
+    private static Random random = new Random();
+
+    public final ReadOnlyPerson person;
+
+
     @FXML
     private HBox cardPane;
     @FXML
@@ -70,6 +78,15 @@ public class PersonCard extends UiPart<Region> {
         bindListeners(person);
     }
 
+    private static String getColorForTag(String tagValue) {
+
+        if (!tagColors.containsKey(tagValue)) {
+            tagColors.put(tagValue, colors[random.nextInt(colors.length)]);
+        }
+
+        return tagColors.get(tagValue);
+    }
+
     /**
      * Provides a consistent color based on the string of a tag's value
      * ie, the same color will return for every call using 'friend' or any other tag.
@@ -93,17 +110,21 @@ public class PersonCard extends UiPart<Region> {
         email.textProperty().bind(Bindings.convert(person.emailProperty()));
         person.tagProperty().addListener((observable, oldValue, newValue) -> {
             tags.getChildren().clear();
-            person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            initTags(person);
         });
     }
 
     /**
+     * Initializes color tags
      * initializes tags for the person
      * @param person
      */
     private void initTags(ReadOnlyPerson person) {
         person.getTags().forEach(tag -> {
             Label tagLabel = new Label(tag.tagName);
+            tagLabel.setStyle("-fx-background-color: " + getColorForTag(tag.tagName));
+            tags.getChildren().add(tagLabel);
+        });
             tagLabel.setStyle("-fx-background-color: " + mapTagToColor(tag.tagName));
             tags.getChildren().add(tagLabel);
         });
