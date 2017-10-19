@@ -1,7 +1,6 @@
 /*package seedu.address.ui;
 
 import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -14,6 +13,7 @@ import seedu.address.logic.LogicManager;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+
 */
 /*
 public class CommandBoxTest extends GuiUnitTest {
