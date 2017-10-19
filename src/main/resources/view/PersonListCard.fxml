@@ -26,6 +26,8 @@
           </minWidth>
         </Label>
         <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+        <Region prefHeight="10.0" prefWidth="1.0" HBox.hgrow="ALWAYS" />
+        <Button onAction='#handleDeleteButtonAction' fx:id="delete" text="X"/>
       </HBox>
       <FlowPane fx:id="tags" />
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
