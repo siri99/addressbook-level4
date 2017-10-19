@@ -73,6 +73,11 @@ Examples:
 Shows a list of all persons in the address book. +
 Format: `list` or `l`
 
+=== Printing the addressbook `print` or `p`
+
+COMING V2.0: Exports the entire addressbook to a textfile for easy printing. +
+Format: `print` or `p`
+
 === Editing a person : `edit` or `e`
 
 Edits an existing person in the address book. +
@@ -138,6 +143,15 @@ Deletes the 2nd person in the address book.
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
 
+=== Deleting a person : via 'Delete' button
+
+Deletes the associated person from the address book.
+Can be undone using `undo` normally.
+
+****
+* Deletes the person
+****
+
 === Selecting a person : `select` or `s`
 
 Selects the person identified by the index number used in the last person listing. +
@@ -198,6 +212,15 @@ The `undo` command fails as there are no undoable commands executed previously.
 `undo` (reverses the `clear` command) +
 `undo` (reverses the `delete 1` command) +
 
+=== Undoing previous command via 'Undo' button
+
+Restores the address book to the state before the previous _undoable_ command was executed.
+
+[NOTE]
+====
+Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
+====
+
 === Redoing the previously undone command : `redo` or `r`
 
 Reverses the most recent `undo` command. +
@@ -220,6 +243,11 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `u` (reverses the `delete 1` command) +
 `redo` (reapplies the `delete 1` command) +
 `r` (reapplies the `clear` command) +
+
+=== Redoing the previously undone command via 'Redo' button
+
+Reverses the most recent `undo` command or button press.
+Fails if no `undo` commands have executed or 'Undo' has not been pressed.
 // end::undoredo[]
 
 === Clearing all entries : `clear` or `c`
