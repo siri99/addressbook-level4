@@ -32,8 +32,8 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
     //
     //        /* Case: delete the first person in the list, command w/ leading spaces and trailing spaces -> deleted */
     //        Model expectedModel = getModel();
-    //        String command = "     " + DeleteCommand.COMMAND_WORD + "      " +
-    //        INDEX_FIRST_PERSON.getOneBased() + "       ";
+    //        String command = "     " + DeleteCommand.COMMAND_WORD + "      "
+    //          + INDEX_FIRST_PERSON.getOneBased() + "       ";
     //        ReadOnlyPerson deletedPerson = removePerson(expectedModel, INDEX_FIRST_PERSON);
     //        String expectedResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPerson);
     //        assertCommandSuccess(command, expectedModel, expectedResultMessage);
@@ -138,8 +138,8 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
         String expectedResultMessage = String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedPerson);
 
         assertCommandSuccess(
-                DeleteCommand.COMMAND_WORD + " " +
-                        toDelete.getOneBased(), expectedModel, expectedResultMessage);
+                DeleteCommand.COMMAND_WORD + " "
+                    + toDelete.getOneBased(), expectedModel, expectedResultMessage);
     }
 
     /**
