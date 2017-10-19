@@ -8,7 +8,7 @@ import seedu.address.logic.commands.FavCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new BanCommand object
+ * Parses input arguments and creates a new FavCommand object
  */
 
 public class FavCommandParser implements Parser<FavCommand> {

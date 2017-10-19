@@ -3,8 +3,8 @@ package seedu.address.logic.commands;
 import seedu.address.logic.commands.exceptions.CommandException;
 
 /**
-* Sorts all persons in the address book by indicated format.
-*/
+ * Sorts all persons in the address book by indicated format.
+ */
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
