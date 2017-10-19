@@ -37,9 +37,10 @@ Responsibilities: Storage
 
 '''
 
-=== Henning 
+=== Henning
 image::henning.jpg[width="150", align="left"]
 {empty}[https://github.com/coolpotato1[github]]
 
 Role: Developer +
 Responsibilities: Model
+
