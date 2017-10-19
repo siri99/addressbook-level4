@@ -57,9 +57,9 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //    public void edit() throws Exception {
     //        Model model = getModel();
     //
-    //        /* ----------------- Performing edit operation while an unfiltered list is being shown ---------------------- */
+    //        /* -------------- Performing edit operation while an unfiltered list is being shown ------------------- */
     //
-    //        /* Case: edit all fields, command with leading spaces, trailing spaces and multiple spaces between each field
+    //        /* Case: edit fields, command w/ leading spaces, trailing spaces and multiple spaces between each field
     //         * -> edited
     //         */
     //        Index index = INDEX_FIRST_PERSON;
@@ -82,7 +82,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //        assertCommandSuccess(command, model, expectedResultMessage);
     //
     //        /* Case: edit a person with new values same as existing values -> edited */
-    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
+    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB +
+    //                PHONE_DESC_BOB + EMAIL_DESC_BOB
     //                + ADDRESS_DESC_BOB + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
     //        assertCommandSuccess(command, index, BOB);
     //
@@ -99,7 +100,7 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //        editedPerson = new PersonBuilder(personToEdit).withTags().build();
     //        assertCommandSuccess(command, index, editedPerson);
     //
-    //        /* ------------------ Performing edit operation while a filtered list is being shown ------------------------ */
+    //        /* --------------- Performing edit operation while a filtered list is being shown --------------------- */
     //
     //        /* Case: filtered person list, edit index within bounds of address book and person list -> edited */
     //        showPersonsWithName(KEYWORD_MATCHING_MEIER);
@@ -118,21 +119,21 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + invalidIndex + NAME_DESC_BOB,
     //                Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
     //
-    //        /* --------------------- Performing edit operation while a person card is selected -------------------------- */
+    //        /* ------------------ Performing edit operation while a person card is selected ----------------------- */
     //
-    //        /* Case: selects first card in the person list, edit a person -> edited, card selection remains unchanged but
-    //         * browser url changes
+    //        /* Case: selects first card in the person list, edit a person -> edited, card selection remains unchanged
+    //         * but browser url changes
     //         */
     //        showAllPersons();
     //        index = INDEX_FIRST_PERSON;
     //        selectPerson(index);
-    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY
-    //                + ADDRESS_DESC_AMY + TAG_DESC_FRIEND;
+    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_AMY + PHONE_DESC_AMY +
+    //                EMAIL_DESC_AMY + ADDRESS_DESC_AMY + TAG_DESC_FRIEND;
     //        // this can be misleading: card selection actually remains unchanged but the
     //        // browser's url is updated to reflect the new person's name
     //        assertCommandSuccess(command, index, AMY, index);
     //
-    //        /* --------------------------------- Performing invalid edit operation -------------------------------------- */
+    //        /* ------------------------------ Performing invalid edit operation ----------------------------------- */
     //
     //        /* Case: invalid index (0) -> rejected */
     //        assertCommandFailure(EditCommand.COMMAND_WORD + " 0" + NAME_DESC_BOB,
@@ -156,20 +157,20 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //                EditCommand.MESSAGE_NOT_EDITED);
     //
     //        /* Case: invalid name -> rejected */
-    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_NAME_DESC,
-    //                Name.MESSAGE_NAME_CONSTRAINTS);
+    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() +
+    //                INVALID_NAME_DESC, Name.MESSAGE_NAME_CONSTRAINTS);
     //
     //        /* Case: invalid phone -> rejected */
-    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_PHONE_DESC,
-    //                Phone.MESSAGE_PHONE_CONSTRAINTS);
+    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() +
+    //                INVALID_PHONE_DESC, Phone.MESSAGE_PHONE_CONSTRAINTS);
     //
     //        /* Case: invalid email -> rejected */
-    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_EMAIL_DESC,
-    //                Email.MESSAGE_EMAIL_CONSTRAINTS);
+    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() +
+    //                INVALID_EMAIL_DESC, Email.MESSAGE_EMAIL_CONSTRAINTS);
     //
     //        /* Case: invalid address -> rejected */
-    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_ADDRESS_DESC,
-    //                Address.MESSAGE_ADDRESS_CONSTRAINTS);
+    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() +
+    //                INVALID_ADDRESS_DESC, Address.MESSAGE_ADDRESS_CONSTRAINTS);
     //
     //        /* Case: invalid tag -> rejected */
     //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_TAG_DESC,
@@ -180,13 +181,13 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //        assertTrue(getModel().getAddressBook().getPersonList().contains(BOB));
     //        index = INDEX_FIRST_PERSON;
     //        assertFalse(getModel().getFilteredPersonList().get(index.getZeroBased()).equals(BOB));
-    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-    //                + ADDRESS_DESC_BOB + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
+    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_BOB +
+    //                EMAIL_DESC_BOB + ADDRESS_DESC_BOB + TAG_DESC_FRIEND + TAG_DESC_HUSBAND;
     //        assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_PERSON);
     //
-    //        /* Case: edit a person with new values same as another person's values but with different tags -> rejected */
-    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-    //                + ADDRESS_DESC_BOB + TAG_DESC_HUSBAND;
+    //        /* Case: edit a person with new values same as another person's values but w/different tags -> rejected */
+    //        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + NAME_DESC_BOB + PHONE_DESC_BOB +
+    //                EMAIL_DESC_BOB + ADDRESS_DESC_BOB + TAG_DESC_HUSBAND;
     //        assertCommandFailure(command, EditCommand.MESSAGE_DUPLICATE_PERSON);
     //    }
 
