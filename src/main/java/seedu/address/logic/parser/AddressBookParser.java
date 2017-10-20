@@ -63,7 +63,7 @@ public class AddressBookParser {
 
         case SortCommand.COMMAND_WORD:
         case SortCommand.COMMAND_WORD_ALIAS:
-            return new SortCommandParser().parse(arguments);
+            return new SortCommand();
 
         case DeleteCommand.COMMAND_WORD:
         case DeleteCommand.COMMAND_WORD_ALIAS:

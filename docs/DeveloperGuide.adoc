@@ -970,11 +970,21 @@ This feature will make it more convenient for Users to organize their contacts s
 == Enhancement Description
 Author: Siri
 
-Added a Favourite List feature.
+Added a Sort command feature.
 
-The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
-instead of name to add/remove a person from the Favourite List. While the delete (eg. ‘delete 2’)
-command removes that particular Person Object from the list, the favourite command (eg. ‘fav 3’) adds the person at that index to the favourite List.
+The feature is implemented in a similar way to the list
+feature: the sort command sorts the list in alphabhetical
+order of names and displays the sorted list to the user.
+However the sort command does not update the actual Person list
+in the AddressBook which means that every time the user
+reopens AddressBook, he/she is presented with an unsorted
+list. The reason behind this is for the user to be able
+to view the list in two ways:
+
+1. In the order of who he added most recently (if sort
+function is not used)
+
+2. In alphabhetical order of names (if sort function is used)
 
 == Enhancement Description
 Author: Peng Xu
