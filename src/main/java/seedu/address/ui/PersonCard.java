@@ -1,25 +1,24 @@
 package seedu.address.ui;
 
-
 import javafx.beans.binding.Bindings;
-import java.util.HashMap;
-import java.util.Random;
-import java.util.logging.Logger;
+//import java.util.HashMap;
+//import java.util.Random;
+//import java.util.logging.Logger;
 
-import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
+//import javafx.beans.binding.Bindings;
+//import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.commons.events.ui.NewResultAvailableEvent;
-import seedu.address.logic.Logic;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.exceptions.ParseException;
+//import seedu.address.commons.core.LogsCenter;
+//import seedu.address.commons.events.ui.NewResultAvailableEvent;
+//import seedu.address.logic.Logic;
+//import seedu.address.logic.commands.CommandResult;
+//import seedu.address.logic.commands.exceptions.CommandException;
+//import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
 
 /**
@@ -62,8 +61,6 @@ public class PersonCard extends UiPart<Region> {
         initTags(person);
         bindListeners(person);
     }
-
-  
 
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
