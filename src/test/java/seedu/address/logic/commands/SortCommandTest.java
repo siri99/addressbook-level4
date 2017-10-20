@@ -22,20 +22,13 @@ public class SortCommandTest {
 
     @Test
     public void execute() throws Exception {
-        final String filterType = "name";
-        //assertCommandFailure(prepareCommand(filterType), model, String.format(MESSAGE_ARGUMENTS, filterType));
-        assertCommandSuccess(prepareCommand(filterType), model, SortCommand.MESSAGE_SUCCESS, model);
+        assertCommandSuccess(prepareCommand(), model, SortCommand.MESSAGE_SUCCESS, model);
 
     }
 
     @Test
     public void equals() {
-        final String filterType = "name";
-        final SortCommand standardCommand = new SortCommand(filterType);
-
-        // same filterTypes -> returns true
-        SortCommand commandWithSameValues = new SortCommand(filterType);
-        assertTrue(standardCommand.equals(commandWithSameValues));
+        final SortCommand standardCommand = new SortCommand();
 
         // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
@@ -47,14 +40,14 @@ public class SortCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different filterTypes -> returns false
-        assertFalse(standardCommand.equals(new SortCommand("default")));
+        assertFalse(standardCommand.equals(new SortCommand()));
     }
 
     /**
-     * Returns a {@code SortCommand} with parameteres.
+     * Returns a {@code SortCommand}
      */
-    private SortCommand prepareCommand(String filterType) {
-        SortCommand sortCommand = new SortCommand(filterType);
+    private SortCommand prepareCommand() {
+        SortCommand sortCommand = new SortCommand();
         sortCommand.setData(model, new CommandHistory(), new UndoRedoStack());
         return sortCommand;
     }

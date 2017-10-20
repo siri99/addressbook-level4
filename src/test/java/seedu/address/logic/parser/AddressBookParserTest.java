@@ -85,14 +85,6 @@ public class AddressBookParserTest {
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
-
-    @Test
-    public void parseCommand_sort() throws Exception {
-        final String filterType = "name";
-        SortCommand command = (SortCommand) parser.parseCommand(SortCommand.COMMAND_WORD + " " + filterType);
-        assertEquals(new SortCommand(filterType), command);
-    }
-
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
