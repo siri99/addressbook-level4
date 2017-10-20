@@ -139,7 +139,7 @@ public class DeleteCommandSystemTest extends AddressBookSystemTest {
 
         assertCommandSuccess(
                 DeleteCommand.COMMAND_WORD + " "
-                    + toDelete.getOneBased(), expectedModel, expectedResultMessage);
+                        + toDelete.getOneBased(), expectedModel, expectedResultMessage);
     }
 
     /**
