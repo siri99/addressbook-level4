@@ -54,7 +54,7 @@ public class StatusBarFooterTest extends AddressBookGuiTest {
         String expected = String.format(SYNC_PERSONLIST_UPADTED_SIZE, 8)
                 + String.format(SYNC_STATUS_UPDATED, timestamp);
         assertTrue(runCommand(PersonUtil.getAddCommand(HOON))); // mutating command succeeds
-        //assertEquals(expected, getStatusBarFooter().getSyncStatus());
+        assertEquals(expected, getStatusBarFooter().getSyncStatus());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class StatusBarFooterTest extends AddressBookGuiTest {
 
     @Test
     public void syncStatus_commandFails_syncStatusRemainsUnchanged() {
-        //assertFalse(runCommand("invalid command")); // invalid command fails
+        assertFalse(runCommand("invalid command")); // invalid command fails
         assertEquals(SYNC_STATUS_INITIAL, getStatusBarFooter().getSyncStatus());
     }
 

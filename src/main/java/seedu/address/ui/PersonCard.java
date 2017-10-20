@@ -1,24 +1,14 @@
 package seedu.address.ui;
 
-import javafx.beans.binding.Bindings;
-//import java.util.HashMap;
-//import java.util.Random;
-//import java.util.logging.Logger;
+import java.util.HashMap;
+import java.util.Random;
 
-//import javafx.beans.binding.Bindings;
-//import javafx.event.ActionEvent;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-
-//import seedu.address.commons.core.LogsCenter;
-//import seedu.address.commons.events.ui.NewResultAvailableEvent;
-//import seedu.address.logic.Logic;
-//import seedu.address.logic.commands.CommandResult;
-//import seedu.address.logic.commands.exceptions.CommandException;
-//import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
 
 /**
@@ -26,9 +16,7 @@ import seedu.address.model.person.ReadOnlyPerson;
  */
 public class PersonCard extends UiPart<Region> {
 
-
     private static final String FXML = "PersonListCard.fxml";
-
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -37,7 +25,13 @@ public class PersonCard extends UiPart<Region> {
      *
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
-    public ReadOnlyPerson person;
+
+
+    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
+    private static HashMap<String, String> tagColors = new HashMap<String, String>();
+    private static Random random = new Random();
+
+    public final ReadOnlyPerson person;
 
     @FXML
     private HBox cardPane;
@@ -62,6 +56,15 @@ public class PersonCard extends UiPart<Region> {
         bindListeners(person);
     }
 
+    private static String getColorForTag(String tagValue) {
+
+        if (!tagColors.containsKey(tagValue)) {
+            tagColors.put(tagValue, colors[random.nextInt(colors.length)]);
+        }
+
+        return tagColors.get(tagValue);
+    }
+
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
      * so that they will be notified of any changes.
@@ -77,10 +80,15 @@ public class PersonCard extends UiPart<Region> {
         });
     }
 
-
+    /**
+     * Initializes color tags
+     */
     private void initTags(ReadOnlyPerson person) {
-        person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-
+        person.getTags().forEach(tag -> {
+            Label tagLabel = new Label(tag.tagName);
+            tagLabel.setStyle("-fx-background-color: " + getColorForTag(tag.tagName));
+            tags.getChildren().add(tagLabel);
+        });
     }
 
     @Override

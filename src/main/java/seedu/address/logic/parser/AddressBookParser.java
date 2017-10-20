@@ -12,17 +12,13 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FavCommand;
-import seedu.address.logic.commands.FavouriteCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UndoCommand;
-import seedu.address.logic.commands.UnfavCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -64,14 +60,6 @@ public class AddressBookParser {
         case SelectCommand.COMMAND_WORD_ALIAS:
             return new SelectCommandParser().parse(arguments);
 
-        case FavouriteCommand.COMMAND_WORD:
-        case FavouriteCommand.COMMAND_WORD_ALIAS:
-            return new FavouriteCommand();
-
-        case FavCommand.COMMAND_WORD:
-        case FavCommand.COMMAND_WORD_ALIAS:
-            return new FavCommandParser().parse(arguments);
-
         case DeleteCommand.COMMAND_WORD:
         case DeleteCommand.COMMAND_WORD_ALIAS:
             return new DeleteCommandParser().parse(arguments);
@@ -88,10 +76,6 @@ public class AddressBookParser {
         case ListCommand.COMMAND_WORD_ALIAS:
             return new ListCommand();
 
-        case SortCommand.COMMAND_WORD:
-        case SortCommand.COMMAND_WORD_ALIAS:
-            return new SortCommandParser().parse(arguments);
-
         case HistoryCommand.COMMAND_WORD:
         case HistoryCommand.COMMAND_WORD_ALIAS:
             return new HistoryCommand();
@@ -105,10 +89,6 @@ public class AddressBookParser {
         case UndoCommand.COMMAND_WORD:
         case UndoCommand.COMMAND_WORD_ALIAS:
             return new UndoCommand();
-
-        case UnfavCommand.COMMAND_WORD:
-        case UnfavCommand.COMMAND_WORD_ALIAS:
-            return new UnfavCommandParser().parse(arguments);
 
         case RedoCommand.COMMAND_WORD:
         case RedoCommand.COMMAND_WORD_ALIAS:

@@ -25,7 +25,6 @@ import seedu.address.model.tag.UniqueTagList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
-    private final UniquePersonList favouritePersons;
     private final UniqueTagList tags;
 
     /*
@@ -37,7 +36,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
-        favouritePersons = new UniquePersonList();
         tags = new UniqueTagList();
     }
 
@@ -57,14 +55,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.persons.setPersons(persons);
     }
 
-    public void setFavouritePersons(List<? extends ReadOnlyPerson> persons) throws DuplicatePersonException {
-        this.favouritePersons.setPersons(persons);
-    }
-
-    public void sortPersons() {
-        this.persons.sortPersons();
-    }
-
     public void setTags(Set<Tag> tags) {
         this.tags.setTags(tags);
     }
@@ -80,15 +70,8 @@ public class AddressBook implements ReadOnlyAddressBook {
             assert false : "AddressBooks should not have duplicate persons";
         }
 
-        try {
-            setFavouritePersons(newData.getFavouritePersonList());
-        } catch (DuplicatePersonException e) {
-            assert false : "AddressBooks should not have duplicate persons";
-        }
-
         setTags(new HashSet<>(newData.getTagList()));
         syncMasterTagListWith(persons);
-        syncMasterTagListWith(favouritePersons);
     }
 
     //// person-level operations
@@ -109,14 +92,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.add(newPerson);
     }
 
-    /** Adds favourite person to addressBook
-     * Also updates new tags found (if any)
-     */
-    public void addFavouritePerson(ReadOnlyPerson p) throws DuplicatePersonException {
-        Person newPerson = new Person(p);
-        syncMasterTagListWith(newPerson);
-        favouritePersons.add(newPerson);
-    }
     /**
      * Replaces the given person {@code target} in the list with {@code editedReadOnlyPerson}.
      * {@code AddressBook}'s tag list will be updated with the tags of {@code editedReadOnlyPerson}.
@@ -181,18 +156,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
-    /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * @throws PersonNotFoundException if the {@code key} is not in this {@code AddressBook}.
-     */
-    public boolean removeFavouritePerson(ReadOnlyPerson key) throws PersonNotFoundException {
-        if (favouritePersons.remove(key)) {
-            return true;
-        } else {
-            throw new PersonNotFoundException();
-        }
-    }
-
     //// tag-level operations
 
     public void addTag(Tag t) throws UniqueTagList.DuplicateTagException {
@@ -203,20 +166,13 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public String toString() {
-        //return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags";
-        return persons.asObservableList().size() + " persons, " + favouritePersons.asObservableList().size()
-                + " favourite persons, " + tags.asObservableList().size() +  " tags";
+        return persons.asObservableList().size() + " persons, " + tags.asObservableList().size() +  " tags";
         // TODO: refine later
     }
 
     @Override
     public ObservableList<ReadOnlyPerson> getPersonList() {
         return persons.asObservableList();
-    }
-
-    @Override
-    public ObservableList<ReadOnlyPerson> getFavouritePersonList() {
-        return favouritePersons.asObservableList();
     }
 
     @Override
@@ -229,14 +185,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
                 && this.persons.equals(((AddressBook) other).persons)
-                && this.favouritePersons.equals(((AddressBook) other).favouritePersons)
                 && this.tags.equalsOrderInsensitive(((AddressBook) other).tags));
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        //return Objects.hash(persons, tags);
-        return Objects.hash(persons, favouritePersons, tags);
+        return Objects.hash(persons, tags);
     }
 }

@@ -133,7 +133,6 @@ public class MainWindow extends UiPart<Region> {
         browserPlaceholder.getChildren().add(browserPanel.getRoot());
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
@@ -145,22 +144,6 @@ public class MainWindow extends UiPart<Region> {
         CommandBox commandBox = new CommandBox(logic);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-    }
-
-    /**
-     * Changes displayed list accordingly
-     */
-    void fillInnerPartsWithIndicatedList(String listname) {
-        switch(listname) {
-        case "fl":
-        case "favlist":
-            personListPanel = new PersonListPanel(logic.getFilteredFavoritePersonList());
-            break;
-
-        default:
-            personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        }
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
     }
 
     void hide() {
