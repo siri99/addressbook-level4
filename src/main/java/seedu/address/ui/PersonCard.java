@@ -1,12 +1,12 @@
 package seedu.address.ui;
 
-import javafx.beans.binding.Bindings;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -26,7 +26,6 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
-
     private static String[] colors = { "red", "orange", "yellow", "green", "blue", "purple"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
 
@@ -44,15 +43,12 @@ public class PersonCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-<<<<<<< HEAD
-    public final ReadOnlyPerson person;
-
-=======
->>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
     @FXML
     private HBox cardPane;
     @FXML
     private Label name;
+    @FXML
+    private Button delete;
     @FXML
     private Label id;
     @FXML
@@ -64,16 +60,16 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-    public PersonCard(ReadOnlyPerson person, int displayedIndex) {
+
+    public PersonCard(ReadOnlyPerson person, int displayedIndex, Logic inlogic) {
         super(FXML);
         this.person = person;
+        logic = inlogic;
         id.setText(displayedIndex + ". ");
         initTags(person);
         bindListeners(person);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * Provides a consistent color based on the string of a tag's value
      * ie, the same color will return for every call using 'friend' or any other tag.
@@ -86,7 +82,6 @@ public class PersonCard extends UiPart<Region> {
         return colorMapping.get(tagValue);
     }
 
->>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
      * so that they will be notified of any changes.
@@ -98,14 +93,10 @@ public class PersonCard extends UiPart<Region> {
         email.textProperty().bind(Bindings.convert(person.emailProperty()));
         person.tagProperty().addListener((observable, oldValue, newValue) -> {
             tags.getChildren().clear();
-            person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+            initTags(person);
         });
     }
 
-<<<<<<< HEAD
-    private void initTags(ReadOnlyPerson person) {
-        person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
-=======
     /**
      * Initializes color tags
      * initializes tags for the person
@@ -118,9 +109,13 @@ public class PersonCard extends UiPart<Region> {
             tags.getChildren().add(tagLabel);
         });
         //person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
->>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
     }
 
+    /**
+     * checks equality to the person
+     * @param other
+     * @return if the person equals the param
+     */
     @Override
     public boolean equals(Object other) {
         // short circuit if same object
@@ -137,8 +132,6 @@ public class PersonCard extends UiPart<Region> {
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
     }
-<<<<<<< HEAD
-=======
 
     /**
      * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
@@ -159,5 +152,4 @@ public class PersonCard extends UiPart<Region> {
         }
 
     }
->>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
 }

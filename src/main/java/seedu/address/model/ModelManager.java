@@ -93,11 +93,6 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void sortFilteredPersonList() {
-        this.addressBook.sortPersons();
-        ObservableList<ReadOnlyPerson> sortedList = this.addressBook.getPersonList();
-        filteredPersons = new FilteredList<>(sortedList);
-    }
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);

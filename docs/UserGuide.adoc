@@ -73,6 +73,11 @@ Examples:
 Shows a list of all persons in the address book. +
 Format: `list` or `l`
 
+=== Printing the addressbook `print` or `p`
+
+COMING V2.0: Exports the entire addressbook to a textfile for easy printing. +
+Format: `print` or `p`
+
 === Editing a person : `edit` or `e`
 
 Edits an existing person in the address book. +
@@ -137,6 +142,15 @@ Deletes the 2nd person in the address book.
 * `find Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
+
+=== Deleting a person : via 'Delete' button
+
+Deletes the associated person from the address book.
+Can be undone using `undo` normally.
+
+****
+* Deletes the person
+****
 
 === Selecting a person : `select` or `s`
 
