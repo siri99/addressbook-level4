@@ -42,6 +42,7 @@ image::m133225.jpg[width="150", align="left"]
 {empty}[http://github.com/m133225[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
+<<<<<<< HEAD
 Responsibilities: Dev Ops + Threading
 
 '''
@@ -54,3 +55,7 @@ Role: Developer +
 Responsibilities: UI
 
 '''
+=======
+Responsibilities: Model
+
+>>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98

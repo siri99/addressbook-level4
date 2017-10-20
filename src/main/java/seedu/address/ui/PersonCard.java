@@ -1,11 +1,23 @@
 package seedu.address.ui;
 
 import javafx.beans.binding.Bindings;
+import java.util.HashMap;
+import java.util.logging.Logger;
+
+import javafx.beans.binding.Bindings;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.events.ui.NewResultAvailableEvent;
+import seedu.address.logic.Logic;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.ReadOnlyPerson;
 
 /**
@@ -15,6 +27,15 @@ public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
 
+    private static String[] colors = { "red", "orange", "yellow", "green", "blue", "purple"};
+    private static HashMap<String, String> colorMapping = new HashMap<String, String>();
+
+    public final ReadOnlyPerson person;
+
+    private final Logic logic;
+    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
+
+
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
      * As a consequence, UI elements' variable names cannot be set to such keywords
@@ -23,8 +44,11 @@ public class PersonCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
+<<<<<<< HEAD
     public final ReadOnlyPerson person;
 
+=======
+>>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
     @FXML
     private HBox cardPane;
     @FXML
@@ -48,6 +72,21 @@ public class PersonCard extends UiPart<Region> {
         bindListeners(person);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Provides a consistent color based on the string of a tag's value
+     * ie, the same color will return for every call using 'friend' or any other tag.
+     */
+
+    private String mapTagToColor(String tagValue) {
+        if (!colorMapping.containsKey(tagValue)) {
+            colorMapping.put(tagValue, colors[tagValue.length() % colors.length]);
+        }
+        return colorMapping.get(tagValue);
+    }
+
+>>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
      * so that they will be notified of any changes.
@@ -63,8 +102,23 @@ public class PersonCard extends UiPart<Region> {
         });
     }
 
+<<<<<<< HEAD
     private void initTags(ReadOnlyPerson person) {
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+=======
+    /**
+     * Initializes color tags
+     * initializes tags for the person
+     * @param person
+     */
+    private void initTags(ReadOnlyPerson person) {
+        person.getTags().forEach(tag -> {
+            Label tagLabel = new Label(tag.tagName);
+            tagLabel.setStyle("-fx-background-color: " + mapTagToColor(tag.tagName));
+            tags.getChildren().add(tagLabel);
+        });
+        //person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
+>>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
     }
 
     @Override
@@ -73,7 +127,6 @@ public class PersonCard extends UiPart<Region> {
         if (other == this) {
             return true;
         }
-
         // instanceof handles nulls
         if (!(other instanceof PersonCard)) {
             return false;
@@ -84,4 +137,27 @@ public class PersonCard extends UiPart<Region> {
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
+     * @param buttonEvent
+     */
+    @FXML
+    private void handleDeleteButtonAction(ActionEvent buttonEvent) {
+        try {
+            String justIndex = id.getText().substring(0, id.getText().length() - 2);
+            String delCommand = "delete " + justIndex;
+            CommandResult commandResult = logic.execute(delCommand);
+            logger.info("Result: " + commandResult.feedbackToUser);
+            raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+        } catch (CommandException | ParseException e) {
+            // handle command failure
+            logger.info("Delete call failed on index " + id.getText());
+            raise(new NewResultAvailableEvent(e.getMessage()));
+        }
+
+    }
+>>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
 }

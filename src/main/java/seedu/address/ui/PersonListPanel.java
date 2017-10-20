@@ -29,6 +29,10 @@ public class PersonListPanel extends UiPart<Region> {
 
     public PersonListPanel(ObservableList<ReadOnlyPerson> personList) {
         super(FXML);
+<<<<<<< HEAD
+=======
+        logic = inlogic;
+>>>>>>> c9f1c6b75145486d112b1e1c55f56b346d86ee98
         setConnections(personList);
         registerAsAnEventHandler(this);
     }
