@@ -987,6 +987,37 @@ function is not used)
 2. In alphabhetical order of names (if sort function is used)
 
 == Enhancement Description
+Author: Siri
+
+Enhancement of Find command.
+
+The `NameContainsKeyWordsPredicate` class which is in the Person
+class is the main class which enables users to find any person
+using their full name, part of the name, or tags of the person.
+The NameContainsKeywordsPredicate class uses functions from the
+StringUtil class to carry out the comparison for find feature.
+
+1. Find by `name`: The containsWordIgnoreCase function in StringUtil
+checks whether the name entered by the user is equal to the name of
+the person in AddressBook.
+
+2. Find by `substring` of name: The containsSubstringOfWord function
+first checks if the length of the substring is greater than or
+equal to 2. Then, Using an enhanced for loop, the function iterates
+through the words in a person’s name and checks to see if any of
+them contain with the substring.
+
+3. Find by `Tags`: The test method in NameContainsKeyWordsPredicate uses
+two sets, one containing the tag entered by the user and the other
+containing the set of tags of each person and compares accordingly.
+
+This feature will make it more convenient for users to find a person
+even if they do not remember the complete name of the person (find by
+substring) or if they do not remember the name at all but remember
+the tags of that person (find by tags) besides the usual find by name
+feature.
+
+== Enhancement Description
 Author: Peng Xu
 
 Added color tags
