@@ -773,6 +773,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |experienced user| print all of my data | I can use them in real-life
 
+|`* *` |novice user | be able to find people by substring of names | I can find people easily even when I don't remember their complete name
+
 |=======================================================================
 
 == UI Changes: Delete and Undo/Redo Buttons
