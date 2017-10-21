@@ -50,7 +50,7 @@ public class StringUtil {
      *       containsSubstringOfWord("ABc def", "AB") == false //not a full word match
      *       </pre>
      * @param sentence cannot be null
-     * @param word cannot be null, cannot be empty, must be a single word
+     * @param word cannot be null, cannot be empty, must be a single word with minimum 2 characters
      */
     public static boolean containsSubstringOfWord(String sentence, String word) {
         requireNonNull(sentence);
@@ -63,9 +63,11 @@ public class StringUtil {
         String preppedSentence = sentence;
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
-        for (String wordInSentence: wordsInPreppedSentence) {
-            if (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase())) {
-                return true;
+        if (preppedWord.length() >= 2) {
+            for (String wordInSentence : wordsInPreppedSentence) {
+                if (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase())) {
+                    return true;
+                }
             }
         }
         return false;
