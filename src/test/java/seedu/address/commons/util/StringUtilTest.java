@@ -137,6 +137,23 @@ public class StringUtilTest {
         assertTrue(StringUtil.containsWordIgnoreCase("AAA bBb ccc  bbb", "bbB"));
     }
 
+    @Test
+    public void containsSubstringOfWord_emptyWord_throwsIllegalArgumentException() {
+        assertExceptionThrown(IllegalArgumentException.class, "Normal sentence", "  ",
+                Optional.of("Word parameter cannot be empty"));
+    }
+
+    @Test
+    public void containsSubstringOfWord_noSentence_throwsNullPointerException() {
+        assertExceptionThrown(NullPointerException.class, null, "Alice", Optional.empty());
+    }
+
+    @Test
+    public void containsSubstringOfWord_multipleWords_throwsIllegalArgumentException() {
+        assertExceptionThrown(IllegalArgumentException.class, "Normal sentence", "Alice John",
+                Optional.of("Word parameter should be a single word"));
+    }
+
     //---------------- Tests for getDetails --------------------------------------
 
     /*
