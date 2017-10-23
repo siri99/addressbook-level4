@@ -14,7 +14,7 @@ import seedu.address.model.person.exceptions.PersonNotFoundException;
 public class UnfavCommand extends UndoableCommand {
 
     public static final String COMMAND_WORD = "unfav";
-    public static final String COMMAND_WORD_ALIAS = "ufv";
+    public static final String COMMAND_WORD_ALIAS = "unfv";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Remove a person identified by the index number from the Favourite list.\n"
