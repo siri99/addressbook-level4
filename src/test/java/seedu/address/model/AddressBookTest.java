@@ -89,7 +89,9 @@ public class AddressBookTest {
         }
 
         @Override
-        public ObservableList<ReadOnlyPerson>getFavouritePersonList() { return favouritePersons; }
+        public ObservableList<ReadOnlyPerson>getFavouritePersonList() {
+            return favouritePersons;
+        }
 
         @Override
         public ObservableList<Tag> getTagList() {
