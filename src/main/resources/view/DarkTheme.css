@@ -3,7 +3,8 @@
     background-color: #383838; /* Used in the default.html file */
 }
 .new{
-    -fx-alignment: center;
+    -fx-text-alignment: center;
+    text-align: center;
     color: white;
 }
 
