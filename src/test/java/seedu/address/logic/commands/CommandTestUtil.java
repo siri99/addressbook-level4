@@ -115,6 +115,18 @@ public class CommandTestUtil {
     }
 
     /**
+     * Updates {@code model}'s favourite filtered list to show only the first person in the {@code model}'s
+     * address book.
+     */
+    public static void showFirstFavouritePersonOnly(Model model) {
+        ReadOnlyPerson person = model.getAddressBook().getFavouritePersonList().get(0);
+        final String[] splitName = person.getName().fullName.split("\\s+");
+        model.updateFilteredFavouritePersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assert model.getFilteredFavouritePersonList().size() == 1;
+    }
+
+    /**
      * Deletes the first person in {@code model}'s filtered list from {@code model}'s address book.
      */
     public static void deleteFirstPerson(Model model) {
