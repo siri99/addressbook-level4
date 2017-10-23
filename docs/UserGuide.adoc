@@ -75,7 +75,7 @@ Format: `list` or `l`
 
 === Sorting the person list : `sort` or `so`
 
-Shows a list of all persons in the address book sorted in alphabhetical order of names. +
+Sorts the list persons in the address book in alphabhetical order of names. +
 Format: `sort` or `so`
 
 === Printing the addressbook `print` or `p`
