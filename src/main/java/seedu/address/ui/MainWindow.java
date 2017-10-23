@@ -1,6 +1,5 @@
 package seedu.address.ui;
 
-import java.awt.*;
 import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
@@ -13,7 +12,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
