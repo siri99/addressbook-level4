@@ -12,7 +12,8 @@ public class Score {
     public static final String SCORE_VALIDATION_REGEX = "\\d";
     public final String value;
 
-    public Score(String score) throws IllegalValueException{
+    public Score(String score) throws IllegalValueException
+     {
         requireNonNull(score);
         String trimmedScore = score.trim();
         if(!isValidScore(score)){
@@ -25,7 +26,19 @@ public class Score {
         return value.matches(SCORE_VALIDATION_REGEX);
     }
 
-    
+    @Override
+    public String toString(){ return value; }
+
+
+    @Override
+    public boolean equals(Object other){
+        return other==this || (other instanceof Score && this.value.equals(((Score) other).value));
+    }
+
+    @Override
+    public int hashCode(){
+        return value.hashCode();
+    }
 
 
 }

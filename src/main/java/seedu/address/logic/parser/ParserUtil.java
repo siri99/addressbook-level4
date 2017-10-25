@@ -14,6 +14,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Score;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -79,6 +80,10 @@ public class ParserUtil {
         return email.isPresent() ? Optional.of(new Email(email.get())) : Optional.empty();
     }
 
+    public static Optional<Score> parseScore(Optional<String> score) throws IllegalValueException {
+        requireNonNull(score);
+        return score.isPresent() ? Optional.of(new Score(score.get())) : Optional.empty();
+    }
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
      */
