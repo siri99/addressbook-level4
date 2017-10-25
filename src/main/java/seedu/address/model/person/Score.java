@@ -15,11 +15,12 @@ public class Score {
     public Score(String score) throws IllegalValueException
      {
         requireNonNull(score);
-        String trimmedScore = score.trim();
-        if(!isValidScore(score)){
+        String filteredScore = score.replaceAll("[^\\d]", "");
+        String trimmedScore = filteredScore.trim();
+        if(!isValidScore(trimmedScore)){
             throw new IllegalValueException(MESSAGE_SCORE_CONSTRAINTS);
         }
-        this.value=trimmedScore;
+        this.value="Group score: " + trimmedScore;
     }
 
     public boolean isValidScore(String value){
