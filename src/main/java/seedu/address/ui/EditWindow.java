@@ -74,19 +74,19 @@ public class EditWindow extends UiPart<Region> {
     private void handleEditSubmitAction(ActionEvent buttonEvent) {
         try {
             String commandText = "edit " + cardNum;
-            if (nameField.getText().length() != 0){
+            if (nameField.getText().length() != 0) {
                 commandText = commandText + " n/" + nameField.getText();
             }
-            if (phoneField.getText().length() != 0){
+            if (phoneField.getText().length() != 0) {
                 commandText = commandText + " p/" + phoneField.getText();
             }
-            if (emailField.getText().length() != 0){
+            if (emailField.getText().length() != 0) {
                 commandText = commandText + " e/" + emailField.getText();
             }
-            if (addressField.getText().length() != 0){
+            if (addressField.getText().length() != 0) {
                 commandText = commandText + " a/" + addressField.getText();
             }
-            if (tagsField.getText().length() != 0){
+            if (tagsField.getText().length() != 0) {
                 commandText = commandText + " t/" + tagsField.getText();
             }
             CommandResult commandResult = logic.execute(commandText);
