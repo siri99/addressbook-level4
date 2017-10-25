@@ -32,6 +32,7 @@ public class EditPersonDescriptorBuilder {
         descriptor.setPhone(person.getPhone());
         descriptor.setEmail(person.getEmail());
         descriptor.setAddress(person.getAddress());
+        descriptor.setScore(person.getScore());
         descriptor.setTags(person.getTags());
     }
 
@@ -79,6 +80,15 @@ public class EditPersonDescriptorBuilder {
             ParserUtil.parseAddress(Optional.of(address)).ifPresent(descriptor::setAddress);
         } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("address is expected to be unique.");
+        }
+        return this;
+    }
+
+    public EditPersonDescriptorBuilder withScore(String score) {
+        try{
+            ParserUtil.parseScore(Optional.of(score)).ifPresent(descriptor::setScore);
+        } catch (IllegalValueException ive){
+            throw new IllegalArgumentException("score is expected to be unique");
         }
         return this;
     }

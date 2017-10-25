@@ -12,15 +12,14 @@ public class Score {
     public static final String SCORE_VALIDATION_REGEX = "\\d";
     public final String value;
 
-    public Score(String score) throws IllegalValueException
-     {
+    public Score(String score) throws IllegalValueException {
         requireNonNull(score);
         String filteredScore = score.replaceAll("[^\\d]", "");
         String trimmedScore = filteredScore.trim();
-        if(!isValidScore(trimmedScore)){
+        if (!isValidScore(trimmedScore)) {
             throw new IllegalValueException(MESSAGE_SCORE_CONSTRAINTS);
         }
-        this.value="Group score: " + trimmedScore;
+        this.value = "Group score: " + trimmedScore;
     }
 
     public boolean isValidScore(String value){
