@@ -1,6 +1,5 @@
 package seedu.address.ui;
 
-import java.net.URL;
 import java.util.logging.Logger;
 
 import com.google.common.eventbus.Subscribe;
@@ -16,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javax.swing.text.html.StyleSheet;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -26,7 +26,6 @@ import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.ReadOnlyPerson;
 
-import javax.swing.text.html.StyleSheet;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -240,7 +239,7 @@ public class MainWindow extends UiPart<Region> {
 
         int size = scene.getRoot().getStylesheets().size();
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             scene.getRoot().getStylesheets().remove(0);
         }
 
@@ -256,13 +255,12 @@ public class MainWindow extends UiPart<Region> {
     private void handleLightTheme() {
 
         int size = scene.getRoot().getStylesheets().size();
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
 
             scene.getRoot().getStylesheets().remove(0);
 
         }
         scene.getRoot().getStylesheets().add("view/LightTheme.css");
-
 
     }
 
