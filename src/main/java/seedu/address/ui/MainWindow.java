@@ -146,6 +146,22 @@ public class MainWindow extends UiPart<Region> {
 
     }
 
+    /**
+     * Changes displayed list accordingly
+     */
+    void fillInnerPartsWithIndicatedList(String listname) {
+        switch(listname) {
+        case "fl":
+        case "favlist":
+            personListPanel = new PersonListPanel(logic.getFilteredFavoritePersonList(), logic);
+            break;
+
+        default:
+            personListPanel = new PersonListPanel(logic.getFilteredPersonList(), logic);
+        }
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
     void hide() {
         primaryStage.hide();
     }

@@ -122,4 +122,11 @@ public class UiManager extends ComponentManager implements Ui {
         showFileOperationAlertAndWait(FILE_OPS_ERROR_DIALOG_HEADER_MESSAGE, FILE_OPS_ERROR_DIALOG_CONTENT_MESSAGE,
                 event.exception);
     }
+
+    @Subscribe
+    private void handleChangeInternalListEvent(ChangeInternalListEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        mainWindow.fillInnerPartsWithIndicatedList(event.getListName());
+    }
 }
+

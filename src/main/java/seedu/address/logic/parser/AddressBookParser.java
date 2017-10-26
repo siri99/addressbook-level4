@@ -12,6 +12,8 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FavCommand;
+import seedu.address.logic.commands.FavouriteListCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
@@ -20,6 +22,7 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UnfavCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -73,9 +76,21 @@ public class AddressBookParser {
         case ClearCommand.COMMAND_WORD_ALIAS:
             return new ClearCommand();
 
+        case FavCommand.COMMAND_WORD:
+        case FavCommand.COMMAND_WORD_ALIAS:
+            return new FavCommandParser().parse(arguments);
+
+        case UnfavCommand.COMMAND_WORD:
+        case UnfavCommand.COMMAND_WORD_ALIAS:
+            return new UnfavCommandParser().parse(arguments);
+
         case FindCommand.COMMAND_WORD:
         case FindCommand.COMMAND_WORD_ALIAS:
             return new FindCommandParser().parse(arguments);
+
+        case FavouriteListCommand.COMMAND_WORD:
+        case FavouriteListCommand.COMMAND_WORD_ALIAS:
+            return new FavouriteListCommand();
 
         case ListCommand.COMMAND_WORD:
         case ListCommand.COMMAND_WORD_ALIAS:
