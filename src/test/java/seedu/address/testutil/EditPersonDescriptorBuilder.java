@@ -84,10 +84,13 @@ public class EditPersonDescriptorBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Score} of the {@code EditPersonDescriptor} that we are building.
+     */
     public EditPersonDescriptorBuilder withScore(String score) {
-        try{
+        try {
             ParserUtil.parseScore(Optional.of(score)).ifPresent(descriptor::setScore);
-        } catch (IllegalValueException ive){
+        } catch (IllegalValueException ive) {
             throw new IllegalArgumentException("score is expected to be unique");
         }
         return this;

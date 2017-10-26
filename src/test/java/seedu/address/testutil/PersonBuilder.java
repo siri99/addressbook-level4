@@ -35,7 +35,8 @@ public class PersonBuilder {
             Address defaultAddress = new Address(DEFAULT_ADDRESS);
             Score defaultScore = new Score(DEFAULT_SCORE);
             Set<Tag> defaultTags = SampleDataUtil.getTagSet(DEFAULT_TAGS);
-            this.person = new Person(defaultName, defaultPhone, defaultEmail, defaultAddress, defaultScore, defaultTags);
+            this.person = new Person(defaultName, defaultPhone, defaultEmail, defaultAddress, defaultScore,
+                    defaultTags);
         } catch (IllegalValueException ive) {
             throw new AssertionError("Default person's values are invalid.");
         }
@@ -108,6 +109,9 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     *Sets the {@code Score} of the {@code Person} that we are building.
+     */
     public PersonBuilder withScore(String score) {
         try {
             this.person.setScore(new Score(score));
