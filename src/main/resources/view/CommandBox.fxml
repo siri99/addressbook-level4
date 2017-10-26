@@ -8,9 +8,9 @@
 
 <HBox>
   <StackPane styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <TextField fx:id="commandTextField" onAction="#handleCommandInputChanged" onKeyPressed="#handleKeyPress" promptText="Enter command here..."/>
+    <TextField fx:id="commandTextField" prefWidth="600.0" onAction="#handleCommandInputChanged" onKeyPressed="#handleKeyPress" promptText="Enter command here..."/>
   </StackPane>
   <Region prefHeight="10.0" prefWidth="1.0" HBox.hgrow="ALWAYS" />
-  <Button onAction='#handleUndoButtonAction' id="undo" text="Undo"/>
-  <Button onAction='#handleRedoButtonAction' id="redo" text="Redo"/>
+  <Button onAction='#handleUndoButtonAction' id="undo" prefWidth="120.0" minWidth="90.0" text="Undo"/>
+  <Button onAction='#handleRedoButtonAction' id="redo" prefWidth="120.0" minWidth="90.0" text="Redo"/>
 </HBox>
