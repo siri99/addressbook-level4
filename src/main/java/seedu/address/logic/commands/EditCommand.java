@@ -129,6 +129,7 @@ public class EditCommand extends UndoableCommand {
     /**
      * Stores the details to edit the person with. Each non-empty field value will replace the
      * corresponding field value of the person.
+     * Also, travis is bugged, so am adding code to force another commit.
      */
     public static class EditPersonDescriptor {
         private Name name;
