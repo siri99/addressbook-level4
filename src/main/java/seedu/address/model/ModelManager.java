@@ -15,6 +15,7 @@ import seedu.address.commons.events.model.AddressBookChangedEvent;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
+import seedu.address.ui.ChangeInternalListEvent;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -25,6 +26,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private FilteredList<ReadOnlyPerson> filteredPersons;
+    private final FilteredList<ReadOnlyPerson> filteredFavouritePersons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -37,6 +39,7 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredFavouritePersons = new FilteredList<>(this.addressBook.getFavouritePersonList());
     }
 
     public ModelManager() {
@@ -66,8 +69,22 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public synchronized void removeFavouritePerson(ReadOnlyPerson person) throws PersonNotFoundException {
+        addressBook.removeFavouritePerson(person);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        indicateAddressBookChanged();
+    }
+
+    @Override
     public synchronized void addPerson(ReadOnlyPerson person) throws DuplicatePersonException {
         addressBook.addPerson(person);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        indicateAddressBookChanged();
+    }
+
+    @Override
+    public synchronized void addFavouritePerson(ReadOnlyPerson person) throws DuplicatePersonException {
+        addressBook.addFavouritePerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         indicateAddressBookChanged();
     }
@@ -79,6 +96,11 @@ public class ModelManager extends ComponentManager implements Model {
 
         addressBook.updatePerson(target, editedPerson);
         indicateAddressBookChanged();
+    }
+
+    @Override
+    public void changeListTo(String listName) {
+        raise(new ChangeInternalListEvent(listName));
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -93,16 +115,26 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
+    public ObservableList<ReadOnlyPerson> getFilteredFavouritePersonList() {
+        return FXCollections.unmodifiableObservableList(filteredFavouritePersons);
+    }
+
+    @Override
     public void updateFilteredPersonList(Predicate<ReadOnlyPerson> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
 
     @Override
+    public void updateFilteredFavouritePersonList(Predicate<ReadOnlyPerson> predicate) {
+        requireNonNull(predicate);
+        filteredFavouritePersons.setPredicate(predicate);
+    }
+
+    @Override
     public void sortFilteredPersonList() {
-        this.addressBook.sortPersons();
-        ObservableList<ReadOnlyPerson> sortedList = this.addressBook.getPersonList();
-        filteredPersons = new FilteredList<>(sortedList);
+        addressBook.sortPersons();
+        indicateAddressBookChanged();
     }
 
     @Override

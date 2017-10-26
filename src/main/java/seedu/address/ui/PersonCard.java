@@ -31,9 +31,9 @@ public class PersonCard extends UiPart<Region> {
 
     public final ReadOnlyPerson person;
 
+    private final int cardNum;
     private final Logic logic;
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
-
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -58,6 +58,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private Label email;
     @FXML
+    private Label score;
+    @FXML
     private FlowPane tags;
 
 
@@ -65,7 +67,8 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.person = person;
         logic = inlogic;
-        id.setText(displayedIndex + ". ");
+        cardNum = displayedIndex;
+        id.setText(cardNum + ". ");
         initTags(person);
         bindListeners(person);
     }
@@ -91,6 +94,7 @@ public class PersonCard extends UiPart<Region> {
         phone.textProperty().bind(Bindings.convert(person.phoneProperty()));
         address.textProperty().bind(Bindings.convert(person.addressProperty()));
         email.textProperty().bind(Bindings.convert(person.emailProperty()));
+        score.textProperty().bind(Bindings.convert(person.scoreProperty()));
         person.tagProperty().addListener((observable, oldValue, newValue) -> {
             tags.getChildren().clear();
             initTags(person);
@@ -151,5 +155,15 @@ public class PersonCard extends UiPart<Region> {
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
 
+    }
+
+    /**
+     * handles edit button presses, triggering a new window.
+     * @param buttonEvent
+     */
+    @FXML
+    private void handleEditButtonAction(ActionEvent buttonEvent) {
+        EditWindow editWindow = new EditWindow(logic, cardNum);
+        editWindow.show();
     }
 }
