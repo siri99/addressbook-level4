@@ -80,6 +80,10 @@ public class ParserUtil {
         return email.isPresent() ? Optional.of(new Email(email.get())) : Optional.empty();
     }
 
+    /**
+     * Parses a {@code Optional<String> score} into an {@code Optional<Score>} if {@code score} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
     public static Optional<Score> parseScore(Optional<String> score) throws IllegalValueException {
         requireNonNull(score);
         return score.isPresent() ? Optional.of(new Score(score.get())) : Optional.empty();

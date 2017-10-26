@@ -104,13 +104,19 @@ public class Person implements ReadOnlyPerson {
         return address.get();
     }
 
-    public void setScore(Score score) {this.score.set(requireNonNull(score)); }
+    public void setScore(Score score) {
+        this.score.set(requireNonNull(score));
+    }
 
     @Override
-    public ObjectProperty<Score> scoreProperty() {return score; }
+    public ObjectProperty<Score> scoreProperty() {
+        return score;
+    }
 
     @Override
-    public Score getScore() {return score.get();}
+    public Score getScore() {
+        return score.get();
+    }
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.

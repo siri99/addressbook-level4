@@ -192,9 +192,13 @@ public class EditCommand extends UndoableCommand {
             this.tags = tags;
         }
 
-        public void setScore(Score score){ this.score = score; }
+        public void setScore(Score score) {
+            this.score = score;
+        }
 
-        public Optional<Score> getScore() {return Optional.ofNullable(score); }
+        public Optional<Score> getScore() {
+            return Optional.ofNullable(score);
+        }
 
         public Optional<Set<Tag>> getTags() {
             return Optional.ofNullable(tags);
