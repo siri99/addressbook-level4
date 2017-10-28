@@ -186,7 +186,7 @@ public class AddressBook implements ReadOnlyAddressBook {
              * deleted from the main list and is also present on the Favourite List,
              * the person will be automatically deleted from fav list too
              */
-            if(favouritePersons.contains(key)) {
+            if (favouritePersons.contains(key)) {
                 favouritePersons.remove(key);
             }
             return true; // returns true if Person is in the main list irrespective of Fav list
