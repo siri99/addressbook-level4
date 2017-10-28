@@ -190,4 +190,23 @@ public class CommandBox extends UiPart<Region> {
 
     }
 
+    /**
+     * handles button events given to it by the fxml document for which it is set as controller by
+     * a constructor in UiPart. handleFavListButton event handles the event when the Favlist button
+     * containing a 'star' icon to represent a fav list is clicked.
+     * @param buttonEvent
+     */
+    @FXML
+    private void handleFavlistButtonAction(ActionEvent buttonEvent) {
+        try {
+            CommandResult commandResult = logic.execute("favlist");
+            logger.info("Result: " + commandResult.feedbackToUser);
+            raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+        } catch (CommandException | ParseException e) {
+            // handling command failure
+            logger.info("Delete call failed on index favlist");
+            raise(new NewResultAvailableEvent(e.getMessage()));
+        }
+    }
+
 }
