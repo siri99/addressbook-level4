@@ -176,12 +176,20 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
-     *
+     * Also removes {@code key} from the Favourite List if same person is listed on Fav list too.
      * @throws PersonNotFoundException if the {@code key} is not in this {@code AddressBook}.
      */
     public boolean removePerson(ReadOnlyPerson key) throws PersonNotFoundException {
+
         if (persons.remove(key)) {
-            return true;
+            /* Line makes sure that Favourite List is synced with main list, if a person is
+             * deleted from the main list and is also present on the Favourite List,
+             * the person will be automatically deleted from fav list too
+             */
+            if(favouritePersons.contains(key)) {
+                favouritePersons.remove(key);
+            }
+            return true; // returns true if Person is in the main list irrespective of Fav list
         } else {
             throw new PersonNotFoundException();
         }
