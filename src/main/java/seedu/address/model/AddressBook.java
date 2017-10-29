@@ -117,6 +117,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Replaces the given person {@code target} in the list with {@code editedReadOnlyPerson}.
      * {@code AddressBook}'s tag list will be updated with the tags of {@code editedReadOnlyPerson}.
      *
+     * Also replaces the given person {@code target} in the Favourite list with {@code editedReadOnlyPerson}
+     * if same person is listed on Favourite list too.
+     *
      * @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
      *                                  another existing person in the list.
      * @throws PersonNotFoundException  if {@code target} could not be found in the list.
@@ -132,6 +135,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         // This can cause the tags master list to have additional tags that are not tagged to any person
         // in the person list.
         persons.setPerson(target, editedPerson);
+        /* Line makes sure that Favourite List is synced with main list, if a person is
+         * edited from the main list and is also present on the Favourite List,
+         * the person will be automatically edited from fav list too
+         */
+        if(favouritePersons.contains(target)) {
+            favouritePersons.setPerson(target, editedPerson);
+        }
     }
 
 
