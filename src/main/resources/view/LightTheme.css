@@ -4,8 +4,8 @@
 }
 
 .background {
-    -fx-background-color: #f7f5f4;
-    background-color: #ffffff; /* Used in the default.html file */
+    -fx-background-color: #ffe5c7;
+    background-color: #ffe5c7; /* Used in the default.html file */
 }
 
 .v-box {
@@ -15,7 +15,7 @@
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #555555;
+    -fx-text-fill: #000000;
     -fx-opacity: 0.9;
 }
 
