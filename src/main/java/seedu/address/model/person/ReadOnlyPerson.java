@@ -49,8 +49,10 @@ public interface ReadOnlyPerson {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
+                //@@author Henning
                 .append(" ")
                 .append(getScore())
+                //@@author
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();

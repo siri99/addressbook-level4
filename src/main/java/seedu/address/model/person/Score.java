@@ -1,5 +1,5 @@
 package seedu.address.model.person;
-
+//@@author Henning
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
@@ -49,3 +49,4 @@ public class Score {
 
 
 }
+//@@author
