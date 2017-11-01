@@ -345,6 +345,74 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
+// fav list
+=== Favourite List mechanism
+
+The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
+instead of name to add/remove a person from the Favourite List. While the delete (eg. ‘delete 2’)
+command removes that particular Person Object from the list, the favourite command (eg. ‘fav 3’) adds the person at that index to the favourite List.
+
+The Favourite List feature is split into 3 commands:
+
+1.	`favlist` – This command displays the favourite list. The command favlist raises an event called InternalListEvent which is handled by displaying the favourite list instead of the normal Persons list.
+2.	`Fav` – This command calls the favCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
+3.	`Unfav` – This command calls the favCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
+
+The Favourite List is a useful feature that allows a user to view all his/her favourite contacts in one place. It saves the time required to search for all the most important/favourite contacts.
+The command to view the favourite list is “favlist” or “fl”.
+
+The "favlist" command inherits from `Undoable Command`. Thus it is supportive of undoing and redoing (using undo and redo command) the current state of Addressbook.
+The following sequence diagram depicts the basic interactions involved between the user and the different application components when the user executes the favourite list command.
+
+image::FavouriteListCommandSequenceDiagram1.png[width="800"]
+_Figure 3.2.1 : Basic Sequence Diagram of the "favlist" command_
+
+image::FavouriteListCommandSequenceDiagram2.png[width="800"]
+_Figure 3.2.2 : Sequence Diagram of the interaction between ModelManager and AddressBook_
+
+This `Logic` interface is used to obtain the copy of the Favourite list when required. As seen by Figure 3.2.1 and Figure 3.2.2 above, to obtain the current favourite list of the address book, "favlist" or “fl” string is first recorded by the `Command Box` and then passed to the Logic interface for execution.
+
+The Logic Interface uses Logic Manager (the class that implements the Logic methods) to package the String command received by it as a Command object. The respective command (in this case the favlist command) is executed in the Logic Manager class. Instructions as follows:
+
+
+[source,java]
+----
+public CommandResult executeUndoableCommand() {
+    model.changeListTo(COMMAND_WORD);
+    model.updateFilteredFavouritePersonList(PREDICATE_SHOW_ALL_FAVOURITE_PERSONS);
+    return new CommandResult(MESSAGE_SUCCESS);
+}
+
+----
+
+The favlist command calls the calls the getFilteredFavoritePersonList() method residing in the `Logic` interface. LogicManager successively calls the Model interface. `Model` uses ModelManager class to return the filteredFavouritePersons list back to the calling method. Before being passed back, filteredFavouritePersons list calls getFavouritePersonList() method of AddressBook class which then calls the getFavouritePersonList() method in `XmlSerializbleAddressBook`. The XmlSerializbleAddressBook  methdod loads the stored contacts from favourite list and returns it to AddressBook which then returns it to ModelManager. Thus the `filteredFavouritePersons` is now updated with the favourite contacts which are then displayed to the user by calling the changeListTo method which calls the `ChangeInternalListEvent` which is subsequently handled by other methods and the Favourite list is displayed on the personListPanel.
+
+This implementation also supports `syncing` of the favourite list with the main list by deleting/editing the person in the favourite list if the person is deleted/edited respectively in the main list. The following code snippet enables this sync mechanism.
+----
+if (persons.remove(key)) {
+            if (favouritePersons.contains(key)) {
+                favouritePersons.remove(key);
+            }
+            return true;
+----
+
+==== Design Considerations
+
+**Aspect:** Use of other commands in Favourite list setup (Delete, Edit Command etc). +
+**Alternative 1 (current choice):** Restrict users from using certain commands in favourite list.  +
+**Pros:** Users will never make a mistake. +
+**Cons:** Users need to go back to the main list whenever they want to edit/ delete a person.  +
+**Alternative 2:** Mention the specific list of commands that the user can use while in the favourite list in the +
+user guide  +
+**Pros:** Ease of implementation. No need to restrict commands in favourite list. +
+**Cons:** User might use commands for the wrong purpose. For example, the user might think deleting a person from +
+ the favourite list will just remove the person from the favourite list, but in reality it will +
+ delete the perso from the main list as well. The user might get confused between commands such +
+ as delete and unfav.
+
+---
+
+
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
@@ -942,32 +1010,6 @@ Cons:
 * ...
 
 [appendix]
-== Enhancement Description
-Author: Siri
-
-Added a Favourite List feature.
-
-The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
-instead of name to add/remove a person from the Favourite List. While the delete (eg. ‘delete 2’)
-command removes that particular Person Object from the list, the favourite command (eg. ‘fav 3’) adds the person at that index to the favourite List.
-
-The Favourite List feature is split into 3 commands:
-
-1.	favlist – This command displays the favourite list. The command favlist raises an event called InternalListEvent which is handled by displaying the favourite list instead of the normal Persons list.
-2.	Fav – This command calls the favCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
-3.	Unfav – This command calls the favCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
-
-A simple workflow for favlist command would be:
-
-Command entered: ‘favlist’
-
-1. AddresBookParser returns FavouriteCommand class to Main method.
-2. FavouriteCommand class executes CommandResult method
-3. ChangeListTo method in Commandesult calls the ChangeInternalListEvent with the command word ‘favlist’ as the parameter which returns the updated List.
-
-In a similar way, the ‘fav [index]’ and ‘unfav [index]’ commands also call various classes and methods in order to add/ remove a person from the favourite List respectively.
-
-This feature will make it more convenient for Users to organize their contacts so that they can access their favourite contacts by simply using the flist command instead of searching by name or tags.
 
 == Enhancement Description
 Author: Siri
