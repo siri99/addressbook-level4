@@ -41,6 +41,8 @@ public class EditWindow extends UiPart<Region> {
     @FXML
     private TextField emailField;
     @FXML
+    private TextField scoreField;
+    @FXML
     private Button edit;
 
     private final Stage dialogStage;
@@ -88,6 +90,9 @@ public class EditWindow extends UiPart<Region> {
             }
             if (tagsField.getText().length() != 0) {
                 commandText = commandText + " t/" + tagsField.getText();
+            }
+            if (scoreField.getText().length() != 0) {
+                commandText = commandText + " s/" + scoreField.getText();
             }
             CommandResult commandResult = logic.execute(commandText);
             //Stage stage = (Stage) edit.getScene().getWindow();
