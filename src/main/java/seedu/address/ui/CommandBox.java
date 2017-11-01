@@ -106,14 +106,28 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleCommandInputChanged() {
+        CommandResult commandResult = new CommandResult("");
+        String commandText = commandTextField.getText();
         try {
-            CommandResult commandResult = logic.execute(commandTextField.getText());
-            initHistory();
-            historySnapshot.next();
-            // process result of the command
-            commandTextField.setText("");
-            logger.info("Result: " + commandResult.feedbackToUser);
-            raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+            if (logic.getCurrentList().contains("favlist") && (commandText.contains("delete")
+                    || commandText.contains("edit"))) {
+                commandResult = new CommandResult("Edit/Delete command does not work in Favourite List");
+                initHistory();
+                historySnapshot.next();
+                // process result of the command
+                commandTextField.setText("");
+                logger.info("Result: " + commandResult.feedbackToUser);
+                raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+
+            } else {
+                commandResult = logic.execute(commandTextField.getText());
+                initHistory();
+                historySnapshot.next();
+                // process result of the command
+                commandTextField.setText("");
+                logger.info("Result: " + commandResult.feedbackToUser);
+                raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+            }
 
         } catch (CommandException | ParseException e) {
             initHistory();
@@ -188,6 +202,25 @@ public class CommandBox extends UiPart<Region> {
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
 
+    }
+
+    /**
+     * handles button events given to it by the fxml document for which it is set as controller by
+     * a constructor in UiPart. handleFavListButton event handles the event when the Favlist button
+     * containing a 'star' icon to represent a fav list is clicked.
+     * @param buttonEvent
+     */
+    @FXML
+    private void handleFavlistButtonAction(ActionEvent buttonEvent) {
+        try {
+            CommandResult commandResult = logic.execute("favlist");
+            logger.info("Result: " + commandResult.feedbackToUser);
+            raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+        } catch (CommandException | ParseException e) {
+            // handling command failure
+            logger.info("Delete call failed on index favlist");
+            raise(new NewResultAvailableEvent(e.getMessage()));
+        }
     }
 
 }
