@@ -133,6 +133,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setCurrentList(String currentList)  {
+            fail("This method should not be called.");
+        }
+
+        @Override
+        public String getCurrentList() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
         public void updateFilteredFavouritePersonList(Predicate<ReadOnlyPerson> predicate) {
             fail("This method should not be called.");
         }
