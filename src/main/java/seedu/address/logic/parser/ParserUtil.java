@@ -84,10 +84,12 @@ public class ParserUtil {
      * Parses a {@code Optional<String> score} into an {@code Optional<Score>} if {@code score} is present.
      * See header comment of this class regarding the use of {@code Optional} parameters.
      */
+    //@@author Henning
     public static Optional<Score> parseScore(Optional<String> score) throws IllegalValueException {
         requireNonNull(score);
         return score.isPresent() ? Optional.of(new Score(score.get())) : Optional.empty();
     }
+    //@@author
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
      */
