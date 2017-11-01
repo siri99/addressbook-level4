@@ -64,9 +64,11 @@ public class AddressBookParser {
         case SelectCommand.COMMAND_WORD_ALIAS:
             return new SelectCommandParser().parse(arguments);
 
+        //@@author Sirisha
         case SortCommand.COMMAND_WORD:
         case SortCommand.COMMAND_WORD_ALIAS:
             return new SortCommand();
+        //@@author Sirisha
 
         case DeleteCommand.COMMAND_WORD:
         case DeleteCommand.COMMAND_WORD_ALIAS:
@@ -76,6 +78,7 @@ public class AddressBookParser {
         case ClearCommand.COMMAND_WORD_ALIAS:
             return new ClearCommand();
 
+        //@@author Sirisha
         case FavCommand.COMMAND_WORD:
         case FavCommand.COMMAND_WORD_ALIAS:
             return new FavCommandParser().parse(arguments);
@@ -83,14 +86,17 @@ public class AddressBookParser {
         case UnfavCommand.COMMAND_WORD:
         case UnfavCommand.COMMAND_WORD_ALIAS:
             return new UnfavCommandParser().parse(arguments);
+        //@@author Sirisha
 
         case FindCommand.COMMAND_WORD:
         case FindCommand.COMMAND_WORD_ALIAS:
             return new FindCommandParser().parse(arguments);
 
+        //@@author Sirisha
         case FavouriteListCommand.COMMAND_WORD:
         case FavouriteListCommand.COMMAND_WORD_ALIAS:
             return new FavouriteListCommand();
+        //@@author Sirisha
 
         case ListCommand.COMMAND_WORD:
         case ListCommand.COMMAND_WORD_ALIAS:

@@ -150,11 +150,14 @@ public class PersonCard extends UiPart<Region> {
             String justIndex = id.getText().substring(0, id.getText().length() - 2);
             String delCommand = "delete " + justIndex;
             //@@author
+            //@@author Sirisha
             if (logic.getCurrentList().contains("favlist")) {
                 commandResult = new CommandResult("Delete command does not work in favourite list");;
             } else {
                 commandResult = logic.execute(delCommand);
             }
+            //@@author Sirisha
+            //@@author Jacob Vosburgh
             logger.info("Result: " + commandResult.feedbackToUser);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
         } catch (CommandException | ParseException e) {
@@ -170,11 +173,15 @@ public class PersonCard extends UiPart<Region> {
      */
     @FXML
     private void handleEditButtonAction(ActionEvent buttonEvent) {
+        //@@author
+        //@@author Sirisha
         CommandResult commandResult = new CommandResult("");
         if (logic.getCurrentList().contains("favlist")) {
             commandResult = new CommandResult("Edit command does not work in favourite list");;
         } else {
             //@@author Jacob Vosburgh
+            commandResult = new CommandResult("Edit command does not work in favourite list");
+        } else { //@@author Sirisha
             EditWindow editWindow = new EditWindow(logic, cardNum);
             editWindow.show();
         }
