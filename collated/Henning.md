@@ -1,5 +1,35 @@
-package seedu.address.model.person;
-//@@author Henning
+# Henning
+###### \src\main\java\seedu\address\logic\parser\ParserUtil.java
+``` java
+    public static Optional<Score> parseScore(Optional<String> score) throws IllegalValueException {
+        requireNonNull(score);
+        return score.isPresent() ? Optional.of(new Score(score.get())) : Optional.empty();
+    }
+```
+###### \src\main\java\seedu\address\model\person\Person.java
+``` java
+    public void setScore(Score score) {
+        this.score.set(requireNonNull(score));
+    }
+
+    @Override
+    public ObjectProperty<Score> scoreProperty() {
+        return score;
+    }
+
+    @Override
+    public Score getScore() {
+        return score.get();
+    }
+
+```
+###### \src\main\java\seedu\address\model\person\ReadOnlyPerson.java
+``` java
+                .append(" ")
+                .append(getScore())
+```
+###### \src\main\java\seedu\address\model\person\Score.java
+``` java
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
@@ -47,4 +77,8 @@ public class Score {
         return value.hashCode();
     }
 }
-//@@author
+```
+###### \src\main\resources\view\PersonListCard.fxml
+``` fxml
+      <Label fx:id="score" styleClass="cell_small_label"  text="\$score" />
+```

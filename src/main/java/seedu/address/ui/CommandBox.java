@@ -203,7 +203,8 @@ public class CommandBox extends UiPart<Region> {
         }
 
     }
-    //@@author Jacob Vosburgh
+    //@@author
+    //@@author Sirisha
     /**
      * handles button events given to it by the fxml document for which it is set as controller by
      * a constructor in UiPart. handleFavListButton event handles the event when the Favlist button
@@ -222,5 +223,5 @@ public class CommandBox extends UiPart<Region> {
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
     }
-
+    //@@author Sirisha
 }
