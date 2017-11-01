@@ -12,6 +12,7 @@
     <TextField fx:id="phoneField" prefWidth="200.0" promptText="Phone"/>
     <TextField fx:id="addressField" prefWidth="200.0" promptText="Address"/>
     <TextField fx:id="emailField" prefWidth="200.0" promptText="Email"/>
+    <TextField fx:id="scoreField" prefWidth="200.0" promptText="Group Score"/>
     <Button onAction='#handleEditSubmitAction' id="edit" prefWidth="120.0" minWidth="90.0" text="Edit"/>
   </VBox>
 </StackPane>
