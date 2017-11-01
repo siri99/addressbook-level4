@@ -178,10 +178,8 @@ public class PersonCard extends UiPart<Region> {
         CommandResult commandResult = new CommandResult("");
         if (logic.getCurrentList().contains("favlist")) {
             commandResult = new CommandResult("Edit command does not work in favourite list");;
-        } else {
-            //@@author Jacob Vosburgh
-            commandResult = new CommandResult("Edit command does not work in favourite list");
         } else { //@@author Sirisha
+            //@@author Jacob Vosburgh
             EditWindow editWindow = new EditWindow(logic, cardNum);
             editWindow.show();
         }
