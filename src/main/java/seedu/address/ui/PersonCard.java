@@ -62,11 +62,12 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private FlowPane tags;
 
-
+    //@@author Jacob Vosburgh
     public PersonCard(ReadOnlyPerson person, int displayedIndex, Logic inlogic) {
         super(FXML);
         this.person = person;
         logic = inlogic;
+        //@@author Jacob Vosburgh
         cardNum = displayedIndex;
         id.setText(cardNum + ". ");
         initTags(person);
@@ -136,6 +137,7 @@ public class PersonCard extends UiPart<Region> {
         return id.getText().equals(card.id.getText())
                 && person.equals(card.person);
     }
+    //@@author Jacob Vosburgh
 
     /**
      * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
@@ -147,7 +149,7 @@ public class PersonCard extends UiPart<Region> {
             CommandResult commandResult = new CommandResult("");
             String justIndex = id.getText().substring(0, id.getText().length() - 2);
             String delCommand = "delete " + justIndex;
-
+            //@@author
             if (logic.getCurrentList().contains("favlist")) {
                 commandResult = new CommandResult("Delete command does not work in favourite list");;
             } else {
@@ -172,10 +174,12 @@ public class PersonCard extends UiPart<Region> {
         if (logic.getCurrentList().contains("favlist")) {
             commandResult = new CommandResult("Edit command does not work in favourite list");;
         } else {
+            //@@author Jacob Vosburgh
             EditWindow editWindow = new EditWindow(logic, cardNum);
             editWindow.show();
         }
         logger.info("Result: " + commandResult.feedbackToUser);
         raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+        //@@author
     }
 }

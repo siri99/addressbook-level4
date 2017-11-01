@@ -167,7 +167,7 @@ public class CommandBox extends UiPart<Region> {
 
         styleClass.add(ERROR_STYLE_CLASS);
     }
-
+    //@@author Jacob Vosburgh
     /**
      * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
      * @param buttonEvent
@@ -203,7 +203,7 @@ public class CommandBox extends UiPart<Region> {
         }
 
     }
-
+    //@@author Jacob Vosburgh
     /**
      * handles button events given to it by the fxml document for which it is set as controller by
      * a constructor in UiPart. handleFavListButton event handles the event when the Favlist button
