@@ -46,7 +46,5 @@ public class Score {
     public int hashCode() {
         return value.hashCode();
     }
-
-
 }
 //@@author
