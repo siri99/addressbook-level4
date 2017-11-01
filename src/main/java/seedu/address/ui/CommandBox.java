@@ -203,7 +203,7 @@ public class CommandBox extends UiPart<Region> {
         }
 
     }
-    //@@author 
+    //@@author
     //@@author Sirisha
     /**
      * handles button events given to it by the fxml document for which it is set as controller by
