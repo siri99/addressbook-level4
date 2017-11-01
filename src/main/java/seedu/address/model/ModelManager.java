@@ -107,7 +107,9 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public String getCurrentList() { return currentList; }
+    public String getCurrentList() {
+        return currentList;
+    }
 
     @Override
     public void setCurrentList(String currentList) {

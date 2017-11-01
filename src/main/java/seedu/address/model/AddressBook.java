@@ -139,7 +139,7 @@ public class AddressBook implements ReadOnlyAddressBook {
          * edited from the main list and is also present on the Favourite List,
          * the person will be automatically edited from fav list too
          */
-        if(favouritePersons.contains(target)) {
+        if (favouritePersons.contains(target)) {
             favouritePersons.setPerson(target, editedPerson);
         }
     }
