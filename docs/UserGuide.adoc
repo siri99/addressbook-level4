@@ -108,9 +108,7 @@ Edits the name of the 2nd person to be `Betsy Crower` and clears all existing ta
 
 Edits an existing person in the address book. +
 Fill in all fields you wish to modify for the selected person. +
-Window remains open until dismissed to allow multiple edits quickly. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
-        `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Window remains open until dismissed to allow multiple edits quickly.
 
 ****
 * Edits the person whose 'Edit' button was presesd.
