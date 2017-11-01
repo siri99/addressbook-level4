@@ -144,9 +144,16 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private void handleDeleteButtonAction(ActionEvent buttonEvent) {
         try {
+            CommandResult commandResult = new CommandResult("");
             String justIndex = id.getText().substring(0, id.getText().length() - 2);
             String delCommand = "delete " + justIndex;
-            CommandResult commandResult = logic.execute(delCommand);
+
+            if (logic.getCurrentList().contains("favlist")) {
+                commandResult = new CommandResult("Delete command does not work in favourite list");;
+            }
+            else {
+                commandResult = logic.execute(delCommand);
+            }
             logger.info("Result: " + commandResult.feedbackToUser);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
         } catch (CommandException | ParseException e) {
@@ -154,7 +161,6 @@ public class PersonCard extends UiPart<Region> {
             logger.info("Delete call failed on index " + id.getText());
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
-
     }
 
     /**
@@ -163,7 +169,15 @@ public class PersonCard extends UiPart<Region> {
      */
     @FXML
     private void handleEditButtonAction(ActionEvent buttonEvent) {
-        EditWindow editWindow = new EditWindow(logic, cardNum);
-        editWindow.show();
+        CommandResult commandResult = new CommandResult("");
+        if (logic.getCurrentList().contains("favlist")) {
+            commandResult = new CommandResult("Edit command does not work in favourite list");;
+        }
+        else {
+            EditWindow editWindow = new EditWindow(logic, cardNum);
+            editWindow.show();
+        }
+        logger.info("Result: " + commandResult.feedbackToUser);
+        raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
     }
 }
