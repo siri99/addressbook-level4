@@ -17,13 +17,17 @@ public class Score {
     public final String value;
 
     public Score(String score) throws IllegalValueException {
-        requireNonNull(score);
-        String filteredScore = score.replaceAll("[^\\d]", "");
-        String trimmedScore = filteredScore.trim();
-        if (!isValidScore(trimmedScore)) {
-            throw new IllegalValueException(MESSAGE_SCORE_CONSTRAINTS);
+        if (score.matches("\0")) {
+            this.value = "";
         }
-        this.value = "Group score: " + trimmedScore;
+        else {
+            String filteredScore = score.replaceAll("[^\\d]", "");
+            String trimmedScore = filteredScore.trim();
+            if (!isValidScore(trimmedScore)) {
+                throw new IllegalValueException(MESSAGE_SCORE_CONSTRAINTS);
+            }
+            this.value = "Group score: " + trimmedScore;
+        }
     }
 
     public boolean isValidScore(String value) {
