@@ -25,6 +25,7 @@ import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.ReadOnlyPerson;
 
+
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
@@ -46,6 +47,7 @@ public class MainWindow extends UiPart<Region> {
     private PersonListPanel personListPanel;
     private Config config;
     private UserPrefs prefs;
+    private Scene scene;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -79,7 +81,7 @@ public class MainWindow extends UiPart<Region> {
         setIcon(ICON);
         setWindowMinSize();
         setWindowDefaultSize(prefs);
-        Scene scene = new Scene(getRoot());
+        scene = new Scene(getRoot());
         primaryStage.setScene(scene);
 
         setAccelerators();
@@ -146,6 +148,22 @@ public class MainWindow extends UiPart<Region> {
 
     }
 
+    /**
+     * Changes displayed list accordingly
+     */
+    void fillInnerPartsWithIndicatedList(String listname) {
+        switch(listname) {
+        case "fl":
+        case "favlist":
+            personListPanel = new PersonListPanel(logic.getFilteredFavoritePersonList(), logic);
+            break;
+
+        default:
+            personListPanel = new PersonListPanel(logic.getFilteredPersonList(), logic);
+        }
+        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+    }
+
     void hide() {
         primaryStage.hide();
     }
@@ -207,6 +225,42 @@ public class MainWindow extends UiPart<Region> {
     private void handleExit() {
         raise(new ExitAppRequestEvent());
     }
+
+
+    /**
+     * Changes the theme color to dark of the program
+     */
+    @FXML
+    private void handleDarkTheme() {
+
+        int size = scene.getRoot().getStylesheets().size();
+
+        for (int i = 0; i < size; i++) {
+            scene.getRoot().getStylesheets().remove(0);
+        }
+
+        scene.getRoot().getStylesheets().add("view/DarkTheme.css");
+        scene.getRoot().getStylesheets().add("view/Extensions.css");
+
+    }
+
+    /**
+     * Changes the theme color to light of the program
+     */
+    @FXML
+    private void handleLightTheme() {
+
+        int size = scene.getRoot().getStylesheets().size();
+        for (int i = 0; i < size; i++) {
+
+            scene.getRoot().getStylesheets().remove(0);
+
+        }
+        scene.getRoot().getStylesheets().add("view/LightTheme.css");
+
+    }
+
+
 
     public PersonListPanel getPersonListPanel() {
         return this.personListPanel;

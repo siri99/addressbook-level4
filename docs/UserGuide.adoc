@@ -73,6 +73,11 @@ Examples:
 Shows a list of all persons in the address book. +
 Format: `list` or `l`
 
+=== Sorting the person list : `sort` or `so`
+
+Sorts the list persons in the address book in alphabhetical order of names. +
+Format: `sort` or `so`
+
 === Printing the addressbook `print` or `p`
 
 COMING V2.0: Exports the entire addressbook to a textfile for easy printing. +
@@ -99,6 +104,20 @@ Edits the phone number and email address of the 1st person to be `91234567` and 
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
+=== Editing a person via 'Edit' button
+
+Edits an existing person in the address book. +
+Fill in all fields you wish to modify for the selected person. +
+Window remains open until dismissed to allow multiple edits quickly.
+
+****
+* Edits the person whose 'Edit' button was presesd.
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
+* Only One tag can currently be added via the 'Edit' button. For more, use the command line.
+****
+
 === Locating persons by name: `find` or `f`
 
 Finds persons whose names or tags contain any of the given keywords. +
@@ -108,8 +127,9 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* The name and tags are searched.
+* Partial words will be matched e.g. `Han` will match `Hans`
+* Partial words must be atleast 2 characters long
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
 
@@ -119,6 +139,8 @@ Examples:
 Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
+* `find Bet` +
+Returns any person having names which contain the word `Bet`, eg.`Betsy`
 * `find friends family` +
 Returns any person having tag `friends` or `family`
 
@@ -172,6 +194,45 @@ Selects the 2nd person in the address book.
 * `find Betsy` +
 `select 1` +
 Selects the 1st person in the results of the `find` command.
+
+=== Listing all Favourite persons : `favlist` or `fl`
+
+Shows a list of all the persons in the Favourite List. +
+Format: `favlist` or `fl`
+
+=== Adding a person to Favourite List : `fav` or `fv`
+
+Adds the person identified by the index number used in the last person listing
+to the favourite list. +
+Format: `fav INDEX`
+        `fv INDEX`
+
+****
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `fav 2` +
+Adds the 2nd person in the address book to the Favourite List.
+
+=== Removing a person from Favourite List : `fav` or `fv`
+
+Removes the person identified by the index number used in the favourite list
+from the favourite list. +
+Format: `unfav INDEX`
+        `unfv INDEX`
+
+****
+* The index refers to the index number shown in the most recent listing.
+* The index *must be a positive integer* `1, 2, 3, ...`
+****
+
+Examples:
+
+* `unfav 3` +
+Adds the 3rd person listed in the Favourite list from the Favourite List.
 
 === Listing entered commands : `history` or `h`
 

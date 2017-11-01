@@ -34,6 +34,10 @@
       <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
       <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
       <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      <!--@@author Henning-->
+      <Label fx:id="score" styleClass="cell_small_label"  text="\$score" />
+      <!--@@author-->
+      <Button onAction='#handleEditButtonAction' fx:id="edit" text="Edit"/>
       <HBox spacing="10" alignment="bottom_right"
             GridPane.columnIndex="1" GridPane.rowIndex="4">
       </HBox>
