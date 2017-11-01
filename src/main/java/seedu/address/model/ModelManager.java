@@ -28,6 +28,8 @@ public class ModelManager extends ComponentManager implements Model {
     private FilteredList<ReadOnlyPerson> filteredPersons;
     private final FilteredList<ReadOnlyPerson> filteredFavouritePersons;
 
+    private String currentList;
+
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
@@ -40,6 +42,7 @@ public class ModelManager extends ComponentManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredFavouritePersons = new FilteredList<>(this.addressBook.getFavouritePersonList());
+        this.currentList = "list";
     }
 
     public ModelManager() {
@@ -103,6 +106,14 @@ public class ModelManager extends ComponentManager implements Model {
         raise(new ChangeInternalListEvent(listName));
     }
 
+    @Override
+    public String getCurrentList() { return currentList; }
+
+    @Override
+    public void setCurrentList(String currentList) {
+        this.currentList =  currentList;
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -111,11 +122,13 @@ public class ModelManager extends ComponentManager implements Model {
      */
     @Override
     public ObservableList<ReadOnlyPerson> getFilteredPersonList() {
+        setCurrentList("list");
         return FXCollections.unmodifiableObservableList(filteredPersons);
     }
 
     @Override
     public ObservableList<ReadOnlyPerson> getFilteredFavouritePersonList() {
+        setCurrentList("favlist");
         return FXCollections.unmodifiableObservableList(filteredFavouritePersons);
     }
 
