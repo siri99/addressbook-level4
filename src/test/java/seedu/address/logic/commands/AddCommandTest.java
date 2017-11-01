@@ -107,14 +107,15 @@ public class AddCommandTest {
         }
 
         @Override
-        public void sortFilteredPersonList() {
-            fail("This method should not be called.");
-        }
-
-        @Override
         public ReadOnlyAddressBook getAddressBook() {
             fail("This method should not be called.");
             return null;
+        }
+
+        //@@author Sirisha
+        @Override
+        public void sortFilteredPersonList() {
+            fail("This method should not be called.");
         }
 
         @Override
@@ -153,6 +154,7 @@ public class AddCommandTest {
             fail("This method should not be called.");
             return null;
         }
+        //@@author Sirisha
 
         @Override
         public void deletePerson(ReadOnlyPerson target) throws PersonNotFoundException {
