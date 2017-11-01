@@ -14,7 +14,6 @@ import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.logic.ListElementPointer;
 import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.FavouriteListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -107,27 +106,28 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleCommandInputChanged() {
-            CommandResult commandResult = new CommandResult("");
-            String commandText = commandTextField.getText();
-            try {
-                if (logic.getCurrentList().contains("favlist") && (commandText.contains("delete") || commandText.contains("edit"))) {
-                    commandResult = new CommandResult("Edit/Delete command does not work in favourite list");
-                    initHistory();
-                    historySnapshot.next();
-                    // process result of the command
-                    commandTextField.setText("");
-                    logger.info("Result: " + commandResult.feedbackToUser);
-                    raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+        CommandResult commandResult = new CommandResult("");
+        String commandText = commandTextField.getText();
+        try {
+            if (logic.getCurrentList().contains("favlist") && (commandText.contains("delete")
+                    || commandText.contains("edit"))) {
+                commandResult = new CommandResult("Edit/Delete command does not work in Favourite List");
+                initHistory();
+                historySnapshot.next();
+                // process result of the command
+                commandTextField.setText("");
+                logger.info("Result: " + commandResult.feedbackToUser);
+                raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
-                } else {
-                    commandResult = logic.execute(commandTextField.getText());
-                    initHistory();
-                    historySnapshot.next();
-                    // process result of the command
-                    commandTextField.setText("");
-                    logger.info("Result: " + commandResult.feedbackToUser);
-                    raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
-                }
+            } else {
+                commandResult = logic.execute(commandTextField.getText());
+                initHistory();
+                historySnapshot.next();
+                // process result of the command
+                commandTextField.setText("");
+                logger.info("Result: " + commandResult.feedbackToUser);
+                raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+            }
 
         } catch (CommandException | ParseException e) {
             initHistory();

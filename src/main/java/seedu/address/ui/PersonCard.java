@@ -150,8 +150,7 @@ public class PersonCard extends UiPart<Region> {
 
             if (logic.getCurrentList().contains("favlist")) {
                 commandResult = new CommandResult("Delete command does not work in favourite list");;
-            }
-            else {
+            } else {
                 commandResult = logic.execute(delCommand);
             }
             logger.info("Result: " + commandResult.feedbackToUser);
@@ -172,8 +171,7 @@ public class PersonCard extends UiPart<Region> {
         CommandResult commandResult = new CommandResult("");
         if (logic.getCurrentList().contains("favlist")) {
             commandResult = new CommandResult("Edit command does not work in favourite list");;
-        }
-        else {
+        } else {
             EditWindow editWindow = new EditWindow(logic, cardNum);
             editWindow.show();
         }
