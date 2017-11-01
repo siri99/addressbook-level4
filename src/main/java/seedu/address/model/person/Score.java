@@ -19,8 +19,7 @@ public class Score {
     public Score(String score) throws IllegalValueException {
         if (score.matches("\0")) {
             this.value = "";
-        }
-        else {
+        } else {
             String filteredScore = score.replaceAll("[^\\d]", "");
             String trimmedScore = filteredScore.trim();
             if (!isValidScore(trimmedScore)) {
