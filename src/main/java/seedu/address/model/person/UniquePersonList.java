@@ -85,6 +85,7 @@ public class UniquePersonList implements Iterable<Person> {
         return personFoundAndDeleted;
     }
 
+    //@@author Sirisha
     /**
      * Sorts the  list of people in alphabhetical order of names.
      */
@@ -104,6 +105,7 @@ public class UniquePersonList implements Iterable<Person> {
 
         FXCollections.sort(internalList, personComparator);
     }
+    //@@author Sirisha
 
     public void setPersons(UniquePersonList replacement) {
         this.internalList.setAll(replacement.internalList);
