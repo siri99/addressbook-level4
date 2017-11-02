@@ -140,7 +140,10 @@ public class MainWindow extends UiPart<Region> {
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
+        //@@author Linus
         StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
+        //@@author Linus
+
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(logic);
@@ -228,7 +231,7 @@ public class MainWindow extends UiPart<Region> {
         raise(new ExitAppRequestEvent());
     }
 
-
+    //@@author Linus
     /**
      * Changes the theme color to dark of the program
      */
@@ -261,8 +264,7 @@ public class MainWindow extends UiPart<Region> {
         scene.getRoot().getStylesheets().add("view/LightTheme.css");
 
     }
-
-
+    //@@author Linus
 
     public PersonListPanel getPersonListPanel() {
         return this.personListPanel;

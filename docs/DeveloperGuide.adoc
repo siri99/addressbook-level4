@@ -1064,3 +1064,25 @@ Author: Peng Xu
 Added theme change menu item
 
 The feature is that user can change background color via the theme buttons on the menubar.
+
+== Enhancement Description
+Author: Peng Xu
+
+Added home command
+
+The feature is that user can go back to home page of the browser
+
+== Enhancement Description
+Author: Peng Xu
+
+Beautified the UI of browser panel
+
+The feature is that user can see the commands instruction in home page. Also, each user can view their personal info as
+well as their upcoming events.
+
+== Enhancement Description
+Author: Peng Xu
+
+Added the theme button on menu
+
+The feature is that user can change theme color of Unibook based on their own taste.
