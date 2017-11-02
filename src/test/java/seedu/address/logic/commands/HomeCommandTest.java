@@ -39,4 +39,5 @@ public class HomeCommandTest {
         assertCommandSuccess(homeCommand, model, HomeCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
+
 //@@author Linus
