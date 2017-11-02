@@ -29,7 +29,7 @@ public class PersonPanelSelectionChangedEvent extends BaseEvent {
     }
 
     //@@author Linus
-    public int getBackToHomePageValue(){
+    public int getBackToHomePageValue() {
         return this.backToHomePageValue;
     }
     //@@author Linus

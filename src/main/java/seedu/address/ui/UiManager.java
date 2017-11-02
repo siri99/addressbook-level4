@@ -48,7 +48,7 @@ public class UiManager extends ComponentManager implements Ui {
         this.prefs = prefs;
     }
 
-    public MainWindow getMainWindow(){
+    public MainWindow getMainWindow() {
         return this.mainWindow;
     }
 

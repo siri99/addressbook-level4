@@ -1,15 +1,15 @@
 //@@author Linus
 package seedu.address.logic.commands;
 
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
+import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
+
 import java.net.URL;
 
 import seedu.address.MainApp;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.BrowserJumpToHomePage;
-
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
-import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
 
 /**
  * Goes back to home page
