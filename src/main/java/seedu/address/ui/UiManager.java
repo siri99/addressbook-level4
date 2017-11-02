@@ -48,6 +48,10 @@ public class UiManager extends ComponentManager implements Ui {
         this.prefs = prefs;
     }
 
+    public MainWindow getMainWindow(){
+        return this.mainWindow;
+    }
+
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting UI...");

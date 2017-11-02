@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!-- @@author Linus -->
 <html>
 <title>Home Page</title>
 <meta charset="UTF-8">
@@ -72,8 +72,15 @@
         <h1 style="text-align: center"><b>Unibook Commands</b></h1>
 
         <div class="card border-primary mb-3">
-            <div class="card-header">Add command</div>
+            <div class="card-header">Home command</div>
             <div class="card-body text-primary">
+                <h4 class="card-title">Goes back to the home panel. </h4>
+            </div>
+        </div>
+
+        <div class="card border-success mb-3">
+            <div class="card-header">Add command</div>
+            <div class="card-body text-success">
                 <h4 class="card-title">Adds a person to the address book. </h4>
                 <p class="card-text">Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...</p>
             </div>
@@ -99,13 +106,13 @@
                 <h4 class="card-title">Clears all entries from the address book.</h4>
             </div>
         </div>
-        <div class="card border-danger mb-3">
+        <div class="card border-warning mb-3">
             <div class="card-header">Undo command</div>
             <div class="card-body text-warning">
                 <h4 class="card-title">Restores the address book to the state before the previous undoable command was executed.</h4>
             </div>
         </div>
-        <div class="card border-danger mb-3">
+        <div class="card border-secondary mb-3">
             <div class="card-header">Redo command</div>
             <div class="card-body text-info">
                 <h4 class="card-title">Reverses the most recent undo command.</h4>
@@ -117,3 +124,4 @@
 </div>
 </body>
 </html>
+<!-- @@author -->

@@ -350,3 +350,4 @@ e.g.`select 2` or `s 2`
 * *History* : `history` or `h`
 * *Undo* : `undo` or `u`
 * *Redo* : `redo` or `r`
+* *Home* : `home`
