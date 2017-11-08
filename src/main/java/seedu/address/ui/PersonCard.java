@@ -174,7 +174,7 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private void handleEditButtonAction(ActionEvent buttonEvent) {
         //@@author
-        //@@author Sirisha
+        //@@author Sirisha  
         CommandResult commandResult = new CommandResult("");
         if (logic.getCurrentList().contains("favlist")) {
             commandResult = new CommandResult("Edit command does not work in favourite list");;
