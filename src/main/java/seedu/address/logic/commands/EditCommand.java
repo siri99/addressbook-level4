@@ -60,7 +60,7 @@ public class EditCommand extends UndoableCommand {
     private final Index index;
 
     /**
-     * @param index of the person in the filtered person list to edit.
+     * @param index of the person in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
      */
     public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
