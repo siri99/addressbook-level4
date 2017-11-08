@@ -89,8 +89,18 @@ public class EditWindow extends UiPart<Region> {
             if (addressField.getText().length() != 0) {
                 commandText = commandText + " a/" + addressField.getText();
             }
-            if (tagsField.getText().length() != 0) {
-                commandText = commandText + " t/" + tagsField.getText();
+            String tagsText = tagsField.getText();
+            if (tagsText.length() != 0) {
+                String tags = tagsText;
+                int lastIndex = 0;
+                for (int tagsIndex = 0; tagsIndex < tags.length(); tagsIndex++) {
+                    String s = "";
+                    if ((s + tags.charAt(tagsIndex)).equals(" ")) {
+                        commandText = commandText + " t/" + tagsText.substring(lastIndex, tagsIndex);
+                        lastIndex = tagsIndex;
+                    }
+                }
+                commandText = commandText + " t/" + tagsText.substring(lastIndex, tagsText.length());
             }
             if (scoreField.getText().length() != 0) {
                 commandText = commandText + " s/" + scoreField.getText();
@@ -107,3 +117,4 @@ public class EditWindow extends UiPart<Region> {
         }
     }
 }
+//@@author
