@@ -21,7 +21,9 @@ public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_BIRTHDAY= "11/01/1999";
+    //@@author siri99
+    public static final String DEFAULT_BIRTHDAY = "11/01/1999";
+    //@@author siri99
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_SCORE = "7";
@@ -33,7 +35,9 @@ public class PersonBuilder {
         try {
             Name defaultName = new Name(DEFAULT_NAME);
             Phone defaultPhone = new Phone(DEFAULT_PHONE);
-            Birthday defaultBirthday= new Birthday(DEFAULT_BIRTHDAY);
+            //@@author siri99
+            Birthday defaultBirthday = new Birthday(DEFAULT_BIRTHDAY);
+            //@@author siri99
             Email defaultEmail = new Email(DEFAULT_EMAIL);
             Address defaultAddress = new Address(DEFAULT_ADDRESS);
             Score defaultScore = new Score(DEFAULT_SCORE);
@@ -100,6 +104,10 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author siri99
+    /**
+     * Sets the {@code Birthday} of the {@code Person} that we are building.
+     */
     public PersonBuilder withBirthday(String birthday) {
         try {
             this.person.setBirthday(new Birthday(birthday));
@@ -108,6 +116,7 @@ public class PersonBuilder {
         }
         return this;
     }
+    //@@author siri99
 
     /**
      * Sets the {@code Email} of the {@code Person} that we are building.
