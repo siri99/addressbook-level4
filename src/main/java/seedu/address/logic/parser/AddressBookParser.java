@@ -17,12 +17,14 @@ import seedu.address.logic.commands.FavouriteListCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.HomeCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.UnfavCommand;
+
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -98,6 +100,11 @@ public class AddressBookParser {
             return new FavouriteListCommand();
         //@@author Sirisha
 
+        //@@author Linus
+        case HomeCommand.COMMAND_WORD:
+            return new HomeCommand();
+        //@@author Linus
+
         case ListCommand.COMMAND_WORD:
         case ListCommand.COMMAND_WORD_ALIAS:
             return new ListCommand();
@@ -126,3 +133,4 @@ public class AddressBookParser {
     }
 
 }
+

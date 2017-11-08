@@ -26,8 +26,10 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
+    //@@author Linus
     private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
+    //@@author Linus
 
     public final ReadOnlyPerson person;
 
@@ -164,6 +166,7 @@ public class PersonCard extends UiPart<Region> {
             // handle command failure
             logger.info("Delete call failed on index " + id.getText());
             raise(new NewResultAvailableEvent(e.getMessage()));
+
         }
     }
 
