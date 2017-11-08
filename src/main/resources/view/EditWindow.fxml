@@ -18,3 +18,4 @@
     <Button onAction='#handleEditSubmitAction' id="edit" prefWidth="120.0" minWidth="90.0" text="Edit"/>
   </VBox>
 </StackPane>
+<!-- @@author -->

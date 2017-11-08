@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -110,6 +111,9 @@ public class EditWindow extends UiPart<Region> {
             //stage.close(); //TODO: Get the window to close on editing.
             logger.info("Result: " + commandResult.feedbackToUser);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+            final Node source = (Node) buttonEvent.getSource();
+            final Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         } catch (CommandException | ParseException e) {
             // handle command failure
             logger.info("Edit call failed");
