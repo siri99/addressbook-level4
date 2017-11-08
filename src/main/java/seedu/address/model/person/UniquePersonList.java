@@ -89,7 +89,7 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
-     * Sorts the list of people in alphabhetical order of names.
+     * Sorts the list of people by Score, from highest to lowest.
      */
     public void sortPersonsByScore() {
 
@@ -109,6 +109,9 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     //@@author siri99
+    /**
+     *Sorts the list alphabetically by name
+     */
     public void sortPersonsByName() {
 
         Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {

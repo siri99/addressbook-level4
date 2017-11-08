@@ -34,22 +34,22 @@ public class SortCommand extends Command {
     @Override
     public CommandResult execute() throws CommandException {
         switch (sortFilter) {
-            case "name":
-            default:
-                model.sortFilteredPersonListName();
-                return new CommandResult(MESSAGE_SUCCESS_NAME);
+        case "name":
+        default:
+            model.sortFilteredPersonListName();
+            return new CommandResult(MESSAGE_SUCCESS_NAME);
 
-            case "birthday":
-            case "b":
-                model.sortFilteredPersonListBirthday();
-                return new CommandResult(MESSAGE_SUCCESS_BIRTHDAY);
+        case "birthday":
+        case "b":
+            model.sortFilteredPersonListBirthday();
+            return new CommandResult(MESSAGE_SUCCESS_BIRTHDAY);
 
-            //author Henning
-            case "score":
-            case "s":
-                model.sortFilteredPersonListScore();
-                return new CommandResult(MESSAGE_SUCCESS_SCORE);
-            //author Henning
+        //author Henning
+        case "score":
+        case "s":
+            model.sortFilteredPersonListScore();
+            return new CommandResult(MESSAGE_SUCCESS_SCORE);
+        //author Henning
         }
 
     }
