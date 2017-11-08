@@ -27,9 +27,11 @@ public class XmlAdaptedPerson {
     private String name;
     @XmlElement(required = true)
     private String phone;
-    @XmlElement (required= true)
+    @XmlElement (required = true)
+    //@@author siri99
     private String birthday;
     @XmlElement(required = true)
+    //@@author siri99
     private String email;
     @XmlElement(required = true)
     private String address;
@@ -55,7 +57,9 @@ public class XmlAdaptedPerson {
     public XmlAdaptedPerson(ReadOnlyPerson source) {
         name = source.getName().fullName;
         phone = source.getPhone().value;
-        birthday= source.getBirthday().value;
+        //@@author siri99
+        birthday = source.getBirthday().value;
+        //@@author siri99
         email = source.getEmail().value;
         address = source.getAddress().value;
         score = source.getScore().value;
