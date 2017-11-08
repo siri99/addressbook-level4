@@ -32,6 +32,8 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private TextField commandTextField;
     @FXML
+    private Button add;
+    @FXML
     private Button undo;
     @FXML
     private Button redo;
@@ -168,6 +170,25 @@ public class CommandBox extends UiPart<Region> {
         styleClass.add(ERROR_STYLE_CLASS);
     }
     //@@author Jacob Vosburgh
+    /**
+     * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
+     * @param buttonEvent
+     */
+    @FXML
+    private void handleAddButtonAction(ActionEvent buttonEvent) {
+        //@@author
+        //@@author Sirisha
+        CommandResult commandResult = new CommandResult("");
+        if (logic.getCurrentList().contains("favlist")) {
+            commandResult = new CommandResult("Add command does not work in favourite list");;
+        } else { //@@author Sirisha
+            //@@author Jacob Vosburgh
+            AddWindow addWindow = new AddWindow(logic);
+            addWindow.show();
+        }
+        logger.info("Result: " + commandResult.feedbackToUser);
+        raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+    }
     /**
      * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
      * @param buttonEvent

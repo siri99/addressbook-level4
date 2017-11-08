@@ -166,7 +166,6 @@ public class PersonCard extends UiPart<Region> {
             // handle command failure
             logger.info("Delete call failed on index " + id.getText());
             raise(new NewResultAvailableEvent(e.getMessage()));
-
         }
     }
 
