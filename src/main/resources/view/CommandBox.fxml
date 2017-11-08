@@ -11,7 +11,7 @@
   <StackPane styleClass="anchor-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <TextField fx:id="commandTextField" prefWidth="600.0" onAction="#handleCommandInputChanged" onKeyPressed="#handleKeyPress" promptText="Enter command here..."/>
   </StackPane>
-  <!-- @author Sirisha -->
+  <!-- @@author siri99 -->
   <Region prefHeight="10.0" prefWidth="1.0" HBox.hgrow="ALWAYS" />
   <Button onAction='#handleFavlistButtonAction' id="favlist" prefWidth="45.0" minWidth="45.0" prefHeight="31.0" minHeight="31.0">
     <graphic>
@@ -22,7 +22,7 @@
       </ImageView>
     </graphic>
   </Button>
-  <!-- @author Sirisha -->
+  <!-- @@author siri99 -->
   <!-- @@author Jacob Vosburgh -->
   <Button onAction='#handleUndoButtonAction' id="undo" prefWidth="120.0" minWidth="90.0" text="Undo"/>
   <Button onAction='#handleRedoButtonAction' id="redo" prefWidth="120.0" minWidth="90.0" text="Redo"/>

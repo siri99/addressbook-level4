@@ -346,6 +346,7 @@ image::UndoRedoActivityDiagram.png[width="200"]
 // end::undoredo[]
 
 ---
+// tag::favouritelist[]
 === Favourite List mechanism
 
 The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
@@ -358,7 +359,6 @@ The Favourite List feature is split into 3 commands:
 2.	`fav` – This command calls the FavCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
 3.	`unfav` – This command calls the UnfavCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
 
-The Favourite List is a useful feature that allows a user to view all his/her favourite contacts in one place. It minimises the time required to search for all the most important/favourite contacts.
 The command to view the favourite list is “favlist” or “fl”.
 
 The `favlist` command inherits from `Undoable Command`. Thus it is supportive of undoing and redoing (using undo and redo command) the current state of Addressbook.
@@ -445,8 +445,8 @@ user guide  +
  as delete and unfav.
 
 ---
-
-
+// end::favouritelist[]
+// tag::sort[]
 === Sort Command mechanism
 
 
@@ -491,7 +491,9 @@ Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
 
 FXCollections.sort(internalList, personComparator);
 ----
+// end::sort[]
 ---
+// tag::find[]
 === Enhanced Find Command mechanism
 
 The `NameContainsKeyWordsPredicate` class which is in the Person
@@ -514,12 +516,6 @@ them contain with the substring (implemented v1.3).
 two sets, one containing the tag entered by the user and the other
 containing the set of tags of each person and compares accordingly (implemented v1.2).
 
-This feature will make it more convenient for users to find a person
-even if they do not remember the complete name of the person (find by
-substring) or if they do not remember the name at all but remember
-the tags of that person (find by tags) besides the usual find by name
-feature.
-
 ==== Design Considerations
 
 **Aspect:** Use of other commands in Favourite list setup (Delete, Edit Command etc). +
@@ -528,7 +524,7 @@ feature.
 **Alternative 2:** Seperate the different find categories using labels such as '/n' for name and '/t' for tags. Eg. find n/Alice n/Mark t/friends +
 **Pros:** More clear Use of command as users are explicitly specifying whether they are searching for name or tag. +
 **Cons:** Not convenient as users need to type in the labels for each name or tag they want to find.  +
-
+// end::find[]
 
 === Logging
 
@@ -898,6 +894,7 @@ We now have everything set up... but we still can't modify the remarks. Let's fi
 
 See this https://github.com/se-edu/addressbook-level4/pull/599[PR] for the step-by-step solution.
 
+
 [appendix]
 == User Stories
 
@@ -913,6 +910,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* * *` |user |delete a person |remove entries that I no longer need
 
 |`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+// tag::userstories[]
 
 |`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
 
@@ -959,7 +957,7 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 |`* *` |experienced user| print all of my data | I can use them in real-life
 
 |`* *` |forgetful user | be able to find people by substring of names | I can find people easily even when I don't remember their complete name
-
+// end::userstories[]
 |=======================================================================
 
 == UI Changes: Delete and Undo/Redo Buttons
@@ -1011,6 +1009,7 @@ Use case ends.
 +
 Use case resumes at step 2.
 
+// tag::usecases[]
 === Use Case: UC1 Display Contacts after customized find (custom search)
 
 *MSS*
@@ -1078,7 +1077,7 @@ Use case ends.
 2. If user allows, it will merge duplicate contacts
 +
 Use case ends.
-
+// end::usecases[]
 {More to be added}
 
 [appendix]
@@ -1087,9 +1086,11 @@ Use case ends.
 .  Should work on any link:#mainstream-os[mainstream OS] as long as it has Java `1.8.0_60` or higher installed.
 .  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 .  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+// tag::nfr[]
 .  The system should not take more than 3 seconds to complete a command.
 .  The system should automatically log out after 30 mins of inactivity (security)
 .  The system should have easily accesible walkthrough/ guide for novice users to familiarise themselves with the environment.
+// end::nfr[]
 {More to be added}
 
 [appendix]

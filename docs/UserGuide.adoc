@@ -72,7 +72,7 @@ Examples:
 
 Shows a list of all persons in the address book. +
 Format: `list` or `l`
-
+// tag::sort[]
 === Sorting the person list : `sort` or `so`
 
 Sorts the list persons in the address book in either alphabhetical order of names or ascending order of birthdays depending on the parameter. +
@@ -84,7 +84,7 @@ Format: `sort` or `so` or `sort name` or `sort birthday` or `sort b`
 * Parameter 'name' will sort by name.
 * Parameter 'birthday' and 'b' will sort by birthday.
 ****
-
+// end::sort[]
 === Editing a person : `edit` or `e`
 
 Edits an existing person in the address book. +
@@ -120,12 +120,12 @@ Window remains open until dismissed to allow multiple edits quickly.
 * Only One tag can currently be added via the 'Edit' button. For more, use the command line.
 ****
 
-=== Locating persons by name: `find` or `f`
+// tag::find[]
+=== Locating persons by name or tags: `find` or `f`
 
 Finds persons whose names or tags contain any of the given keywords. +
 Format: `find KEYWORD [MORE_KEYWORDS]`
         `f KEYWORD [MORE_KEYWORDS]`
-
 ****
 * The search is case insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -134,18 +134,19 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Partial words must be atleast 2 characters long
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
-
+// end::find[]
 Examples:
 
 * `find John` +
 Returns `john` and `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
+// tag::find[]
 * `find Bet` +
 Returns any person having names which contain the word `Bet`, eg.`Betsy`
 * `find friends family` +
 Returns any person having tag `friends` or `family`
-
+// end::find[]
 === Deleting a person : `delete` or `d`
 
 Deletes the specified person from the address book. +
@@ -197,6 +198,7 @@ Selects the 2nd person in the address book.
 `select 1` +
 Selects the 1st person in the results of the `find` command.
 
+// tag::favouritelist[]
 === Listing Favourite persons : `favlist` or `fl`
 
 Shows a list of all the persons in the Favourite List. +
@@ -239,7 +241,7 @@ Examples:
 
 * `unfav 3` +
 Removes the 3rd person listed in the Favourite list from the Favourite List.
-
+// end::favouritelist[]
 === Listing entered commands : `history` or `h`
 
 Lists all the commands that you have entered in reverse chronological order. +
@@ -337,12 +339,12 @@ There is no need to save manually.
 
 Exports the entire addressbook to a textfile for easy printing. +
 Format: `print` or `p`
-
+// tag::import[]
 === Importing contacts to addressbook `import` or `imp` (coming in v2.0)
 
 Imports contacts from external text file to the addressbook. +
 Format: `import fileAddress` or `imp fileAddress`
-
+// end::import[]
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
