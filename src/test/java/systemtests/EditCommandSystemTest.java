@@ -70,8 +70,9 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //        Index index = INDEX_FIRST_PERSON;
     //        String command = " " + EditCommand.COMMAND_WORD + "  " + index.getOneBased() + "  " + NAME_DESC_BOB + "  "
     //                + PHONE_DESC_BOB + " " + EMAIL_DESC_BOB + "  " + ADDRESS_DESC_BOB + " " + TAG_DESC_HUSBAND + " ";
-    //        Person editedPerson = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB).withBirthday(VALID_BIRTHDAY_BOB).
-    //                .withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+    //        Person editedPerson = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
+    //                .withBirthday(VALID_BIRTHDAY_BOB)..withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
+    //                .withTags(VALID_TAG_HUSBAND).build();
     //        assertCommandSuccess(command, index, editedPerson);
     //
     //        /* Case: undo editing the last person in the list -> last person restored */
@@ -170,8 +171,8 @@ public class EditCommandSystemTest extends AddressBookSystemTest {
     //                INVALID_PHONE_DESC, Phone.MESSAGE_PHONE_CONSTRAINTS);
     //
     //        /* Case: invalid birthday -> rejected */
-    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + INVALID_BIRTHDAY_DESC,
-    //                 Birthday.MESSAGE_BIRTHDAY_CONSTRAINTS);
+    //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased()
+    //                 + INVALID_BIRTHDAY_DESC, Birthday.MESSAGE_BIRTHDAY_CONSTRAINTS);
     //
     //        /* Case: invalid email -> rejected */
     //        assertCommandFailure(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() +
