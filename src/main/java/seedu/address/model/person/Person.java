@@ -34,7 +34,9 @@ public class Person implements ReadOnlyPerson {
         requireAllNonNull(name, phone, birthday, email, address, tags);
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
+        //@@author siri99
         this.birthday = new SimpleObjectProperty<>(birthday);
+        //@@author siri99
         this.email = new SimpleObjectProperty<>(email);
         this.address = new SimpleObjectProperty<>(address);
         this.score = new SimpleObjectProperty<>(score);
@@ -46,8 +48,8 @@ public class Person implements ReadOnlyPerson {
      * Creates a copy of the given ReadOnlyPerson, which is nice.
      */
     public Person(ReadOnlyPerson source) {
-        this(source.getName(), source.getPhone(), source.getBirthday(), source.getEmail(), source.getAddress(), source.getScore(),
-                source.getTags());
+        this(source.getName(), source.getPhone(), source.getBirthday(), source.getEmail(),
+                source.getAddress(), source.getScore(), source.getTags());
     }
 
     public void setName(Name name) {
@@ -78,6 +80,7 @@ public class Person implements ReadOnlyPerson {
         return phone.get();
     }
 
+    //@@author siri99
     public void setBirthday(Birthday birthday)  {
         this.birthday.set(requireNonNull(birthday));
     }
@@ -91,6 +94,7 @@ public class Person implements ReadOnlyPerson {
     public Birthday getBirthday() {
         return birthday.get();
     }
+    //@@author siri99
 
     public void setEmail(Email email) {
         this.email.set(requireNonNull(email));
