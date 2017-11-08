@@ -163,6 +163,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.sortPersonsByBirthday();
     }
 
+    public void sortPersonsByScore() {
+        persons.sortPersonsByScore();
+    }
     /**
      * Ensures that every tag in this person:
      * - exists in the master list {@link #tags}
