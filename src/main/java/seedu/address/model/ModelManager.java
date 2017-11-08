@@ -173,6 +173,7 @@ public class ModelManager extends ComponentManager implements Model {
     //@@author siri99
 
     //@@author Henning
+    @Override
     public void sortFilteredPersonListScore() {
         addressBook.sortPersonsByScore();
         indicateAddressBookChanged();
