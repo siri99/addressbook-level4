@@ -39,6 +39,8 @@ public class EditWindow extends UiPart<Region> {
     @FXML
     private TextField phoneField;
     @FXML
+    private TextField birthdayField;
+    @FXML
     private TextField addressField;
     @FXML
     private TextField emailField;
@@ -86,6 +88,9 @@ public class EditWindow extends UiPart<Region> {
             }
             if (emailField.getText().length() != 0) {
                 commandText = commandText + " e/" + emailField.getText();
+            }
+            if (birthdayField.getText().length() != 0) {
+                commandText = commandText + " b/" + birthdayField.getText();
             }
             if (addressField.getText().length() != 0) {
                 commandText = commandText + " a/" + addressField.getText();
