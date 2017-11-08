@@ -57,9 +57,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         this.persons.setPersons(persons);
     }
 
+    //@@author siri99
     public void setFavouritePersons(List<? extends ReadOnlyPerson> persons) throws DuplicatePersonException {
         this.favouritePersons.setPersons(persons);
     }
+    //@@author siri99
 
     public void setTags(Set<Tag> tags) {
         this.tags.setTags(tags);
@@ -76,11 +78,13 @@ public class AddressBook implements ReadOnlyAddressBook {
             assert false : "AddressBooks should not have duplicate persons";
         }
 
+        //@@author siri99
         try {
             setFavouritePersons(newData.getFavouritePersonList());
         } catch (DuplicatePersonException e) {
             assert false : "AddressBooks should not have duplicate persons";
         }
+        //@@author siri99
 
         setTags(new HashSet<>(newData.getTagList()));
         syncMasterTagListWith(persons);
@@ -104,6 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.add(newPerson);
     }
 
+    //@@author siri99
     /** Adds favourite person to addressBook
      * Also updates new tags found (if any)
      */
@@ -112,6 +117,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         syncMasterTagListWith(newPerson);
         favouritePersons.add(newPerson);
     }
+    //@@author siri99
 
     /**
      * Replaces the given person {@code target} in the list with {@code editedReadOnlyPerson}.
@@ -144,13 +150,17 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
-
+    //@@author siri99
     /**
      * Sorts the list of people in the address book.
      */
-    public void sortPersons() {
-        //this.persons.sortPersons();
-        persons.sortPersons();
+    public void sortPersonsByName() {
+        persons.sortPersonsByName();
+    }
+    //@@author siri99
+
+    public void sortPersonsByBirthday() {
+        persons.sortPersonsByBirthday();
     }
 
     /**
@@ -205,6 +215,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
+    //@@author siri99
     /**
      * Removes {@code key} from this {@code AddressBook}.
      * @throws PersonNotFoundException if the {@code key} is not in this {@code AddressBook}.
@@ -216,6 +227,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             throw new PersonNotFoundException();
         }
     }
+    //@@author siri99
 
     //// tag-level operations
 
@@ -237,10 +249,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.asObservableList();
     }
 
+    //@@author siri99
     @Override
     public ObservableList<ReadOnlyPerson> getFavouritePersonList() {
         return favouritePersons.asObservableList();
     }
+    //@@author siri99
 
     @Override
     public ObservableList<Tag> getTagList() {

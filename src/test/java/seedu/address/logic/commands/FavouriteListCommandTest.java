@@ -1,3 +1,4 @@
+//@@author siri99
 package seedu.address.logic.commands;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -39,6 +40,6 @@ public class FavouriteListCommandTest {
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showFirstPersonOnly(model);
-        //assertCommandSuccess(favlistCommand, model, FavouriteListCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
+//@@author siri99

@@ -24,6 +24,7 @@ public class NameContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> 
 
     @Override
     public boolean test(ReadOnlyPerson person) {
+        //@@author siri99
         Set<String> s1 = new HashSet<String>(keywords);
         String[] tagList = person.getOnlyTags().split(" ");
         Set<String> s2 = new HashSet<String>(Arrays.asList(tagList));
@@ -32,6 +33,7 @@ public class NameContainsKeywordsPredicate implements Predicate<ReadOnlyPerson> 
                 .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)))
                 || (!Collections.disjoint(s2, s1))) || (keywords.stream().anyMatch(keyword ->
                 StringUtil.containsSubstringOfWord(person.getName().fullName, keyword)));
+        //@@author siri99
     }
 
     @Override

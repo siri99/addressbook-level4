@@ -1,3 +1,4 @@
+//@@author siri99
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -31,4 +32,5 @@ public class FavCommandParser implements Parser<FavCommand> {
         }
     }
 }
+//@@author siri99
 
