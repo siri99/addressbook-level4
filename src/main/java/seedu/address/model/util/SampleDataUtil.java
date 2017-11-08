@@ -23,6 +23,7 @@ public class SampleDataUtil {
     public static Person[] getSamplePersons() {
         try {
             return new Person[] {
+                //@@author siri99
                 new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Birthday("16/08/1968"),
                 new Email("alexyeoh@example.com"), new Address("Blk 30 Geylang Street 29, #06-40"),
                 new Score("8"),
@@ -47,6 +48,7 @@ public class SampleDataUtil {
                         new Email("royb@example.com"),
                     new Address("Blk 45 Aljunied Street 85, #11-31"), new Score("3"),
                     getTagSet("colleagues"))
+                    //@@author siri99
             };
         } catch (IllegalValueException e) {
             throw new AssertionError("sample data cannot be invalid", e);
