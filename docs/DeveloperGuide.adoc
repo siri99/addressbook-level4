@@ -454,27 +454,36 @@ This Sort command calls the `SortCommandParser` class which parses the input arg
 
 If sortFilter is `‘name’`, or if there is no filter, it calls the sortFilteredPersonListName method of ModelManager. The method calls sortPersonsByName method of AddressBook which then calls sortPersonsByName of UniquePersonList. It sorts the person list in alphabhetical order of names.
 
-If the sortfilter is is `‘birthday’ or ‘b’`, it calls the sortFilteredPersonListBirthday method of `ModelManager`. The method calls sortPersonsByBirthday
+If the sortfilter is `‘birthday’ or ‘b’`, it calls the sortFilteredPersonListBirthday method of `ModelManager`. The method calls sortPersonsByBirthday
 method of `AddressBook` which then calls s sortPersonsByBirthday of `UniquePersonList`. It sorts the person list in ascending order of birthdays from January to December.
 
+If the sortfilter is `‘score’` or `‘s’`, it calls the sortFilteredPersonListScore method of `ModelManager`. This method then calls the sortPersonsByScore
+method of `AdressBook` which then calls sortPersonsByScore of `UniquePersonList`. The list of persons is then sorted in descending order by Group Score.
+
 ----
-switch(sortFilter) {
-case "name":
-default:
+switch (sortFilter) {
+    case "name":
+    default:
         model.sortFilteredPersonListName();
         return new CommandResult(MESSAGE_SUCCESS_NAME);
 
-case "birthday":
-case "b":
+    case "birthday":
+    case "b":
         model.sortFilteredPersonListBirthday();
         return new CommandResult(MESSAGE_SUCCESS_BIRTHDAY);
-}
+
+    case "score":
+    case "s":
+        model.sortFilteredPersonListScore();
+        return new CommandResult(MESSAGE_SUCCESS_SCORE);
+    }
 ----
 
 image::SortCommandSequenceDiagram.PNG[width="800"]
 _Figure 3.3.1 : Sequence Diagram of the sort command_
 
-The Collections.sort method is used in sortPersonsByName  and sortPersonsByBirthday in UniquePersonList which Sorts the provided observable list using the given comparator.
+The Collections.sort method is used in sortPersonsByName, sortPersonsByBirthday and sortPersonsByScore in UniquePersonList +
+which Sorts the provided observable list using the given comparator.
 
 ----
 Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
