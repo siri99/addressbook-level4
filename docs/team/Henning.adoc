@@ -40,3 +40,8 @@ the new Score object is being instantiated, this will then be recognized, and th
 string will be assigned as the new score's value. This means no score will
 be displayed for that person in the addressbook, but it will still be possible to
 add one with the edit command later on.
+
+==== Other contributions
+
+I was in charge of the necessary project releases, as well as
+creating the accompanying .jar files.
