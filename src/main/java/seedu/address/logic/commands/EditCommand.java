@@ -215,7 +215,10 @@ public class EditCommand extends UndoableCommand {
         }
 
         public void setScore(Score score) {
-            this.score = score;
+            if (score.toString().equals("")) {
+            } else {
+                this.score = score;
+            }
         }
 
         public Optional<Score> getScore() {
