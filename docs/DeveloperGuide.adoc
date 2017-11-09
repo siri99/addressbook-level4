@@ -501,7 +501,7 @@ Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
 FXCollections.sort(internalList, personComparator);
 ----
 // end::sort[]
----
+
 // tag::find[]
 === Enhanced Find Command mechanism
 
@@ -534,6 +534,58 @@ containing the set of tags of each person and compares accordingly (implemented 
 **Pros:** More clear Use of command as users are explicitly specifying whether they are searching for name or tag. +
 **Cons:** Not convenient as users need to type in the labels for each name or tag they want to find.  +
 // end::find[]
+// tag::undoRedoButton[]
+
+=== Undo and Redo Buttons
+
+Because undo and redo are actions often performed repeatedly, it makes sense that they should be presented as a button, to allow them to be pressed repeatedly.
+
+=== Design Considerations
+
+**Aspect:** Undo and Redo button presses may conflict with undo and redo command calls.
+**Alternative 1 (current choice):** Use the button press to trigger a call of the command as if it was typed manually.
+**Pros:** Makes the behavior of the undo and redo buttons work intuitively alongside the undo and redo commands
+**Cons:** Makes the commands redundant, and might confuse people who expect them to behave differently.
+// end::undoRedoButton[]
+// tag::deleteButton[]
+
+=== Delete Button
+
+Delete commands rely on a somewhat arbitrary index, which requires you to locate the person card in the UI before you can execute a delete. We can eliminate the manual entry by adding a button that performs it as soon as you find the person card.
+
+=== Design Considerations
+
+**Aspect:** Delete when in the favorite list should behave rationally
+**Alternative 1 (current choice):** prevent the use of the delete button from te favorite list.
+**Pros:** Prevents users from confusing the 'unfav' action with the delete button, preventing accidental deletions.
+**Cons:** The presence of the delete button on the cards, even in the favorite list, is now useless.
+// end::deleteButton[]
+// tag::editButton[]
+
+=== Edit Button
+
+Opens a prompt that allows immediate edits to be performed without using the edit command's complex syntax.
+
+=== Design Considerations
+
+**Aspect:** The text boxes have not visual connection to the data they will change, making it hard to tell what field is being edited.
+**Alternative 1 (current choice):** Give prompt text in the text boxes, indicating the corresponding field.
+**Pros:** Makes it clear which field is being changed.
+**Cons:** Still requires the user to retype an entire field even if the only error was a minor typo.
+// end::editButton[]
+// tag::addButton[]
+
+=== Add Button
+
+Opens a prompt that allows immediate adds to be performed without using the add command's complex syntax.
+
+=== Design Considerations
+
+**Aspect:** Some fields are optional, and users may not be aware of this when adding.
+**Alternative 1 (current choice):** Includes 'Optional' in text boxes corresponding to optional fields.
+**Pros:** Makes it clear which fields are optionals.
+**Cons:** Leaving empty fields when filling in a new person is unintuitive.
+// end::addButton[]
 
 === Logging
 
