@@ -1,5 +1,5 @@
 # Linus
-###### /java/seedu/address/commons/events/ui/BrowserJumpToHomePage.java
+###### \java\seedu\address\commons\events\ui\BrowserJumpToHomePage.java
 ``` java
 package seedu.address.commons.events.ui;
 
@@ -29,11 +29,11 @@ public class BrowserJumpToHomePage extends BaseEvent {
 
 }
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
     private final int backToHomePageValue = 0;
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
 
     public PersonPanelSelectionChangedEvent(PersonCard newSelection) {
@@ -50,205 +50,18 @@ public class BrowserJumpToHomePage extends BaseEvent {
     }
 
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
     public int getBackToHomePageValue() {
         return this.backToHomePageValue;
     }
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
 
 }
 ```
-###### /java/seedu/address/logic/commands/AddAvatarCommand.java
-``` java
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.core.Messages;
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.events.ui.JumpToListRequestEvent;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.person.Avatar;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.ReadOnlyPerson;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.model.person.exceptions.PersonNotFoundException;
-
-/**
- * Updates the avatar picture of an existing person in the address book.
- */
-
-public class AddAvatarCommand extends Command {
-    public static final String COMMAND_WORD = "avatar";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the avatar picture of the person identified "
-            + "by the index number. "
-            + "Existing avatar picture will be replaced by the new picture.\n"
-            + "Parameters: INDEX of person (positive integer) "
-            + "[u/image URL]\n"
-            + "Example of using online image: " + COMMAND_WORD + " 1 "
-            + PREFIX_IMAGE_URL
-            + "https://www.gravatar.com/avatar/null\n"
-            + "Example of using local image: " + COMMAND_WORD + " 1 "
-            + PREFIX_IMAGE_URL + "https://www.gravatar.com/avatar/null\n";
-
-    public static final String MESSAGE_UPDATE_AVATAR_PIC_SUCCESS = "Update avatar picture for Person: %1$s";
-    public static final String MESSAGE_NOT_UPDATED = "Please enter a valid image URL.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
-
-    private final Index index;
-    private final Avatar avatar;
-
-    private boolean isOldFileDeleted = true;
-
-    /**
-     *
-     * @param index of the person in the filtered person list to update avatar picture
-     * @param avatar of the image to be used as the Avatar picture
-     */
-    public AddAvatarCommand(Index index, Avatar avatar) {
-        requireNonNull(index);
-        requireNonNull(avatar);
-
-        this.index = index;
-        this.avatar = avatar;
-    }
-
-    @Override
-    public CommandResult execute() throws CommandException {
-        List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
-
-        if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
-        }
-
-        ReadOnlyPerson personToUpdateAvatarPic = lastShownList.get(index.getZeroBased());
-        Person updatedAvatarPicPerson = new Person(personToUpdateAvatarPic);
-        Avatar newAvatar;
-
-        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) == 0) {
-            String oldFile = personToUpdateAvatarPic.getAvatarPic().toString();
-            if (oldFile.compareTo(Avatar.DEFAULT_URL) != 0) {
-                oldFile = urlToPath(oldFile);
-                try {
-                    Files.delete(Paths.get(oldFile));
-                } catch (IOException ioe) {
-                    isOldFileDeleted = false;
-                }
-            }
-            newAvatar = avatar;
-        } else {
-            String newFile;
-            if (!Files.isDirectory(Paths.get("avatars"))) {
-                try {
-                    Files.createDirectory(Paths.get("avatars"));
-                } catch (IOException ioe) {
-                    throw new CommandException("avatars directory failed to be created");
-                }
-            }
-            if (personToUpdateAvatarPic.getAvatarPic().toString().compareTo(Avatar.DEFAULT_URL) == 0) {
-
-                /*
-                *  Validates avatar image
-                * */
-                String imgExtension = "";
-
-                int i = avatar.toString().lastIndexOf('.');
-                if (i > 0) {
-                    imgExtension = avatar.toString().substring(i + 1);
-                }
-
-                List validExtension = Arrays.asList("jpg", "jpeg", "png", "gif", "JPG", "JPEG", "PNG", "GIF");
-                if (validExtension.contains(imgExtension)) {
-
-                    newFile = "avatars/" + new Date().getTime() + '.' + imgExtension;
-
-                } else {
-
-                    newFile = "avatars/" + new Date().getTime() + ".png";
-                }
-
-            } else {
-                newFile = personToUpdateAvatarPic.getAvatarPic().toString();
-                newFile = urlToPath(newFile);
-            }
-            if (!Files.exists(Paths.get(newFile))) {
-                try {
-                    Files.createFile(Paths.get(newFile));
-                } catch (IOException ioe) {
-                    throw new CommandException("New file failed to be created");
-                }
-            }
-            try {
-                URL url = new URL(avatar.toString());
-                InputStream in = url.openStream();
-                Files.copy(in, Paths.get(newFile), StandardCopyOption.REPLACE_EXISTING);
-                in.close();
-                newAvatar = new Avatar("file://" + Paths.get(newFile).toAbsolutePath().toUri().getPath());
-            } catch (IOException ioe) {
-                throw new CommandException("Image failed to download");
-            } catch (IllegalValueException ive) {
-                throw new CommandException(ive.getMessage());
-            }
-        }
-        updatedAvatarPicPerson.setAvatarPic(newAvatar);
-
-        /*
-        *  Updates the avatar for the person based on its index
-        * */
-        EventsCenter.getInstance().post(new JumpToListRequestEvent(this.index));
-
-        try {
-            model.updatePerson(personToUpdateAvatarPic, updatedAvatarPicPerson);
-
-        } catch (DuplicatePersonException dpe) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        } catch (PersonNotFoundException e) {
-            throw new AssertionError("The target person cannot be missing");
-        }
-
-        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) != 0) {
-            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        }
-
-        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic);
-        System.out.println(model.getFilteredPersonList().get(index.getZeroBased()).getAvatarPic().source);
-        if (isOldFileDeleted) {
-            return new CommandResult(resultMessage);
-        } else {
-            return new CommandResult(String.join("\n", resultMessage, "Old image not deleted"));
-        }
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof AddAvatarCommand // instanceof handles nulls
-                && this.index.equals(((AddAvatarCommand) other).index)
-                && this.avatar.equals(((AddAvatarCommand) other).avatar)); // state check
-    }
-
-    private String urlToPath(String url) {
-        return url.substring(url.indexOf("avatars"));
-    }
-}
-```
-###### /java/seedu/address/logic/commands/HomeCommand.java
+###### \java\seedu\address\logic\commands\HomeCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -284,74 +97,16 @@ public class HomeCommand extends Command {
 
 }
 ```
-###### /java/seedu/address/logic/commands/HomeCommand.java
+###### \java\seedu\address\logic\commands\HomeCommand.java
 ``` java
 
 ```
-###### /java/seedu/address/logic/parser/AddAvatarCommandParser.java
-``` java
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
-
-import seedu.address.commons.core.index.Index;
-import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.logic.commands.AddAvatarCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Avatar;
-import seedu.address.model.person.Person;
-import seedu.address.model.util.SampleDataUtil;
-
-/**
- * Parses input arguments and creates a new AddAvatarCommand object
- */
-public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
-    /**
-     * Parses the given {@code String} of arguments in the context of the AddAvatarCommand
-     * and returns an AddAvatarCommand object for execution.
-     * @throws ParseException if the user input does not conform the expected format
-     */
-
-    @Override
-    public AddAvatarCommand parse(String args) throws ParseException {
-        requireNonNull(args);
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_IMAGE_URL);
-
-        Index index;
-
-        try {
-            index = ParserUtil.parseIndex(argMultimap.getPreamble());
-        } catch (IllegalValueException ive) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    AddAvatarCommand.MESSAGE_USAGE));
-        }
-
-        Person updatedPerson = new Person(SampleDataUtil.getSamplePersons()[0]);
-
-        try {
-            ParserUtil.parseImageUrl(argMultimap.getValue(PREFIX_IMAGE_URL)).ifPresent(updatedPerson::setAvatarPic);
-        } catch (IllegalValueException ive) {
-            throw new ParseException(ive.getMessage(), ive);
-        }
-
-        if (updatedPerson.getAvatarPic().toString().compareTo(Avatar.DEFAULT_URL) == 0) {
-            throw new ParseException(AddAvatarCommand.MESSAGE_NOT_UPDATED);
-        }
-
-        return new AddAvatarCommand(index, updatedPerson.getAvatarPic());
-    }
-}
-```
-###### /java/seedu/address/logic/parser/AddressBookParser.java
+###### \java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
-
-        case AddAvatarCommand.COMMAND_WORD:
-            return new AddAvatarCommandParser().parse(arguments);
-
 ```
-###### /java/seedu/address/logic/parser/AddressBookParser.java
+###### \java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
 
         case ListCommand.COMMAND_WORD:
@@ -384,156 +139,11 @@ public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
 }
 
 ```
-###### /java/seedu/address/logic/parser/ParserUtil.java
-``` java
-    /**
-     * Parses a {@code Optional<String> imageURL} into an {@code Optional<Avatar>} if {@code imageURL} is present.
-     * See header comment of this class regarding the use of {@code Optional} parameters.
-     */
-    public static Optional<Avatar> parseImageUrl(Optional<String> imageUrl) throws IllegalValueException {
-        requireNonNull(imageUrl);
-        return imageUrl.isPresent() ? Optional.of(new Avatar(imageUrl.get())) : Optional.empty();
-    }
-```
-###### /java/seedu/address/logic/parser/ParserUtil.java
-``` java
-
-```
-###### /java/seedu/address/model/person/Avatar.java
-``` java
-import static java.util.Objects.requireNonNull;
-
-import java.awt.Image;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
-
-import seedu.address.commons.exceptions.IllegalValueException;
-
-/**
- * Represents a Person's profile picture in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidUrl(String)}
- */
-public class Avatar {
-    public static final String MESSAGE_PROFILE_PIC_CONSTRAINTS =
-            "Person's avatar must be a valid image URL";
-    public static final String DEFAULT_URL = "https://www.gravatar.com/avatar/null";
-
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String PROFILE_PIC_VALIDATION_REGEX = "[^\\s].*";
-
-    public final String source;
-
-    public Avatar() {
-        source = DEFAULT_URL;
-    }
-
-    /**
-     * Validates given address.
-     *
-     * @throws IllegalValueException if given profilePic string is invalid.
-     */
-    public Avatar(String url) throws IllegalValueException {
-        requireNonNull(url);
-        if (!isValidUrl(url)) {
-            throw new IllegalValueException(MESSAGE_PROFILE_PIC_CONSTRAINTS);
-        }
-
-        source = url;
-    }
-
-    /**
-     * Returns true if a given string is a valid image URL.
-     */
-    public static boolean isValidUrl(String test) {
-        if (test.matches(PROFILE_PIC_VALIDATION_REGEX)) {
-            try {
-                Image img = ImageIO.read(new URL(test));
-                if (img == null) {
-                    return false;
-                }
-            } catch (IOException e) {
-                if (test.compareTo(DEFAULT_URL) == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return source;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof Avatar // instanceof handles nulls
-                && this.source.equals(((Avatar) other).source)); // state check
-    }
-
-    @Override
-    public int hashCode() {
-        return source.hashCode();
-    }
-}
-```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
-``` java
-    @XmlElement
-    private String avatar;
-```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
-``` java
-
-    @XmlElement
-    private List<XmlAdaptedTag> tagged = new ArrayList<>();
-
-    /**
-     * Constructs an XmlAdaptedPerson.
-     * This is the no-arg constructor that is required by JAXB.
-     */
-    public XmlAdaptedPerson() {}
-
-
-    /**
-     * Converts a given Person into this class for JAXB use.
-     *
-     * @param source future changes to this will not affect the created XmlAdaptedPerson
-     */
-    public XmlAdaptedPerson(ReadOnlyPerson source) {
-        name = source.getName().fullName;
-        phone = source.getPhone().value;
-```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
-``` java
-        Avatar tempAvatar;
-        try {
-            tempAvatar = new Avatar(this.avatar);
-        } catch (IllegalValueException e) {
-            tempAvatar = new Avatar();
-        }
-        return new Person(name, phone, birthday, email, address, score, tags, tempAvatar);
-```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
-``` java
-    }
-}
-```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     public static final String BROWSER_PAGE = "BrowserPanel.html";
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com.sg/search?safe=off&q=";
     public static final String GOOGLE_SEARCH_URL_SUFFIX = "&cad=h";
@@ -543,11 +153,11 @@ public class Avatar {
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     private int backToHomePage = 0;
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
 
     @FXML
@@ -573,11 +183,11 @@ public class Avatar {
      */
     private void loadBrowserPage(ReadOnlyPerson person) throws IOException {
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
         URL addressPage = MainApp.class.getResource(FXML_FILE_FOLDER + BROWSER_PAGE);
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
         loadPage(addressPage.toExternalForm());
     }
@@ -603,7 +213,7 @@ public class Avatar {
     }
 
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) throws IOException {
@@ -616,7 +226,6 @@ public class Avatar {
         String emails = p.getEmail().toString();
         String phones = p.getPhone().toString();
         String tags = p.getOnlyTags().toString();
-        String avatar = p.getAvatarPic().toString();
 
         backToHomePage = event.getBackToHomePageValue();
 
@@ -628,7 +237,7 @@ public class Avatar {
                 panel.executeScript("document.setEmail(\"" + emails + "\")");
                 panel.executeScript("document.setPhone(\"" + phones + "\")");
                 panel.executeScript("document.setTags(\"" + tags + "\")");
-                panel.executeScript("document.setAvatar(\"" + avatar + "\")");
+
             }
         });
 
@@ -644,17 +253,17 @@ public class Avatar {
 
     }
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
 
 
 }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
         StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
 
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -665,7 +274,7 @@ public class Avatar {
     }
 
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     /**
      * Changes the theme color to dark of the program
@@ -700,7 +309,7 @@ public class Avatar {
 
     }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
 
     public PersonListPanel getPersonListPanel() {
@@ -718,12 +327,12 @@ public class Avatar {
     }
 }
 ```
-###### /java/seedu/address/ui/PersonCard.java
+###### \java\seedu\address\ui\PersonCard.java
 ``` java
     private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
 ```
-###### /java/seedu/address/ui/PersonCard.java
+###### \java\seedu\address\ui\PersonCard.java
 ``` java
 
     public final ReadOnlyPerson person;
@@ -751,12 +360,12 @@ public class Avatar {
     @FXML
     private Label phone;
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
     public static final String SYNC_PERSONLIST_UPADTED_SIZE = "Total size: %d, ";
     public static final String SYNC_STATUS_UPDATED = "Last Updated: %s";
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
 
     /**
@@ -774,11 +383,11 @@ public class Avatar {
     private static final String FXML = "StatusBarFooter.fxml";
 
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
     private ObservableList<ReadOnlyPerson> filteredPersonList;
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
 
     @FXML
@@ -794,7 +403,7 @@ public class Avatar {
     }
 
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
     public StatusBarFooter(String saveLocation, ObservableList<ReadOnlyPerson> filteredPersonList) {
         super(FXML);
@@ -804,7 +413,7 @@ public class Avatar {
         registerAsAnEventHandler(this);
     }
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
 
     /**
@@ -841,7 +450,7 @@ public class Avatar {
 
 }
 ```
-###### /resources/view/default.html
+###### \resources\view\default.html
 ``` html
 <html>
 <title>Home Page</title>
@@ -968,7 +577,7 @@ public class Avatar {
 </body>
 </html>
 ```
-###### /resources/view/LightTheme.css
+###### \resources\view\LightTheme.css
 ``` css
 .root {
     -fx-accent: derive(#f7f5f4, -10%);
@@ -1372,7 +981,7 @@ public class Avatar {
     -fx-font-size: 14px;
 }
 ```
-###### /resources/view/StatusBarFooter.fxml
+###### \resources\view\StatusBarFooter.fxml
 ``` fxml
         <?import org.controlsfx.control.StatusBar?>
         <?import javafx.scene.layout.ColumnConstraints?>
@@ -1387,7 +996,7 @@ public class Avatar {
 <StatusBar styleClass="anchor-pane" fx:id="saveLocationStatus" GridPane.columnIndex="1" nodeOrientation="RIGHT_TO_LEFT" />
 </GridPane>
 ```
-###### /resources/view/StatusBarFooter.fxml
+###### \resources\view\StatusBarFooter.fxml
 ``` fxml
 
 ```
