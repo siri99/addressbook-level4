@@ -214,16 +214,8 @@ public class EditCommand extends UndoableCommand {
         public void setTags(Set<Tag> tags) {
             this.tags = tags;
         }
-
         public void setScore(Score score) {
-
-        if (score.toString().equals("")) {
-            
-        } else {
-                
-          this.score = score;
-
-          }
+            this.score = score;
         }
 
         public Optional<Score> getScore() {
