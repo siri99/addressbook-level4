@@ -24,6 +24,7 @@ image::siri.jpg[width="150", align="left"]
 {empty}[https://github.com/siri99[github]]
 
 Role: Developer
+
 Responsibilities: Logic
 
 '''

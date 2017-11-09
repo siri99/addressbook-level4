@@ -1,4 +1,6 @@
 package seedu.address.model.person;
+//@@author Henning
+import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 
@@ -15,15 +17,15 @@ public class Score {
     public final String value;
 
     public Score(String score) throws IllegalValueException {
-        if (score.matches("\0")) {
-            this.value = "";
+        requireNonNull(score);
+        if (score.equals("")) {
+            this.value = score;
         } else {
             String filteredScore = score.replaceAll("[^\\d]", "");
-            String trimmedScore = filteredScore.trim();
-            if (!isValidScore(trimmedScore)) {
+            if (!isValidScore(filteredScore)) {
                 throw new IllegalValueException(MESSAGE_SCORE_CONSTRAINTS);
             }
-            this.value = "Group score: " + trimmedScore;
+            this.value = "Group score: " + filteredScore;
         }
     }
 
@@ -46,6 +48,5 @@ public class Score {
     public int hashCode() {
         return value.hashCode();
     }
-
-
 }
+//@@author

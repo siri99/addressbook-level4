@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -37,6 +38,8 @@ public class EditWindow extends UiPart<Region> {
     private TextField tagsField;
     @FXML
     private TextField phoneField;
+    @FXML
+    private TextField birthdayField;
     @FXML
     private TextField addressField;
     @FXML
@@ -86,11 +89,24 @@ public class EditWindow extends UiPart<Region> {
             if (emailField.getText().length() != 0) {
                 commandText = commandText + " e/" + emailField.getText();
             }
+            if (birthdayField.getText().length() != 0) {
+                commandText = commandText + " b/" + birthdayField.getText();
+            }
             if (addressField.getText().length() != 0) {
                 commandText = commandText + " a/" + addressField.getText();
             }
-            if (tagsField.getText().length() != 0) {
-                commandText = commandText + " t/" + tagsField.getText();
+            String tagsText = tagsField.getText();
+            if (tagsText.length() != 0) {
+                String tags = tagsText;
+                int lastIndex = 0;
+                for (int tagsIndex = 0; tagsIndex < tags.length(); tagsIndex++) {
+                    String s = "";
+                    if ((s + tags.charAt(tagsIndex)).equals(" ")) {
+                        commandText = commandText + " t/" + tagsText.substring(lastIndex, tagsIndex);
+                        lastIndex = tagsIndex;
+                    }
+                }
+                commandText = commandText + " t/" + tagsText.substring(lastIndex, tagsText.length());
             }
             if (scoreField.getText().length() != 0) {
                 commandText = commandText + " s/" + scoreField.getText();
@@ -100,6 +116,9 @@ public class EditWindow extends UiPart<Region> {
             //stage.close(); //TODO: Get the window to close on editing.
             logger.info("Result: " + commandResult.feedbackToUser);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+            final Node source = (Node) buttonEvent.getSource();
+            final Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
         } catch (CommandException | ParseException e) {
             // handle command failure
             logger.info("Edit call failed");
@@ -107,3 +126,4 @@ public class EditWindow extends UiPart<Region> {
         }
     }
 }
+//@@author

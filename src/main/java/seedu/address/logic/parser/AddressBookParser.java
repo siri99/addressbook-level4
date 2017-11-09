@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.AddAvatarCommand;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
@@ -17,12 +18,14 @@ import seedu.address.logic.commands.FavouriteListCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.HomeCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.UnfavCommand;
+
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -64,9 +67,11 @@ public class AddressBookParser {
         case SelectCommand.COMMAND_WORD_ALIAS:
             return new SelectCommandParser().parse(arguments);
 
+        //@@author siri99
         case SortCommand.COMMAND_WORD:
         case SortCommand.COMMAND_WORD_ALIAS:
-            return new SortCommand();
+            return new SortCommandParser().parse(arguments);
+        //@@author siri99
 
         case DeleteCommand.COMMAND_WORD:
         case DeleteCommand.COMMAND_WORD_ALIAS:
@@ -76,6 +81,7 @@ public class AddressBookParser {
         case ClearCommand.COMMAND_WORD_ALIAS:
             return new ClearCommand();
 
+        //@@author siri99
         case FavCommand.COMMAND_WORD:
         case FavCommand.COMMAND_WORD_ALIAS:
             return new FavCommandParser().parse(arguments);
@@ -83,14 +89,27 @@ public class AddressBookParser {
         case UnfavCommand.COMMAND_WORD:
         case UnfavCommand.COMMAND_WORD_ALIAS:
             return new UnfavCommandParser().parse(arguments);
+        //@@author siri99
 
         case FindCommand.COMMAND_WORD:
         case FindCommand.COMMAND_WORD_ALIAS:
             return new FindCommandParser().parse(arguments);
 
+        //@@author siri99
         case FavouriteListCommand.COMMAND_WORD:
         case FavouriteListCommand.COMMAND_WORD_ALIAS:
             return new FavouriteListCommand();
+        //@@author siri99
+
+
+        //@@author Linus
+        case HomeCommand.COMMAND_WORD:
+            return new HomeCommand();
+
+        case AddAvatarCommand.COMMAND_WORD:
+            return new AddAvatarCommandParser().parse(arguments);
+
+        //@@author Linus
 
         case ListCommand.COMMAND_WORD:
         case ListCommand.COMMAND_WORD_ALIAS:
@@ -120,3 +139,4 @@ public class AddressBookParser {
     }
 
 }
+

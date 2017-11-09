@@ -32,6 +32,8 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private TextField commandTextField;
     @FXML
+    private Button add;
+    @FXML
     private Button undo;
     @FXML
     private Button redo;
@@ -109,9 +111,9 @@ public class CommandBox extends UiPart<Region> {
         CommandResult commandResult = new CommandResult("");
         String commandText = commandTextField.getText();
         try {
-            if (logic.getCurrentList().contains("favlist") && (commandText.contains("delete")
-                    || commandText.contains("edit"))) {
-                commandResult = new CommandResult("Edit/Delete command does not work in Favourite List");
+            if (logic.getCurrentList().contains("favlist") && ((commandText.contains("delete")
+                    || commandText.contains("edit")) || commandText.contains("sort"))) {
+                commandResult = new CommandResult("Edit/Delete/Sort commands do not work in Favourite List");
                 initHistory();
                 historySnapshot.next();
                 // process result of the command
@@ -173,6 +175,25 @@ public class CommandBox extends UiPart<Region> {
      * @param buttonEvent
      */
     @FXML
+    private void handleAddButtonAction(ActionEvent buttonEvent) {
+        //@@author
+        //@@author siri99
+        CommandResult commandResult = new CommandResult("");
+        if (logic.getCurrentList().contains("favlist")) {
+            commandResult = new CommandResult("Add command does not work in favourite list");;
+        } else { //@@author siri99
+            //@@author Jacob Vosburgh
+            AddWindow addWindow = new AddWindow(logic);
+            addWindow.show();
+        }
+        logger.info("Result: " + commandResult.feedbackToUser);
+        raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+    }
+    /**
+     * handles button events given to it by the fxml doc that it is set as controller for by the constructor in UiPart
+     * @param buttonEvent
+     */
+    @FXML
     private void handleUndoButtonAction(ActionEvent buttonEvent) {
         try {
             CommandResult commandResult = logic.execute("undo");
@@ -203,7 +224,8 @@ public class CommandBox extends UiPart<Region> {
         }
 
     }
-    //@@author Jacob Vosburgh
+    //@@author
+    //@@author siri99
     /**
      * handles button events given to it by the fxml document for which it is set as controller by
      * a constructor in UiPart. handleFavListButton event handles the event when the Favlist button
@@ -222,5 +244,5 @@ public class CommandBox extends UiPart<Region> {
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
     }
-
+    //@@author siri99
 }

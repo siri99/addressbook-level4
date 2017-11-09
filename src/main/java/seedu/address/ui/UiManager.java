@@ -48,6 +48,10 @@ public class UiManager extends ComponentManager implements Ui {
         this.prefs = prefs;
     }
 
+    public MainWindow getMainWindow() {
+        return this.mainWindow;
+    }
+
     @Override
     public void start(Stage primaryStage) {
         logger.info("Starting UI...");
@@ -123,10 +127,12 @@ public class UiManager extends ComponentManager implements Ui {
                 event.exception);
     }
 
+    //@@author siri99
     @Subscribe
     private void handleChangeInternalListEvent(ChangeInternalListEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         mainWindow.fillInnerPartsWithIndicatedList(event.getListName());
     }
+    //@@author siri99
 }
 
