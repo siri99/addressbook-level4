@@ -366,11 +366,13 @@ There is no need to save manually.
 Exports the entire addressbook to a textfile for easy printing. +
 Format: `print` or `p`
 // tag::import[]
-=== Importing contacts to addressbook `import` or `imp` (coming in v2.0)
+
+=== Importing contacts `import` or `imp` (coming in v2.0)
 
 Imports contacts from external text file to the addressbook. +
 Format: `import fileAddress` or `imp fileAddress`
 // end::import[]
+
 == FAQ
 
 *Q*: How do I transfer my data to another Computer? +
@@ -385,13 +387,21 @@ e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 123466
 e.g. `delete 3` or `d 3`
 * *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` or `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com` or `e 2 n/James Lee e/jameslee@example.com`
+* *Favourite list* : `favlist` or `fl`
+* *Favourite* : `fav INDEX` or `fv INDEX` +
+e.g.`fav 2` or `fv 2`
+* *Unfavourite* : `unfav INDEX` or `ufv INDEX` +
+e.g.`ufav 3` or `ufv 3`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` or `f KEYWORD [MORE_KEYWORDS]` +
 e.g. `find James Jake` or `f James Jake`
 * *List* : `list` or `l`
 * *Help* : `help`
+* *Home* : `home`
 * *Select* : `select INDEX` or `s INDEX` +
 e.g.`select 2` or `s 2`
+* *Sort* : `sort` or `sort FILTER` or `so FILTER` +
+Filters: `name`, `birthday`, `b`, `score` +
+e.g. `sort name` or `so birthday` or `sort score` or `sort b` or `sort`
 * *History* : `history` or `h`
 * *Undo* : `undo` or `u`
 * *Redo* : `redo` or `r`
-* *Home* : `home`
