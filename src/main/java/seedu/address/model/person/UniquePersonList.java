@@ -88,11 +88,10 @@ public class UniquePersonList implements Iterable<Person> {
         return personFoundAndDeleted;
     }
 
-    //@@author siri99
     /**
-     * Sorts the list of people in alphabhetical order of names.
+     * Sorts the list of people by Score, from highest to lowest.
      */
-    public void sortPersonsByName() {
+    public void sortPersonsByScore() {
 
         Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
 
@@ -108,7 +107,27 @@ public class UniquePersonList implements Iterable<Person> {
 
         FXCollections.sort(internalList, personComparator);
     }
+
     //@@author siri99
+    /**
+     *Sorts the list alphabetically by name
+     */
+    public void sortPersonsByName() {
+
+        Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
+
+            public int compare(ReadOnlyPerson person1, ReadOnlyPerson person2) {
+
+                String personName1 = person1.getName().toString();
+                String personName2 = person2.getName().toString();
+
+                return personName1.compareTo(personName2);
+            }
+
+        };
+
+        FXCollections.sort(internalList, personComparator);
+    }
 
     /**
      * Sorts the list of people in order of birthdays: Jan to Dec.
@@ -144,6 +163,8 @@ public class UniquePersonList implements Iterable<Person> {
 
         FXCollections.sort(internalList, personComparator);
     }
+
+    //@@author siri99
 
     public void setPersons(UniquePersonList replacement) {
         this.internalList.setAll(replacement.internalList);

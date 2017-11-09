@@ -28,8 +28,8 @@ public class SortCommandParser implements Parser<SortCommand> {
             sortFilter = "";
         }
 
-        if (!((sortFilter.equals("name") || sortFilter.equals("birthday") || sortFilter.equals("b")
-                || sortFilter.equals("")))) {
+        if (!(sortFilter.equals("name") || sortFilter.equals("birthday") || sortFilter.equals("b")
+                || sortFilter.equals("") || sortFilter.equals("score") || sortFilter.equals("s"))) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
         }
         return new SortCommand(sortFilter);

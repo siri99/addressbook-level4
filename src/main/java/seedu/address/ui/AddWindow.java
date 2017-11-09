@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.NewResultAvailableEvent;
 import seedu.address.commons.util.FxViewUtil;
@@ -22,14 +23,13 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Controller for a help page
  */
-public class EditWindow extends UiPart<Region> {
+public class AddWindow extends UiPart<Region> {
 
-    private static final Logger logger = LogsCenter.getLogger(EditWindow.class);
-    private static final String ICON = "/images/edit_icon.png";
-    private static final String FXML = "EditWindow.fxml";
-    private static final String TITLE = "Edit";
+    private static final Logger logger = LogsCenter.getLogger(AddWindow.class);
+    private static final String ICON = "/images/add_icon.png";
+    private static final String FXML = "AddWindow.fxml";
+    private static final String TITLE = "Add";
 
-    private final int cardNum;
     private final Logic logic;
 
     @FXML
@@ -47,14 +47,13 @@ public class EditWindow extends UiPart<Region> {
     @FXML
     private TextField scoreField;
     @FXML
-    private Button edit;
+    private Button add;
 
     private final Stage dialogStage;
 
-    public EditWindow(Logic inlogic, int card) {
+    public AddWindow(Logic inlogic) {
         super(FXML);
         logic = inlogic;
-        cardNum = card;
         Scene scene = new Scene(getRoot());
         //Null passed as the parent stage to make it non-modal.
         dialogStage = createDialogStage(TITLE, null, scene);
@@ -77,9 +76,11 @@ public class EditWindow extends UiPart<Region> {
      * @param buttonEvent
      */
     @FXML
-    private void handleEditSubmitAction(ActionEvent buttonEvent) {
+    private void handleAddSubmitAction(ActionEvent buttonEvent) {
         try {
-            String commandText = "edit " + cardNum;
+            //first the command
+            String commandText = "add ";
+            //then its arguments
             if (nameField.getText().length() != 0) {
                 commandText = commandText + " n/" + nameField.getText();
             }
@@ -121,7 +122,7 @@ public class EditWindow extends UiPart<Region> {
             stage.close();
         } catch (CommandException | ParseException e) {
             // handle command failure
-            logger.info("Edit call failed");
+            logger.info("Add call failed");
             raise(new NewResultAvailableEvent(e.getMessage()));
         }
     }

@@ -75,14 +75,16 @@ Format: `list` or `l`
 
 === Sorting the person list : `sort` or `so`
 
-Sorts the list persons in the address book in either alphabhetical order of names or ascending order of birthdays depending on the parameter. +
-Format: `sort` or `so` or `sort name` or `sort birthday` or `sort b`
+Sorts the list persons in the address book in either alphabetical order of names, ascending order of birthdays, +
+or descending group score depending on the parameter. +
+Format: `sort` or `so` or `sort name` or `sort birthday` or `sort b` or `sort s` or `sort score`
 
 ****
-* Only one parameter can be passed to the command. Either 'name' or 'birthday' or 'b'.
+* Only one parameter can be passed to the command. Either 'name', 'birthday', 'b', 's' or 'score'.
 * If no parameter is passed, eg. 'sort', it will default sort by name.
 * Parameter 'name' will sort by name.
 * Parameter 'birthday' and 'b' will sort by birthday.
+* Parameter 'score' or 's' will sort by Group score.
 ****
 
 === Editing a person : `edit` or `e`

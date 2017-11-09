@@ -123,6 +123,13 @@ public class AddCommandTest {
             fail("This method should not be called.");
         }
 
+        //@@author Henning
+        @Override
+        public void sortFilteredPersonListScore() {
+            fail("This method should not be called.");
+        }
+        //@@author Henning
+
         @Override
         public void addFavouritePerson(ReadOnlyPerson target) {
             fail("This method should not be called.");

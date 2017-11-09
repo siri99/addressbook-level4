@@ -21,6 +21,9 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_SUCCESS_BIRTHDAY = "Sorted successfully by Birthdays, Listing all persons below";
 
+    //@@author Henning
+    public static final String MESSAGE_SUCCESS_SCORE = "Sorted successfully by Group Scores, listing all persons below";
+    //@@author Henning
     private String sortFilter;
 
     public SortCommand (String sortFilter) {
@@ -30,7 +33,7 @@ public class SortCommand extends Command {
 
     @Override
     public CommandResult execute() throws CommandException {
-        switch(sortFilter) {
+        switch (sortFilter) {
         case "name":
         default:
             model.sortFilteredPersonListName();
@@ -40,7 +43,15 @@ public class SortCommand extends Command {
         case "b":
             model.sortFilteredPersonListBirthday();
             return new CommandResult(MESSAGE_SUCCESS_BIRTHDAY);
+
+        //author Henning
+        case "score":
+        case "s":
+            model.sortFilteredPersonListScore();
+            return new CommandResult(MESSAGE_SUCCESS_SCORE);
+            //author Henning
         }
+
     }
 
     @Override
