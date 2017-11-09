@@ -1007,6 +1007,7 @@ import seedu.address.commons.events.ui.BrowserJumpToHomePage;
 
 ```
 ###### \out\production\resources\view\default.html
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
 ``` html
 <html>
 <title>Home Page</title>
@@ -1133,7 +1134,11 @@ import seedu.address.commons.events.ui.BrowserJumpToHomePage;
 </body>
 </html>
 ```
+<<<<<<< HEAD
+###### /build/resources/main/view/LightTheme.css
+=======
 ###### \out\production\resources\view\LightTheme.css
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
 ``` css
 .root {
     -fx-accent: derive(#f7f5f4, -10%);
@@ -1537,7 +1542,11 @@ import seedu.address.commons.events.ui.BrowserJumpToHomePage;
     -fx-font-size: 14px;
 }
 ```
+<<<<<<< HEAD
+###### /build/resources/main/view/StatusBarFooter.fxml
+=======
 ###### \out\production\resources\view\StatusBarFooter.fxml
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
 ``` fxml
         <?import org.controlsfx.control.StatusBar?>
         <?import javafx.scene.layout.ColumnConstraints?>
@@ -1552,11 +1561,19 @@ import seedu.address.commons.events.ui.BrowserJumpToHomePage;
 <StatusBar styleClass="anchor-pane" fx:id="saveLocationStatus" GridPane.columnIndex="1" nodeOrientation="RIGHT_TO_LEFT" />
 </GridPane>
 ```
+<<<<<<< HEAD
+###### /build/resources/main/view/StatusBarFooter.fxml
+``` fxml
+
+```
+###### /src/main/java/seedu/address/commons/events/ui/BrowserJumpToHomePage.java
+=======
 ###### \out\production\resources\view\StatusBarFooter.fxml
 ``` fxml
 
 ```
 ###### \src\main\java\seedu\address\commons\events\ui\BrowserJumpToHomePage.java
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
 ``` java
 package seedu.address.commons.events.ui;
 
@@ -1618,10 +1635,204 @@ public class BrowserJumpToHomePage extends BaseEvent {
 
 }
 ```
+<<<<<<< HEAD
+###### /src/main/java/seedu/address/logic/commands/AddAvatarCommand.java
+=======
 ###### \src\main\java\seedu\address\logic\commands\HomeCommand.java
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
+``` java
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+<<<<<<< HEAD
+import java.io.IOException;
+import java.io.InputStream;
+=======
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
+import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
+
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.person.Avatar;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
+
+/**
+ * Updates the avatar picture of an existing person in the address book.
+ */
+
+public class AddAvatarCommand extends Command {
+    public static final String COMMAND_WORD = "avatar";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the avatar picture of the person identified "
+            + "by the index number. "
+            + "Existing avatar picture will be replaced by the new picture.\n"
+            + "Parameters: INDEX of person (positive integer) "
+            + "[u/image URL]\n"
+            + "Example of using online image: " + COMMAND_WORD + " 1 "
+            + PREFIX_IMAGE_URL
+            + "https://www.gravatar.com/avatar/null\n"
+            + "Example of using local image: " + COMMAND_WORD + " 1 "
+            + PREFIX_IMAGE_URL + "https://www.gravatar.com/avatar/null\n";
+
+    public static final String MESSAGE_UPDATE_AVATAR_PIC_SUCCESS = "Update avatar picture for Person: %1$s";
+    public static final String MESSAGE_NOT_UPDATED = "Please enter a valid image URL.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+
+    private final Index index;
+    private final Avatar avatar;
+
+    private boolean isOldFileDeleted = true;
+
+    /**
+     *
+     * @param index of the person in the filtered person list to update avatar picture
+     * @param avatar of the image to be used as the Avatar picture
+     */
+    public AddAvatarCommand(Index index, Avatar avatar) {
+        requireNonNull(index);
+        requireNonNull(avatar);
+
+        this.index = index;
+        this.avatar = avatar;
+    }
+
+    @Override
+    public CommandResult execute() throws CommandException {
+        List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        ReadOnlyPerson personToUpdateAvatarPic = lastShownList.get(index.getZeroBased());
+        Person updatedAvatarPicPerson = new Person(personToUpdateAvatarPic);
+        Avatar newAvatar;
+
+        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) == 0) {
+            String oldFile = personToUpdateAvatarPic.getAvatarPic().toString();
+            if (oldFile.compareTo(Avatar.DEFAULT_URL) != 0) {
+                oldFile = urlToPath(oldFile);
+                try {
+                    Files.delete(Paths.get(oldFile));
+                } catch (IOException ioe) {
+                    isOldFileDeleted = false;
+                }
+            }
+            newAvatar = avatar;
+        } else {
+            String newFile;
+            if (!Files.isDirectory(Paths.get("avatars"))) {
+                try {
+                    Files.createDirectory(Paths.get("avatars"));
+                } catch (IOException ioe) {
+                    throw new CommandException("avatars directory failed to be created");
+                }
+            }
+            if (personToUpdateAvatarPic.getAvatarPic().toString().compareTo(Avatar.DEFAULT_URL) == 0) {
+
+                /*
+                *  Validates avatar image
+                * */
+                String imgExtension = "";
+
+                int i = avatar.toString().lastIndexOf('.');
+                if (i > 0) {
+                    imgExtension = avatar.toString().substring(i + 1);
+                }
+
+                List validExtension = Arrays.asList("jpg", "jpeg", "png", "gif", "JPG", "JPEG", "PNG", "GIF");
+                if (validExtension.contains(imgExtension)) {
+
+                    newFile = "avatars/" + new Date().getTime() + '.' + imgExtension;
+
+                } else {
+
+                    newFile = "avatars/" + new Date().getTime() + ".png";
+                }
+
+            } else {
+                newFile = personToUpdateAvatarPic.getAvatarPic().toString();
+                newFile = urlToPath(newFile);
+            }
+            if (!Files.exists(Paths.get(newFile))) {
+                try {
+                    Files.createFile(Paths.get(newFile));
+                } catch (IOException ioe) {
+                    throw new CommandException("New file failed to be created");
+                }
+            }
+            try {
+                URL url = new URL(avatar.toString());
+                InputStream in = url.openStream();
+                Files.copy(in, Paths.get(newFile), StandardCopyOption.REPLACE_EXISTING);
+                in.close();
+                newAvatar = new Avatar("file://" + Paths.get(newFile).toAbsolutePath().toUri().getPath());
+            } catch (IOException ioe) {
+                throw new CommandException("Image failed to download");
+            } catch (IllegalValueException ive) {
+                throw new CommandException(ive.getMessage());
+            }
+        }
+        updatedAvatarPicPerson.setAvatarPic(newAvatar);
+        /*
+        *  Updates the avatar for the person based on its index
+        * */
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(this.index));
+
+        try {
+            model.updatePerson(personToUpdateAvatarPic, updatedAvatarPicPerson);
+        } catch (DuplicatePersonException dpe) {
+            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        } catch (PersonNotFoundException e) {
+            throw new AssertionError("The target person cannot be missing");
+        }
+        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) != 0) {
+            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        }
+        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic.getName());
+        if (isOldFileDeleted) {
+            return new CommandResult(resultMessage);
+        } else {
+            return new CommandResult(String.join("\n", resultMessage, "Old image not deleted"));
+        }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof AddAvatarCommand // instanceof handles nulls
+                && this.index.equals(((AddAvatarCommand) other).index)
+                && this.avatar.equals(((AddAvatarCommand) other).avatar)); // state check
+    }
+
+    private String urlToPath(String url) {
+        return url.substring(url.indexOf("avatars"));
+    }
+}
+```
+###### /src/main/java/seedu/address/logic/commands/HomeCommand.java
 ``` java
 package seedu.address.logic.commands;
 
+<<<<<<< HEAD
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
 import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
@@ -1632,6 +1843,8 @@ import seedu.address.MainApp;
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.events.ui.BrowserJumpToHomePage;
 
+=======
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
 /**
  * Goes back to home page
  */
@@ -1658,10 +1871,72 @@ public class HomeCommand extends Command {
 ``` java
 
 ```
+<<<<<<< HEAD
+###### /src/main/java/seedu/address/logic/parser/AddAvatarCommandParser.java
+``` java
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.AddAvatarCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Avatar;
+import seedu.address.model.person.Person;
+import seedu.address.model.util.SampleDataUtil;
+
+/**
+ * Parses input arguments and creates a new AddAvatarCommand object
+ */
+public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddAvatarCommand
+     * and returns an AddAvatarCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+
+    @Override
+    public AddAvatarCommand parse(String args) throws ParseException {
+        requireNonNull(args);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_IMAGE_URL);
+
+        Index index;
+
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (IllegalValueException ive) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddAvatarCommand.MESSAGE_USAGE));
+        }
+
+        Person updatedPerson = new Person(SampleDataUtil.getSamplePersons()[0]);
+
+        try {
+            ParserUtil.parseImageUrl(argMultimap.getValue(PREFIX_IMAGE_URL)).ifPresent(updatedPerson::setAvatarPic);
+        } catch (IllegalValueException ive) {
+            throw new ParseException(ive.getMessage(), ive);
+        }
+
+        if (updatedPerson.getAvatarPic().toString().compareTo(Avatar.DEFAULT_URL) == 0) {
+            throw new ParseException(AddAvatarCommand.MESSAGE_NOT_UPDATED);
+        }
+
+        return new AddAvatarCommand(index, updatedPerson.getAvatarPic());
+    }
+}
+```
+###### /src/main/java/seedu/address/logic/parser/AddressBookParser.java
+=======
 ###### \src\main\java\seedu\address\logic\parser\AddressBookParser.java
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
 ``` java
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
+
+        case AddAvatarCommand.COMMAND_WORD:
+            return new AddAvatarCommandParser().parse(arguments);
 ```
 ###### \src\main\java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
@@ -1695,6 +1970,167 @@ public class HomeCommand extends Command {
 
 }
 
+<<<<<<< HEAD
+```
+###### /src/main/java/seedu/address/logic/parser/ParserUtil.java
+``` java
+    /**
+     * Parses a {@code Optional<String> imageURL} into an {@code Optional<Avatar>} if {@code imageURL} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Avatar> parseImageUrl(Optional<String> imageUrl) throws IllegalValueException {
+        requireNonNull(imageUrl);
+        return imageUrl.isPresent() ? Optional.of(new Avatar(imageUrl.get())) : Optional.empty();
+    }
+```
+###### /src/main/java/seedu/address/logic/parser/ParserUtil.java
+``` java
+
+    /**
+     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     */
+    public static Set<Tag> parseTags(Collection<String> tags) throws IllegalValueException {
+        requireNonNull(tags);
+        final Set<Tag> tagSet = new HashSet<>();
+        for (String tagName : tags) {
+            tagSet.add(new Tag(tagName));
+        }
+        return tagSet;
+    }
+}
+```
+###### /src/main/java/seedu/address/model/person/Avatar.java
+``` java
+
+import static java.util.Objects.requireNonNull;
+
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+
+/**
+ * Represents a Person's profile picture in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidUrl(String)}
+ */
+public class Avatar {
+    public static final String MESSAGE_PROFILE_PIC_CONSTRAINTS =
+            "Person's avatar must be a valid image URL";
+    public static final String DEFAULT_URL = "https://www.gravatar.com/avatar/null";
+
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String PROFILE_PIC_VALIDATION_REGEX = "[^\\s].*";
+
+    public final String source;
+
+    public Avatar() {
+        source = DEFAULT_URL;
+    }
+
+    /**
+     * Validates given address.
+     *
+     * @throws IllegalValueException if given profilePic string is invalid.
+     */
+    public Avatar(String url) throws IllegalValueException {
+        requireNonNull(url);
+        if (!isValidUrl(url)) {
+            throw new IllegalValueException(MESSAGE_PROFILE_PIC_CONSTRAINTS);
+        }
+
+        source = url;
+    }
+
+    /**
+     * Returns true if a given string is a valid image URL.
+     */
+    public static boolean isValidUrl(String test) {
+        if (test.matches(PROFILE_PIC_VALIDATION_REGEX)) {
+            try {
+                Image img = ImageIO.read(new URL(test));
+                if (img == null) {
+                    return false;
+                }
+            } catch (IOException e) {
+                if (test.compareTo(DEFAULT_URL) == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return source;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof Avatar // instanceof handles nulls
+                && this.source.equals(((Avatar) other).source)); // state check
+    }
+
+    @Override
+    public int hashCode() {
+        return source.hashCode();
+    }
+}
+```
+###### /src/main/java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+    @XmlElement(required = true)
+    private String avatar;
+```
+###### /src/main/java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+    @XmlElement
+    private List<XmlAdaptedTag> tagged = new ArrayList<>();
+
+    /**
+     * Constructs an XmlAdaptedPerson.
+     * This is the no-arg constructor that is required by JAXB.
+     */
+    public XmlAdaptedPerson() {}
+
+
+    /**
+     * Converts a given Person into this class for JAXB use.
+     *
+     * @param source future changes to this will not affect the created XmlAdaptedPerson
+     */
+    public XmlAdaptedPerson(ReadOnlyPerson source) {
+        name = source.getName().fullName;
+        phone = source.getPhone().value;
+```
+###### /src/main/java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+        Avatar tempAvatar;
+        try {
+            tempAvatar = new Avatar(this.avatar);
+        } catch (IllegalValueException ive) {
+            tempAvatar = new Avatar();
+        }
+        final Avatar avatar = tempAvatar;
+        return new Person(name, phone, birthday, email, address, score, tags, avatar);
+```
+###### /src/main/java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+    }
+}
+=======
+>>>>>>> 93dc18c82b64565948863a10b6ab7381ab8cdf53
 ```
 ###### \src\main\java\seedu\address\ui\BrowserPanel.java
 ``` java
@@ -1783,6 +2219,7 @@ public class HomeCommand extends Command {
         String emails = p.getEmail().toString();
         String phones = p.getPhone().toString();
         String tags = p.getOnlyTags().toString();
+        String avatar = p.getAvatarPic().toString();
 
         backToHomePage = event.getBackToHomePageValue();
 
@@ -1794,7 +2231,7 @@ public class HomeCommand extends Command {
                 panel.executeScript("document.setEmail(\"" + emails + "\")");
                 panel.executeScript("document.setPhone(\"" + phones + "\")");
                 panel.executeScript("document.setTags(\"" + tags + "\")");
-
+                panel.executeScript("document.setAvatar(\"" + avatar + "\")");
             }
         });
 
