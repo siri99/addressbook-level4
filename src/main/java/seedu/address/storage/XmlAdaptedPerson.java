@@ -36,12 +36,14 @@ public class XmlAdaptedPerson {
     private String email;
     @XmlElement(required = true)
     private String address;
+
     @XmlElement
     private String score;
     //@@author Linus
-    @XmlElement(required = true)
+    @XmlElement
     private String avatar;
     //@@author Linus
+
     @XmlElement
     private List<XmlAdaptedTag> tagged = new ArrayList<>();
 
@@ -66,11 +68,11 @@ public class XmlAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         score = source.getScore().value;
+        avatar = source.getAvatarPic().source;
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
         }
-        avatar = source.getAvatarPic().source;
     }
 
     /**
@@ -95,11 +97,10 @@ public class XmlAdaptedPerson {
         Avatar tempAvatar;
         try {
             tempAvatar = new Avatar(this.avatar);
-        } catch (IllegalValueException ive) {
+        } catch (IllegalValueException e) {
             tempAvatar = new Avatar();
         }
-        final Avatar avatar = tempAvatar;
-        return new Person(name, phone, birthday, email, address, score, tags, avatar);
+        return new Person(name, phone, birthday, email, address, score, tags, tempAvatar);
         //@@author Linus
     }
 }

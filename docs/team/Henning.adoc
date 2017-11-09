@@ -8,7 +8,7 @@ AddressBook - Level 4 is an address book application, that allows the user
 to store all their contacts in a simple manner. It mainly interacts with the user
 through a command line interface, but it also implements a simple GUI. It is written in Java.
 
-*Code contributed*: https://github.com/CS2103AUG2017-T13-B2/main/blob/fixing1.5/collated/Henning.md
+*Code contributed*: https://github.com/CS2103AUG2017-T13-B2/main/blob/fixing1.5/collated/main/Henning.md
 
 === Enhancement Added: Group score parameter and expanded sort command
 
@@ -40,3 +40,8 @@ the new Score object is being instantiated, this will then be recognized, and th
 string will be assigned as the new score's value. This means no score will
 be displayed for that person in the addressbook, but it will still be possible to
 add one with the edit command later on.
+
+==== Other contributions
+
+I was in charge of the necessary project releases, as well as
+creating the accompanying .jar files.

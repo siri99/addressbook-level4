@@ -28,8 +28,6 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<UniqueTagList> tags;
     private ObjectProperty<Avatar> avatarPic;
 
-
-
     /**
      * Using default profile picture.
      */
@@ -152,6 +150,16 @@ public class Person implements ReadOnlyPerson {
         return score.get();
     }
 
+    @Override
+    public Avatar getAvatarPic() {
+        return avatarPic.get();
+    }
+
+    public void setAvatarPic(Avatar avatar) {
+        this.avatarPic.set(requireNonNull(avatar));
+    }
+
+
     //@@author
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -171,15 +179,6 @@ public class Person implements ReadOnlyPerson {
      */
     public void setTags(Set<Tag> replacement) {
         tags.set(new UniqueTagList(replacement));
-    }
-
-    @Override
-    public Avatar getAvatarPic() {
-        return avatarPic.get();
-    }
-
-    public void setAvatarPic(Avatar avatar) {
-        this.avatarPic.set(requireNonNull(avatar));
     }
 
     @Override

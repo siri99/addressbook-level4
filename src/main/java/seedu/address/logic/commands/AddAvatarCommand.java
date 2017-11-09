@@ -145,6 +145,7 @@ public class AddAvatarCommand extends Command {
             }
         }
         updatedAvatarPicPerson.setAvatarPic(newAvatar);
+
         /*
         *  Updates the avatar for the person based on its index
         * */
@@ -152,15 +153,19 @@ public class AddAvatarCommand extends Command {
 
         try {
             model.updatePerson(personToUpdateAvatarPic, updatedAvatarPicPerson);
+
         } catch (DuplicatePersonException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         } catch (PersonNotFoundException e) {
             throw new AssertionError("The target person cannot be missing");
         }
+
         if (avatar.toString().compareTo(Avatar.DEFAULT_URL) != 0) {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         }
-        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic.getName());
+
+        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic);
+        System.out.println(model.getFilteredPersonList().get(index.getZeroBased()).getAvatarPic().source);
         if (isOldFileDeleted) {
             return new CommandResult(resultMessage);
         } else {

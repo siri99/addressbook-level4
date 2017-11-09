@@ -25,6 +25,7 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.UnfavCommand;
+
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -100,12 +101,14 @@ public class AddressBookParser {
             return new FavouriteListCommand();
         //@@author siri99
 
+
         //@@author Linus
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
 
         case AddAvatarCommand.COMMAND_WORD:
             return new AddAvatarCommandParser().parse(arguments);
+
         //@@author Linus
 
         case ListCommand.COMMAND_WORD:
