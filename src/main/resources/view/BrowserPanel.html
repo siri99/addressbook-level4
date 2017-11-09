@@ -52,7 +52,7 @@
 <!-- First Grid: Picture & Contact Info -->
     <div class="row">
         <div class="card col-4">
-            <img class="card-img-top" src="../images/defaultPhoto.png" alt="Card image cap">
+            <img class="card-img-top" id="avatar" src="../images/defaultAvatar.png" alt="Card image cap">
             <div class="card-body">
 
                 <strong>
@@ -122,6 +122,10 @@
 
         document.setAddress = function setAddress(address) {
             document.getElementById("address").innerHTML = "Address: " + address;
+        }
+
+        document.setAvatar = function setAvatar(avatar) {
+            document.getElementById("avatar").src = avatar;
         }
 
         document.setTags = function setTags(tags) {

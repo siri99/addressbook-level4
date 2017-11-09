@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import com.sun.media.jfxmedia.logging.Logger;
-
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -59,10 +57,11 @@ public class EditCommand extends UndoableCommand {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    private final EditPersonDescriptor editPersonDescriptor
+    private static final java.util.logging.Logger logger = LogsCenter.getLogger(EditCommand.class);
+
+    private final EditPersonDescriptor editPersonDescriptor;
     private final Index index;
 
-    private static final java.util.logging.Logger logger = LogsCenter.getLogger(EditCommand.class);
     /**
      * @param index of the person in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
@@ -219,10 +218,10 @@ public class EditCommand extends UndoableCommand {
         }
 
         public void setScore(Score score) {
-            if(score.toString().equals("")){
-            }
-            else {
+            if (!score.toString().equals("")) {
+
                 this.score = score;
+
             }
         }
 
