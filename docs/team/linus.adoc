@@ -39,8 +39,42 @@ include::../DeveloperGuide.adoc[tag=homeCommand]
 
 ---
 
+=== Enhancement Added: Add Avatar command
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=homeCommand]
+
+#End of Extract#
+
+---
+
+==== Justification
+Add avatar command gives the user function that they can upload their avatar image by
+specifying the URL of the image.
+
+Example command:
+
+1. avatar INDEX [u/Image URL] - Adds avatar image for the person who has the index number
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=AddAvatarCommand]
+
+#End of Extract#
+
+---
+
 === Other contributions
 
+* Beautified the browser panel and it can show the person's detail as well as upcoming events. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/68)
+* Added theme changing menu. User can change the theme of Unibook based on their tastes. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/51)
 * Added status bar at the bottom of personList panel to show the size of current personList. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/12)
 * Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W13-B4/main/issues/253)
 * Wrote additional tests to increase coverage (AddAvatarCommand Test, HomeCommandTest, etc).
@@ -75,7 +109,3 @@ include::../DeveloperGuide.adoc[tag=nfr]
 #End of Extract#
 
 ---
-
-==== Project: PowerPointLabs
-
-{Optionally (not graded), you may include other projects in your portfolio.}

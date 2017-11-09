@@ -1,6 +1,19 @@
 package seedu.address.logic.commands;
 
 //@@author Linus
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 import seedu.address.commons.core.EventsCenter;
 import seedu.address.commons.core.Messages;
@@ -13,20 +26,6 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 /**
  * Updates the avatar picture of an existing person in the address book.
@@ -146,6 +145,7 @@ public class AddAvatarCommand extends Command {
             }
         }
         updatedAvatarPicPerson.setAvatarPic(newAvatar);
+
         /*
         *  Updates the avatar for the person based on its index
         * */
@@ -153,15 +153,19 @@ public class AddAvatarCommand extends Command {
 
         try {
             model.updatePerson(personToUpdateAvatarPic, updatedAvatarPicPerson);
+
         } catch (DuplicatePersonException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         } catch (PersonNotFoundException e) {
             throw new AssertionError("The target person cannot be missing");
         }
+
         if (avatar.toString().compareTo(Avatar.DEFAULT_URL) != 0) {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         }
-        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic.getName());
+
+        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic);
+        System.out.println(model.getFilteredPersonList().get(index.getZeroBased()).getAvatarPic().source);
         if (isOldFileDeleted) {
             return new CommandResult(resultMessage);
         } else {

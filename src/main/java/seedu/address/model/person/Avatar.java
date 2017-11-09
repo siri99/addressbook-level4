@@ -1,15 +1,14 @@
 package seedu.address.model.person;
 
 //@@author Linus
+import static java.util.Objects.requireNonNull;
 
-import seedu.address.commons.exceptions.IllegalValueException;
-
-import javax.imageio.ImageIO;
-import java.awt.*;
+import java.awt.Image;
 import java.io.IOException;
 import java.net.URL;
+import javax.imageio.ImageIO;
 
-import static java.util.Objects.requireNonNull;
+import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
  * Represents a Person's profile picture in the address book.
