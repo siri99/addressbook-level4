@@ -1,0 +1,190 @@
+= Sirisha Kommareddi - Project Portfolio
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+:imagesDir: ../images
+:stylesDir: ../stylesheets
+
+== Project: AddressBook - Level 4
+AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+
+*Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] {give links to collated code files}
+
+=== Enhancement Added: Favourite List
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=favouritelist]
+
+#End of Extract#
+
+---
+
+==== Justification
+The Favourite List is a useful feature that allows a user to view all his/her favourite contacts in one place. It minimises the time required to search for all the most important/favourite contacts.
+The star button makes it more convenient for the user to view the favourite list as the user can view the list without typing the 'favlist' command on the command line.
+
+There are three commands:
+
+1. favlist - displays the favourite list
+
+2. fav [index] - adds the person at that particular index in the main list to the favourite list.
+
+3. unfav [index] - removes the person at that particular index in the favourite list from the favourite list.
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=favouritelist]
+
+#End of Extract#
+
+---
+
+=== Enhancement Added: Sort Command
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=sort]
+
+#End of Extract#
+
+---
+
+==== Justification
+The Sort command allows a user to view all the favourite contacts in either alphabhetical order of names or ascending order of birthdays.
+
+Sort by name allows the user to view all the contacts with the same alphabhet in one place.
+Eg. If the user only remembers that a person's name starts with a certain alphabhet but does not remember the whole name, the user can sort the list by name and
+search for the contact.
+
+Sort by birthday allows the user to view all the contacts in ascending order of birthdays.
+Eg. The user can view if the birthdays of the people in his contacts are coming up.
+
+There are four ways to use the command:
+
+1. sort - default sorts by name
+
+2. sort name - sorts by name
+
+3. sort birthday - sorts by birthday
+
+4. sort b - sorts by birthday (alias for 'birthday')
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=sort]
+
+#End of Extract#
+
+---
+
+=== Enhancement Added: Find by Tags, Find by Substring
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=find]
+
+#End of Extract#
+
+---
+
+==== Justification
+
+This feature will make it more convenient for users to find a person
+even if they do not remember the complete name of the person (find by
+substring) or if they do not remember the name at all but remember
+the tags of that person (find by tags) besides the usual find by name
+feature.
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=find]
+
+#End of Extract#
+
+---
+
+=== Enhancement Proposed: Add command `import`
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=import]
+
+#End of Extract#
+
+---
+
+==== Justification
+
+This feature will make it easier for users who are transitioning from a different contact saving
+application to UniBook as they will not have to lose their old contacts. They can also add contacts from other sources easily
+with the import command.
+
+---
+
+=== Other contributions
+
+* Made Birthday Field optional
+* Synced Favourite List with Main List
+* Added Alias Command to each command.
+* Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W09-B1/main/issues/120)
+* Wrote additional tests to increase coverage (SortCommand Test, SortCommandParserTest, BirthdayTest, FavCommandTest,
+FavCommandParserTest, UnfavCommandTest, UnFavCommandParserTest, FavouriteListCommandTest etc. Also expanded tests such
+as AddCommandTest, EditCommandTest, AddCommandParserTest, EditCommandParserTest, CommandTestUtil, ParserUtilTest,
+AddCommandSystemTest and EditCommandSystemTest.
+
+(Pull requests https://github.com/CS2103AUG2017-T13-B2/main/pull/75, https://github.com/CS2103AUG2017-T13-B2/main/pull/47)
+
+* Added User Stories
+---
+
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=userstories]
+
+#End of Extract#
+---
+* Added Use Cases
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=usecases]
+
+#End of Extract#
+
+---
+
+* Added Non-Functional Requirements
+---
+
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=nfr]
+
+#End of Extract#
+
+---
+
+==== Project: PowerPointLabs
+
+{Optionally (not graded), you may include other projects in your portfolio.}
