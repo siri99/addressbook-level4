@@ -177,11 +177,11 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private void handleAddButtonAction(ActionEvent buttonEvent) {
         //@@author
-        //@@author Sirisha
+        //@@author siri99
         CommandResult commandResult = new CommandResult("");
         if (logic.getCurrentList().contains("favlist")) {
             commandResult = new CommandResult("Add command does not work in favourite list");;
-        } else { //@@author Sirisha
+        } else { //@@author siri99
             //@@author Jacob Vosburgh
             AddWindow addWindow = new AddWindow(logic);
             addWindow.show();
