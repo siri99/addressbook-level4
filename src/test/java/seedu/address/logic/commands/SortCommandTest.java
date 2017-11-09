@@ -23,6 +23,7 @@ public class SortCommandTest {
     final String sortFilterName = "name";
     final String sortFilterBirthday = "birthday";
     final String sortFilterBirthdayAlias = "b";
+    final String sortFilterScore = "score";
     final String sortFilterDefault = "";
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
@@ -39,9 +40,12 @@ public class SortCommandTest {
         // Sort in ascending order of birthdays
         assertCommandSuccess(prepareCommand(sortFilterBirthday), model, SortCommand.MESSAGE_SUCCESS_BIRTHDAY, model);
 
-        // Sort in ascending order of birthdays
+        // Sort in ascending order of birthdays (with shortcut 'b')
         assertCommandSuccess(prepareCommand(sortFilterBirthdayAlias), model, SortCommand.MESSAGE_SUCCESS_BIRTHDAY,
                 model);
+
+        // Sort in ascending order of birthdays (with shortcut 'b')
+        assertCommandSuccess(prepareCommand(sortFilterScore), model, SortCommand.MESSAGE_SUCCESS_SCORE, model);
     }
 
     @Test
@@ -50,6 +54,7 @@ public class SortCommandTest {
         final SortCommand sortNameCommand = new SortCommand(sortFilterName);
         final SortCommand sortBirthdayCommand = new SortCommand(sortFilterBirthday);
         final SortCommand sortBirthdayAliasCommand = new SortCommand(sortFilterBirthdayAlias);
+        final SortCommand sortScoreCommand = new SortCommand(sortFilterScore);
         final SortCommand sortDefaultCommand = new SortCommand(sortFilterDefault);
 
         SortCommand commandExecuted;
@@ -58,15 +63,19 @@ public class SortCommandTest {
         commandExecuted = new SortCommand(sortFilterName);
         assertTrue(sortNameCommand.equals(commandExecuted));
 
-        // same filterTypes (Name) -> returns true
+        // same filterTypes (Birthday) -> returns true
         commandExecuted = new SortCommand(sortFilterBirthday);
         assertTrue(sortBirthdayCommand.equals(commandExecuted));
 
-        // same filterTypes (Name) -> returns true
+        // same filterTypes (Birthday shortcut) -> returns true
         commandExecuted = new SortCommand(sortFilterBirthdayAlias);
         assertTrue(sortBirthdayAliasCommand.equals(commandExecuted));
 
-        // same filterTypes (Name) -> returns true
+        // same filterTypes (Score) -> returns true
+        commandExecuted = new SortCommand(sortFilterScore);
+        assertTrue(sortScoreCommand.equals(commandExecuted));
+
+        // same filterTypes (No filter) -> returns true
         commandExecuted = new SortCommand(sortFilterDefault);
         assertTrue(sortDefaultCommand.equals(commandExecuted));
 
