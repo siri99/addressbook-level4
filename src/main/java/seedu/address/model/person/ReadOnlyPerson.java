@@ -29,8 +29,6 @@ public interface ReadOnlyPerson {
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
 
-    Avatar getAvatarPic();
-
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
      */

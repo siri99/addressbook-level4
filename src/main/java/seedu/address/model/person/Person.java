@@ -26,23 +26,12 @@ public class Person implements ReadOnlyPerson {
     private ObjectProperty<Score> score;
 
     private ObjectProperty<UniqueTagList> tags;
-    private ObjectProperty<Avatar> avatarPic;
-
-
-
-    /**
-     * Using default profile picture.
-     */
-    public Person(Name name, Phone phone, Birthday birthday, Email email, Address address, Score score, Set<Tag> tags) {
-        this(name, phone, birthday, email, address, score, tags, new Avatar());
-    }
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Birthday birthday, Email email, Address address, Score score, Set<Tag> tags,
-                  Avatar avatar) {
-        requireAllNonNull(name, phone, birthday, email, address, score, tags, avatar);
+    public Person(Name name, Phone phone, Birthday birthday, Email email, Address address, Score score, Set<Tag> tags) {
+        requireAllNonNull(name, phone, birthday, email, address, score, tags);
 
         this.name = new SimpleObjectProperty<>(name);
         this.phone = new SimpleObjectProperty<>(phone);
@@ -54,8 +43,6 @@ public class Person implements ReadOnlyPerson {
         this.score = new SimpleObjectProperty<>(score);
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
-        this.avatarPic = new SimpleObjectProperty<>(avatar);
-
     }
 
     /**
@@ -63,7 +50,7 @@ public class Person implements ReadOnlyPerson {
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getBirthday(), source.getEmail(),
-                source.getAddress(), source.getScore(), source.getTags(), source.getAvatarPic());
+                source.getAddress(), source.getScore(), source.getTags());
     }
 
     public void setName(Name name) {
@@ -171,15 +158,6 @@ public class Person implements ReadOnlyPerson {
      */
     public void setTags(Set<Tag> replacement) {
         tags.set(new UniqueTagList(replacement));
-    }
-
-    @Override
-    public Avatar getAvatarPic() {
-        return avatarPic.get();
-    }
-
-    public void setAvatarPic(Avatar avatar) {
-        this.avatarPic.set(requireNonNull(avatar));
     }
 
     @Override

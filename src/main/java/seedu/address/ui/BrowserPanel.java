@@ -99,7 +99,6 @@ public class BrowserPanel extends UiPart<Region> {
         String emails = p.getEmail().toString();
         String phones = p.getPhone().toString();
         String tags = p.getOnlyTags().toString();
-        String avatar = p.getAvatarPic().toString();
 
         backToHomePage = event.getBackToHomePageValue();
 
@@ -111,7 +110,7 @@ public class BrowserPanel extends UiPart<Region> {
                 panel.executeScript("document.setEmail(\"" + emails + "\")");
                 panel.executeScript("document.setPhone(\"" + phones + "\")");
                 panel.executeScript("document.setTags(\"" + tags + "\")");
-                panel.executeScript("document.setAvatar(\"" + avatar + "\")");
+
             }
         });
 
