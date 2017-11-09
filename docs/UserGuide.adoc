@@ -396,6 +396,7 @@ e.g.`ufav 3` or `ufv 3`
 e.g. `find James Jake` or `f James Jake`
 * *List* : `list` or `l`
 * *Help* : `help`
+* *Home* : `home`
 * *Select* : `select INDEX` or `s INDEX` +
 e.g.`select 2` or `s 2`
 * *Sort* : `sort` or `sort FILTER` or `so FILTER` +
@@ -404,4 +405,3 @@ e.g. `sort name` or `so birthday` or `sort score` or `sort b` or `sort`
 * *History* : `history` or `h`
 * *Undo* : `undo` or `u`
 * *Redo* : `redo` or `r`
-* *Home* : `home`
