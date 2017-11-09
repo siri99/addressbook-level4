@@ -179,6 +179,30 @@ Can be undone using `undo` normally.
 * Deletes the person
 ****
 
+=== Back to home browser panel : `home`
+
+Changes the browser panel back to home page. +
+
+Format: `home`
+
+=== Adding avatar image for person: `avatar`
+
+Adds an avatar image for person by specifying image URL. +
+
+Format: `avatar INDEX [u/Image URL]`
+
+****
+* The index refers to the index number of person
+* The Image URL must be valid url link and end with image file extension such as .jpg .png
+* The default Image URL is: https://www.gravatar.com/avatar/null
+****
+
+Example:
+
+* `avatar 1 u/https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg` +
+Adds avatar image[https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg] for
+1st person in shown list. +
+
 === Selecting a person : `select` or `s`
 
 Selects the person identified by the index number used in the last person listing. +
