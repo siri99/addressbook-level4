@@ -39,7 +39,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 .  Refer to the link:#features[Features] section below for details of each command.
 // tag::theme[]
-== Themes
+=== Themes
 
 We provide two themes for the user:
 
@@ -212,8 +212,9 @@ Format: `avatar INDEX [u/Image URL]`
 
 Example:
 
-* `avatar 1 u/https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg` +
-Adds avatar image[https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg] for
+* `avatar 1 u/http://139.59.227.237/public/default.jpg`
+
+Adds avatar image[http://139.59.227.237/public/default.jpg] for
 1st person in shown list. +
 
 // end::avatar[]
