@@ -41,7 +41,7 @@ public class AddAvatarCommand extends Command {
             + "[u/image URL]\n"
             + "Example of using online image: " + COMMAND_WORD + " 1 "
             + PREFIX_IMAGE_URL
-            + "https://www.gravatar.com/avatar/null\n"
+            + "https://i.pinimg.com/564x/c1/23/83/c1238302de2a7cc3c905830681814e79.jpg\n"
             + "Example of using local image: " + COMMAND_WORD + " 1 "
             + PREFIX_IMAGE_URL + "https://www.gravatar.com/avatar/null\n";
 
@@ -164,8 +164,8 @@ public class AddAvatarCommand extends Command {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         }
 
-        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic);
-        System.out.println(model.getFilteredPersonList().get(index.getZeroBased()).getAvatarPic().source);
+        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic.getName());
+
         if (isOldFileDeleted) {
             return new CommandResult(resultMessage);
         } else {
