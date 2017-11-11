@@ -16,6 +16,7 @@ public class SortCommandParserTest {
     final String sortFilterBirthdayAlias = "b";
     final String sortFilterDefault = "";
     final String sortFilterName = "name";
+    final String sortFilterScore = "score";
 
     private SortCommandParser parser = new SortCommandParser();
 
@@ -43,6 +44,11 @@ public class SortCommandParserTest {
         // Sorting in ascending order of birthdays using alias 'b' for birthdays
         userInput = SortCommand.COMMAND_WORD + " " + sortFilterBirthdayAlias;
         expectedCommand = new SortCommand(sortFilterBirthdayAlias);
+        assertParseSuccess(parser, userInput, expectedCommand);
+
+        // Sorting in descending order of scores (9 to 0 : best to worst score)
+        userInput = SortCommand.COMMAND_WORD + " " + sortFilterScore;
+        expectedCommand = new SortCommand(sortFilterScore);
         assertParseSuccess(parser, userInput, expectedCommand);
 
         // Sorting in alphabhetical order of names with extra spaces

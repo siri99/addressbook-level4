@@ -27,32 +27,32 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 
-/**
- * Updates the avatar picture of an existing person in the address book.
- */
+    /**
+     * Updates the avatar picture of an existing person in the address book.
+     */
 
-public class AddAvatarCommand extends Command {
-    public static final String COMMAND_WORD = "avatar";
+    public class AddAvatarCommand extends Command {
+        public static final String COMMAND_WORD = "avatar";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the avatar picture of the person identified "
-            + "by the index number. "
-            + "Existing avatar picture will be replaced by the new picture.\n"
-            + "Parameters: INDEX of person (positive integer) "
-            + "[u/image URL]\n"
-            + "Example of using online image: " + COMMAND_WORD + " 1 "
-            + PREFIX_IMAGE_URL
-            + "https://i.pinimg.com/564x/c1/23/83/c1238302de2a7cc3c905830681814e79.jpg\n"
-            + "Example of using local image: " + COMMAND_WORD + " 1 "
-            + PREFIX_IMAGE_URL + "https://www.gravatar.com/avatar/null\n";
+        public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the avatar picture of the person identified "
+                + "by the index number. "
+                + "Existing avatar picture will be replaced by the new picture.\n"
+                + "Parameters: INDEX of person (positive integer) "
+                + "[u/image URL]\n"
+                + "Example of using online image: " + COMMAND_WORD + " 1 "
+                + PREFIX_IMAGE_URL
+                + "https://i.pinimg.com/564x/c1/23/83/c1238302de2a7cc3c905830681814e79.jpg\n"
+                + "Example of using local image: " + COMMAND_WORD + " 1 "
+                + PREFIX_IMAGE_URL + "https://www.gravatar.com/avatar/null\n";
 
-    public static final String MESSAGE_UPDATE_AVATAR_PIC_SUCCESS = "Update avatar picture for Person: %1$s";
-    public static final String MESSAGE_NOT_UPDATED = "Please enter a valid image URL.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+        public static final String MESSAGE_UPDATE_AVATAR_PIC_SUCCESS = "Update avatar picture for Person: %1$s";
+        public static final String MESSAGE_NOT_UPDATED = "Please enter a valid image URL.";
+        public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
 
-    private final Index index;
-    private final Avatar avatar;
+        private final Index index;
+        private final Avatar avatar;
 
-    private boolean isOldFileDeleted = true;
+        private boolean isOldFileDeleted = true;
 
     /**
      *

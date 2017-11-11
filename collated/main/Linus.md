@@ -1,5 +1,5 @@
 # Linus
-###### /java/seedu/address/commons/events/ui/BrowserJumpToHomePage.java
+###### \java\seedu\address\commons\events\ui\BrowserJumpToHomePage.java
 ``` java
 package seedu.address.commons.events.ui;
 
@@ -29,11 +29,11 @@ public class BrowserJumpToHomePage extends BaseEvent {
 
 }
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
     private final int backToHomePageValue = 0;
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
 
     public PersonPanelSelectionChangedEvent(PersonCard newSelection) {
@@ -50,18 +50,18 @@ public class BrowserJumpToHomePage extends BaseEvent {
     }
 
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
     public int getBackToHomePageValue() {
         return this.backToHomePageValue;
     }
 ```
-###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
 ``` java
 
 }
 ```
-###### /java/seedu/address/logic/commands/AddAvatarCommand.java
+###### \java\seedu\address\logic\commands\AddAvatarCommand.java
 ``` java
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
@@ -248,7 +248,7 @@ public class AddAvatarCommand extends Command {
     }
 }
 ```
-###### /java/seedu/address/logic/commands/HomeCommand.java
+###### \java\seedu\address\logic\commands\HomeCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -284,11 +284,11 @@ public class HomeCommand extends Command {
 
 }
 ```
-###### /java/seedu/address/logic/commands/HomeCommand.java
+###### \java\seedu\address\logic\commands\HomeCommand.java
 ``` java
 
 ```
-###### /java/seedu/address/logic/parser/AddAvatarCommandParser.java
+###### \java\seedu\address\logic\parser\AddAvatarCommandParser.java
 ``` java
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
@@ -342,7 +342,7 @@ public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
     }
 }
 ```
-###### /java/seedu/address/logic/parser/AddressBookParser.java
+###### \java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
@@ -351,7 +351,7 @@ public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
             return new AddAvatarCommandParser().parse(arguments);
 
 ```
-###### /java/seedu/address/logic/parser/AddressBookParser.java
+###### \java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
 
         case ListCommand.COMMAND_WORD:
@@ -384,7 +384,7 @@ public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
 }
 
 ```
-###### /java/seedu/address/logic/parser/ParserUtil.java
+###### \java\seedu\address\logic\parser\ParserUtil.java
 ``` java
     /**
      * Parses a {@code Optional<String> imageURL} into an {@code Optional<Avatar>} if {@code imageURL} is present.
@@ -395,11 +395,11 @@ public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
         return imageUrl.isPresent() ? Optional.of(new Avatar(imageUrl.get())) : Optional.empty();
     }
 ```
-###### /java/seedu/address/logic/parser/ParserUtil.java
+###### \java\seedu\address\logic\parser\ParserUtil.java
 ``` java
 
 ```
-###### /java/seedu/address/model/person/Avatar.java
+###### \java\seedu\address\model\person\Avatar.java
 ``` java
 import static java.util.Objects.requireNonNull;
 
@@ -487,12 +487,12 @@ public class Avatar {
     }
 }
 ```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
+###### \java\seedu\address\storage\XmlAdaptedPerson.java
 ``` java
     @XmlElement
     private String avatar;
 ```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
+###### \java\seedu\address\storage\XmlAdaptedPerson.java
 ``` java
 
     @XmlElement
@@ -514,7 +514,7 @@ public class Avatar {
         name = source.getName().fullName;
         phone = source.getPhone().value;
 ```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
+###### \java\seedu\address\storage\XmlAdaptedPerson.java
 ``` java
         Avatar tempAvatar;
         try {
@@ -524,16 +524,16 @@ public class Avatar {
         }
         return new Person(name, phone, birthday, email, address, score, tags, tempAvatar);
 ```
-###### /java/seedu/address/storage/XmlAdaptedPerson.java
+###### \java\seedu\address\storage\XmlAdaptedPerson.java
 ``` java
     }
 }
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     public static final String BROWSER_PAGE = "BrowserPanel.html";
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com.sg/search?safe=off&q=";
     public static final String GOOGLE_SEARCH_URL_SUFFIX = "&cad=h";
@@ -543,11 +543,11 @@ public class Avatar {
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     private int backToHomePage = 0;
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
 
     @FXML
@@ -573,11 +573,11 @@ public class Avatar {
      */
     private void loadBrowserPage(ReadOnlyPerson person) throws IOException {
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
         URL addressPage = MainApp.class.getResource(FXML_FILE_FOLDER + BROWSER_PAGE);
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
         loadPage(addressPage.toExternalForm());
     }
@@ -603,7 +603,7 @@ public class Avatar {
     }
 
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
     @Subscribe
     private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) throws IOException {
@@ -644,17 +644,17 @@ public class Avatar {
 
     }
 ```
-###### /java/seedu/address/ui/BrowserPanel.java
+###### \java\seedu\address\ui\BrowserPanel.java
 ``` java
 
 
 }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
         StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
 
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -665,7 +665,7 @@ public class Avatar {
     }
 
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
     /**
      * Changes the theme color to dark of the program
@@ -700,7 +700,7 @@ public class Avatar {
 
     }
 ```
-###### /java/seedu/address/ui/MainWindow.java
+###### \java\seedu\address\ui\MainWindow.java
 ``` java
 
     public PersonListPanel getPersonListPanel() {
@@ -718,12 +718,12 @@ public class Avatar {
     }
 }
 ```
-###### /java/seedu/address/ui/PersonCard.java
+###### \java\seedu\address\ui\PersonCard.java
 ``` java
     private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
 ```
-###### /java/seedu/address/ui/PersonCard.java
+###### \java\seedu\address\ui\PersonCard.java
 ``` java
 
     public final ReadOnlyPerson person;
@@ -751,12 +751,12 @@ public class Avatar {
     @FXML
     private Label phone;
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
     public static final String SYNC_PERSONLIST_UPADTED_SIZE = "Total size: %d, ";
     public static final String SYNC_STATUS_UPDATED = "Last Updated: %s";
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
 
     /**
@@ -774,11 +774,11 @@ public class Avatar {
     private static final String FXML = "StatusBarFooter.fxml";
 
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
     private ObservableList<ReadOnlyPerson> filteredPersonList;
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
 
     @FXML
@@ -794,7 +794,7 @@ public class Avatar {
     }
 
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
     public StatusBarFooter(String saveLocation, ObservableList<ReadOnlyPerson> filteredPersonList) {
         super(FXML);
@@ -804,7 +804,7 @@ public class Avatar {
         registerAsAnEventHandler(this);
     }
 ```
-###### /java/seedu/address/ui/StatusBarFooter.java
+###### \java\seedu\address\ui\StatusBarFooter.java
 ``` java
 
     /**
@@ -841,7 +841,7 @@ public class Avatar {
 
 }
 ```
-###### /resources/view/default.html
+###### \resources\view\default.html
 ``` html
 <html>
 <title>Home Page</title>
@@ -968,7 +968,7 @@ public class Avatar {
 </body>
 </html>
 ```
-###### /resources/view/LightTheme.css
+###### \resources\view\LightTheme.css
 ``` css
 .root {
     -fx-accent: derive(#f7f5f4, -10%);
@@ -1372,7 +1372,7 @@ public class Avatar {
     -fx-font-size: 14px;
 }
 ```
-###### /resources/view/StatusBarFooter.fxml
+###### \resources\view\StatusBarFooter.fxml
 ``` fxml
         <?import org.controlsfx.control.StatusBar?>
         <?import javafx.scene.layout.ColumnConstraints?>
@@ -1387,7 +1387,7 @@ public class Avatar {
 <StatusBar styleClass="anchor-pane" fx:id="saveLocationStatus" GridPane.columnIndex="1" nodeOrientation="RIGHT_TO_LEFT" />
 </GridPane>
 ```
-###### /resources/view/StatusBarFooter.fxml
+###### \resources\view\StatusBarFooter.fxml
 ``` fxml
 
 ```

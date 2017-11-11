@@ -362,6 +362,8 @@ The feature is implemented in a similar way to the 'Select' feature.
 
 The command is to help user go back to home browser panel.
 
+image::LogicClassDiagram.png[width="800"]
+
 // end::homepanel[]
 
 ---
@@ -1104,8 +1106,20 @@ Use case ends.
 2. If user allows, it will merge duplicate contacts
 +
 Use case ends.
+
+=== Use Case: UC5 Adding
+
+*MSS*
+
+1. User selects contacts to export
+2. AddressBook creates file with list of contacts that user selected
+3. User specifices location to store this file of contacts
+4. AddressBook stores data as indicated
+5. User sends data to intended receiever
++
+Use case ends.
+
 // end::usecases[]
-{More to be added}
 
 [appendix]
 == Non Functional Requirements
@@ -1166,28 +1180,20 @@ The feature is that assign different colors to each tag of person card. Every ti
 == Enhancement Description
 Author: Peng Xu
 
-Added theme change menu item
+* Added theme change menu item
 
 The feature is that user can change background color via the theme buttons on the menubar.
 
-== Enhancement Description
-Author: Peng Xu
 
-Added home command
+* Added home command
 
 The feature is that user can go back to home page of the browser
 
-== Enhancement Description
-Author: Peng Xu
-
-Beautified the UI of browser panel
+* Beautified the UI of browser panel
 
 The feature is that user can see the commands instruction in home page. Also, each user can view their personal info as
 well as their upcoming events.
 
-== Enhancement Description
-Author: Peng Xu
-
-Added the theme button on menu
+* Added the theme button on menu
 
 The feature is that user can change theme color of Unibook based on their own taste.
