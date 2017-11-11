@@ -38,7 +38,7 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * *`exit`* : exits the app
 
 .  Refer to the link:#features[Features] section below for details of each command.
-
+// tag::theme[]
 == Themes
 
 We provide two themes for the user:
@@ -46,9 +46,9 @@ We provide two themes for the user:
 * Light
 * Dark
 +
-image::Ui.png[width="790"]
+image::themes.png[width="790"]
 +
-
+// tag::theme[]
 == Features
 
 ====
@@ -188,13 +188,16 @@ Can be undone using `undo` normally.
 ****
 * Deletes the person
 ****
-
+// tag::homeCommand[]
 === Going back to home panel : `home`
 
 Goes back to home panel. +
 
 Format: `home`
 
+// end::homeCommand[]
+
+// tag::avatar[]
 === Adding avatar image for person: `avatar`
 
 Adds an avatar image for person by specifying image URL. +
@@ -212,6 +215,8 @@ Example:
 * `avatar 1 u/https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg` +
 Adds avatar image[https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg] for
 1st person in shown list. +
+
+// end::avatar[]
 
 === Selecting a person : `select` or `s`
 
