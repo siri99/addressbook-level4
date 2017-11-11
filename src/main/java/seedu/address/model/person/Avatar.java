@@ -11,19 +11,21 @@ import javax.imageio.ImageIO;
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
- * Represents a Person's profile picture in the address book.
+ * Represents a Person's avatar picture in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidUrl(String)}
  */
 public class Avatar {
-    public static final String MESSAGE_PROFILE_PIC_CONSTRAINTS =
+    public static final String MESSAGE_AVATAR_PIC_CONSTRAINTS =
             "Person's avatar must be a valid image URL";
-    public static final String DEFAULT_URL = "https://www.gravatar.com/avatar/null";
+    public static final String MESSAGE_AVATAR_PIC_EXPIRED =
+            "This avatar is invalid, pls select type another image URL";
+    public static final String DEFAULT_URL = "http://139.59.227.237/public/default.jpg";
 
     /*
      * The first character of the address must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
-    public static final String PROFILE_PIC_VALIDATION_REGEX = "[^\\s].*";
+    public static final String AVATAR_PIC_VALIDATION_REGEX = "[^\\s].*";
 
     public final String source;
 
@@ -34,12 +36,27 @@ public class Avatar {
     /**
      * Validates given address.
      *
-     * @throws IllegalValueException if given profilePic string is invalid.
+     * @throws IllegalValueException if given AvatarPic string is invalid.
      */
     public Avatar(String url) throws IllegalValueException {
         requireNonNull(url);
-        if (!isValidUrl(url)) {
-            throw new IllegalValueException(MESSAGE_PROFILE_PIC_CONSTRAINTS);
+
+        int isValidUrl = isValidUrl(url);
+
+        /*
+        *  Expired Image URL
+        * */
+        if (isValidUrl == -2) {
+
+            throw new IllegalValueException(MESSAGE_AVATAR_PIC_EXPIRED);
+        }
+
+        /*
+        * Invalid Image URL
+        * */
+        if (isValidUrl == -1) {
+
+            throw new IllegalValueException(MESSAGE_AVATAR_PIC_CONSTRAINTS);
         }
 
         source = url;
@@ -48,25 +65,24 @@ public class Avatar {
     /**
      * Returns true if a given string is a valid image URL.
      */
-    public static boolean isValidUrl(String test) {
-        if (test.matches(PROFILE_PIC_VALIDATION_REGEX)) {
+    public static int isValidUrl(String test) {
+
+        if (test.matches(AVATAR_PIC_VALIDATION_REGEX)) {
             try {
                 Image img = ImageIO.read(new URL(test));
                 if (img == null) {
-                    return false;
+                    return -1;
                 }
             } catch (IOException e) {
                 if (test.compareTo(DEFAULT_URL) == 0) {
-                    return true;
+                    return 0;
                 } else {
-                    return false;
+                    return -2;
                 }
             }
-
-            return true;
+            return 0;
         }
-
-        return false;
+        return -1;
     }
 
     @Override
