@@ -612,7 +612,7 @@ public class FavCommandParser implements Parser<FavCommand> {
         requireNonNull(birthday);
         //return birthday.isPresent() ? Optional.of(new Birthday(birthday.get())) : Optional.empty();
         return birthday.isPresent() ? Optional.of(new Birthday(birthday.get())) : Optional.of
-                (new Birthday("valueNotFound"));
+                (new Birthday("No Birthday Listed"));
     }
 ```
 ###### \java\seedu\address\logic\parser\ParserUtil.java
@@ -1232,10 +1232,10 @@ public class Birthday {
     public static final String MESSAGE_BIRTHDAY_CONSTRAINTS =
             "Day, Month and Year should be in DD/MM/YYYY format. Must be a valid date.";
 
-    public static final String BIRTHDAY_VALIDATION_REGEX = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)"
-            + "(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2"
+    public static final String BIRTHDAY_VALIDATION_REGEX = "^(?:(?:31(\\/)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)"
+            + "(\\/)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/)0?2"
             + "\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579]"
-            + "[26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|"
+            + "[26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|"
             + "[2-9]\\d)?\\d{2})$";
 
     public final String value;
@@ -1248,8 +1248,8 @@ public class Birthday {
     public Birthday(String birthday) throws IllegalValueException {
         requireNonNull(birthday);
         String trimmedBirthday = birthday.trim();
-        if (trimmedBirthday.equals("valueNotFound")) {
-            this.value = "No Birthday Listed";
+        if (trimmedBirthday.equals("No Birthday Listed")) {
+            this.value = trimmedBirthday;
         } else {
             if (!isValidBirthday(trimmedBirthday)) {
                 throw new IllegalValueException(MESSAGE_BIRTHDAY_CONSTRAINTS);
@@ -1447,8 +1447,6 @@ public class Birthday {
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append("avatar: ")
-                .append(getAvatarPic())
                 .append(" Phone: ")
                 .append(getPhone())
 ```
@@ -1475,8 +1473,8 @@ public class Birthday {
 
             public int compare(ReadOnlyPerson person1, ReadOnlyPerson person2) {
 
-                String personName1 = person1.getName().toString();
-                String personName2 = person2.getName().toString();
+                String personName1 = person1.getName().toString().toLowerCase();
+                String personName2 = person2.getName().toString().toLowerCase();
 
                 return personName1.compareTo(personName2);
             }
@@ -1495,11 +1493,22 @@ public class Birthday {
 
             public int compare(ReadOnlyPerson person1, ReadOnlyPerson person2) {
 
-
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
+                String firstBirthday = person1.getBirthday().toString();
+                String secondBirthday = person2.getBirthday().toString();
 
-                String[] day1 = person1.getBirthday().toString().split("/");
-                String[] day2 = person2.getBirthday().toString().split("/");
+                /* if birthday is not listed, assigns them the last date of the year so that
+                 *they are sorted to the bottom of the list */
+                if (firstBirthday.equals("No Birthday Listed")) {
+                    firstBirthday = "31/12/1900";
+                }
+                if (secondBirthday.equals("No Birthday Listed")) {
+                    secondBirthday = "31/12/1900";
+                }
+
+                // Split into 3 parts - day, month and year
+                String[] day1 = firstBirthday.split("/");
+                String[] day2 = secondBirthday.split("/");
 
                 String date1 = day1[1] + "/" + day1[0];
                 String date2 = day2[1] + "/" + day2[0];
@@ -1514,6 +1523,7 @@ public class Birthday {
                     e.printStackTrace();
                 }
                 return birthday1.compareTo(birthday2);
+
             }
 
         };
@@ -1560,67 +1570,6 @@ public class Birthday {
     public int hashCode() {
         return internalList.hashCode();
     }
-}
-```
-###### \java\seedu\address\model\util\SampleDataUtil.java
-``` java
-                new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Birthday("16/08/1968"),
-                new Email("alexyeoh@example.com"), new Address("Blk 30 Geylang Street 29, #06-40"),
-                new Score("8"),
-                    getTagSet("friends")),
-                new Person(new Name("Bernice Yu"), new Phone("99272758"),  new Birthday("21/04/1973"),
-                        new Email("berniceyu@example.com"),
-                    new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), new Score("5"),
-                    getTagSet("colleagues", "friends")),
-                new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"),  new Birthday("11/01/1999"),
-                        new Email("charlotte@example.com"),
-                    new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), new Score("9"),
-                    getTagSet("neighbours")),
-                new Person(new Name("David Li"), new Phone("91031282"),  new Birthday("17/07/2006"),
-                        new Email("lidavid@example.com"),
-                    new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), new Score("2"),
-                    getTagSet("family")),
-                new Person(new Name("Irfan Ibrahim"), new Phone("92492021"),  new Birthday("31/05/1936"),
-                        new Email("irfan@example.com"),
-                    new Address("Blk 47 Tampines Street 20, #17-35"), new Score("1"),
-                    getTagSet("classmates")),
-                new Person(new Name("Roy Balakrishnan"), new Phone("92624417"),  new Birthday("7/09/1995"),
-                        new Email("royb@example.com"),
-                    new Address("Blk 45 Aljunied Street 85, #11-31"), new Score("3"),
-                    getTagSet("colleagues"))
-```
-###### \java\seedu\address\model\util\SampleDataUtil.java
-``` java
-            };
-        } catch (IllegalValueException e) {
-            throw new AssertionError("sample data cannot be invalid", e);
-        }
-    }
-
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        try {
-            AddressBook sampleAb = new AddressBook();
-            for (Person samplePerson : getSamplePersons()) {
-                sampleAb.addPerson(samplePerson);
-            }
-            return sampleAb;
-        } catch (DuplicatePersonException e) {
-            throw new AssertionError("sample data cannot contain duplicate persons", e);
-        }
-    }
-
-    /**
-     * Returns a tag set containing the list of strings given.
-     */
-    public static Set<Tag> getTagSet(String... strings) throws IllegalValueException {
-        HashSet<Tag> tags = new HashSet<>();
-        for (String s : strings) {
-            tags.add(new Tag(s));
-        }
-
-        return tags;
-    }
-
 }
 ```
 ###### \java\seedu\address\storage\XmlAdaptedPerson.java

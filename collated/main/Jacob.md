@@ -327,22 +327,30 @@ public class EditWindow extends UiPart<Region> {
         initTags(person);
         bindListeners(person);
     }
-
+```
+###### \java\seedu\address\ui\PersonCard.java
+``` java
     /**
-     * Provides a consistent color based on the string of a tag's value
+     * Provides a consistent color based on the first letter of a tag
      * ie, the same color will return for every call using 'friend' or any other tag.
+     * This also matches the color scheme used to choose colors in the browser, so tags appear the same in both.
+     * @param tagValue
      */
 
     private String mapTagToColor(String tagValue) {
         if (!colorMapping.containsKey(tagValue)) {
-            colorMapping.put(tagValue, colors[tagValue.length() % colors.length]);
+            int x = Character.getNumericValue(tagValue.charAt(0)) + 87; //magic number to match to javascript char->int
+            colorMapping.put(tagValue, colors[x % 6]); //colors.length]);
         }
         return colorMapping.get(tagValue);
     }
-
+```
+###### \java\seedu\address\ui\PersonCard.java
+``` java
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
      * so that they will be notified of any changes.
+     * @param person
      */
     private void bindListeners(ReadOnlyPerson person) {
         name.textProperty().bind(Bindings.convert(person.nameProperty()));
@@ -382,11 +390,20 @@ public class EditWindow extends UiPart<Region> {
 ```
 ###### \java\seedu\address\ui\PersonCard.java
 ``` java
+
+```
+###### \java\seedu\address\ui\PersonCard.java
+``` java
             EditWindow editWindow = new EditWindow(logic, cardNum);
             editWindow.show();
         }
         logger.info("Result: " + commandResult.feedbackToUser);
         raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
+```
+###### \java\seedu\address\ui\PersonCard.java
+``` java
+    }
+}
 ```
 ###### \resources\view\AddWindow.fxml
 ``` fxml

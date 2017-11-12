@@ -138,11 +138,22 @@ public class UniquePersonList implements Iterable<Person> {
 
             public int compare(ReadOnlyPerson person1, ReadOnlyPerson person2) {
 
-
                 SimpleDateFormat sdf = new SimpleDateFormat("MM/dd");
+                String firstBirthday = person1.getBirthday().toString();
+                String secondBirthday = person2.getBirthday().toString();
 
-                String[] day1 = person1.getBirthday().toString().split("/");
-                String[] day2 = person2.getBirthday().toString().split("/");
+                /* if birthday is not listed, assigns them the last date of the year so that
+                 *they are sorted to the bottom of the list */
+                if (firstBirthday.equals("No Birthday Listed")) {
+                    firstBirthday = "31/12/1900";
+                }
+                if (secondBirthday.equals("No Birthday Listed")) {
+                    secondBirthday = "31/12/1900";
+                }
+
+                // Split into 3 parts - day, month and year
+                String[] day1 = firstBirthday.split("/");
+                String[] day2 = secondBirthday.split("/");
 
                 String date1 = day1[1] + "/" + day1[0];
                 String date2 = day2[1] + "/" + day2[0];
@@ -157,6 +168,7 @@ public class UniquePersonList implements Iterable<Person> {
                     e.printStackTrace();
                 }
                 return birthday1.compareTo(birthday2);
+
             }
 
         };

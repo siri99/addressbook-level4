@@ -39,9 +39,10 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 
 .  Refer to the link:#features[Features] section below for details of each command.
 // tag::theme[]
+
 === Themes
 
-We provide two themes for the user:
+Two themes are provided for the user:
 
 * Light
 * Dark
@@ -49,6 +50,7 @@ We provide two themes for the user:
 image::themes.png[width="800"]
 +
 // end::theme[]
+
 == Features
 
 ====
@@ -95,6 +97,7 @@ Window is dismissed on successful addition of a new person.
 
 Shows a list of all persons in the address book. +
 Format: `list` or `l`
+
 // tag::sort[]
 === Sorting the person list : `sort` or `so`
 
@@ -161,7 +164,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Partial words must be atleast 2 characters long
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
-image::FindBySubString.png[width="600"]
+image::FindBySubString.png[width="800"]
 _Figure 1.1: Find by Substring of name_
 
 Examples:
@@ -174,6 +177,7 @@ Returns any person having names which contain the word `Bet`, eg.`Betsy`
 * `find friends family` +
 Returns any person having tag `friends` or `family`
 // end::find[]
+
 === Deleting a person : `delete` or `d`
 
 Deletes the specified person from the address book. +
@@ -259,9 +263,8 @@ image::BrowserPanel1.png[width="800"]
 *Person's Profile*
 
 image::BrowserPanel2.png[width="800"]
-
-
 // end::browsePanel[]
+
 === Selecting a person : `select` or `s`
 
 Selects the person identified by the index number used in the last person listing. +
@@ -289,7 +292,7 @@ Selects the 1st person in the results of the `find` command.
 Shows a list of all the persons in the Favourite List. +
 Format: `favlist` or `fl`
 
-image::FavouriteList.png[width="600"]
+image::FavouriteList.png[width="800"]
 _Figure 1.12.1: Find by Substring of name_
 
 
@@ -331,6 +334,7 @@ Examples:
 * `unfav 3` +
 Removes the 3rd person listed in the Favourite list from the Favourite List.
 // end::favouritelist[]
+
 === Listing entered commands : `history` or `h`
 
 Lists all the commands that you have entered in reverse chronological order. +
@@ -447,7 +451,6 @@ Format: `import fileAddress` or `imp fileAddress`
 == Command Summary
 
 * *Add* `add n/NAME p/PHONE_NUMBER [b/BIRTHDAY] e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...` or `a n/NAME p/PHONE_NUMBER [b/BIRTHDAY] e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...` +
-Birthday is an optional field. +
 e.g. `add n/James Ho p/22224444 b/14/07/1995 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/8 t/friend t/colleague`
 * *Clear* : `clear` or `c`
 * *Delete* : `delete INDEX` or `d INDEX` +
@@ -458,9 +461,9 @@ e.g. `edit 2 n/James Lee e/jameslee@example.com` or `e 2 n/James Lee e/jameslee@
 * *Favourite* : `fav INDEX` or `fv INDEX` +
 e.g.`fav 2` or `fv 2`
 * *Unfavourite* : `unfav INDEX` or `ufv INDEX` +
-e.g.`ufav 3` or `ufv 3`
+e.g.`ufav 3` or `unfv 3`
 * *Find* : `find KEYWORD [MORE_KEYWORDS]` or `f KEYWORD [MORE_KEYWORDS]` +
-e.g. `find James Jake` or `f James Jake`
+e.g. `find James Jake` or `f James Jake` or `find alice friends`
 * *List* : `list` or `l`
 * *Help* : `help`
 * *Home* : `home`
