@@ -131,10 +131,10 @@
         document.setTags = function setTags(tags) {
             tagArray = tags.split(" ");
             tagsHtml = '';
-            tagsColor = ["primary", "success", "warning", "info", "light", "dark"];
+            tagsColor = ["primary", "secondary", "success", "danger", "warning", "info"];
             tagArray.forEach(function (ele, i) {
 
-                colorIndex = i % 6;
+                colorIndex = ele.charCodeAt(0) % 6;
 
                 tagsHtml += " <span class='badge badge-" + tagsColor[colorIndex] + "' >"  + ele + "</span>";
 
