@@ -31,7 +31,10 @@ public class SampleDataUtil {
     private static String[] emails = {"gmail.com", "yahoo", "outlook", "hotmail", "qq.com", "sina.com"};
     private static String[] tags = {"colleagues", "friends", "president", "students", "customers", "lawyers",
         "farmers"};
-    private static String[] birthdays = {"01/09/198", "03/08/197", "02/02/198", "31/12/198", "28/05/198", "03/02/198"};
+    private static String[] phones = {"90909099", "87878888", "33222111", "84456723", "90111123", "12345678",
+        "98363363"};
+    private static String[] birthdays = {"01/09/1988", "03/08/1975", "02/02/1989", "31/12/1966", "28/05/1956",
+        "03/02/1999", "13/12/2000"};
 
     private static int sampleDataSize = 8;
 
@@ -84,11 +87,12 @@ public class SampleDataUtil {
         /*
         *  Those numbers are totally arbitrary for generating sample data
         * */
+        j = j % 7;
         String lastName = lastNames[j % (sampleDataSize - 2)];
-        String phone = Integer.toString(00000 + rand.nextInt(90000000));
+        String phone = phones[j];
         String email = emails[j % (sampleDataSize - 2)];
-        String units = Integer.toString(rand.nextInt(900));
-        String score = Integer.toString(rand.nextInt(9));
+        String units = Integer.toString(j);
+        String score = Integer.toString(j);
         Set<Tag> tag = generateTags(j);
 
         if (j / 3 == 1) {
@@ -101,7 +105,7 @@ public class SampleDataUtil {
         return new Person(new Name(firstName + " " + lastName), new Phone(phone),
                 new Birthday(generateBirthday(j)),
                 new Email(firstName + "@" + email),
-                new Address("Blk 45 Aljunied Street 85, #" + units),
+                new Address("Victoria 34 Arran Street 45, #" + units),
                 new Score(score), tag);
 
     }
@@ -110,8 +114,8 @@ public class SampleDataUtil {
      * Returns a birthday string based on input.
      */
     public static String generateBirthday(int i) {
-        int n = i % 6;
-        return birthdays[n] + Integer.toString(n);
+        int n = i % 7;
+        return birthdays[n];
     }
 
     //@@author Linus

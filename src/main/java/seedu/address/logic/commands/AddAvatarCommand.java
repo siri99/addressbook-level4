@@ -83,7 +83,7 @@ public class AddAvatarCommand extends Command {
         Person updatedAvatarPicPerson = new Person(personToUpdateAvatarPic);
         Avatar newAvatar;
 
-        if(avatar.toString().equalsIgnoreCase(Avatar.DEFAULT_URL)){
+        if (avatar.toString().equalsIgnoreCase(Avatar.DEFAULT_URL)) {
             throw new CommandException(MESSAGE_IS_DEFAULT);
         }
 

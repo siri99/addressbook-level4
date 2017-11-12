@@ -96,7 +96,7 @@ include::../UserGuide.adoc[tag=theme]
 * Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W13-B4/main/issues/253)
 * Wrote additional tests to increase coverage (AddAvatarCommand Test, HomeCommandTest, AvatarTest, StatusBarTest etc)
 * Added User cases (Link: https://github.com/CS2103AUG2017-T13-B2/main/projects/1)
-* Added User Stories
+* Added User Stories (Link: https://github.com/CS2103AUG2017-T13-B2/main/projects/1)
 ---
 
 #Start of Extract [from: Developer Guide]#
