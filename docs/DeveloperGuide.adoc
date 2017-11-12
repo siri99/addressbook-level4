@@ -501,7 +501,20 @@ Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
 FXCollections.sort(internalList, personComparator);
 ----
 // end::sort[]
+==== Design Considerations
+
+**Aspect:** Sort by Name +
+**Alternative 1 (current choice):** User needs to use sort command to sort by name. +
+**Pros:** User can choose to have an unsorted list each time a person is added, so that he/she can view the list in an order where the latest person
+ added is displayed at the bottom of the list. User gets to choose whether to sort or not. +
+**Cons:** List is not automatically displayed in sorted order.  +
+**Alternative 2:** Automatically sort the list each time user adds a new person  +
+**Pros:** No need for user to explicitly give command to sort names. +
+**Cons:** User will not be able to view the list in order of the oldest to newest people added to the list. No choice for user.
+
+
 ---
+
 // tag::find[]
 === Enhanced Find Command mechanism
 
@@ -526,6 +539,15 @@ two sets, one containing the tag entered by the user and the other
 containing the set of tags of each person and compares accordingly (implemented v1.2).
 
 ==== Design Considerations
+
+**Aspect:** Condition for containsSubstringOfWord method +
+**Alternative 1 (current choice):** word needs to be minimum 2 characters +
+**Pros:** Makes the feature useful. If only one character is given, many names might contain that character and will be displayed which defeats the purpose of find. +
+**Alternative 2:** Not limiting substring size +
+**Pros:** Will find by single character also, more detailed search +
+**Cons:** Will list almost everyone, defeats the purpose of find command.
+
+---
 
 **Aspect:** Use of other commands in Favourite list setup (Delete, Edit Command etc). +
 **Alternative 1 (current choice):** Allow users to use find by name, substring of name, and tags in one command by simply typing Find followed by name or tag. Eg. Find Alice Mark friends +
