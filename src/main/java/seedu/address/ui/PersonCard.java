@@ -184,7 +184,7 @@ public class PersonCard extends UiPart<Region> {
      */
     @FXML
     private void handleEditButtonAction(ActionEvent buttonEvent) {
-        //@@author
+        //@@author Jacob Vosburgh
         //@@author siri99
         CommandResult commandResult = new CommandResult("");
         if (logic.getCurrentList().contains("favlist")) {
@@ -196,6 +196,6 @@ public class PersonCard extends UiPart<Region> {
         }
         logger.info("Result: " + commandResult.feedbackToUser);
         raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
-        //@@author
+        //@@author Jacob Vosburgh
     }
 }

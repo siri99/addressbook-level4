@@ -51,7 +51,7 @@ include::../UserGuide.adoc[tag=editButton]
 
 ==== Justification
 
-Makes editing easier.
+Makes editing easier and reduces barrier to entry for new and inexperienced users.
 
 ==== Implementation
 
