@@ -133,6 +133,7 @@ public class PersonBuilder {
     /**
      *Sets the {@code Score} of the {@code Person} that we are building.
      */
+    //@@author Henning
     public PersonBuilder withScore(String score) {
         try {
             this.person.setScore(new Score(score));
@@ -142,6 +143,7 @@ public class PersonBuilder {
         return this;
     }
 
+    //@@author Henning
     public Person build() {
         return this.person;
     }
