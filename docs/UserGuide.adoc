@@ -413,12 +413,12 @@ e.g. `sort name` or `so birthday` or `sort score` or `sort b` or `sort`
 The wrong person gets deleted from the list when we delete a person after using the find command, and use undo and redo commands immediately after.
 
 If list originally contains: +
-Alex +
-Robert +
-Roy +
+1. Alex +
+2. Robert +
+3. Roy +
 
 Sequence of commands: +
-Find Roy (Roy is found) +
+find Roy (Roy is found) +
 delete 1 (Roy is deleted) +
 undo (Roy is back in the list) +
 redo (Alex is deleted instead of Roy) +
