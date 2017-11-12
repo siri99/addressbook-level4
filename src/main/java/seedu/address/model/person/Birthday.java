@@ -30,8 +30,8 @@ public class Birthday {
     public Birthday(String birthday) throws IllegalValueException {
         requireNonNull(birthday);
         String trimmedBirthday = birthday.trim();
-        if (trimmedBirthday.equals("valueNotFound")) {
-            this.value = "No Birthday Listed";
+        if (trimmedBirthday.equals("No Birthday Listed")) {
+            this.value = trimmedBirthday;
         } else {
             if (!isValidBirthday(trimmedBirthday)) {
                 throw new IllegalValueException(MESSAGE_BIRTHDAY_CONSTRAINTS);
