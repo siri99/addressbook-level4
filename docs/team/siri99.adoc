@@ -147,6 +147,7 @@ with the import command.
 
 === Other contributions
 
+* Added a Birthday Field
 * Made Birthday Field optional
 * Synced Favourite List with Main List
 * Added Alias Command to each command.
