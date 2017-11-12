@@ -38,7 +38,17 @@ e.g. typing *`help`* and pressing kbd:[Enter] will open the help window.
 * *`exit`* : exits the app
 
 .  Refer to the link:#features[Features] section below for details of each command.
+// tag::theme[]
+=== Themes
 
+We provide two themes for the user:
+
+* Light
+* Dark
++
+image::themes.png[width="790"]
++
+// tag::theme[]
 == Features
 
 ====
@@ -178,13 +188,16 @@ Can be undone using `undo` normally.
 ****
 * Deletes the person
 ****
+// tag::homeCommand[]
+=== Going back to home panel : `home`
 
-=== Back to home browser panel : `home`
-
-Changes the browser panel back to home page. +
+Goes back to home panel. +
 
 Format: `home`
 
+// end::homeCommand[]
+
+// tag::avatar[]
 === Adding avatar image for person: `avatar`
 
 Adds an avatar image for person by specifying image URL. +
@@ -193,15 +206,18 @@ Format: `avatar INDEX [u/Image URL]`
 
 ****
 * The index refers to the index number of person
-* The Image URL must be valid url link and end with image file extension such as .jpg .png
+* The Image URL must be valid url link and end with image file extension such as .jpg .png .gif
 * The default Image URL is: https://www.gravatar.com/avatar/null
 ****
 
 Example:
 
-* `avatar 1 u/https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg` +
-Adds avatar image[https://i.pximg.net/img-master/img/2016/04/24/00/10/14/56497628_p0_master1200.jpg] for
+* `avatar 1 u/http://139.59.227.237/public/default.jpg`
+
+Adds avatar image[http://139.59.227.237/public/default.jpg] for
 1st person in shown list. +
+
+// end::avatar[]
 
 === Selecting a person : `select` or `s`
 
@@ -397,6 +413,7 @@ e.g. `find James Jake` or `f James Jake`
 * *List* : `list` or `l`
 * *Help* : `help`
 * *Home* : `home`
+* *Avatar* : `avatar INDEX [u/IMAGE URL]`
 * *Select* : `select INDEX` or `s INDEX` +
 e.g.`select 2` or `s 2`
 * *Sort* : `sort` or `sort FILTER` or `so FILTER` +
