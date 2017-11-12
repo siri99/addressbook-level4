@@ -269,7 +269,7 @@ On being clicked, Star shaped button calls the `favlist` command and shows a lis
 
 === Adding a person to Favourite List : `fav` or `fv`
 
-Adds the person identified by the index number used in the last person listing
+Adds the person identified by the index number used in main list
 to the favourite list. +
 Format: `fav INDEX`
         `fv INDEX`
