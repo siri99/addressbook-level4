@@ -20,6 +20,19 @@ Observe that the text updates to inform you of successful entry, and Nancy Wheel
 observable by scrolling down. Note that since you have not added the optional fields: birthday, score and tags - score and tag
 do not appear, and her birthday description below phone number on the PersonCard says 'No Birthday Listed'.
 
+=== Edit a person
+Enter the command _edit 1 p/91234567 s/10_
+Displays the erorr message as score must be between 0 and 9 inclusive.
+
+Enter the command _edit 1 p/91234567 b/29/02/2015_
+Displays the erorr message as a non-leap year will not have 29th Feb.
+
+Enter the command _edit 1 p/91234567 b/29/20/2015_
+Displays the erorr message as a 20 is not a valid month number.
+
+Enter the command _edit 1 p/91234567 b/19/05/2015 s/8_
+The person at index 1 now has an updated birthday and score field.
+
 === Add an avatar to a person
 
 Enter the command _avatar 7 u/https://upload.wikimedia.org/wikipedia/commons/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg_ +
