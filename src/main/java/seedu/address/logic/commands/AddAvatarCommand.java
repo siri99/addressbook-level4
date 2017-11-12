@@ -41,9 +41,11 @@ public class AddAvatarCommand extends Command {
             + "[u/image URL]\n"
             + "Example of using online image: " + COMMAND_WORD + " 1 "
             + PREFIX_IMAGE_URL
-            + "https://www.gravatar.com/avatar/null\n"
-            + "Example of using local image: " + COMMAND_WORD + " 1 "
-            + PREFIX_IMAGE_URL + "https://www.gravatar.com/avatar/null\n";
+            + "http://139.59.227.237/public/avatar3.jpg\n"
+            + "Example of using online image: " + COMMAND_WORD + " 2 "
+            + PREFIX_IMAGE_URL + "http://139.59.227.237/public/avatar2.jpg\n"
+            + "Example of using online image: " + COMMAND_WORD + " 3 "
+            + PREFIX_IMAGE_URL + "http://139.59.227.237/public/avatar1.jpg\n";
 
     public static final String MESSAGE_UPDATE_AVATAR_PIC_SUCCESS = "Update avatar picture for Person: %1$s";
     public static final String MESSAGE_NOT_UPDATED = "Please enter a valid image URL.";
@@ -99,7 +101,7 @@ public class AddAvatarCommand extends Command {
                     throw new CommandException("avatars directory failed to be created");
                 }
             }
-            if (personToUpdateAvatarPic.getAvatarPic().toString().compareTo(Avatar.DEFAULT_URL) == 0) {
+            if (personToUpdateAvatarPic.getAvatarPic().toString() != "") {
 
                 /*
                 *  Validates avatar image
@@ -122,8 +124,7 @@ public class AddAvatarCommand extends Command {
                 }
 
             } else {
-                newFile = personToUpdateAvatarPic.getAvatarPic().toString();
-                newFile = urlToPath(newFile);
+                newFile = Avatar.DEFAULT_URL;
             }
             if (!Files.exists(Paths.get(newFile))) {
                 try {
@@ -160,12 +161,10 @@ public class AddAvatarCommand extends Command {
             throw new AssertionError("The target person cannot be missing");
         }
 
-        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) != 0) {
-            model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        }
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
-        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic);
-        System.out.println(model.getFilteredPersonList().get(index.getZeroBased()).getAvatarPic().source);
+        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic.getName());
+
         if (isOldFileDeleted) {
             return new CommandResult(resultMessage);
         } else {
