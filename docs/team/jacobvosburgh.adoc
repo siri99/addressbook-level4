@@ -129,4 +129,3 @@ Instead of opening an edit window, pressing the edit button should turn the pers
 
 * Provided feedback to W13-B4 (https://github.com/CS2103AUG2017-W13-B4/main/issues/254)
 * Wrote the team testing guide for manual testing.
-
