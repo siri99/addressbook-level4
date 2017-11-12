@@ -150,6 +150,7 @@ with the import command.
 * Synced Favourite List with Main List
 * Added Alias Command to each command.
 * Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W09-B1/main/issues/120)
+* Added few tests to TestScript.
 * Wrote additional tests to increase coverage (SortCommand Test, SortCommandParserTest, BirthdayTest, FavCommandTest,
 FavCommandParserTest, UnfavCommandTest, UnFavCommandParserTest, FavouriteListCommandTest etc.
 * Also expanded tests such
