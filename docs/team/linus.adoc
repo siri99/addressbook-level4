@@ -101,7 +101,7 @@ include::../UserGuide.adoc[tag=theme]
 
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=userstories]
+include::../DeveloperGuide.adoc[tag=userstories2]
 
 #End of Extract#
 ---
@@ -110,7 +110,7 @@ include::../DeveloperGuide.adoc[tag=userstories]
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../DeveloperGuide.adoc[tag=usecases]
+include::../DeveloperGuide.adoc[tag=usecases2]
 
 #End of Extract#
 

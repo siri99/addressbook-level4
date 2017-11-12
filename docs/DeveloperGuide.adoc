@@ -345,40 +345,18 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
-// tag::AddAvatarCommand[]
-=== Add Avatar mechanism
-
-The feature is to get avatar image through url link and store the image into local directory called avatar.
-At the same time, updates avatar node in current person xml nodes with the image location.
-
-The command to add avatar image is “avatar INDEX u/Image URL”.
-
-// end::AddAvatarCommand[]
-
-// tag::homeCommand[]
-=== Home command mechanism
-
-The feature is implemented in a similar way to the 'Select' feature.
-
-The command is to help user go back to home browser panel.
-
-image::LogicClassDiagram.png[width="800"]
-
-// end::homeCommand[]
-
 ---
 // tag::favouritelist[]
 === Favourite List mechanism
 
 The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
-instead of name to add/remove a person from the Favourite List. While the delete (eg. ‘delete 2’)
-command removes that particular Person Object from the list, the favourite command (eg. ‘fav 3’) adds the person at that index to the favourite List.
+instead of name to add/remove a person from the Favourite List.
 
 The Favourite List feature is split into 3 commands:
 
-1.	`favlist` – This command displays the favourite list. The command favlist raises an event called ChangeInternalListEvent which is handled by displaying the favourite list if the String argument passed to the handler is 'favlist' or 'fl'.
-2.	`fav` – This command calls the FavCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
-3.	`unfav` – This command calls the UnfavCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the Favourite List (while making sure there are no duplicate entries).
+1.	`favlist` – This command displays the favourite list. The command favlist raises an event called ChangeInternalListEvent which is handled and then displays the favourite list.
+2.	`fav` – This command calls the FavCommandParser class which parses the input arguments and creates a FavCommand object, this class then adds the number at the index entered by the user into the favourite list (while making sure there are no duplicate entries).
+3.	`unfav` – This command calls the UnfavCommandParser class which parses the input arguments and creates a UnfavCommand object, this class then removes the number at the index entered by the user from the favourite list.
 
 The command to view the favourite list is “favlist” or “fl”.
 
@@ -393,7 +371,7 @@ _Figure 3.2.2 : Sequence Diagram of the interaction between ModelManager and Add
 
 This `Logic` interface is used to obtain the copy of the Favourite list when required. As seen by Figure 3.2.1 and Figure 3.2.2 above, to obtain the current favourite list of the address book, "favlist" or “fl” string is first recorded by the `Command Box` and then passed to the Logic interface for execution.
 
-The Logic Interface uses Logic Manager (the class that implements the Logic methods) to package the String command received by it as a Command object. The respective command (in this case the favlist command) is executed in the Logic Manager class. Instructions as follows:
+The Logic Interface uses Logic Manager to package the String command received by it as a Command object. The respective object (in this case the FavouriteListCommand object) is executed in the Logic Manager class. Instructions as follows:
 
 [source,java]
 ----
@@ -405,7 +383,9 @@ public CommandResult executeUndoableCommand() {
 
 ----
 
-The favlist command calls the calls the getFilteredFavoritePersonList() method residing in the `Logic` interface. LogicManager successively calls the Model interface. `Model` uses ModelManager class to return the filteredFavouritePersons list back to the calling method. Before being passed back, filteredFavouritePersons list calls getFavouritePersonList() method of AddressBook class which then calls the getFavouritePersonList() method in `XmlSerializbleAddressBook`. The XmlSerializbleAddressBook  method loads the stored contacts from favourite list and returns it to AddressBook which then returns it to ModelManager. Thus the `filteredFavouritePersons` is now updated with the favourite contacts which are then displayed to the user by calling the changeListTo method which calls the `ChangeInternalListEvent` which is subsequently handled by other methods and the Favourite list is displayed on the personListPanel.
+The favlist command calls the calls the getFilteredFavoritePersonList() method residing in the `Logic` interface. LogicManager successively calls the Model interface. `Model` uses ModelManager class to return the filteredFavouritePersons list back to the calling method.
+
+Before being passed back, filteredFavouritePersons list calls getFavouritePersonList() method of AddressBook class which then calls the getFavouritePersonList() method in `XmlSerializbleAddressBook`. The XmlSerializbleAddressBook  method loads the stored contacts from favourite list and returns it to AddressBook which then returns it to ModelManager. Thus the `filteredFavouritePersons` is now updated with the favourite contacts which are then displayed to the user by calling the changeListTo method which calls the `ChangeInternalListEvent` which is subsequently handled by other methods and the Favourite list is displayed on the personListPanel.
 
 This implementation also supports `syncing` of the favourite list with the main list by deleting/editing the person in the favourite list if the person is deleted/edited respectively in the main list. The following code snippet enables this sync mechanism.
 ----
@@ -452,16 +432,15 @@ _Figure 3.2.4 : Sequence Diagram of the interaction between ModelManager and Add
 
 ==== Design Considerations
 
-**Aspect:** Use of other commands in Favourite list setup (Delete, Edit Command etc). +
+**Aspect:** Use of other commands in Favourite list setup (Delete, Edit, Sort Command etc). +
 **Alternative 1 (current choice):** Restrict users from using certain commands in favourite list.  +
 **Pros:** Users will never make a mistake. +
 **Cons:** Users need to go back to the main list whenever they want to edit/ delete a person.  +
-**Alternative 2:** Mention the specific list of commands that the user can use while in the favourite list in the +
-user guide  +
+**Alternative 2:** Mention the specific list of commands that the user can use while in the favourite list in the user guide  +
 **Pros:** Ease of implementation. No need to restrict commands in favourite list. +
-**Cons:** User might use commands for the wrong purpose. For example, the user might think deleting a person from +
- the favourite list will just remove the person from the favourite list, but in reality it will +
- delete the perso from the main list as well. The user might get confused between commands such +
+**Cons:** User might use commands for the wrong purpose. For example, the user might think deleting a person from
+ the favourite list will just remove the person from the favourite list, but in reality it will
+ delete the person from the main list as well. The user might get confused between commands such
  as delete and unfav.
 
 ---
@@ -502,8 +481,8 @@ switch (sortFilter) {
 image::SortCommandSequenceDiagram.PNG[width="800"]
 _Figure 3.3.1 : Sequence Diagram of the sort command_
 
-The Collections.sort method is used in sortPersonsByName, sortPersonsByBirthday and sortPersonsByScore in UniquePersonList +
-which Sorts the provided observable list using the given comparator.
+The Collections.sort method is used in sortPersonsByName, sortPersonsByBirthday and sortPersonsByScore in UniquePersonList
+which sorts the provided observable list using the given comparator.
 
 ----
 Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
@@ -521,7 +500,7 @@ Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
 FXCollections.sort(internalList, personComparator);
 ----
 // end::sort[]
-
+---
 // tag::find[]
 === Enhanced Find Command mechanism
 
@@ -551,7 +530,7 @@ containing the set of tags of each person and compares accordingly (implemented 
 **Alternative 1 (current choice):** Allow users to use find by name, substring of name, and tags in one command by simply typing Find followed by name or tag. Eg. Find Alice Mark friends +
 **Pros:** Users will not make a mistake. Convenient to use. +
 **Alternative 2:** Seperate the different find categories using labels such as '/n' for name and '/t' for tags. Eg. find n/Alice n/Mark t/friends +
-**Pros:** More clear Use of command as users are explicitly specifying whether they are searching for name or tag. +
+**Pros:** More clear use of command as users are explicitly specifying whether they are searching for name or tag. +
 **Cons:** Not convenient as users need to type in the labels for each name or tag they want to find.  +
 // end::find[]
 // tag::undoRedoButton[]
@@ -606,6 +585,27 @@ Opens a prompt that allows immediate adds to be performed without using the add 
 **Pros:** Makes it clear which fields are optionals.
 **Cons:** Leaving empty fields when filling in a new person is unintuitive.
 // end::addButton[]
+
+// tag::AddAvatarCommand[]
+=== Add Avatar mechanism
+
+The feature is to get avatar image through url link and store the image into local directory called avatar.
+At the same time, updates avatar node in current person xml nodes with the image location.
+
+The command to add avatar image is “avatar INDEX u/Image URL”.
+
+// end::AddAvatarCommand[]
+
+// tag::homeCommand[]
+=== Home command mechanism
+
+The feature is implemented in a similar way to the 'Select' feature.
+
+The command is to help user go back to home browser panel.
+
+image::LogicClassDiagram.png[width="800"]
+
+// end::homeCommand[]
 
 === Logging
 
@@ -984,92 +984,77 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
-|`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
+|`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App (implemented v1.0)
 
-|`* * *` |user |add a new person |
+|`* * *` |user |add a new person | add entries of new people (implemented v1.0)
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* * *` |user |delete a person |remove entries that I no longer need (implemented v1.0)
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list (implemented v1.0)
 // tag::userstories[]
 
-|`* *` |user |hide link:#private-contact-detail[private contact details] by default |minimize chance of someone else seeing them by accident
+|`* *` |user |hide private contact details |minimize chance of someone else seeing them by accident (coming in v2.0)
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`*` |user with many persons in the address book |sort persons by name |locate a person easily (implemented v1.3)
 
-|`* *` |novice user |use commands by using shortcuts (example 'f' instead of 'find') | I can use the features more easily/ fastly
+|`* *` |novice user |use commands by using shortcuts (example 'f' instead of 'find') | I can use the features more easily/ fastly (implemented v1.1)
 
-|`* * *` |novice user |be given suggestions for commands close to what I type when commands are entered incorrectly |I can learn quickly from my mistakes
+|`* * *` |novice user |be given suggestions for commands close to what I type when commands are entered incorrectly |I can learn quickly from my mistakes (coming in v2.0)
 
 |`*` |novice user |Log out of my own addressbook and into another |I can set up an account for my friend
 
-|`* *` |novice user |remove people by clicking on a 'remove' icon on the list |I can remove people easier
+|`* *` |novice user |delete people by clicking on a 'delete' button on the list |I can delete people easily (implemented v1.2)
 
-|`* *` |experienced user |edit people's details by double clicking on them in the list |I can modify details easily
+|`* *` |experienced user |edit people's details by using a edit button |I can modify details easily (implemented v1.3)
 
-|`* *` |novice user |search by tags |I can find my friends faster
+|`* *` |novice user |search by tags |I can find my friends faster (implemented v1.2)
 
 |`*` |experienced user |duplicate a person |When I discover my contact has an identical twin with whom he shares his name, home, and phone I can add him quickly
 
-|`* *` |experienced user |add some contacts to a favourite list |they are easier to find
+|`* *` |experienced user |add some contacts to a favourite list |they are easier to find (implemented v1.4)
 
-|`* *` |experienced user| add more labels to the find feature (more customized find)| I can add multiple conditions to find
+|`* *` |experienced user| add more labels to the find feature (more customized find)| I can add multiple conditions to find (implemented v1.3)
 
-|`* *` |novice user |sort list results by any keywords in addressbook |I can easily find the right information
+|`* *` |novice user |sort list results by any keywords in addressbook |I can easily find the right information (implemented v1.5)
 
 |`* *` |experienced user| check when the last time I logged in| I can make sure if my account is still secure
 
-|`* *` |experienced user| cselect and delete my historical operations| I can easily protect my privacy in case that other people might see it
+|`* *` |experienced user| select and delete my history| I can easily protect my privacy in case that other people might see it
 
 |`* *` |experienced user| create custom lists/folders like 'family', 'work' etc| I can organize contacts into folders so that it is more easy to retrieve
 
 |`*` |experienced user| can share a contact folder with another friend who is using addressbook| can have a shared database of contacts common to both of us
 
-|`* *` |experienced user| hide some contacts in the Addressbook (using a passwod etc)| I can store personal contacts which I might not want anyone to see
+|`*` |novice user |see a home window at the start of this program |it will be more convenient (implemented v1.4)
 
-|`*` |novice user |add a photo to a contact |just as an extra aesthetic feature
+|`* *` |experienced user| import other data into my addressbook| I can easily manage my all of my data (coming in v2.0)
 
-|`*` |novice user |see a nice loading animation at the start of this program |I will feel this program is more professional
-
-|`* *` |experienced user| import other data into my addressbook| I can easily manage my all of my data
-
-|`* *` |experienced user| export my data as csv, json, spreedsheet file| I can backup my data or make it clearer to view
+|`* *` |experienced user| export my data as csv, json, spreedsheet file| I can backup my data or send it to another app (coming in v2.0)
 
 |`* *` |experienced user| print all of my data | I can use them in real-life
 
-|`* *` |experienced user| change the theme | I can change the theme of the program based on my taste
-
-|`* *` |experienced user| upload avatar image | I can set up my profile image that I'd like to show to others
-
-|`* *` |forgetful user | be able to find people by substring of names | I can find people easily even when I don't remember their complete name
+|`* *` |forgetful user | be able to find people by substring of names | I can find people easily even when I don't remember their complete name (implemented v1.3)
 // end::userstories[]
+
+// tag::userstories2[]
+|`* *` |new user| return to home panel | I can go back to home panel after I check other people's information (implemented v1.3)
+
+|`* *` |experienced user| see the size of current list | I can see the size of the list without scrolling down (implemented v1.2)
+
+|`* *` |experienced user| change the theme | I can change the theme of the program based on my taste (implemented v1.3)
+
+|`* *` |experienced user| upload avatar image | I can set up my profile image that I'd like to show to others (implemented v1.4)
+// tag::userstories2[]
+
 |=======================================================================
-
-== UI Changes: Delete and Undo/Redo Buttons
-
-The improved UI makes use of three new buttons to perform tasks quickly and intuitively, without the use of the command line interface.
-
-The 'Delete' button, taking the form of a red 'X' appearing in each personCard shown in the PersonListPanel, allows users to quickly delete people from the list with a single click.
-This button is handled by the 'PersonCard' object, which now handles the `buttonEvent` it throws when clicked. This causes a call on `logic.execute()` on `delete` + the number of the card's index.
-This command can be undone/redone normally, and also triggers the correct `Deleted Person: ____` text to appear below the command line.
-It does this by raising a `NewResultAvailableEvent`, which is handled by the ResultDisplay.
-
-The 'Undo' and 'Redo' buttons now exist beside the command line at the top of the addressbook.
-Their position is not final, and the <Region> added to align them to the right currently prevents the command line from occupying most of the space it did before. This will be fixed in future versions.
-Like the 'Delete' button, they update the ResultDisplay with the 'Undo Successful!' notice, again by raising the same `NewResultAvailableEvent`.
-To match the style of the 'Delete' Button, future verions may use smaller buttons and forward/backwards arrows as often used as undo/redo buttons in text editors.
-
-It should be noted that while the buttons appear to function properly, they may not yet properly work with historySnapshot functions.
-This is because 'PersonCard' does not presently have the 'ListElementPointer' `historySnapshot`, which exists soley in commandBox, as that was previously the only place commands ran from.
-This could be fixed by extracting that functionality to a new class utilized by both 'PersonCard' and 'CommandBox' if that functionality is desired.
 
 [appendix]
 == Use Cases
 
 (For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
 
-[discrete]
-=== Use case: Delete person
+
+=== Use case: UC1 Delete person
 
 *MSS*
 
@@ -1095,7 +1080,8 @@ Use case ends.
 Use case resumes at step 2.
 
 // tag::usecases[]
-=== Use Case: UC1 Display Contacts after customized find (custom search)
+
+=== Use Case: UC2 Display Contacts after customized find (custom search)
 
 *MSS*
 
@@ -1163,7 +1149,10 @@ Use case ends.
 +
 Use case ends.
 
-=== Use Case: UC5 Adding avatar images to person profile
+// end::usecases[]
+
+// tag::usecases2[]
+=== Use Case: UC5 Adding avatar images to persons' profile
 
 *MSS*
 
@@ -1182,7 +1171,7 @@ Use case ends.
 +
 Use case ends.
 
-// end::usecases[]
+// end::usecases2[]
 
 [appendix]
 == Non Functional Requirements

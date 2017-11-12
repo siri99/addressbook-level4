@@ -24,66 +24,74 @@ import seedu.address.model.tag.Tag;
 public class SampleDataUtil {
 
     //@@author Linus
-    public static int NUM_OF_SAMPLE_DATA = 8;
-    public static String[] firstNames = {"Roy", "David", "Alex", "Linus", "Siri", "Hector", "Achilles", "Odysseus",
-            "Jack", "Donald"};
-    public static String[] lastNames = {"Herason", "Trump", "Thompson", "Curry", "Westbrook", "Harden", "O'niel",
-            "Clinton", "Obama", "Washington"};
-    public static String[] emails = {"gmail.com", "yahoo", "outlook", "hotmail", "qq.com", "sina.com"};
-    public static String[] tags = {"colleagues", "friends", "president", "students", "customers", "lawyers", "farmers"};
-    public static String[] birthdays = {"01/09/198", "03/08/197", "02/02/198", "31/12/198", "28/05/198", "03/02/198"};
+    private static String[] firstNames = {"Roy", "David", "Alex", "Linus", "Siri", "Hector", "Achilles", "Odysseus",
+        "Jack", "Donald"};
+    private static String[] lastNames = {"Herason", "Trump", "Thompson", "Curry", "Westbrook", "Harden", "O'niel",
+        "Clinton", "Obama", "Washington"};
+    private static String[] emails = {"gmail.com", "yahoo", "outlook", "hotmail", "qq.com", "sina.com"};
+    private static String[] tags = {"colleagues", "friends", "president", "students", "customers", "lawyers",
+        "farmers"};
+    private static String[] birthdays = {"01/09/198", "03/08/197", "02/02/198", "31/12/198", "28/05/198", "03/02/198"};
+
+    private static int sampleDataSize = 8;
 
     public static Person[] getSamplePersons() {
-            /*
-             *  Sample data
-             *  It generates 100 test data
-             * */
-            Random rand = new Random();
-            String firstName = null;
-            ArrayList<Person> persons = new ArrayList<Person>();
+        /*
+         *  Sample data
+         *  It generates 100 test data
+         * */
+        Random rand = new Random();
+        String firstName = null;
+        ArrayList<Person> persons = new ArrayList<Person>();
 
-                for (int i = 0; i < NUM_OF_SAMPLE_DATA; i++) {
+        for (int i = 0; i < sampleDataSize; i++) {
 
-                    firstName = firstNames[i % (NUM_OF_SAMPLE_DATA)];
+            firstName = firstNames[i % (sampleDataSize)];
 
-                    for (int j = 0; j < NUM_OF_SAMPLE_DATA - 1; j++) {
+            for (int j = 0; j < sampleDataSize - 1; j++) {
 
-                        try {
+                try {
 
-                            persons.add(generatePerson(firstName, j, rand));
+                    persons.add(generatePerson(firstName, j, rand));
 
-                        } catch (IllegalValueException e) {
+                } catch (IllegalValueException e) {
 
-                            throw new AssertionError("sample data cannot be invalid", e);
+                    throw new AssertionError("sample data cannot be invalid", e);
 
-                        }
-                    }
                 }
-                return persons.toArray(new Person[persons.size()]);
+            }
+        }
+        return persons.toArray(new Person[persons.size()]);
     }
 
+    /**
+     * Returns a tag set containing the list of strings given baesd on input.
+     */
     public static Set<Tag> generateTags(int i) throws IllegalValueException {
 
         HashSet<Tag> addTags = new HashSet<>();
-        for(int j = 0; j < i; j++){
+        for (int j = 0; j < i; j++) {
             addTags.add(new Tag(tags[j]));
         }
         return addTags;
     }
 
+    /**
+     * Returns a person object that generated randomly.
+     */
     public static Person generatePerson(String firstName, int j, Random rand) throws IllegalValueException {
 
         /*
         *  Those numbers are totally arbitrary for generating sample data
         * */
-        String lastName = lastNames[j % (NUM_OF_SAMPLE_DATA-2)];
+        String lastName = lastNames[j % (sampleDataSize - 2)];
         String phone = Integer.toString(00000 + rand.nextInt(90000000));
-        String email = emails[j % (NUM_OF_SAMPLE_DATA-2)];
+        String email = emails[j % (sampleDataSize - 2)];
         String units = Integer.toString(rand.nextInt(900));
         String score = Integer.toString(rand.nextInt(9));
         Set<Tag> tag = generateTags(j);
 
-        if(j / 3 == 1){
+        if (j / 3 == 1) {
             return new Person(new Name(firstName + " " + lastName), new Phone(phone),
                     new Birthday("No Birthday Listed"),
                     new Email(firstName + "@" + email),
@@ -98,7 +106,10 @@ public class SampleDataUtil {
 
     }
 
-    public static String generateBirthday(int i){
+    /**
+     * Returns a birthday string based on input.
+     */
+    public static String generateBirthday(int i) {
         int n = i % 6;
         return birthdays[n] + Integer.toString(n);
     }

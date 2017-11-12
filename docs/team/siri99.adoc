@@ -8,9 +8,7 @@ UniBook is a desktop address book application that allows users to conveniently 
 It is mainly targeted towards university students. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 It is written in Java, and has about 6 kLoC.
 
-*Code contributed*: +
-[https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/main/siri99.md] +
- [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/test/siri99.md]
+*Code contributed*: [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/main/siri99.md[Functional code]] [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/test/siri99.md[Test code]]
 
 === Enhancement Added: Favourite List
 
@@ -69,7 +67,7 @@ Eg. If the user only remembers that a person's name starts with a certain alphab
 search for the contact.
 
 Sort by birthday allows the user to view all the contacts in ascending order of birthdays.
-Eg. The user can view if the birthdays of the people in his contacts are coming up.
+Eg. The user can view if the birthdays of the people in his contacts are coming up and wish them on time.
 
 There are four ways to use the command:
 
@@ -153,24 +151,26 @@ with the import command.
 * Added Alias Command to each command.
 * Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W09-B1/main/issues/120)
 * Wrote additional tests to increase coverage (SortCommand Test, SortCommandParserTest, BirthdayTest, FavCommandTest,
-FavCommandParserTest, UnfavCommandTest, UnFavCommandParserTest, FavouriteListCommandTest etc. Also expanded tests such
+FavCommandParserTest, UnfavCommandTest, UnFavCommandParserTest, FavouriteListCommandTest etc.
+* Also expanded tests such
 as AddCommandTest, EditCommandTest, AddCommandParserTest, EditCommandParserTest, CommandTestUtil, ParserUtilTest,
-AddCommandSystemTest and EditCommandSystemTest.
+AddCommandSystemTest and EditCommandSystemTest to include new features such as Birthday Field, Sort Command etc.
 
 (Pull requests https://github.com/CS2103AUG2017-T13-B2/main/pull/75, https://github.com/CS2103AUG2017-T13-B2/main/pull/47)
 
 * Added User Stories
----
 
 #Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=userstories]
 
 #End of Extract#
----
-* Added Use Cases
 
 ---
+
+* Added Use Cases
+
+
 #Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=usecases]
@@ -180,7 +180,6 @@ include::../DeveloperGuide.adoc[tag=usecases]
 ---
 
 * Added Non-Functional Requirements
----
 
 #Start of Extract [from: Developer Guide]#
 

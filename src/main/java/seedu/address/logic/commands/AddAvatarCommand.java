@@ -50,6 +50,8 @@ public class AddAvatarCommand extends Command {
     public static final String MESSAGE_UPDATE_AVATAR_PIC_SUCCESS = "Update avatar picture for Person: %1$s";
     public static final String MESSAGE_NOT_UPDATED = "Please enter a valid image URL.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_IS_DEFAULT = "You must specify the Avatar URL\n"
+            + "Format: avatar INDEX u/Image url";
 
     private final Index index;
     private final Avatar avatar;
@@ -81,7 +83,12 @@ public class AddAvatarCommand extends Command {
         Person updatedAvatarPicPerson = new Person(personToUpdateAvatarPic);
         Avatar newAvatar;
 
-        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) == 0) {
+        if(avatar.toString().equalsIgnoreCase(Avatar.DEFAULT_URL)){
+            throw new CommandException(MESSAGE_IS_DEFAULT);
+        }
+
+        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) == 0 && avatar.toString() != "") {
+
             String oldFile = personToUpdateAvatarPic.getAvatarPic().toString();
             if (oldFile.compareTo(Avatar.DEFAULT_URL) != 0) {
                 oldFile = urlToPath(oldFile);
@@ -92,8 +99,10 @@ public class AddAvatarCommand extends Command {
                 }
             }
             newAvatar = avatar;
+
         } else {
-            String newFile;
+            String newFile = Avatar.DEFAULT_URL;
+
             if (!Files.isDirectory(Paths.get("avatars"))) {
                 try {
                     Files.createDirectory(Paths.get("avatars"));
@@ -101,6 +110,7 @@ public class AddAvatarCommand extends Command {
                     throw new CommandException("avatars directory failed to be created");
                 }
             }
+
             if (personToUpdateAvatarPic.getAvatarPic().toString() != "") {
 
                 /*
@@ -115,17 +125,16 @@ public class AddAvatarCommand extends Command {
 
                 List validExtension = Arrays.asList("jpg", "jpeg", "png", "gif", "JPG", "JPEG", "PNG", "GIF");
                 if (validExtension.contains(imgExtension)) {
-
                     newFile = "avatars/" + new Date().getTime() + '.' + imgExtension;
-
                 } else {
-
                     newFile = "avatars/" + new Date().getTime() + ".png";
                 }
 
             } else {
-                newFile = Avatar.DEFAULT_URL;
+                throw new CommandException(MESSAGE_NOT_UPDATED);
             }
+
+
             if (!Files.exists(Paths.get(newFile))) {
                 try {
                     Files.createFile(Paths.get(newFile));
@@ -158,7 +167,7 @@ public class AddAvatarCommand extends Command {
         } catch (DuplicatePersonException dpe) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         } catch (PersonNotFoundException e) {
-            throw new AssertionError("The target person cannot be missing");
+            throw new AssertionError("The target person is missing");
         }
 
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -168,7 +177,7 @@ public class AddAvatarCommand extends Command {
         if (isOldFileDeleted) {
             return new CommandResult(resultMessage);
         } else {
-            return new CommandResult(String.join("\n", resultMessage, "Old image not deleted"));
+            return new CommandResult(String.join("\n", resultMessage, "File already exists"));
         }
     }
 
