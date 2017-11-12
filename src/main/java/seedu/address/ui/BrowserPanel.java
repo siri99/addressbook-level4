@@ -67,7 +67,6 @@ public class BrowserPanel extends UiPart<Region> {
         loadPage(addressPage.toExternalForm());
     }
 
-
     public void loadPage(String url) {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
@@ -106,6 +105,7 @@ public class BrowserPanel extends UiPart<Region> {
         browser.getEngine().getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
             if (newState == Worker.State.SUCCEEDED && backToHomePage == 0) {
                 WebEngine panel = browser.getEngine();
+
                 panel.executeScript("document.setName(\"" + name + "\")");
                 panel.executeScript("document.setAddress(\"" + address + "\")");
                 panel.executeScript("document.setEmail(\"" + emails + "\")");
