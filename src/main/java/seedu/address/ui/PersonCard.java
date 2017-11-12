@@ -88,7 +88,6 @@ public class PersonCard extends UiPart<Region> {
     private String mapTagToColor(String tagValue) {
         if (!colorMapping.containsKey(tagValue)) {
             int x = Character.getNumericValue(tagValue.charAt(0)) + 87; //magic number to match to javascript char->int
-            logger.info(tagValue + String.valueOf(x));
             colorMapping.put(tagValue, colors[x % 6]); //colors.length]);
         }
         return colorMapping.get(tagValue);
