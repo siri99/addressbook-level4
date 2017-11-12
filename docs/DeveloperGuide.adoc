@@ -347,6 +347,7 @@ image::UndoRedoActivityDiagram.png[width="200"]
 
 ---
 // tag::favouritelist[]
+
 === Favourite List mechanism
 
 The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
@@ -576,7 +577,11 @@ Opens a prompt that allows immediate edits to be performed without using the edi
 
 === Add Button
 
-Opens a prompt that allows immediate adds to be performed without using the add command's complex syntax.
+Opens a prompt that allows immediate adds to be performed without using the add command's complex syntax. +
+Functions via calls of the 'add()' command.
+
+image::UiComponentAddButtonSequenceDiagram.png[width="600"]
+_Figure 3.11.1 : Sequence Diagram of Add Button Functionality_
 
 === Design Considerations
 
@@ -630,6 +635,30 @@ image::BrowserPanel1.png[width="800"]
 *Person's Profile*
 
 image::BrowserPanel2.png[width="800"]
+
+=======
+// tag::GroupScore[]
+=== Group Score mechanism
+
+The group score parameter allows the user to attach an optional group score from 0-9
+to persons in the addressbook, which is meant to reflect how valuable these persons would
+be in a group. For best user experience, 9 should correspond to most valuable and 0 to least valuable,
+as the sort command will sort from highest to lowest, when sorting by Group Score.
+
+The group score is implemented much like the other parameters.
+This means, it has its own score class that mostly checks if the given
+input is valid, and initializes a score object if that is the case. +
+Furthermore, to make the Group Score optional, when the `AddCommandParser` calls
+the `parseScore` method in the `ParserUtil` class, if no Group Score input has been received
+the `parseScore` method will instantiate a Score object with an empty string, and return that.
+A sequence diagram of how a Score object is instantiated by the `AddCommandParser` can be seen below.
+
+image::Hennings_diagram.png[width="800"]
+
+Lastly, it should be mentioned that the core functionality of the Group Score parameter
+is its integration with the sort command, which was expanded upon under the `sort command` section.
+
+// end::GroupScore[]
 
 === Logging
 

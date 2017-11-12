@@ -12,13 +12,13 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 == Project Team
 
 === Jacob Christopher Vosburgh
-image::jvossy.png[width="150", height="514" align="left"]
+image::jvossy.png[width="150", align="left"]
 {empty} [https://github.com/jvossy[github]]
 {empty} [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/docs/team/jacobvosburgh.adoc[portfolio]]
 
 Role: Developer
 
-Responsibilities: UI
+Responsibilities: UI, Manual Testing
 
 '''
 
