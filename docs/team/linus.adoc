@@ -3,12 +3,44 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== Project: AddressBook - Level 4
-AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+== Project: UniBook - To manage your wonderful uni life
+UniBook is a desktop address book application used for manage your uni friends information. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
-*Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] {give links to collated code files}
+*Code contributed*: [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/main/Linus.md[Functional code]] [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/test/Linus.md[Test code]]
 
-=== Enhancement Added: homeCommand
+=== Enhancement Added: Avatar Command
+
+==== External behavior
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=homeCommand]
+
+#End of Extract#
+
+---
+
+==== Justification
+Add avatar command gives the user function that they can upload their avatar image by
+specifying the URL of the image.
+
+Example command:
+
+1. avatar INDEX [u/Image URL] - Adds avatar image for the person who has the index number
+
+==== Implementation
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../UserGuide.adoc[tag=avatar]
+
+#End of Extract#
+
+---
+
+=== Enhancement Added: Home Command
 
 ==== External behavior
 
@@ -39,36 +71,21 @@ include::../DeveloperGuide.adoc[tag=homeCommand]
 
 ---
 
-=== Enhancement Added: Add Avatar command
+=== Enhancement Added: Theme Menu
 
 ==== External behavior
+---
+
+The user can choose 2 different types of theme for Addressbook
+* Black (Default)
+* Light
 
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=homeCommand]
+include::../UserGuide.adoc[tag=theme]
 
 #End of Extract#
-
----
-
-==== Justification
-Add avatar command gives the user function that they can upload their avatar image by
-specifying the URL of the image.
-
-Example command:
-
-1. avatar INDEX [u/Image URL] - Adds avatar image for the person who has the index number
-
-==== Implementation
-
----
-#Start of Extract [from: Developer Guide]#
-
-include::../DeveloperGuide.adoc[tag=AddAvatarCommand]
-
-#End of Extract#
-
 ---
 
 === Other contributions
@@ -77,8 +94,8 @@ include::../DeveloperGuide.adoc[tag=AddAvatarCommand]
 * Added theme changing menu. User can change the theme of Unibook based on their tastes. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/51)
 * Added status bar at the bottom of personList panel to show the size of current personList. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/12)
 * Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W13-B4/main/issues/253)
-* Wrote additional tests to increase coverage (AddAvatarCommand Test, HomeCommandTest, etc).
-
+* Wrote additional tests to increase coverage (AddAvatarCommand Test, HomeCommandTest, AvatarTest, StatusBarTest etc)
+* Added User cases (Link: https://github.com/CS2103AUG2017-T13-B2/main/projects/1)
 * Added User Stories
 ---
 
@@ -94,17 +111,6 @@ include::../DeveloperGuide.adoc[tag=userstories]
 #Start of Extract [from: Developer Guide]#
 
 include::../DeveloperGuide.adoc[tag=usecases]
-
-#End of Extract#
-
----
-
-* Added Non-Functional Requirements
----
-
-#Start of Extract [from: Developer Guide]#
-
-include::../DeveloperGuide.adoc[tag=nfr]
 
 #End of Extract#
 

@@ -12,14 +12,15 @@ public class SortCommand extends Command {
     public static final String COMMAND_WORD_ALIAS = "so";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the address book in selected format.\n"
-            + "Example: " + COMMAND_WORD + " : default sorts in alphabhetical order\n"
+            + "Example: " + COMMAND_WORD + " : default sorts in alphabhetical order \n"
             + "Example: " + COMMAND_WORD + " name : sorts in alphabhetical order \n"
             + "Example: " + COMMAND_WORD + " birthday or " + COMMAND_WORD + " b : sorts in ascending order"
-            + " of birthdays";
+            + " of birthdays \n"
+            + "Example: " + COMMAND_WORD + " score : sorts in descending order of scores";
 
-    public static final String MESSAGE_SUCCESS_NAME = "Sorted successfully by Name, Listing all persons below";
+    public static final String MESSAGE_SUCCESS_NAME = "Sorted successfully by Name, listing all persons below";
 
-    public static final String MESSAGE_SUCCESS_BIRTHDAY = "Sorted successfully by Birthdays, Listing all persons below";
+    public static final String MESSAGE_SUCCESS_BIRTHDAY = "Sorted successfully by Birthdays, listing all persons below";
 
     //@@author Henning
     public static final String MESSAGE_SUCCESS_SCORE = "Sorted successfully by Group Scores, listing all persons below";

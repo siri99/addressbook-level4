@@ -9,7 +9,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.AddAvatarCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Avatar;
 import seedu.address.model.person.Person;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -43,10 +42,6 @@ public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
             ParserUtil.parseImageUrl(argMultimap.getValue(PREFIX_IMAGE_URL)).ifPresent(updatedPerson::setAvatarPic);
         } catch (IllegalValueException ive) {
             throw new ParseException(ive.getMessage(), ive);
-        }
-
-        if (updatedPerson.getAvatarPic().toString().compareTo(Avatar.DEFAULT_URL) == 0) {
-            throw new ParseException(AddAvatarCommand.MESSAGE_NOT_UPDATED);
         }
 
         return new AddAvatarCommand(index, updatedPerson.getAvatarPic());

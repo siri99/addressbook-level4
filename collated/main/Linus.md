@@ -1,5 +1,6 @@
 # Linus
 <<<<<<< HEAD
+<<<<<<< HEAD
 ###### \java\seedu\address\commons\events\ui\BrowserJumpToHomePage.java
 =======
 ###### /java/seedu/address/commons/events/ui/BrowserJumpToHomePage.java
@@ -10,27 +11,58 @@ package seedu.address.commons.events.ui;
 import java.net.URL;
 
 import seedu.address.commons.events.BaseEvent;
+=======
+###### /resources/view/StatusBarFooter.fxml
+``` fxml
+        <?import org.controlsfx.control.StatusBar?>
+        <?import javafx.scene.layout.ColumnConstraints?>
+        <?import javafx.scene.layout.GridPane?>
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
 
-/**
- * Represents the view change in the browser panel
- */
-public class BrowserJumpToHomePage extends BaseEvent {
+<GridPane styleClass="grid-pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<columnConstraints>
+  <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100" />
+  <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="100" />
+</columnConstraints>
+<StatusBar styleClass="anchor-pane" fx:id="syncStatus" />
+<StatusBar styleClass="anchor-pane" fx:id="saveLocationStatus" GridPane.columnIndex="1" nodeOrientation="RIGHT_TO_LEFT" />
+</GridPane>
+```
+###### /resources/view/StatusBarFooter.fxml
+``` fxml
 
-    private URL url;
+```
+###### /resources/view/default.html
+``` html
+<html>
+<title>Home Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
-    public BrowserJumpToHomePage(URL url) {
-        this.url = url;
+<style type="text/css">
+    html {
+        height: 100%;
+        width: 100%;
     }
 
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
+    body {
+        height: 100%;
+        width: 100%;
+        margin: 0px;
+        padding: 0px
     }
 
-    public URL getHomeUrl() {
-        return url;
+    img {
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
     }
 
+<<<<<<< HEAD
 }
 ```
 <<<<<<< HEAD
@@ -50,16 +82,21 @@ public class BrowserJumpToHomePage extends BaseEvent {
 
     public PersonPanelSelectionChangedEvent(PersonCard newSelection) {
         this.newSelection = newSelection;
+=======
+    strong {
+        font-size: 18px;
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+    }
+    p {
+        word-break: break-all;
     }
 
-    @Override
-    public String toString() {
-        return this.getClass().getSimpleName();
+    .container{
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
     }
-
-    public PersonCard getNewSelection() {
-        return newSelection;
-    }
+<<<<<<< HEAD
 
 ```
 <<<<<<< HEAD
@@ -70,6 +107,12 @@ public class BrowserJumpToHomePage extends BaseEvent {
 ``` java
     public int getBackToHomePageValue() {
         return this.backToHomePageValue;
+=======
+    .row{
+        margin: 0px;
+        padding: 0px;
+        height: 100%;
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
     }
 ```
 <<<<<<< HEAD
@@ -81,6 +124,7 @@ public class BrowserJumpToHomePage extends BaseEvent {
 
 }
 ```
+<<<<<<< HEAD
 <<<<<<< HEAD
 ###### \java\seedu\address\logic\commands\HomeCommand.java
 =======
@@ -273,46 +317,108 @@ public class AddAvatarCommand extends Command {
 ```
 ###### /java/seedu/address/logic/commands/HomeCommand.java
 >>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### \java\seedu\address\logic\commands\AddAvatarCommand.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
 ``` java
-package seedu.address.logic.commands;
-
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
-import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
-import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
+=======
+</style>
 
-import java.net.URL;
+<body>
 
-import seedu.address.MainApp;
-import seedu.address.commons.core.EventsCenter;
-import seedu.address.commons.events.ui.BrowserJumpToHomePage;
+<!-- First Grid: Picture & Contact Info -->
+<div class="row">
+    <div class="card col-4">
+        <img class="card-img-top" src="../images/bg.jpeg" alt="Card image cap">
+        <div class="card-body">
 
-/**
- * Goes back to home page
- */
-public class HomeCommand extends Command {
+            <strong>
+                <h3>Project Name: Unibook</h3>
+                <h3>Current Version: <span class='badge badge-warning'>v1.5</span></h3>
+                <p>License: <span class='badge badge-info'>MIT</span> Build: <span class='badge badge-success'>passing</span> codacy: <span class='badge badge-primary'>A</span></p>
+                <p>UI Design: Linus, Vos</p>
+                <p>Function implement: Sirisha, Henning</p>
+                <p>Tutorial: T13-B2</p>
+                <p>Last updated: 2017/11/09</p>
+            </strong>
 
-    public static final String COMMAND_WORD = "home";
+        </div>
+    </div>
 
-    public static final String MESSAGE_SUCCESS = "Successfully went back to home page";
+    <div class="jumbotron jumbotron-fluid col-8" style="padding: 20px; background: #f7f7f7">
+        <h1 style="text-align: center"><b>Unibook Commands</b></h1>
 
-    @Override
-    public CommandResult execute() {
-        model.changeListTo(COMMAND_WORD);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        <div class="card border-primary mb-3">
+            <div class="card-header">Home command</div>
+            <div class="card-body text-primary">
+                <h4 class="card-title">Goes back to the home panel. </h4>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3">
+            <div class="card-header">Avatar command</div>
+            <div class="card-body text-info">
+                <h4 class="card-title">Adds an avatar image for selected person. </h4>
+                <p class="card-text">Parameters: INDEX u/Image URL</p>
+            </div>
+        </div>
+        <div class="card border-success mb-3">
+            <div class="card-header">Add command</div>
+            <div class="card-body text-success">
+                <h4 class="card-title">Adds a person to the address book. </h4>
+                <p class="card-text">Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...</p>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3">
+            <div class="card-header">Delete command</div>
+            <div class="card-body text-secondary">
+                <h4 class="card-title">Deletes the person identified by the index number used in the last person listing.</h4>
+                <p class="card-text">Parameters: INDEX (must be a positive integer)</p>
+            </div>
+        </div>
+        <div class="card border-warning mb-3">
+            <div class="card-header">Find command</div>
+            <div class="card-body text-primary">
+                <h4 class="card-title">Finds persons whose names contain any of the given keywords.</h4>
+                <p class="card-text">Parameters: find KEYWORD [MORE_KEYWORDS]...</p>
+            </div>
+        </div>
+        <div class="card border-danger mb-3">
+            <div class="card-header">Clear command</div>
+            <div class="card-body text-danger">
+                <h4 class="card-title">Clears all entries from the address book.</h4>
+            </div>
+        </div>
+        <div class="card border-warning mb-3">
+            <div class="card-header">Undo command</div>
+            <div class="card-body text-warning">
+                <h4 class="card-title">Restores the address book to the state before the previous undoable command was executed.</h4>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3">
+            <div class="card-header">Redo command</div>
+            <div class="card-body text-info">
+                <h4 class="card-title">Reverses the most recent undo command.</h4>
+            </div>
+        </div>
 
-        URL url = MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE);
-        EventsCenter.getInstance().post(new BrowserJumpToHomePage(url));
-
-        return new CommandResult(MESSAGE_SUCCESS);
-    }
-
+<<<<<<< HEAD
 }
 ```
 <<<<<<< HEAD
 ###### \java\seedu\address\logic\commands\HomeCommand.java
 ``` java
+=======
+    </div>
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
 
+</div>
+</body>
+</html>
 ```
+<<<<<<< HEAD
 ###### \java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
         case HomeCommand.COMMAND_WORD:
@@ -394,32 +500,55 @@ public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
         case ListCommand.COMMAND_WORD:
         case ListCommand.COMMAND_WORD_ALIAS:
             return new ListCommand();
+=======
+###### /resources/view/LightTheme.css
+``` css
+.root {
+    -fx-accent: derive(#f7f5f4, -10%);
+    -fx-focus-color: derive(#f7f5f4, -10%);
+}
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
 
-        case HistoryCommand.COMMAND_WORD:
-        case HistoryCommand.COMMAND_WORD_ALIAS:
-            return new HistoryCommand();
-
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
-
-        case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
-
-        case UndoCommand.COMMAND_WORD:
-        case UndoCommand.COMMAND_WORD_ALIAS:
-            return new UndoCommand();
-
-        case RedoCommand.COMMAND_WORD:
-        case RedoCommand.COMMAND_WORD_ALIAS:
-            return new RedoCommand();
-
-        default:
-            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
-        }
-    }
-
+.background {
+    -fx-background-color: #f7f7f7;
+    background-color: #f7f7f7; /* Used in the default.html file */
 }
 
+.v-box {
+    -fx-background-color:  #f7f7f7;
+}
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #000000;
+    -fx-opacity: 0.9;
+}
+
+.label-bright {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: gray;
+    -fx-opacity: 1;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: gray;
+    -fx-opacity: 1;
+}
+
+.text-field {
+    -fx-font-size: 12pt;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.tab-pane {
+    -fx-padding: 0 0 0 1;
+}
+
+<<<<<<< HEAD
 ```
 <<<<<<< HEAD
 ###### \java\seedu\address\ui\BrowserPanel.java
@@ -579,573 +708,7 @@ public class Avatar {
 ```
 ###### /java/seedu/address/ui/BrowserPanel.java
 >>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-    public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com.sg/search?safe=off&q=";
-    public static final String GOOGLE_SEARCH_URL_SUFFIX = "&cad=h";
-
-    private static final String FXML = "BrowserPanel.fxml";
-
-    private final Logger logger = LogsCenter.getLogger(this.getClass());
-
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\BrowserPanel.java
-``` java
-    private int backToHomePage = 0;
-```
-###### \java\seedu\address\ui\BrowserPanel.java
 =======
-###### /java/seedu/address/ui/BrowserPanel.java
-``` java
-    private int backToHomePage = 0;
-```
-###### /java/seedu/address/ui/BrowserPanel.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-    @FXML
-    private WebView browser;
-
-    public BrowserPanel() {
-        super(FXML);
-
-        // To prevent triggering events for typing inside the loaded Web page.
-        getRoot().setOnKeyPressed(Event::consume);
-
-        loadDefaultPage();
-        registerAsAnEventHandler(this);
-    }
-
-    private void loadPersonPage(ReadOnlyPerson person) {
-        loadPage(GOOGLE_SEARCH_URL_PREFIX + person.getName().fullName.replaceAll(" ", "+")
-                + GOOGLE_SEARCH_URL_SUFFIX);
-    }
-
-    /**
-     * Loads the located address page of the user's address.
-     */
-    private void loadBrowserPage(ReadOnlyPerson person) throws IOException {
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\BrowserPanel.java
-``` java
-        URL addressPage = MainApp.class.getResource(FXML_FILE_FOLDER + BROWSER_PAGE);
-```
-###### \java\seedu\address\ui\BrowserPanel.java
-=======
-###### /java/seedu/address/ui/BrowserPanel.java
-``` java
-        URL addressPage = MainApp.class.getResource(FXML_FILE_FOLDER + BROWSER_PAGE);
-```
-###### /java/seedu/address/ui/BrowserPanel.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-        loadPage(addressPage.toExternalForm());
-    }
-
-
-    public void loadPage(String url) {
-        Platform.runLater(() -> browser.getEngine().load(url));
-    }
-
-    /**
-     * Loads a default HTML file with a background that matches the general theme.
-     */
-    public void loadDefaultPage() {
-        URL defaultPage = MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE);
-        loadPage(defaultPage.toExternalForm());
-    }
-
-    /**
-     * Frees resources allocated to the browser.
-     */
-    public void freeResources() {
-        browser = null;
-    }
-
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\BrowserPanel.java
-=======
-###### /java/seedu/address/ui/BrowserPanel.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-    @Subscribe
-    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) throws IOException {
-
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        ReadOnlyPerson p = event.getNewSelection().person;
-
-        String address = p.getAddress().toString();
-        String name = p.getName().toString();
-        String emails = p.getEmail().toString();
-        String phones = p.getPhone().toString();
-        String tags = p.getOnlyTags().toString();
-<<<<<<< HEAD
-=======
-        String avatar = p.getAvatarPic().toString();
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-
-        backToHomePage = event.getBackToHomePageValue();
-
-        browser.getEngine().getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
-            if (newState == Worker.State.SUCCEEDED && backToHomePage == 0) {
-                WebEngine panel = browser.getEngine();
-                panel.executeScript("document.setName(\"" + name + "\")");
-                panel.executeScript("document.setAddress(\"" + address + "\")");
-                panel.executeScript("document.setEmail(\"" + emails + "\")");
-                panel.executeScript("document.setPhone(\"" + phones + "\")");
-                panel.executeScript("document.setTags(\"" + tags + "\")");
-<<<<<<< HEAD
-
-=======
-                panel.executeScript("document.setAvatar(\"" + avatar + "\")");
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-            }
-        });
-
-        loadBrowserPage(event.getNewSelection().person);
-
-    }
-
-    @Subscribe
-    private void handleGoBackToHomePageEvent(BrowserJumpToHomePage event) throws IOException {
-
-        browser.getEngine().load(event.getHomeUrl().toExternalForm());
-        backToHomePage = 1;
-
-    }
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\BrowserPanel.java
-=======
-###### /java/seedu/address/ui/BrowserPanel.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-
-}
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\MainWindow.java
-``` java
-        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
-```
-###### \java\seedu\address\ui\MainWindow.java
-=======
-###### /java/seedu/address/ui/MainWindow.java
-``` java
-        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
-```
-###### /java/seedu/address/ui/MainWindow.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
-
-        CommandBox commandBox = new CommandBox(logic);
-        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
-
-    }
-
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\MainWindow.java
-=======
-###### /java/seedu/address/ui/MainWindow.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-    /**
-     * Changes the theme color to dark of the program
-     */
-    @FXML
-    private void handleDarkTheme() {
-
-        int size = scene.getRoot().getStylesheets().size();
-
-        for (int i = 0; i < size; i++) {
-            scene.getRoot().getStylesheets().remove(0);
-        }
-
-        scene.getRoot().getStylesheets().add("view/DarkTheme.css");
-        scene.getRoot().getStylesheets().add("view/Extensions.css");
-
-    }
-
-    /**
-     * Changes the theme color to light of the program
-     */
-    @FXML
-    private void handleLightTheme() {
-
-        int size = scene.getRoot().getStylesheets().size();
-        for (int i = 0; i < size; i++) {
-
-            scene.getRoot().getStylesheets().remove(0);
-
-        }
-        scene.getRoot().getStylesheets().add("view/LightTheme.css");
-
-    }
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\MainWindow.java
-=======
-###### /java/seedu/address/ui/MainWindow.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-    public PersonListPanel getPersonListPanel() {
-        return this.personListPanel;
-    }
-
-    void releaseResources() {
-        browserPanel.freeResources();
-    }
-
-    @Subscribe
-    private void handleShowHelpEvent(ShowHelpRequestEvent event) {
-        logger.info(LogsCenter.getEventHandlingLogMessage(event));
-        handleHelp();
-    }
-}
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\PersonCard.java
-=======
-###### /java/seedu/address/ui/PersonCard.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
-    private static HashMap<String, String> colorMapping = new HashMap<String, String>();
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\PersonCard.java
-=======
-###### /java/seedu/address/ui/PersonCard.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-    public final ReadOnlyPerson person;
-
-    private final int cardNum;
-    private final Logic logic;
-    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
-
-    /**
-     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
-     * As a consequence, UI elements' variable names cannot be set to such keywords
-     * or an exception will be thrown by JavaFX during runtime.
-     *
-     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
-     */
-
-    @FXML
-    private HBox cardPane;
-    @FXML
-    private Label name;
-    @FXML
-    private Button delete;
-    @FXML
-    private Label id;
-    @FXML
-    private Label phone;
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\StatusBarFooter.java
-=======
-###### /java/seedu/address/ui/StatusBarFooter.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-    public static final String SYNC_PERSONLIST_UPADTED_SIZE = "Total size: %d, ";
-    public static final String SYNC_STATUS_UPDATED = "Last Updated: %s";
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\StatusBarFooter.java
-=======
-###### /java/seedu/address/ui/StatusBarFooter.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-    /**
-     * Used to generate time stamps.
-     *
-     * TODO: change clock to an instance variable.
-     * We leave it as a static variable because manual dependency injection
-     * will require passing down the clock reference all the way from MainApp,
-     * but it should be easier once we have factories/DI frameworks.
-     */
-    private static Clock clock = Clock.systemDefaultZone();
-
-    private static final Logger logger = LogsCenter.getLogger(StatusBarFooter.class);
-
-    private static final String FXML = "StatusBarFooter.fxml";
-
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\StatusBarFooter.java
-``` java
-    private ObservableList<ReadOnlyPerson> filteredPersonList;
-```
-###### \java\seedu\address\ui\StatusBarFooter.java
-=======
-###### /java/seedu/address/ui/StatusBarFooter.java
-``` java
-    private ObservableList<ReadOnlyPerson> filteredPersonList;
-```
-###### /java/seedu/address/ui/StatusBarFooter.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-    @FXML
-    private StatusBar syncStatus;
-    @FXML
-    private StatusBar saveLocationStatus;
-
-    public StatusBarFooter(String saveLocation) {
-        super(FXML);
-        setSyncStatus(SYNC_STATUS_INITIAL);
-        setSaveLocation("./" + saveLocation);
-        registerAsAnEventHandler(this);
-    }
-
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\StatusBarFooter.java
-=======
-###### /java/seedu/address/ui/StatusBarFooter.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-    public StatusBarFooter(String saveLocation, ObservableList<ReadOnlyPerson> filteredPersonList) {
-        super(FXML);
-        this.filteredPersonList = filteredPersonList;
-        setSyncStatus(SYNC_STATUS_INITIAL);
-        setSaveLocation("./" + saveLocation);
-        registerAsAnEventHandler(this);
-    }
-```
-<<<<<<< HEAD
-###### \java\seedu\address\ui\StatusBarFooter.java
-=======
-###### /java/seedu/address/ui/StatusBarFooter.java
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` java
-
-    /**
-     * Sets the clock used to determine the current time.
-     */
-    public static void setClock(Clock clock) {
-        StatusBarFooter.clock = clock;
-    }
-
-    /**
-     * Returns the clock currently in use.
-     */
-    public static Clock getClock() {
-        return clock;
-    }
-
-    private void setSaveLocation(String location) {
-        Platform.runLater(() -> this.saveLocationStatus.setText(location));
-    }
-
-    private void setSyncStatus(String status) {
-        Platform.runLater(() -> this.syncStatus.setText(status));
-    }
-
-    @Subscribe
-    public void handleAddressBookChangedEvent(AddressBookChangedEvent abce) {
-        long now = clock.millis();
-        String lastUpdated = new Date(now).toString();
-        logger.info(LogsCenter.getEventHandlingLogMessage(abce,
-                "Setting last updated status to " + lastUpdated));
-        setSyncStatus(String.format(SYNC_PERSONLIST_UPADTED_SIZE, filteredPersonList.size())
-                + String.format(SYNC_STATUS_UPDATED, lastUpdated));
-    }
-
-}
-```
-<<<<<<< HEAD
-###### \resources\view\default.html
-=======
-###### /resources/view/default.html
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` html
-<html>
-<title>Home Page</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
-<style type="text/css">
-    html {
-        height: 100%;
-        width: 100%;
-    }
-
-    body {
-        height: 100%;
-        width: 100%;
-        margin: 0px;
-        padding: 0px
-    }
-
-    img {
-        user-drag: none;
-        user-select: none;
-        -moz-user-select: none;
-        -webkit-user-drag: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-    }
-
-    strong {
-        font-size: 18px;
-    }
-    p {
-        word-break: break-all;
-    }
-
-    .container{
-        margin: 0px;
-        padding: 0px;
-        height: 100%;
-    }
-    .row{
-        margin: 0px;
-        padding: 0px;
-        height: 100%;
-    }
-</style>
-
-<body>
-
-<!-- First Grid: Picture & Contact Info -->
-<div class="row">
-    <div class="card col-4">
-        <img class="card-img-top" src="../images/bg.jpeg" alt="Card image cap">
-        <div class="card-body">
-
-            <strong>
-                <h3>Project Name: Unibook</h3>
-                <h3>Current Version: <span class='badge badge-warning'>v1.4</span></h3>
-                <p>License: <span class='badge badge-info'>MIT</span> Build: <span class='badge badge-success'>passing</span> codacy: <span class='badge badge-primary'>A</span></p>
-                <p>UI Design: Linus, Vos</p>
-                <p>Function implement: Sirisha, Henning</p>
-                <p>Tutorial: T13-B2</p>
-                <p>Last updated: 2017/11/02</p>
-            </strong>
-
-        </div>
-    </div>
-
-    <div class="jumbotron jumbotron-fluid col-8" style="padding: 20px; background: #f7f7f7">
-        <h1 style="text-align: center"><b>Unibook Commands</b></h1>
-
-        <div class="card border-primary mb-3">
-            <div class="card-header">Home command</div>
-            <div class="card-body text-primary">
-                <h4 class="card-title">Goes back to the home panel. </h4>
-            </div>
-        </div>
-
-        <div class="card border-success mb-3">
-            <div class="card-header">Add command</div>
-            <div class="card-body text-success">
-                <h4 class="card-title">Adds a person to the address book. </h4>
-                <p class="card-text">Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...</p>
-            </div>
-        </div>
-        <div class="card border-secondary mb-3">
-            <div class="card-header">Delete command</div>
-            <div class="card-body text-secondary">
-                <h4 class="card-title">Deletes the person identified by the index number used in the last person listing.</h4>
-                <p class="card-text">Parameters: INDEX (must be a positive integer)</p>
-            </div>
-        </div>
-
-        <div class="card border-success mb-3">
-            <div class="card-header">Find command</div>
-            <div class="card-body text-success">
-                <h4 class="card-title">Finds persons whose names contain any of the given keywords.</h4>
-                <p class="card-text">Parameters: find KEYWORD [MORE_KEYWORDS]...</p>
-            </div>
-        </div>
-        <div class="card border-danger mb-3">
-            <div class="card-header">Clear command</div>
-            <div class="card-body text-danger">
-                <h4 class="card-title">Clears all entries from the address book.</h4>
-            </div>
-        </div>
-        <div class="card border-warning mb-3">
-            <div class="card-header">Undo command</div>
-            <div class="card-body text-warning">
-                <h4 class="card-title">Restores the address book to the state before the previous undoable command was executed.</h4>
-            </div>
-        </div>
-        <div class="card border-secondary mb-3">
-            <div class="card-header">Redo command</div>
-            <div class="card-body text-info">
-                <h4 class="card-title">Reverses the most recent undo command.</h4>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-</body>
-</html>
-```
-<<<<<<< HEAD
-###### \resources\view\LightTheme.css
-=======
-###### /resources/view/LightTheme.css
->>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
-``` css
-.root {
-    -fx-accent: derive(#f7f5f4, -10%);
-    -fx-focus-color: derive(#f7f5f4, -10%);
-}
-
-.background {
-    -fx-background-color: #f7f7f7;
-    background-color: #f7f7f7; /* Used in the default.html file */
-}
-
-.v-box {
-    -fx-background-color:  #f7f7f7;
-}
-
-.label {
-    -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: #000000;
-    -fx-opacity: 0.9;
-}
-
-.label-bright {
-    -fx-font-size: 11pt;
-    -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: gray;
-    -fx-opacity: 1;
-}
-
-.label-header {
-    -fx-font-size: 32pt;
-    -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: gray;
-    -fx-opacity: 1;
-}
-
-.text-field {
-    -fx-font-size: 12pt;
-    -fx-font-family: "Segoe UI Semibold";
-}
-
-.tab-pane {
-    -fx-padding: 0 0 0 1;
-}
-
 .tab-pane .tab-header-area {
     -fx-padding: 0 0 0 0;
     -fx-min-height: 0;
@@ -1222,6 +785,10 @@ public class Avatar {
 .list-cell:filled:selected {
     -fx-background-color: derive(#f7f5f4, -5%);
 }
+```
+###### \java\seedu\address\logic\commands\HomeCommand.java
+``` java
+package seedu.address.logic.commands;
 
 .list-cell:filled:selected #cardPane {
     -fx-border-color: transparent;
@@ -1275,6 +842,12 @@ public class Avatar {
     -fx-effect: dropshadow(gaussian, derive(#f7f5f4, -15%), 10, 0, -2, 2);
 }
 
+```
+###### \java\seedu\address\logic\parser\AddAvatarCommandParser.java
+``` java
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
 .status-bar {
     -fx-background-color: derive(#f7f5f4, 80%);
     -fx-padding: 0 10 0 10;
@@ -1324,6 +897,15 @@ public class Avatar {
 .menu-bar {
     -fx-background-color: derive(#f7f5f4, 80%);
 }
+```
+###### \java\seedu\address\logic\parser\AddressBookParser.java
+``` java
+        case HomeCommand.COMMAND_WORD:
+            return new HomeCommand();
+```
+###### \java\seedu\address\logic\parser\AddressBookParser.java
+``` java
+=======
 
 .menu-bar .label {
     -fx-font-size: 12pt;
@@ -1389,6 +971,20 @@ public class Avatar {
     -fx-background-color: #f7f5f4;
 }
 
+```
+###### \java\seedu\address\logic\parser\ParserUtil.java
+``` java
+    /**
+     * Parses a {@code Optional<String> imageURL} into an {@code Optional<Avatar>} if {@code imageURL} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Avatar> parseImageUrl(Optional<String> imageUrl) throws IllegalValueException {
+        requireNonNull(imageUrl);
+        return imageUrl.isPresent() ? Optional.of(new Avatar(imageUrl.get())) : Optional.empty();
+    }
+```
+###### \java\seedu\address\logic\parser\ParserUtil.java
+``` java
 .dialog-pane > *.button-bar > *.container {
     -fx-background-color: #f7f5f4;
 }
@@ -1504,6 +1100,1024 @@ public class Avatar {
     -fx-font-size: 14px;
 }
 ```
+###### /java/seedu/address/ui/BrowserPanel.java
+``` java
+    public static final String BROWSER_PAGE = "BrowserPanel.html";
+```
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+    public static final String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com.sg/search?safe=off&q=";
+    public static final String GOOGLE_SEARCH_URL_SUFFIX = "&cad=h";
+
+    private static final String FXML = "BrowserPanel.fxml";
+
+    private final Logger logger = LogsCenter.getLogger(this.getClass());
+
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\BrowserPanel.java
+``` java
+    private int backToHomePage = 0;
+```
+###### \java\seedu\address\ui\BrowserPanel.java
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+``` java
+    private int backToHomePage = 0;
+```
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+``` java
+    private int backToHomePage = 0;
+```
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+
+    @FXML
+    private WebView browser;
+
+    public BrowserPanel() {
+        super(FXML);
+
+        // To prevent triggering events for typing inside the loaded Web page.
+        getRoot().setOnKeyPressed(Event::consume);
+
+        loadDefaultPage();
+        registerAsAnEventHandler(this);
+    }
+
+    private void loadPersonPage(ReadOnlyPerson person) {
+        loadPage(GOOGLE_SEARCH_URL_PREFIX + person.getName().fullName.replaceAll(" ", "+")
+                + GOOGLE_SEARCH_URL_SUFFIX);
+    }
+
+    /**
+     * Loads the located address page of the user's address.
+     */
+    private void loadBrowserPage(ReadOnlyPerson person) throws IOException {
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\BrowserPanel.java
+``` java
+        URL addressPage = MainApp.class.getResource(FXML_FILE_FOLDER + BROWSER_PAGE);
+```
+###### \java\seedu\address\ui\BrowserPanel.java
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+``` java
+        URL addressPage = MainApp.class.getResource(FXML_FILE_FOLDER + BROWSER_PAGE);
+```
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+``` java
+        URL addressPage = MainApp.class.getResource(FXML_FILE_FOLDER + BROWSER_PAGE);
+```
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+        loadPage(addressPage.toExternalForm());
+    }
+
+
+    public void loadPage(String url) {
+        Platform.runLater(() -> browser.getEngine().load(url));
+    }
+
+    /**
+     * Loads a default HTML file with a background that matches the general theme.
+     */
+    public void loadDefaultPage() {
+        URL defaultPage = MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE);
+        loadPage(defaultPage.toExternalForm());
+    }
+
+    /**
+     * Frees resources allocated to the browser.
+     */
+    public void freeResources() {
+        browser = null;
+    }
+
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\BrowserPanel.java
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+    @Subscribe
+    private void handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) throws IOException {
+
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        ReadOnlyPerson p = event.getNewSelection().person;
+
+        String address = p.getAddress().toString();
+        String name = p.getName().toString();
+        String emails = p.getEmail().toString();
+        String phones = p.getPhone().toString();
+        String tags = p.getOnlyTags().toString();
+<<<<<<< HEAD
+=======
+        String avatar = p.getAvatarPic().toString();
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+
+        backToHomePage = event.getBackToHomePageValue();
+
+        browser.getEngine().getLoadWorker().stateProperty().addListener((obs, oldState, newState) -> {
+            if (newState == Worker.State.SUCCEEDED && backToHomePage == 0) {
+                WebEngine panel = browser.getEngine();
+                panel.executeScript("document.setName(\"" + name + "\")");
+                panel.executeScript("document.setAddress(\"" + address + "\")");
+                panel.executeScript("document.setEmail(\"" + emails + "\")");
+                panel.executeScript("document.setPhone(\"" + phones + "\")");
+                panel.executeScript("document.setTags(\"" + tags + "\")");
+<<<<<<< HEAD
+
+=======
+                panel.executeScript("document.setAvatar(\"" + avatar + "\")");
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+            }
+        });
+
+        loadBrowserPage(event.getNewSelection().person);
+
+    }
+
+    @Subscribe
+    private void handleGoBackToHomePageEvent(BrowserJumpToHomePage event) throws IOException {
+
+        browser.getEngine().load(event.getHomeUrl().toExternalForm());
+        backToHomePage = 1;
+
+    }
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\BrowserPanel.java
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/BrowserPanel.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+
+
+}
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\MainWindow.java
+``` java
+        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
+```
+###### \java\seedu\address\ui\MainWindow.java
+=======
+###### /java/seedu/address/ui/MainWindow.java
+``` java
+        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
+```
+###### /java/seedu/address/ui/MainWindow.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/MainWindow.java
+``` java
+        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath(), filteredPersonList);
+```
+###### /java/seedu/address/ui/MainWindow.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+
+        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+
+        CommandBox commandBox = new CommandBox(logic);
+        commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+    }
+
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\MainWindow.java
+=======
+###### /java/seedu/address/ui/MainWindow.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/MainWindow.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+    /**
+     * Changes the theme color to dark of the program
+     */
+    @FXML
+    private void handleDarkTheme() {
+
+        int size = scene.getRoot().getStylesheets().size();
+
+        for (int i = 0; i < size; i++) {
+            scene.getRoot().getStylesheets().remove(0);
+        }
+
+        scene.getRoot().getStylesheets().add("view/DarkTheme.css");
+        scene.getRoot().getStylesheets().add("view/Extensions.css");
+
+    }
+
+    /**
+     * Changes the theme color to light of the program
+     */
+    @FXML
+    private void handleLightTheme() {
+
+        int size = scene.getRoot().getStylesheets().size();
+        for (int i = 0; i < size; i++) {
+
+            scene.getRoot().getStylesheets().remove(0);
+
+        }
+        scene.getRoot().getStylesheets().add("view/LightTheme.css");
+
+    }
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\MainWindow.java
+=======
+###### /java/seedu/address/ui/MainWindow.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/MainWindow.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+
+    public PersonListPanel getPersonListPanel() {
+        return this.personListPanel;
+    }
+
+    void releaseResources() {
+        browserPanel.freeResources();
+    }
+
+    @Subscribe
+    private void handleShowHelpEvent(ShowHelpRequestEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        handleHelp();
+    }
+}
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\PersonCard.java
+=======
+###### /java/seedu/address/ui/PersonCard.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+``` java
+    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
+    private static HashMap<String, String> colorMapping = new HashMap<String, String>();
+```
+<<<<<<< HEAD
+###### \java\seedu\address\ui\PersonCard.java
+=======
+###### /java/seedu/address/ui/PersonCard.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+``` java
+
+    public final ReadOnlyPerson person;
+
+    private final int cardNum;
+    private final Logic logic;
+    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
+
+    /**
+     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
+     * As a consequence, UI elements' variable names cannot be set to such keywords
+     * or an exception will be thrown by JavaFX during runtime.
+     *
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     */
+
+    @FXML
+    private HBox cardPane;
+    @FXML
+    private Label name;
+    @FXML
+    private Button delete;
+    @FXML
+    private Label id;
+    @FXML
+    private Label phone;
+```
+<<<<<<< HEAD
+###### \java\seedu\address\ui\StatusBarFooter.java
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+    public static final String SYNC_PERSONLIST_UPADTED_SIZE = "Total size: %d, ";
+    public static final String SYNC_STATUS_UPDATED = "Last Updated: %s";
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\StatusBarFooter.java
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+
+    /**
+     * Used to generate time stamps.
+     *
+     * TODO: change clock to an instance variable.
+     * We leave it as a static variable because manual dependency injection
+     * will require passing down the clock reference all the way from MainApp,
+     * but it should be easier once we have factories/DI frameworks.
+     */
+    private static Clock clock = Clock.systemDefaultZone();
+
+    private static final Logger logger = LogsCenter.getLogger(StatusBarFooter.class);
+
+    private static final String FXML = "StatusBarFooter.fxml";
+
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\StatusBarFooter.java
+``` java
+    private ObservableList<ReadOnlyPerson> filteredPersonList;
+```
+###### \java\seedu\address\ui\StatusBarFooter.java
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+``` java
+    private ObservableList<ReadOnlyPerson> filteredPersonList;
+```
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+``` java
+    private ObservableList<ReadOnlyPerson> filteredPersonList;
+```
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+
+    @FXML
+    private StatusBar syncStatus;
+    @FXML
+    private StatusBar saveLocationStatus;
+
+    public StatusBarFooter(String saveLocation) {
+        super(FXML);
+        setSyncStatus(SYNC_STATUS_INITIAL);
+        setSaveLocation("./" + saveLocation);
+        registerAsAnEventHandler(this);
+    }
+
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\StatusBarFooter.java
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+    public StatusBarFooter(String saveLocation, ObservableList<ReadOnlyPerson> filteredPersonList) {
+        super(FXML);
+        this.filteredPersonList = filteredPersonList;
+        setSyncStatus(SYNC_STATUS_INITIAL);
+        setSaveLocation("./" + saveLocation);
+        registerAsAnEventHandler(this);
+    }
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \java\seedu\address\ui\StatusBarFooter.java
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+=======
+###### /java/seedu/address/ui/StatusBarFooter.java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+``` java
+
+    /**
+     * Sets the clock used to determine the current time.
+     */
+    public static void setClock(Clock clock) {
+        StatusBarFooter.clock = clock;
+    }
+
+    /**
+     * Returns the clock currently in use.
+     */
+    public static Clock getClock() {
+        return clock;
+    }
+
+    private void setSaveLocation(String location) {
+        Platform.runLater(() -> this.saveLocationStatus.setText(location));
+    }
+
+    private void setSyncStatus(String status) {
+        Platform.runLater(() -> this.syncStatus.setText(status));
+    }
+
+    @Subscribe
+    public void handleAddressBookChangedEvent(AddressBookChangedEvent abce) {
+        long now = clock.millis();
+        String lastUpdated = new Date(now).toString();
+        logger.info(LogsCenter.getEventHandlingLogMessage(abce,
+                "Setting last updated status to " + lastUpdated));
+        setSyncStatus(String.format(SYNC_PERSONLIST_UPADTED_SIZE, filteredPersonList.size())
+                + String.format(SYNC_STATUS_UPDATED, lastUpdated));
+    }
+
+}
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \resources\view\default.html
+=======
+###### /resources/view/default.html
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+``` html
+<html>
+<title>Home Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+<style type="text/css">
+    html {
+        height: 100%;
+        width: 100%;
+    }
+=======
+###### /java/seedu/address/ui/PersonCard.java
+``` java
+    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
+    private static HashMap<String, String> colorMapping = new HashMap<String, String>();
+```
+###### /java/seedu/address/ui/PersonCard.java
+``` java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+
+    public final ReadOnlyPerson person;
+
+    private final int cardNum;
+    private final Logic logic;
+    private final Logger logger = LogsCenter.getLogger(CommandBox.class);
+
+    /**
+     * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
+     * As a consequence, UI elements' variable names cannot be set to such keywords
+     * or an exception will be thrown by JavaFX during runtime.
+     *
+     * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
+     */
+
+    @FXML
+    private HBox cardPane;
+    @FXML
+    private Label name;
+    @FXML
+    private Button delete;
+    @FXML
+    private Label id;
+    @FXML
+    private Label phone;
+```
+###### /java/seedu/address/commons/events/ui/BrowserJumpToHomePage.java
+``` java
+package seedu.address.commons.events.ui;
+
+import java.net.URL;
+
+import seedu.address.commons.events.BaseEvent;
+
+/**
+ * Represents the view change in the browser panel
+ */
+public class BrowserJumpToHomePage extends BaseEvent {
+
+    private URL url;
+
+    public BrowserJumpToHomePage(URL url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+
+    public URL getHomeUrl() {
+        return url;
+    }
+
+}
+```
+###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+``` java
+    private final int backToHomePageValue = 0;
+```
+###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+``` java
+
+    public PersonPanelSelectionChangedEvent(PersonCard newSelection) {
+        this.newSelection = newSelection;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+
+    public PersonCard getNewSelection() {
+        return newSelection;
+    }
+
+```
+<<<<<<< HEAD
+<<<<<<< HEAD
+###### \resources\view\LightTheme.css
+=======
+###### /resources/view/LightTheme.css
+>>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
+``` css
+.root {
+    -fx-accent: derive(#f7f5f4, -10%);
+    -fx-focus-color: derive(#f7f5f4, -10%);
+}
+=======
+###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+``` java
+    public int getBackToHomePageValue() {
+        return this.backToHomePageValue;
+    }
+```
+###### /java/seedu/address/commons/events/ui/PersonPanelSelectionChangedEvent.java
+``` java
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+
+}
+```
+###### /java/seedu/address/logic/parser/AddressBookParser.java
+``` java
+        case HomeCommand.COMMAND_WORD:
+            return new HomeCommand();
+
+        case AddAvatarCommand.COMMAND_WORD:
+            return new AddAvatarCommandParser().parse(arguments);
+
+```
+###### /java/seedu/address/logic/parser/AddressBookParser.java
+``` java
+
+        case ListCommand.COMMAND_WORD:
+        case ListCommand.COMMAND_WORD_ALIAS:
+            return new ListCommand();
+
+        case HistoryCommand.COMMAND_WORD:
+        case HistoryCommand.COMMAND_WORD_ALIAS:
+            return new HistoryCommand();
+
+        case ExitCommand.COMMAND_WORD:
+            return new ExitCommand();
+
+        case HelpCommand.COMMAND_WORD:
+            return new HelpCommand();
+
+        case UndoCommand.COMMAND_WORD:
+        case UndoCommand.COMMAND_WORD_ALIAS:
+            return new UndoCommand();
+
+        case RedoCommand.COMMAND_WORD:
+        case RedoCommand.COMMAND_WORD_ALIAS:
+            return new RedoCommand();
+
+        default:
+            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+        }
+    }
+
+}
+
+```
+###### /java/seedu/address/logic/parser/ParserUtil.java
+``` java
+    /**
+     * Parses a {@code Optional<String> imageURL} into an {@code Optional<Avatar>} if {@code imageURL} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Avatar> parseImageUrl(Optional<String> imageUrl) throws IllegalValueException {
+        requireNonNull(imageUrl);
+        return imageUrl.isPresent() ? Optional.of(new Avatar(imageUrl.get())) : Optional.empty();
+    }
+```
+###### /java/seedu/address/logic/parser/ParserUtil.java
+``` java
+
+```
+###### /java/seedu/address/logic/parser/AddAvatarCommandParser.java
+``` java
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.AddAvatarCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Person;
+import seedu.address.model.util.SampleDataUtil;
+
+/**
+ * Parses input arguments and creates a new AddAvatarCommand object
+ */
+public class AddAvatarCommandParser implements Parser<AddAvatarCommand> {
+    /**
+     * Parses the given {@code String} of arguments in the context of the AddAvatarCommand
+     * and returns an AddAvatarCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
+
+    @Override
+    public AddAvatarCommand parse(String args) throws ParseException {
+        requireNonNull(args);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_IMAGE_URL);
+
+        Index index;
+
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (IllegalValueException ive) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    AddAvatarCommand.MESSAGE_USAGE));
+        }
+
+        Person updatedPerson = new Person(SampleDataUtil.getSamplePersons()[0]);
+
+        try {
+            ParserUtil.parseImageUrl(argMultimap.getValue(PREFIX_IMAGE_URL)).ifPresent(updatedPerson::setAvatarPic);
+        } catch (IllegalValueException ive) {
+            throw new ParseException(ive.getMessage(), ive);
+        }
+
+        return new AddAvatarCommand(index, updatedPerson.getAvatarPic());
+    }
+}
+```
+###### /java/seedu/address/logic/commands/HomeCommand.java
+``` java
+package seedu.address.logic.commands;
+
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.ui.BrowserPanel.DEFAULT_PAGE;
+import static seedu.address.ui.UiPart.FXML_FILE_FOLDER;
+
+import java.net.URL;
+
+import seedu.address.MainApp;
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.events.ui.BrowserJumpToHomePage;
+
+/**
+ * Goes back to home page
+ */
+public class HomeCommand extends Command {
+
+    public static final String COMMAND_WORD = "home";
+
+    public static final String MESSAGE_SUCCESS = "Successfully went back to home page";
+
+    @Override
+    public CommandResult execute() {
+        model.changeListTo(COMMAND_WORD);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
+        URL url = MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE);
+        EventsCenter.getInstance().post(new BrowserJumpToHomePage(url));
+
+        return new CommandResult(MESSAGE_SUCCESS);
+    }
+
+}
+```
+###### /java/seedu/address/logic/commands/HomeCommand.java
+``` java
+
+```
+###### /java/seedu/address/logic/commands/AddAvatarCommand.java
+``` java
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import seedu.address.commons.core.EventsCenter;
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
+import seedu.address.commons.events.ui.JumpToListRequestEvent;
+import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.person.Avatar;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.ReadOnlyPerson;
+import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.PersonNotFoundException;
+
+/**
+ * Updates the avatar picture of an existing person in the address book.
+ */
+
+public class AddAvatarCommand extends Command {
+    public static final String COMMAND_WORD = "avatar";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the avatar picture of the person identified "
+            + "by the index number. "
+            + "Existing avatar picture will be replaced by the new picture.\n"
+            + "Parameters: INDEX of person (positive integer) "
+            + "[u/image URL]\n"
+            + "Example of using online image: " + COMMAND_WORD + " 1 "
+            + PREFIX_IMAGE_URL
+            + "http://139.59.227.237/public/avatar3.jpg\n"
+            + "Example of using online image: " + COMMAND_WORD + " 2 "
+            + PREFIX_IMAGE_URL + "http://139.59.227.237/public/avatar2.jpg\n"
+            + "Example of using online image: " + COMMAND_WORD + " 3 "
+            + PREFIX_IMAGE_URL + "http://139.59.227.237/public/avatar1.jpg\n";
+
+    public static final String MESSAGE_UPDATE_AVATAR_PIC_SUCCESS = "Update avatar picture for Person: %1$s";
+    public static final String MESSAGE_NOT_UPDATED = "Please enter a valid image URL.";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+
+    private final Index index;
+    private final Avatar avatar;
+
+    private boolean isOldFileDeleted = true;
+
+    /**
+     *
+     * @param index of the person in the filtered person list to update avatar picture
+     * @param avatar of the image to be used as the Avatar picture
+     */
+    public AddAvatarCommand(Index index, Avatar avatar) {
+        requireNonNull(index);
+        requireNonNull(avatar);
+
+        this.index = index;
+        this.avatar = avatar;
+    }
+
+    @Override
+    public CommandResult execute() throws CommandException {
+        List<ReadOnlyPerson> lastShownList = model.getFilteredPersonList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        }
+
+        ReadOnlyPerson personToUpdateAvatarPic = lastShownList.get(index.getZeroBased());
+        Person updatedAvatarPicPerson = new Person(personToUpdateAvatarPic);
+        Avatar newAvatar;
+
+        if (avatar.toString().compareTo(Avatar.DEFAULT_URL) == 0) {
+            String oldFile = personToUpdateAvatarPic.getAvatarPic().toString();
+            if (oldFile.compareTo(Avatar.DEFAULT_URL) != 0) {
+                oldFile = urlToPath(oldFile);
+                try {
+                    Files.delete(Paths.get(oldFile));
+                } catch (IOException ioe) {
+                    isOldFileDeleted = false;
+                }
+            }
+            newAvatar = avatar;
+        } else {
+            String newFile;
+            if (!Files.isDirectory(Paths.get("avatars"))) {
+                try {
+                    Files.createDirectory(Paths.get("avatars"));
+                } catch (IOException ioe) {
+                    throw new CommandException("avatars directory failed to be created");
+                }
+            }
+            if (personToUpdateAvatarPic.getAvatarPic().toString() != "") {
+
+                /*
+                *  Validates avatar image
+                * */
+                String imgExtension = "";
+
+                int i = avatar.toString().lastIndexOf('.');
+                if (i > 0) {
+                    imgExtension = avatar.toString().substring(i + 1);
+                }
+
+                List validExtension = Arrays.asList("jpg", "jpeg", "png", "gif", "JPG", "JPEG", "PNG", "GIF");
+                if (validExtension.contains(imgExtension)) {
+
+                    newFile = "avatars/" + new Date().getTime() + '.' + imgExtension;
+
+                } else {
+
+                    newFile = "avatars/" + new Date().getTime() + ".png";
+                }
+
+            } else {
+                newFile = Avatar.DEFAULT_URL;
+            }
+            if (!Files.exists(Paths.get(newFile))) {
+                try {
+                    Files.createFile(Paths.get(newFile));
+                } catch (IOException ioe) {
+                    throw new CommandException("New file failed to be created");
+                }
+            }
+            try {
+                URL url = new URL(avatar.toString());
+                InputStream in = url.openStream();
+                Files.copy(in, Paths.get(newFile), StandardCopyOption.REPLACE_EXISTING);
+                in.close();
+                newAvatar = new Avatar("file://" + Paths.get(newFile).toAbsolutePath().toUri().getPath());
+            } catch (IOException ioe) {
+                throw new CommandException("Image failed to download");
+            } catch (IllegalValueException ive) {
+                throw new CommandException(ive.getMessage());
+            }
+        }
+        updatedAvatarPicPerson.setAvatarPic(newAvatar);
+
+        /*
+        *  Updates the avatar for the person based on its index
+        * */
+        EventsCenter.getInstance().post(new JumpToListRequestEvent(this.index));
+
+        try {
+            model.updatePerson(personToUpdateAvatarPic, updatedAvatarPicPerson);
+
+        } catch (DuplicatePersonException dpe) {
+            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        } catch (PersonNotFoundException e) {
+            throw new AssertionError("The target person cannot be missing");
+        }
+
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
+        String resultMessage = String.format(MESSAGE_UPDATE_AVATAR_PIC_SUCCESS, personToUpdateAvatarPic.getName());
+
+        if (isOldFileDeleted) {
+            return new CommandResult(resultMessage);
+        } else {
+            return new CommandResult(String.join("\n", resultMessage, "Old image not deleted"));
+        }
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof AddAvatarCommand // instanceof handles nulls
+                && this.index.equals(((AddAvatarCommand) other).index)
+                && this.avatar.equals(((AddAvatarCommand) other).avatar)); // state check
+    }
+
+    private String urlToPath(String url) {
+        return url.substring(url.indexOf("avatars"));
+    }
+}
+```
+###### /java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+    @XmlElement
+    private String avatar;
+```
+###### /java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+
+    @XmlElement
+    private List<XmlAdaptedTag> tagged = new ArrayList<>();
+
+    /**
+     * Constructs an XmlAdaptedPerson.
+     * This is the no-arg constructor that is required by JAXB.
+     */
+    public XmlAdaptedPerson() {}
+
+
+    /**
+     * Converts a given Person into this class for JAXB use.
+     *
+     * @param source future changes to this will not affect the created XmlAdaptedPerson
+     */
+    public XmlAdaptedPerson(ReadOnlyPerson source) {
+        name = source.getName().fullName;
+        phone = source.getPhone().value;
+```
+###### /java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+        Avatar tempAvatar;
+        try {
+            tempAvatar = new Avatar(this.avatar);
+        } catch (IllegalValueException e) {
+            tempAvatar = new Avatar();
+        }
+        return new Person(name, phone, birthday, email, address, score, tags, tempAvatar);
+```
+###### /java/seedu/address/storage/XmlAdaptedPerson.java
+``` java
+    }
+}
+```
+###### /java/seedu/address/model/person/Avatar.java
+``` java
+import static java.util.Objects.requireNonNull;
+
+import java.awt.Image;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+
+/**
+ * Represents a Person's avatar picture in the address book.
+ * Guarantees: immutable; is valid as declared in {@link #isValidUrl(String)}
+ */
+public class Avatar {
+    public static final String MESSAGE_AVATAR_PIC_CONSTRAINTS =
+            "Person's avatar must be a valid image URL";
+    public static final String MESSAGE_AVATAR_PIC_EXPIRED =
+            "This avatar is invalid, pls select type another image URL";
+    public static final String DEFAULT_URL = "http://139.59.227.237/public/default.jpg";
+
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String AVATAR_PIC_VALIDATION_REGEX = "[^\\s].*";
+
+    public final String source;
+
+    public Avatar() {
+        source = DEFAULT_URL;
+    }
+
+    /**
+     * Validates given address.
+     *
+     * @throws IllegalValueException if given AvatarPic string is invalid.
+     */
+    public Avatar(String url) throws IllegalValueException {
+        requireNonNull(url);
+
+        int isValidUrl = isValidUrl(url);
+
+        /*
+        *  Expired Image URL
+        * */
+        if (isValidUrl == -2) {
+
+            throw new IllegalValueException(MESSAGE_AVATAR_PIC_EXPIRED);
+        }
+
+<<<<<<< HEAD
+#tags .label {
+    -fx-font-family: "Segoe UI", Optima;
+    -fx-text-fill: white;
+    -fx-padding: 1 0 1 0;
+    -fx-font-size: 14px;
+}
+```
 <<<<<<< HEAD
 ###### \resources\view\StatusBarFooter.fxml
 =======
@@ -1529,5 +2143,57 @@ public class Avatar {
 ###### /resources/view/StatusBarFooter.fxml
 >>>>>>> 9b84379de7d26c8907511772272ee236ef552abf
 ``` fxml
+=======
+        /*
+        * Invalid Image URL
+        * */
+        if (isValidUrl == -1) {
 
+            throw new IllegalValueException(MESSAGE_AVATAR_PIC_CONSTRAINTS);
+        }
+
+        source = url;
+    }
+>>>>>>> 46426535048ec2596f207ef686e8bd2243a84885
+
+    /**
+     * Returns true if a given string is a valid image URL.
+     */
+    public static int isValidUrl(String test) {
+
+        if (test.matches(AVATAR_PIC_VALIDATION_REGEX)) {
+            try {
+                Image img = ImageIO.read(new URL(test));
+                if (img == null) {
+                    return -1;
+                }
+            } catch (IOException e) {
+                if (test.compareTo(DEFAULT_URL) == 0) {
+                    return 0;
+                } else {
+                    return -2;
+                }
+            }
+            return 0;
+        }
+        return -1;
+    }
+
+    @Override
+    public String toString() {
+        return source;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof Avatar // instanceof handles nulls
+                && this.source.equals(((Avatar) other).source)); // state check
+    }
+
+    @Override
+    public int hashCode() {
+        return source.hashCode();
+    }
+}
 ```

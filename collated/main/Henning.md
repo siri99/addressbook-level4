@@ -58,6 +58,8 @@
         requireNonNull(score);
         return score.isPresent() ? Optional.of(new Score(score.get())) : Optional.of(new Score(""));
     }
+
+
 ```
 ###### \java\seedu\address\model\Model.java
 ``` java
@@ -119,6 +121,16 @@
     public Score getScore() {
         return score.get();
     }
+
+    @Override
+    public Avatar getAvatarPic() {
+        return avatarPic.get();
+    }
+
+    public void setAvatarPic(Avatar avatar) {
+        this.avatarPic.set(requireNonNull(avatar));
+    }
+
 
 ```
 ###### \java\seedu\address\model\person\ReadOnlyPerson.java

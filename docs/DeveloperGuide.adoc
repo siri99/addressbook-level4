@@ -345,6 +345,27 @@ image::UndoRedoActivityDiagram.png[width="200"]
 **Cons:** Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things. +
 // end::undoredo[]
 
+// tag::AddAvatarCommand[]
+=== Add Avatar mechanism
+
+The feature is to get avatar image through url link and store the image into local directory called avatar.
+At the same time, updates avatar node in current person xml nodes with the image location.
+
+The command to add avatar image is “avatar INDEX u/Image URL”.
+
+// end::AddAvatarCommand[]
+
+// tag::homeCommand[]
+=== Home command mechanism
+
+The feature is implemented in a similar way to the 'Select' feature.
+
+The command is to help user go back to home browser panel.
+
+image::LogicClassDiagram.png[width="800"]
+
+// end::homeCommand[]
+
 ---
 // tag::favouritelist[]
 === Favourite List mechanism
@@ -373,7 +394,6 @@ _Figure 3.2.2 : Sequence Diagram of the interaction between ModelManager and Add
 This `Logic` interface is used to obtain the copy of the Favourite list when required. As seen by Figure 3.2.1 and Figure 3.2.2 above, to obtain the current favourite list of the address book, "favlist" or “fl” string is first recorded by the `Command Box` and then passed to the Logic interface for execution.
 
 The Logic Interface uses Logic Manager (the class that implements the Logic methods) to package the String command received by it as a Command object. The respective command (in this case the favlist command) is executed in the Logic Manager class. Instructions as follows:
-
 
 [source,java]
 ----
@@ -501,7 +521,7 @@ Comparator<ReadOnlyPerson> personComparator = new Comparator<ReadOnlyPerson>() {
 FXCollections.sort(internalList, personComparator);
 ----
 // end::sort[]
----
+
 // tag::find[]
 === Enhanced Find Command mechanism
 
@@ -534,6 +554,58 @@ containing the set of tags of each person and compares accordingly (implemented 
 **Pros:** More clear Use of command as users are explicitly specifying whether they are searching for name or tag. +
 **Cons:** Not convenient as users need to type in the labels for each name or tag they want to find.  +
 // end::find[]
+// tag::undoRedoButton[]
+
+=== Undo and Redo Buttons
+
+Because undo and redo are actions often performed repeatedly, it makes sense that they should be presented as a button, to allow them to be pressed repeatedly.
+
+=== Design Considerations
+
+**Aspect:** Undo and Redo button presses may conflict with undo and redo command calls.
+**Alternative 1 (current choice):** Use the button press to trigger a call of the command as if it was typed manually.
+**Pros:** Makes the behavior of the undo and redo buttons work intuitively alongside the undo and redo commands
+**Cons:** Makes the commands redundant, and might confuse people who expect them to behave differently.
+// end::undoRedoButton[]
+// tag::deleteButton[]
+
+=== Delete Button
+
+Delete commands rely on a somewhat arbitrary index, which requires you to locate the person card in the UI before you can execute a delete. We can eliminate the manual entry by adding a button that performs it as soon as you find the person card.
+
+=== Design Considerations
+
+**Aspect:** Delete when in the favorite list should behave rationally
+**Alternative 1 (current choice):** prevent the use of the delete button from te favorite list.
+**Pros:** Prevents users from confusing the 'unfav' action with the delete button, preventing accidental deletions.
+**Cons:** The presence of the delete button on the cards, even in the favorite list, is now useless.
+// end::deleteButton[]
+// tag::editButton[]
+
+=== Edit Button
+
+Opens a prompt that allows immediate edits to be performed without using the edit command's complex syntax.
+
+=== Design Considerations
+
+**Aspect:** The text boxes have not visual connection to the data they will change, making it hard to tell what field is being edited.
+**Alternative 1 (current choice):** Give prompt text in the text boxes, indicating the corresponding field.
+**Pros:** Makes it clear which field is being changed.
+**Cons:** Still requires the user to retype an entire field even if the only error was a minor typo.
+// end::editButton[]
+// tag::addButton[]
+
+=== Add Button
+
+Opens a prompt that allows immediate adds to be performed without using the add command's complex syntax.
+
+=== Design Considerations
+
+**Aspect:** Some fields are optional, and users may not be aware of this when adding.
+**Alternative 1 (current choice):** Includes 'Optional' in text boxes corresponding to optional fields.
+**Pros:** Makes it clear which fields are optionals.
+**Cons:** Leaving empty fields when filling in a new person is unintuitive.
+// end::addButton[]
 
 === Logging
 
@@ -965,6 +1037,10 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`* *` |experienced user| print all of my data | I can use them in real-life
 
+|`* *` |experienced user| change the theme | I can change the theme of the program based on my taste
+
+|`* *` |experienced user| upload avatar image | I can set up my profile image that I'd like to show to others
+
 |`* *` |forgetful user | be able to find people by substring of names | I can find people easily even when I don't remember their complete name
 // end::userstories[]
 |=======================================================================
@@ -1086,8 +1162,27 @@ Use case ends.
 2. If user allows, it will merge duplicate contacts
 +
 Use case ends.
+
+=== Use Case: UC5 Adding avatar images to person profile
+
+*MSS*
+
+1. User adds avatar image by providing the image url.
+2. AddressBook download the avatar image from Internet and store it locally.
+3. AddressBook creates new node for current person in address.xml to store the image path.
++
+Use case ends.
+
+=== Use Case: UC3 Adding theme change menu
+
+*MSS*
+
+1. User can change theme by click the theme button in menu bar.
+2. Two themes to be offered.
++
+Use case ends.
+
 // end::usecases[]
-{More to be added}
 
 [appendix]
 == Non Functional Requirements
@@ -1120,56 +1215,28 @@ A contact detail that is not meant to be shared with others
 ....
 
 [appendix]
-== Product Survey
-
-*Product Name*
-
-Author: ...
-
-Pros:
-
-* ...
-* ...
-
-Cons:
-
-* ...
-* ...
-
-[appendix]
 
 == Enhancement Description
 Author: Peng Xu
 
-Added color tags
+=== Added color tags
 
 The feature is that assign different colors to each tag of person card. Every time when program starts, it will assign color to each tag randomly.
 
-== Enhancement Description
-Author: Peng Xu
-
-Added theme change menu item
+=== Added theme change menu item
 
 The feature is that user can change background color via the theme buttons on the menubar.
 
-== Enhancement Description
-Author: Peng Xu
 
-Added home command
+=== Added home command
 
 The feature is that user can go back to home page of the browser
 
-== Enhancement Description
-Author: Peng Xu
-
-Beautified the UI of browser panel
+=== Beautified the UI of browser panel
 
 The feature is that user can see the commands instruction in home page. Also, each user can view their personal info as
 well as their upcoming events.
 
-== Enhancement Description
-Author: Peng Xu
-
-Added the theme button on menu
+=== Added the theme button on menu
 
 The feature is that user can change theme color of Unibook based on their own taste.

@@ -331,14 +331,15 @@ public class SortCommand extends Command {
     public static final String COMMAND_WORD_ALIAS = "so";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the address book in selected format.\n"
-            + "Example: " + COMMAND_WORD + " : default sorts in alphabhetical order\n"
+            + "Example: " + COMMAND_WORD + " : default sorts in alphabhetical order \n"
             + "Example: " + COMMAND_WORD + " name : sorts in alphabhetical order \n"
             + "Example: " + COMMAND_WORD + " birthday or " + COMMAND_WORD + " b : sorts in ascending order"
-            + " of birthdays";
+            + " of birthdays \n"
+            + "Example: " + COMMAND_WORD + " score : sorts in descending order of scores";
 
-    public static final String MESSAGE_SUCCESS_NAME = "Sorted successfully by Name, Listing all persons below";
+    public static final String MESSAGE_SUCCESS_NAME = "Sorted successfully by Name, listing all persons below";
 
-    public static final String MESSAGE_SUCCESS_BIRTHDAY = "Sorted successfully by Birthdays, Listing all persons below";
+    public static final String MESSAGE_SUCCESS_BIRTHDAY = "Sorted successfully by Birthdays, listing all persons below";
 
 ```
 ###### \java\seedu\address\logic\commands\SortCommand.java
@@ -519,6 +520,7 @@ public class UnfavCommand extends UndoableCommand {
 ```
 ###### \java\seedu\address\logic\parser\AddressBookParser.java
 ``` java
+
 
 ```
 ###### \java\seedu\address\logic\parser\EditCommandParser.java
@@ -1320,6 +1322,8 @@ public class Birthday {
         this.score = new SimpleObjectProperty<>(score);
         // protect internal tags from changes in the arg list
         this.tags = new SimpleObjectProperty<>(new UniqueTagList(tags));
+        this.avatarPic = new SimpleObjectProperty<>(avatar);
+
     }
 
     /**
@@ -1327,7 +1331,7 @@ public class Birthday {
      */
     public Person(ReadOnlyPerson source) {
         this(source.getName(), source.getPhone(), source.getBirthday(), source.getEmail(),
-                source.getAddress(), source.getScore(), source.getTags());
+                source.getAddress(), source.getScore(), source.getTags(), source.getAvatarPic());
     }
 
     public void setName(Name name) {
@@ -1422,6 +1426,8 @@ public class Birthday {
     ObjectProperty<UniqueTagList> tagProperty();
     Set<Tag> getTags();
 
+    Avatar getAvatarPic();
+
     /**
      * Returns true if both have the same state. (interfaces cannot override .equals)
      */
@@ -1441,6 +1447,8 @@ public class Birthday {
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
+                .append("avatar: ")
+                .append(getAvatarPic())
                 .append(" Phone: ")
                 .append(getPhone())
 ```
@@ -1628,25 +1636,6 @@ public class Birthday {
 
     @XmlElement
     private String score;
-
-    @XmlElement
-    private List<XmlAdaptedTag> tagged = new ArrayList<>();
-
-    /**
-     * Constructs an XmlAdaptedPerson.
-     * This is the no-arg constructor that is required by JAXB.
-     */
-    public XmlAdaptedPerson() {}
-
-
-    /**
-     * Converts a given Person into this class for JAXB use.
-     *
-     * @param source future changes to this will not affect the created XmlAdaptedPerson
-     */
-    public XmlAdaptedPerson(ReadOnlyPerson source) {
-        name = source.getName().fullName;
-        phone = source.getPhone().value;
 ```
 ###### \java\seedu\address\storage\XmlAdaptedPerson.java
 ``` java
@@ -1657,6 +1646,7 @@ public class Birthday {
         email = source.getEmail().value;
         address = source.getAddress().value;
         score = source.getScore().value;
+        avatar = source.getAvatarPic().source;
         tagged = new ArrayList<>();
         for (Tag tag : source.getTags()) {
             tagged.add(new XmlAdaptedTag(tag));
@@ -1680,9 +1670,7 @@ public class Birthday {
         final Address address = new Address(this.address);
         final Score score = new Score(this.score);
         final Set<Tag> tags = new HashSet<>(personTags);
-        return new Person(name, phone, birthday, email, address, score, tags);
-    }
-}
+
 ```
 ###### \java\seedu\address\storage\XmlSerializableAddressBook.java
 ``` java
