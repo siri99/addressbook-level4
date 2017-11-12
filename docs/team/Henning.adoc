@@ -32,14 +32,17 @@ would be most desirable to form a group with, such that the best result can be a
 
 ==== Implementation
 
-The score parameter is implemented much like the other parameters in the Addressbook.
-The main difference is how it handles no input. Since the group score is optional,
-it allows for this. When no input is received in the AddCommandParser, the
-parseScore method in the ParserUtil class will return an empty string object. When
-the new Score object is being instantiated, this will then be recognized, and the empty
-string will be assigned as the new score's value. This means no score will
-be displayed for that person in the addressbook, but it will still be possible to
-add one with the edit command later on.
+The implementation of the Group Score parameter, is explained in the developer guide: +
+
+---
+#Start of Extract [from: Developer Guide]#
+
+include::../DeveloperGuide.adoc[tag=GroupScore]
+
+#End of Extract#
+
+---
+
 
 ==== Other contributions
 
