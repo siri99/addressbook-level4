@@ -145,6 +145,7 @@ Window is dismissed upon a successful edit, remains open on failure to allow min
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * Can add multiple tags if separated by a space.
 ****
+// end::editButton[]
 // tag::find[]
 
 === Locating persons by name or tags: `find` or `f`
