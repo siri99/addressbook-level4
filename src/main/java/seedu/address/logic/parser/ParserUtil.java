@@ -73,7 +73,7 @@ public class ParserUtil {
         requireNonNull(birthday);
         //return birthday.isPresent() ? Optional.of(new Birthday(birthday.get())) : Optional.empty();
         return birthday.isPresent() ? Optional.of(new Birthday(birthday.get())) : Optional.of
-                (new Birthday("valueNotFound"));
+                (new Birthday("No Birthday Listed"));
     }
     //@@author siri99
 

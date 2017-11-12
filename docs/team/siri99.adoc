@@ -1,10 +1,12 @@
-= Sirisha Kommareddi - Project Portfolio
+= Kommareddi Lakshmi Sirisha - Project Portfolio
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== Project: AddressBook - Level 4
-AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+== Project: UniBook
+UniBook is a desktop address book application that allows users to conveniently store and manage their contacts.
+It is mainly targeted towards university students. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+It is written in Java, and has about 6 kLoC.
 
 *Code contributed*: +
 [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/main/siri99.md] +
@@ -145,6 +147,7 @@ with the import command.
 
 === Other contributions
 
+* Added a Birthday Field
 * Made Birthday Field optional
 * Synced Favourite List with Main List
 * Added Alias Command to each command.
