@@ -130,6 +130,7 @@ include::../DeveloperGuide.adoc[tag=browsePanel]
 
 * Beautified the browser panel and it can show the person's detail as well as upcoming events. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/68)
 * Added status bar at the bottom of personList panel to show the size of current personList. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/12)
+* Added SampleData generate functions that can generate fake persons automatically. (Link: https://github.com/CS2103AUG2017-T13-B2/main/pull/112)
 * Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W13-B4/main/issues/253)
 * Wrote additional tests to increase coverage (AddAvatarCommand Test, HomeCommandTest, AvatarTest, StatusBarTest etc)
 * Added User cases (Link: https://github.com/CS2103AUG2017-T13-B2/main/projects/1)

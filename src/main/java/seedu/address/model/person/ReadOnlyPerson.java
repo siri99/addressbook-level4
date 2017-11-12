@@ -50,8 +50,8 @@ public interface ReadOnlyPerson {
     default String getAsText() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append("avatar: ")
-                .append(getAvatarPic())
+//                .append("avatar: ")
+//                .append(getAvatarPic())
                 .append(" Phone: ")
                 .append(getPhone())
                 //@@author siri99
