@@ -65,6 +65,18 @@
         padding: 0px;
         height: 100%;
     }
+```
+###### \java\seedu\address\commons\events\ui\PersonPanelSelectionChangedEvent.java
+``` java
+
+}
+```
+###### \java\seedu\address\logic\commands\AddAvatarCommand.java
+``` java
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+=======
 </style>
 
 <body>
@@ -272,6 +284,10 @@
 .list-cell:filled:selected {
     -fx-background-color: derive(#f7f5f4, -5%);
 }
+```
+###### \java\seedu\address\logic\commands\HomeCommand.java
+``` java
+package seedu.address.logic.commands;
 
 .list-cell:filled:selected #cardPane {
     -fx-border-color: transparent;
@@ -325,6 +341,12 @@
     -fx-effect: dropshadow(gaussian, derive(#f7f5f4, -15%), 10, 0, -2, 2);
 }
 
+```
+###### \java\seedu\address\logic\parser\AddAvatarCommandParser.java
+``` java
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
 .status-bar {
     -fx-background-color: derive(#f7f5f4, 80%);
     -fx-padding: 0 10 0 10;
@@ -374,6 +396,15 @@
 .menu-bar {
     -fx-background-color: derive(#f7f5f4, 80%);
 }
+```
+###### \java\seedu\address\logic\parser\AddressBookParser.java
+``` java
+        case HomeCommand.COMMAND_WORD:
+            return new HomeCommand();
+```
+###### \java\seedu\address\logic\parser\AddressBookParser.java
+``` java
+=======
 
 .menu-bar .label {
     -fx-font-size: 12pt;
@@ -439,6 +470,20 @@
     -fx-background-color: #f7f5f4;
 }
 
+```
+###### \java\seedu\address\logic\parser\ParserUtil.java
+``` java
+    /**
+     * Parses a {@code Optional<String> imageURL} into an {@code Optional<Avatar>} if {@code imageURL} is present.
+     * See header comment of this class regarding the use of {@code Optional} parameters.
+     */
+    public static Optional<Avatar> parseImageUrl(Optional<String> imageUrl) throws IllegalValueException {
+        requireNonNull(imageUrl);
+        return imageUrl.isPresent() ? Optional.of(new Avatar(imageUrl.get())) : Optional.empty();
+    }
+```
+###### \java\seedu\address\logic\parser\ParserUtil.java
+``` java
 .dialog-pane > *.button-bar > *.container {
     -fx-background-color: #f7f5f4;
 }
@@ -641,7 +686,6 @@
         String emails = p.getEmail().toString();
         String phones = p.getPhone().toString();
         String tags = p.getOnlyTags().toString();
-        String avatar = p.getAvatarPic().toString();
 
         backToHomePage = event.getBackToHomePageValue();
 
@@ -653,7 +697,7 @@
                 panel.executeScript("document.setEmail(\"" + emails + "\")");
                 panel.executeScript("document.setPhone(\"" + phones + "\")");
                 panel.executeScript("document.setTags(\"" + tags + "\")");
-                panel.executeScript("document.setAvatar(\"" + avatar + "\")");
+
             }
         });
 

@@ -77,6 +77,19 @@ Examples:
 
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+// tag::addButton[]
+
+=== Adding a person via 'add' button
+
+Adds a new person to the address book.
+Opens a prompt with text boxes for all possible fields for a new person.
+Window is dismissed on successful addition of a new person.
+
+****
+* Contains text boxes for option fields with text indicating them as optional.
+* Can add multiple tags if separated by a space in the text box.
+****
+// end::addButton[]
 
 === Listing all persons : `list` or `l`
 
@@ -117,22 +130,24 @@ Examples:
 Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 * `edit 2 n/Betsy Crower t/` +
 Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+// tag::editButton[]
 
 === Editing a person via 'Edit' button
 
 Edits an existing person in the address book. +
 Fill in all fields you wish to modify for the selected person. +
-Window remains open until dismissed to allow multiple edits quickly.
+Window is dismissed upon a successful edit, remains open on failure to allow minor corrections.
 
 ****
 * Edits the person whose 'Edit' button was presesd.
-* At least one of the optional fields must be provided.
+* At least one of the fields must be modified.
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* Only One tag can currently be added via the 'Edit' button. For more, use the command line.
+* Can add multiple tags if separated by a space.
 ****
-
+// end::undoRedoButton[]
 // tag::find[]
+
 === Locating persons by name or tags: `find` or `f`
 
 Finds persons whose names or tags contain any of the given keywords. +
@@ -179,6 +194,7 @@ Deletes the 2nd person in the address book.
 * `find Betsy` +
 `delete 1` +
 Deletes the 1st person in the results of the `find` command.
+// tag::deleteButton[]
 
 === Deleting a person : via 'Delete' button
 
@@ -188,6 +204,7 @@ Can be undone using `undo` normally.
 ****
 * Deletes the person
 ****
+// end::deleteButton[]
 // tag::homeCommand[]
 === Going back to home panel : `home`
 
@@ -322,6 +339,7 @@ The `undo` command fails as there are no undoable commands executed previously.
 `clear` +
 `undo` (reverses the `clear` command) +
 `undo` (reverses the `delete 1` command) +
+// tag:: undoRedoButton[]
 
 === Undoing previous command via 'Undo' button
 
@@ -331,6 +349,7 @@ Restores the address book to the state before the previous _undoable_ command wa
 ====
 Undoable commands: those commands that modify the address book's content (`add`, `delete`, `edit` and `clear`).
 ====
+// end::undoRedoButton[]
 
 === Redoing the previously undone command : `redo` or `r`
 
@@ -354,11 +373,13 @@ The `redo` command fails as there are no `undo` commands executed previously.
 `u` (reverses the `delete 1` command) +
 `redo` (reapplies the `delete 1` command) +
 `r` (reapplies the `clear` command) +
+// tag::undoRedoButton[]
 
 === Redoing the previously undone command via 'Redo' button
 
 Reverses the most recent `undo` command or button press.
 Fails if no `undo` commands have executed or 'Undo' has not been pressed.
+// end::undoRedoButton[]
 // end::undoredo[]
 
 === Clearing all entries : `clear` or `c`
