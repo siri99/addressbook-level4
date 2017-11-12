@@ -1,10 +1,10 @@
-= Jacob Vosburgh - Project Portfolio
+= Jacob Christopher Vosburgh - Project Portfolio
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== Project: AddressBook - Level 4
-AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
+== Project: UniBook - To manage your wonderful uni life
+UniBook is a desktop address book application used for manage your uni friends information. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-T13-B2/main/blob/fixing1.5/collated/main/Jacob.md[Functional code]] [https://github.com/CS2103AUG2017-T13-B2/main/blob/fixing1.5/collated/test/Jacob.md[Test code]] {give links to collated code files}
 
@@ -121,9 +121,9 @@ include::../DeveloperGuide.adoc[tag=deleteButton]
 ---
 
 
-=== Enhancement Proposed: Add command `remark`
+=== Enhancement Proposed: Replace Edit button with direct edits to the person cards
 
-{Explain similar to the Undo/Redo feature above.}
+Instead of opening an edit window, pressing the edit button should turn the person card into a series of text boxes that already have the current values of those characteristics, to allow rapid fixes of typos. Additionally, tags will become removable via a button on the tag, and another button creates an empty text box for a new tag.
 
 === Other contributions
 

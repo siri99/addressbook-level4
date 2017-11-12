@@ -27,7 +27,7 @@ public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
     //@@author Linus
-    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
+    private static String[] colors = { "#007bff", "#868e96", "#28a745", "#dc3545", "#ffc107", "#17a2b8"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
     //@@author Linus
 
@@ -87,7 +87,9 @@ public class PersonCard extends UiPart<Region> {
 
     private String mapTagToColor(String tagValue) {
         if (!colorMapping.containsKey(tagValue)) {
-            colorMapping.put(tagValue, colors[tagValue.length() % colors.length]);
+            int x = Character.getNumericValue(tagValue.charAt(0)) + 87; //magic number to match to javascript char->int
+            logger.info(tagValue + String.valueOf(x));
+            colorMapping.put(tagValue, colors[x % 6]); //colors.length]);
         }
         return colorMapping.get(tagValue);
     }
