@@ -11,25 +11,27 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 
 == Project Team
 
-=== Jacob Vosburgh
-image::jvossy.png[width="400", height="514" align="left"]
+=== Jacob Christopher Vosburgh
+image::jvossy.png[width="150", height="514" align="left"]
 {empty} [https://github.com/jvossy[github]]
 
-Role: UI
+Role: Developer
+
+Responsibilities: UI
 
 '''
 
-=== Sirisha Kommareddi
+=== Kommareddi Lakshmi Sirisha
 image::siri.jpg[width="150", align="left"]
 {empty}[https://github.com/siri99[github]]
 
 Role: Developer
 
-Responsibilities: Logic
+Responsibilities: Logic, Model
 
 '''
 
-=== Linus Peng
+=== Peng Xu
 image::linus.jpg[width="150", align="left"]
 {empty}[http://github.com/LinusMelb[github]] [<<Linus#, portfolio>>]
 
@@ -38,7 +40,7 @@ Responsibilities: Storage
 
 '''
 
-=== Henning
+=== Henning Tau Frederiksen
 image::henning.jpg[width="150", align="left"]
 {empty}[https://github.com/coolpotato1[github]]
 

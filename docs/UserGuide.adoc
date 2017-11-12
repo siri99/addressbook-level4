@@ -417,12 +417,14 @@ Format: `import fileAddress` or `imp fileAddress`
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` or `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
+* *Add* `add n/NAME p/PHONE_NUMBER b/BIRTHDAY e/EMAIL a/ADDRESS [t/TAG]...` or `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
+Birthday is an optional field. +
 e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
 * *Clear* : `clear` or `c`
 * *Delete* : `delete INDEX` or `d INDEX` +
 e.g. `delete 3` or `d 3`
-* *Edit* : `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` or `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+* *Edit* : `edit INDEX [n/NAME] [b/BIRTHDAY] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` or `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+Birthday is an optional field. +
 e.g. `edit 2 n/James Lee e/jameslee@example.com` or `e 2 n/James Lee e/jameslee@example.com`
 * *Favourite list* : `favlist` or `fl`
 * *Favourite* : `fav INDEX` or `fv INDEX` +
@@ -443,3 +445,22 @@ e.g. `sort name` or `so birthday` or `sort score` or `sort b` or `sort`
 * *History* : `history` or `h`
 * *Undo* : `undo` or `u`
 * *Redo* : `redo` or `r`
+
+
+== Reported Bugs
+The wrong person gets deleted from the list when we delete a person after using the find command, and use undo and redo commands immediately after.
+
+If list originally contains: +
+1. Alex +
+2. Robert +
+3. Roy +
+
+Sequence of commands: +
+find Roy (Roy is found) +
+delete 1 (Roy is deleted) +
+undo (Roy is back in the list) +
+redo (Alex is deleted instead of Roy) +
+
+AddressBook deletes the person at the top of the list instead of deleting the same person we previously deleted when using redo.
+This is a bug that has existed in the original AdderessBook itself, has not been fixed yet (difficult to fix currently due to presence of multiple
+lists in the current implementation of AddressBook).
