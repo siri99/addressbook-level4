@@ -65,3 +65,9 @@ Enter the command _find friends George_ +
 Observe that the list now only shows people with the substring 'George or 'friends' in their name or who are tagged with 'George or 'friends'.
 
 Rejoice at completion of the command line portion of the testing.
+
+== Interact with the User Interface
+
+=== Add a person
+
+
