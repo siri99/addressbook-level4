@@ -6,7 +6,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 == Project: UniBook - To manage your wonderful uni life
 UniBook is a desktop address book application used for manage your uni friends information. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 
-*Code contributed*: [https://github.com/CS2103AUG2017-T13-B2/main/blob/fixing1.5/collated/main/Jacob.md[Functional code]] [https://github.com/CS2103AUG2017-T13-B2/main/blob/fixing1.5/collated/test/Jacob.md[Test code]]
+*Code contributed*: [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/main/Jacob.md[Functional code]] [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/test/Jacob.md[Test code]]
 
 === Enhancement Added: Undo/Redo buttons
 
@@ -128,3 +128,4 @@ Instead of opening an edit window, pressing the edit button should turn the pers
 === Other contributions
 
 * Provided feedback to W13-B4 (https://github.com/CS2103AUG2017-W13-B4/main/issues/254)
+* Wrote the team testing guide for manual testing.
