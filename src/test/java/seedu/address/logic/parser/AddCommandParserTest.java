@@ -105,6 +105,16 @@ public class AddCommandParserTest {
         assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
                 + BIRTHDAY_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + SCORE_DESC_AMY,
                 new AddCommand(expectedPerson));
+
+        //@@author siri99
+        // birthday field missing
+        Person expectedPersonNoBirthday = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
+                .withBirthday("No Birthday Listed").withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+                .withScore(VALID_SCORE_AMY).withTags(VALID_TAG_FRIEND).build();
+        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
+                        + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + SCORE_DESC_AMY + TAG_DESC_FRIEND,
+                new AddCommand(expectedPersonNoBirthday));
+        //@@author siri99
     }
 
     @Test
