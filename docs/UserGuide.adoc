@@ -161,14 +161,14 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Partial words must be atleast 2 characters long
 * Persons matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 ****
-// end::find[]
-Examples:
+image::FindBySubString.png[width="600"]
+_Figure 1.1: Find by Substring of name_
 
+Examples:
 * `find John` +
-Returns `john` and `John Doe`
+Returns `john` and `John Doe` and any user whose name contains the substring `john` or `John Doe`
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
-// tag::find[]
 * `find Bet` +
 Returns any person having names which contain the word `Bet`, eg.`Betsy`
 * `find friends family` +
@@ -288,6 +288,10 @@ Selects the 1st person in the results of the `find` command.
 
 Shows a list of all the persons in the Favourite List. +
 Format: `favlist` or `fl`
+
+image::FavouriteList.png[width="600"]
+_Figure 1.12.1: Find by Substring of name_
+
 
 === Listing Favourite persons via star button
 
