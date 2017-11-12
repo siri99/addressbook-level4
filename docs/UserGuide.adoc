@@ -67,15 +67,15 @@ Format: `help`
 === Adding a person: `add` or `a`
 
 Adds a person to the address book +
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
-        `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`
+Format: `add n/NAME p/PHONE_NUMBER [b/BIRTHDAY] e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...`
+        `a n/NAME p/PHONE_NUMBER [b/BIRTHDAY] e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...`
 
 [TIP]
 A person can have any number of tags (including 0)
 
 Examples:
 
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
+* `add n/John Doe p/98765432 b/19/07/1995 e/johnd@example.com a/John street, block 123, #01-01, s/5`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 // tag::addButton[]
 
@@ -113,8 +113,8 @@ Format: `sort` or `so` or `sort name` or `sort birthday` or `sort b` or `sort s`
 === Editing a person : `edit` or `e`
 
 Edits an existing person in the address book. +
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
-        `e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...`
+Format: `edit INDEX [n/NAME] [p/PHONE] [b/BIRTHDAY] [e/EMAIL] [a/ADDRESS] [s/SCORE] [t/TAG]...`
+        `e INDEX [n/NAME] [p/PHONE] [b/BIRTHDAY] [e/EMAIL] [a/ADDRESS] [s/SCORE] [t/TAG]...`
 
 ****
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the last person listing. The index *must be a positive integer* 1, 2, 3, ...
@@ -446,14 +446,13 @@ Format: `import fileAddress` or `imp fileAddress`
 
 == Command Summary
 
-* *Add* `add n/NAME p/PHONE_NUMBER b/BIRTHDAY e/EMAIL a/ADDRESS [t/TAG]...` or `a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...` +
+* *Add* `add n/NAME p/PHONE_NUMBER [b/BIRTHDAY] e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...` or `a n/NAME p/PHONE_NUMBER [b/BIRTHDAY] e/EMAIL a/ADDRESS [s/SCORE] [t/TAG]...` +
 Birthday is an optional field. +
-e.g. `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+e.g. `add n/James Ho p/22224444 b/14/07/1995 e/jamesho@example.com a/123, Clementi Rd, 1234665 s/8 t/friend t/colleague`
 * *Clear* : `clear` or `c`
 * *Delete* : `delete INDEX` or `d INDEX` +
 e.g. `delete 3` or `d 3`
-* *Edit* : `edit INDEX [n/NAME] [b/BIRTHDAY] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` or `e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
-Birthday is an optional field. +
+* *Edit* : `edit INDEX [n/NAME] [b/BIRTHDAY] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [s/SCORE] [t/TAG]...` or `e INDEX [n/NAME] [p/PHONE_NUMBER] [b/BIRTHDAY] [e/EMAIL] [a/ADDRESS] [s/SCORE] [t/TAG]...` +
 e.g. `edit 2 n/James Lee e/jameslee@example.com` or `e 2 n/James Lee e/jameslee@example.com`
 * *Favourite list* : `favlist` or `fl`
 * *Favourite* : `fav INDEX` or `fv INDEX` +
