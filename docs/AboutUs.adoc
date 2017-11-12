@@ -14,6 +14,7 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 === Jacob Christopher Vosburgh
 image::jvossy.png[width="150", height="514" align="left"]
 {empty} [https://github.com/jvossy[github]]
+{empty} [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/docs/team/jacobvosburgh.adoc[portfolio]]
 
 Role: Developer
 
@@ -24,6 +25,7 @@ Responsibilities: UI
 === Kommareddi Lakshmi Sirisha
 image::siri.jpg[width="150", align="left"]
 {empty}[https://github.com/siri99[github]]
+{empty} [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/docs/team/siri99.adoc[portfolio]]
 
 Role: Developer
 
@@ -33,7 +35,8 @@ Responsibilities: Logic, Model
 
 === Peng Xu
 image::linus.jpg[width="150", align="left"]
-{empty}[http://github.com/LinusMelb[github]] [<<Linus#, portfolio>>]
+{empty}[http://github.com/LinusMelb[github]]
+{empty} [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/docs/team/linus.adoc[portfolio]]
 
 Role: Developer +
 Responsibilities: Storage
@@ -43,6 +46,7 @@ Responsibilities: Storage
 === Henning Tau Frederiksen
 image::henning.jpg[width="150", align="left"]
 {empty}[https://github.com/coolpotato1[github]]
+{empty} [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/docs/team/Henning.adoc[portfolio]]
 
 Role: Developer +
 Responsibilities: Model
