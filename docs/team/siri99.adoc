@@ -5,7 +5,12 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 == Project: UniBook
 UniBook is a desktop address book application that allows users to conveniently store and manage their contacts.
-It is mainly targeted towards university students. The user interacts with it using a CLI, and it has a GUI created with JavaFX.
+It is mainly targeted towards university students and has various features such as a favourite list, profile picture etc that allows students
+to customise their contacts. There are also useful functions such as sorting by name or birthday that allows
+users to view the contacts in a particular order. Other features include an enhanced find command that allows users to find by tags and substring of name, and a theme change
+function.
+
+The user interacts with it using a CLI, and it has a GUI created with JavaFX.
 It is written in Java, and has about 6 kLoC.
 
 *Code contributed*: [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/main/siri99.md[Functional code]] [https://github.com/CS2103AUG2017-T13-B2/main/blob/master/collated/test/siri99.md[Test code]]
@@ -122,6 +127,14 @@ include::../DeveloperGuide.adoc[tag=find]
 
 ---
 
+=== Enhancement Added: Birthday Field
+
+==== Justification
+As this app is targeted towards university students, it will be very useful for them to store the birthdays of their contacts
+so that they can wish their friends on time. This field becomes more useful with its integration with the sort command which has the option to sort by birthday
+to display the list of birthdays in a sequential order from January to December so that the users can know if the birthdays of their friends are near.
+
+---
 === Enhancement Proposed: Add command `import`
 
 ==== External behavior
@@ -145,7 +158,6 @@ with the import command.
 
 === Other contributions
 
-* Added a Birthday Field
 * Made Birthday Field optional
 * Synced Favourite List with Main List
 * Added Alias Command to each command.
