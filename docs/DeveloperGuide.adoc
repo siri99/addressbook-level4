@@ -576,7 +576,11 @@ Opens a prompt that allows immediate edits to be performed without using the edi
 
 === Add Button
 
-Opens a prompt that allows immediate adds to be performed without using the add command's complex syntax.
+Opens a prompt that allows immediate adds to be performed without using the add command's complex syntax. +
+Functions via calls of the 'add()' command.
+
+image::UiComponentAddButtonSequenceDiagram.png[width="600"]
+_Figure 3.11.1 : Sequence Diagram of Add Button Functionality_
 
 === Design Considerations
 
