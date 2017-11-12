@@ -16,10 +16,9 @@ Observe that the text updates to inform you of successful entry, and George Wash
 Click on him to open him in the browser, currently with a default avatar picture.
 
 Enter the command _add n/Nancy Wheeler p/98123456 e/nancy20@gmail.com a/Blk 276 Dover Road, Singapore_ +
-Observe that the text updates to inform you of successful entry, and Nancy Wheeler now appears at the bottom of the list, below George Washington,
-observable by scrolling down. Click on her to open her details in the browser, currently with a default avatar picture.
-Note that since you have not added the optional fields: birthday, score and tags - score and tag
-do not appear, and her birthday description below phone number says 'No Birthday Listed'.
+Observe that the text updates to inform you of successful entry, and Nancy Wheeler now appears at the bottom of the list,
+observable by scrolling down. Note that since you have not added the optional fields: birthday, score and tags - score and tag
+do not appear, and her birthday description below phone number on the PersonCard says 'No Birthday Listed'.
 
 === Add an avatar to a person
 
@@ -47,6 +46,10 @@ Enter the command _sort score_ +
 Locate George Washington in the list now sorted by Group Score using his value for Group Score, 9. He should appear near the top of the list.
 
 === Use the favorite list
+_fv_ is an alias command that works the same way as _fav_. +
+For example, _fav 1_ and _fv 1_ mean the same thing. +
+_ufv_ is an alias command that works the same way as _unfav_. +
+For example, _unfav 1_ and _unfv 1_ mean the same thing. +
 
 Enter the command _fav_ and the index number that appears next to George Washington, his index on the list. +
 Observe that the text under the command line states that George Washington has been added to the Favourite List.
@@ -57,7 +60,7 @@ Observe the new list that now contains our only favourited contact, George Washi
 Enter the command _list_ +
 Observe that the list has returned to the main list of all contacts.
 
-Enter the command _fav 1_ +
+Enter the command _fv 1_ +
 
 Enter the command _favlist_ +
 Observe that the favourite list now contains two persons, George Washington,
@@ -74,11 +77,13 @@ Observe that the browser now shows the UniBook home page, with information on co
 === Use the search function
 Note that the find command is case insensitive for both names and tags.
 For example, find George, find GeORgE, find george, find GEORGE will give the same results.
+_f_ is an alias command that works the same way as _find_.
+For example, _find friends_ and _f friends_ mean the same thing.
 
 Enter the command _find George_ +
 Observe that the list now only shows people with the substring 'george' in their name or who are tagged as 'george'.
 
-Enter the command _find friends_ +
+Enter the command _f friends_ +
 Observe that the list now only shows people with the substring 'friends' in their name or who are tagged as 'friends'.
 
 Enter the command _find friends George_ +
@@ -140,7 +145,7 @@ Observe that you are now viewing your favorite list, which only has George Washi
 
 Enter the command _list_
 
-Click the X button on the top right of George Washington's box.
+Click the X button on the top right of George Washington's box. That is the delete button.
 Observe that George Washington is no longer present in the list.
 
 Click the star button again, and observe that now the favorite list is now empty. It does not have George Washington as the favourite list
