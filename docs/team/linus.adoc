@@ -15,7 +15,7 @@ UniBook is a desktop address book application used for manage your uni friends i
 ---
 #Start of Extract [from: User Guide]#
 
-include::../UserGuide.adoc[tag=homeCommand]
+include::../UserGuide.adoc[tag=avatar]
 
 #End of Extract#
 
@@ -34,7 +34,7 @@ Example command:
 ---
 #Start of Extract [from: Developer Guide]#
 
-include::../UserGuide.adoc[tag=avatar]
+include::../DeveloperGuide.adoc[tag=AddAvatarCommand]
 
 #End of Extract#
 
@@ -88,15 +88,54 @@ include::../UserGuide.adoc[tag=theme]
 #End of Extract#
 ---
 
+=== Implementation
+---
+#Start of Extract [from: Dev Guide]#
+
+include::../DeveloperGuide.adoc[tag=themeMenu]
+
+#End of Extract#
+---
+
+=== Enhancement Added: Browse Panel
+
+==== External behavior
+---
+
+**Aspect:** Try to make browser panel be user-friendly and looks good
+**Pros:** The whole UI on browser panel looks nice and the usage of colors is decent.
+**Cons:** Using external css framework takes more time to load. Some functions are hard-coded that it cannot be changed dynamically.
+
+The Browser panel was created by HTML code, CSS and It uses front-end framework Bootstrap4.0 and raw Javascript code.
+
+---
+#Start of Extract [from: User Guide]#
+
+include::../UserGuide.adoc[tag=browsePanel]
+
+#End of Extract#
+---
+
+=== Implementation
+---
+#Start of Extract [from: Dev Guide]#
+
+include::../DeveloperGuide.adoc[tag=browsePanel]
+
+#End of Extract#
+---
+
+
 === Other contributions
 
 * Beautified the browser panel and it can show the person's detail as well as upcoming events. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/68)
-* Added theme changing menu. User can change the theme of Unibook based on their tastes. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/51)
 * Added status bar at the bottom of personList panel to show the size of current personList. (Pull requests: https://github.com/CS2103AUG2017-T13-B2/main/pull/12)
 * Testing for another team's product. (Issue https://github.com/CS2103AUG2017-W13-B4/main/issues/253)
 * Wrote additional tests to increase coverage (AddAvatarCommand Test, HomeCommandTest, AvatarTest, StatusBarTest etc)
 * Added User cases (Link: https://github.com/CS2103AUG2017-T13-B2/main/projects/1)
 * Added User Stories (Link: https://github.com/CS2103AUG2017-T13-B2/main/projects/1)
+* Help Matched the color of tags to the same as the browser tags.
+* Updated our UI.png, Version number of project regularly.
 ---
 
 #Start of Extract [from: Developer Guide]#

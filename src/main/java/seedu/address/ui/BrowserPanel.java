@@ -67,7 +67,6 @@ public class BrowserPanel extends UiPart<Region> {
         loadPage(addressPage.toExternalForm());
     }
 
-
     public void loadPage(String url) {
         Platform.runLater(() -> browser.getEngine().load(url));
     }
@@ -100,7 +99,6 @@ public class BrowserPanel extends UiPart<Region> {
         String phones = p.getPhone().toString();
         String tags = p.getOnlyTags().toString();
         String avatar = p.getAvatarPic().toString();
-        String birthday = p.getBirthday().toString();
 
         backToHomePage = event.getBackToHomePageValue();
 
@@ -108,7 +106,6 @@ public class BrowserPanel extends UiPart<Region> {
             if (newState == Worker.State.SUCCEEDED && backToHomePage == 0) {
                 WebEngine panel = browser.getEngine();
 
-                panel.executeScript("document.setBirthday(\"" + birthday + "\")");
                 panel.executeScript("document.setName(\"" + name + "\")");
                 panel.executeScript("document.setAddress(\"" + address + "\")");
                 panel.executeScript("document.setEmail(\"" + emails + "\")");

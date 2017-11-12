@@ -46,9 +46,9 @@ We provide two themes for the user:
 * Light
 * Dark
 +
-image::themes.png[width="790"]
+image::themes.png[width="800"]
 +
-// tag::theme[]
+// end::theme[]
 == Features
 
 ====
@@ -210,7 +210,13 @@ Can be undone using `undo` normally.
 
 Goes back to home panel. +
 
+The command is to help user go back to home browser panel simply just raise new event. +
+
 Format: `home`
+
+* After running command *
+
+image::homePanel.png[width="800"]
 
 // end::homeCommand[]
 
@@ -221,10 +227,18 @@ Adds an avatar image for person by specifying image URL. +
 
 Format: `avatar INDEX [u/Image URL]`
 
+*Before running command*
+
+image::addAvatar1.png[width="800"]
+
+*After running command*
+
+image::addAvatar2.png[width="800"]
+
 ****
 * The index refers to the index number of person
 * The Image URL must be valid url link and end with image file extension such as .jpg .png .gif
-* The default Image URL is: https://www.gravatar.com/avatar/null
+* The default Image URL is: http://139.59.227.237/public/default.jpg
 ****
 
 Example:
@@ -235,7 +249,19 @@ Adds avatar image[http://139.59.227.237/public/default.jpg] for
 1st person in shown list. +
 
 // end::avatar[]
+// tag::browsePanel[]
+=== Changing browser panel
 
+*Home Panel*
+
+image::BrowserPanel1.png[width="800"]
+
+*Person's Profile*
+
+image::BrowserPanel2.png[width="800"]
+
+
+// end::browsePanel[]
 === Selecting a person : `select` or `s`
 
 Selects the person identified by the index number used in the last person listing. +
