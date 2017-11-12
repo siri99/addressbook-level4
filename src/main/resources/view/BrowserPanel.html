@@ -128,6 +128,10 @@
             document.getElementById("avatar").src = avatar;
         }
 
+        document.setBirthday = function setBirthday(birthday) {
+            document.getElementById("birthday").InnerHTML = "Birthday: " + birthday;
+        }
+
         document.setTags = function setTags(tags) {
             tagArray = tags.split(" ");
             tagsHtml = '';

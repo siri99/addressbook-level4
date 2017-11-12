@@ -592,6 +592,14 @@ Opens a prompt that allows immediate adds to be performed without using the add 
 The feature is to get avatar image through url link and store the image into local directory called avatar.
 At the same time, updates avatar node in current person xml nodes with the image location.
 
+*Before running command*
+
+image::addAvatar1.png[width="800"]
+
+*After running command*
+
+image::addAvatar2.png[width="800"]
+
 The command to add avatar image is “avatar INDEX u/Image URL”.
 
 // end::AddAvatarCommand[]
@@ -601,11 +609,27 @@ The command to add avatar image is “avatar INDEX u/Image URL”.
 
 The feature is implemented in a similar way to the 'Select' feature.
 
-The command is to help user go back to home browser panel.
+The command is to help user go back to home browser panel simply just raise new event.
 
-image::LogicClassDiagram.png[width="800"]
+image::HomeCommandDiagram.png[width="800"]
 
 // end::homeCommand[]
+
+=== Broswer Panel
+
+**Aspect:** Try to make browser panel be user-friendly and looks good
+**Pros:** The whole UI on browser panel looks nice and the usage of colors is decent.
+**Cons:** Using external css framework takes more time to load. Some functions are hard-coded that it cannot be changed dynamically.
+
+The Browser panel was created by HTML code, CSS and It uses front-end framework Bootstrap4.0 and Javascript
+
+*Home Panel*
+
+image::BrowserPanel1.png[width="800"]
+
+*Person's Profile*
+
+image::BrowserPanel2.png[width="800"]
 
 === Logging
 
@@ -1202,30 +1226,3 @@ Private contact detail
 ....
 A contact detail that is not meant to be shared with others
 ....
-
-
-
-//== Enhancement Description
-//Author: Peng Xu
-//
-//=== Added color tags
-//
-//The feature is that assign different colors to each tag of person card. Every time when program starts, it will assign color to each tag randomly.
-//
-//=== Added theme change menu item
-//
-//The feature is that user can change background color via the theme buttons on the menubar.
-//
-//
-//=== Added home command
-//
-//The feature is that user can go back to home page of the browser
-//
-//=== Beautified the UI of browser panel
-//
-//The feature is that user can see the commands instruction in home page. Also, each user can view their personal info as
-//well as their upcoming events.
-//
-//=== Added the theme button on menu
-//
-//The feature is that user can change theme color of Unibook based on their own taste.
