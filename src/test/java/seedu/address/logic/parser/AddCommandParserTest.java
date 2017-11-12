@@ -85,7 +85,7 @@ public class AddCommandParserTest {
         //@@author Henning
         //multiple scores - last score accepted
         assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
-              + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_AMY+ SCORE_DESC_BOB + TAG_DESC_FRIEND,
+              + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_AMY + SCORE_DESC_BOB + TAG_DESC_FRIEND,
               new AddCommand(expectedPerson));
 
         //@@author Henning
