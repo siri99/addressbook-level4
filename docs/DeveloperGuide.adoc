@@ -368,6 +368,7 @@ image::LogicClassDiagram.png[width="800"]
 
 ---
 // tag::favouritelist[]
+
 === Favourite List mechanism
 
 The feature is implemented in a similar way to the ‘Delete’ and ‘List’ features – it uses the index
