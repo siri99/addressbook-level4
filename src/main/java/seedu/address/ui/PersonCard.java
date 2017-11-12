@@ -26,10 +26,8 @@ import seedu.address.model.person.ReadOnlyPerson;
 public class PersonCard extends UiPart<Region> {
 
     private static final String FXML = "PersonListCard.fxml";
-    //@@author Linus
-    private static String[] colors = { "#ff8080", "#009999", "#4da6ff", "#ff9933", "#00e68a", "#ff80ff", "grey" };
+    private static String[] colors = { "#007bff", "#868e96", "#28a745", "#dc3545", "#ffc107", "#17a2b8"};
     private static HashMap<String, String> colorMapping = new HashMap<String, String>();
-    //@@author Linus
 
     public final ReadOnlyPerson person;
 
@@ -79,22 +77,26 @@ public class PersonCard extends UiPart<Region> {
         initTags(person);
         bindListeners(person);
     }
-
+    //@@author Jacob Vosburgh
     /**
-     * Provides a consistent color based on the string of a tag's value
+     * Provides a consistent color based on the first letter of a tag
      * ie, the same color will return for every call using 'friend' or any other tag.
+     * This also matches the color scheme used to choose colors in the browser, so tags appear the same in both.
+     * @param tagValue
      */
 
     private String mapTagToColor(String tagValue) {
         if (!colorMapping.containsKey(tagValue)) {
-            colorMapping.put(tagValue, colors[tagValue.length() % colors.length]);
+            int x = Character.getNumericValue(tagValue.charAt(0)) + 87; //magic number to match to javascript char->int
+            colorMapping.put(tagValue, colors[x % 6]); //colors.length]);
         }
         return colorMapping.get(tagValue);
     }
-
+    //@@author Jacob Vosburgh
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
      * so that they will be notified of any changes.
+     * @param person
      */
     private void bindListeners(ReadOnlyPerson person) {
         name.textProperty().bind(Bindings.convert(person.nameProperty()));
@@ -182,7 +184,7 @@ public class PersonCard extends UiPart<Region> {
      */
     @FXML
     private void handleEditButtonAction(ActionEvent buttonEvent) {
-        //@@author
+        //@@author Jacob Vosburgh
         //@@author siri99
         CommandResult commandResult = new CommandResult("");
         if (logic.getCurrentList().contains("favlist")) {
@@ -194,6 +196,6 @@ public class PersonCard extends UiPart<Region> {
         }
         logger.info("Result: " + commandResult.feedbackToUser);
         raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
-        //@@author
+        //@@author Jacob Vosburgh
     }
 }
