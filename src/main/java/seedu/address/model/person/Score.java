@@ -29,6 +29,9 @@ public class Score {
         }
     }
 
+    /**
+     *Returns true if given string is a valid score.
+     */
     public static boolean isValidScore(String value) {
         String copy = value.replaceAll("[^\\d]", ""); //For testing purposes
         return copy.matches(SCORE_VALIDATION_REGEX);
