@@ -49,11 +49,11 @@ include::../UserGuide.adoc[tag=editButton]
 
 ---
 
-==== Justification
+=== Justification
 
 Makes editing easier and reduces barrier to entry for new and inexperienced users.
 
-==== Implementation
+=== Implementation
 
 ---
 #Start of Extract [from: Developer Guide]#
