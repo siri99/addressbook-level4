@@ -30,7 +30,7 @@ public class Score {
     }
 
     /**
-     *Returns true if given string is a valid score.2
+     *Returns true if given string is a valid score.
      */
     public static boolean isValidScore(String value) {
         String copy = value.replaceAll("[^\\d]", ""); //For testing purposes

@@ -608,6 +608,7 @@ image::LogicClassDiagram.png[width="800"]
 
 // end::homeCommand[]
 
+// tag::GroupScore[]
 === Group Score mechanism
 
 The group score parameter allows the user to attach an optional group score from 0-9
@@ -621,11 +622,14 @@ input is valid, and initializes a score object if that is the case. +
 Furthermore, to make the Group Score optional, when the `AddCommandParser` calls
 the `parseScore` method in the `ParserUtil` class, if no Group Score input has been received
 the `parseScore` method will instantiate a Score object with an empty string, and return that.
-A class diagram of how a Score object is instantiated by the `AddCommand` can be seen below.
+A sequence diagram of how a Score object is instantiated by the `AddCommandParser` can be seen below.
+
+image::Hennings_diagram.png[width="800"]
 
 Lastly, it should be mentioned that the core functionality of the Group Score parameter
 is its integration with the sort command, which was expanded upon under the `sort command` section.
 
+// end::GroupScore[]
 === Logging
 
 We are using `java.util.logging` package for logging. The `LogsCenter` class is used to manage the logging levels and logging destinations.
