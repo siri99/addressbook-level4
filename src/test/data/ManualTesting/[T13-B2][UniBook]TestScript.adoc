@@ -4,7 +4,8 @@
 :imagesDir: images
 :stylesDir: stylesheets
 
-Begin your test by launching Unibook. A window should open, providing you with a wonderful new list of friends
+Begin your test by launching Unibook. A window should open, providing you with a wonderful new list of friends. +
+All sample data is generated internally. No need to load anything.
 
 == Command Line Functions
 
@@ -70,4 +71,55 @@ Rejoice at completion of the command line portion of the testing.
 
 === Add a person
 
+Click the 'Add' button, found at the top of the page.
+Observe that it has opened a new window with prompts for all possible fields for a new contact.
+Enter 'Issac Newton' in the first box.
+Enter 'scientist' in the second box.
+Enter '39401234' in the third box.
+Enter '25/12/1642' in the third box.
+Enter 'Woolsthorpe, Lincolnshire, England' in the fourth box.
+Enter 'newton@apple.com' in the fifth box.
+Enter '7' in the sixth box.
+Click the 'Add' button at the bottom of the window, and observe it disappear.
+Observe that Isaac Newton has been added to your contact list, with all fields as entered.
 
+== Edit a person
+
+Click the 'Edit' button on Isaac Newton's card.
+Observe that it has opened a new window with prompts for all fields.
+Enter 'mathematician astronomer theologian physicist' in the tags field.
+Enter '8' in the 'Group Score' text box.
+Click the 'Edit' button at the bottom of the window, and observe it disappear.
+Observe that Isaac Newton's Tags are now mathematician, astronomer, theologian, and physicist, and his Group Score has been updated to an '8'.
+
+== Use the Undo and redo Buttons
+
+Click the Undo button at the top of the window, towards the right hand side.
+Observe that the previous edit performed has been undone, and Isaac Newton's Tag is again 'scientist' and his group score '7'.
+
+Click the Redo button at the top of the window, towards the right hand side.
+Observe that the previous undo has been redone, and Isaac Newton again has the Tags mathematician, astronomer, theologian, and physicist, and his Group Score is an '8'.
+
+== Change the theme
+
+Click the 'Theme' dropdown at the top of the window over the command bar.
+Mouse over 'Light' and click.
+Observe that the address book has now brightened, and is visible even in direct sunlight.
+
+Unless you are testing in direct sunlight, click the 'Theme' dropdown at the top of the window again.
+Mouse over 'Dark' and click.
+Observe that the address book has now darkened, and will no longer damage your eyes on prolonged use.
+
+== View the favorite list quickly
+
+Click on the star button near the top of the screen.
+Observe that you are now viewing your favorite list, which only has George Washington.
+
+Enter the command _list_
+
+Click the X button on the top right of George Washington's box.
+Observe that George Washington is no longer present in the list.
+
+Click the star button again, and observe that now the favorite list is now empty.
+
+Rejoice, for you have now completed testing for UniBook, the address book for university students.
