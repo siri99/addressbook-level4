@@ -1,6 +1,8 @@
 package seedu.address.model.util;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -20,40 +22,103 @@ import seedu.address.model.tag.Tag;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
+
+    //@@author Linus
+    private static String[] firstNames = {"Roy", "David", "Alex", "Linus", "Siri", "Hector", "Achilles", "Odysseus",
+        "Jack", "Donald"};
+    private static String[] lastNames = {"Herason", "Trump", "Thompson", "Curry", "Westbrook", "Harden", "O'niel",
+        "Clinton", "Obama", "Washington"};
+    private static String[] emails = {"gmail.com", "yahoo", "outlook", "hotmail", "qq.com", "sina.com"};
+    private static String[] tags = {"colleagues", "friends", "president", "students", "customers", "lawyers",
+        "farmers"};
+    private static String[] phones = {"90909099", "87878888", "33222111", "84456723", "90111123", "12345678",
+        "98363363"};
+    private static String[] birthdays = {"01/09/1988", "03/08/1975", "02/02/1989", "31/12/1966", "28/05/1956",
+        "03/02/1999", "13/12/2000"};
+
+    private static int sampleDataSize = 8;
+
     public static Person[] getSamplePersons() {
-        try {
-            return new Person[] {
-                //@@author siri99
-                new Person(new Name("Alex Yeoh"), new Phone("87438807"), new Birthday("16/08/1968"),
-                new Email("alexyeoh@example.com"), new Address("Blk 30 Geylang Street 29, #06-40"),
-                new Score("8"),
-                    getTagSet("friends")),
-                new Person(new Name("Bernice Yu"), new Phone("99272758"),  new Birthday("21/04/1973"),
-                        new Email("berniceyu@example.com"),
-                    new Address("Blk 30 Lorong 3 Serangoon Gardens, #07-18"), new Score("5"),
-                    getTagSet("colleagues", "friends")),
-                new Person(new Name("Charlotte Oliveiro"), new Phone("93210283"),  new Birthday("11/01/1999"),
-                        new Email("charlotte@example.com"),
-                    new Address("Blk 11 Ang Mo Kio Street 74, #11-04"), new Score("9"),
-                    getTagSet("neighbours")),
-                new Person(new Name("David Li"), new Phone("91031282"),  new Birthday("17/07/2006"),
-                        new Email("lidavid@example.com"),
-                    new Address("Blk 436 Serangoon Gardens Street 26, #16-43"), new Score("2"),
-                    getTagSet("family")),
-                new Person(new Name("Irfan Ibrahim"), new Phone("92492021"),  new Birthday("31/05/1936"),
-                        new Email("irfan@example.com"),
-                    new Address("Blk 47 Tampines Street 20, #17-35"), new Score("1"),
-                    getTagSet("classmates")),
-                new Person(new Name("Roy Balakrishnan"), new Phone("92624417"),  new Birthday("7/09/1995"),
-                        new Email("royb@example.com"),
-                    new Address("Blk 45 Aljunied Street 85, #11-31"), new Score("3"),
-                    getTagSet("colleagues"))
-                    //@@author siri99
-            };
-        } catch (IllegalValueException e) {
-            throw new AssertionError("sample data cannot be invalid", e);
+        /*
+         *  Sample data
+         *  It generates 100 test data
+         * */
+        Random rand = new Random();
+        String firstName = null;
+        ArrayList<Person> persons = new ArrayList<Person>();
+
+        for (int i = 0; i < sampleDataSize; i++) {
+
+            firstName = firstNames[i % (sampleDataSize)];
+
+            for (int j = 0; j < sampleDataSize - 1; j++) {
+
+                try {
+
+                    persons.add(generatePerson(firstName, j, rand));
+
+                } catch (IllegalValueException e) {
+
+                    throw new AssertionError("sample data cannot be invalid", e);
+
+                }
+            }
         }
+        return persons.toArray(new Person[persons.size()]);
     }
+
+    /**
+     * Returns a tag set containing the list of strings given baesd on input.
+     */
+    public static Set<Tag> generateTags(int i) throws IllegalValueException {
+
+        HashSet<Tag> addTags = new HashSet<>();
+        for (int j = 0; j < i; j++) {
+            addTags.add(new Tag(tags[j]));
+        }
+        return addTags;
+    }
+
+    /**
+     * Returns a person object that generated randomly.
+     */
+    public static Person generatePerson(String firstName, int j, Random rand) throws IllegalValueException {
+
+        /*
+        *  Those numbers are totally arbitrary for generating sample data
+        * */
+        j = j % 7;
+        String lastName = lastNames[j % (sampleDataSize - 2)];
+        String phone = phones[j];
+        String email = emails[j % (sampleDataSize - 2)];
+        String units = Integer.toString(j);
+        String score = Integer.toString(j);
+        Set<Tag> tag = generateTags(j);
+
+        if (j / 3 == 1) {
+            return new Person(new Name(firstName + " " + lastName), new Phone(phone),
+                    new Birthday("No Birthday Listed"),
+                    new Email(firstName + "@" + email),
+                    new Address("Blk 45 Aljunied Street 85, #" + units),
+                    new Score(score), tag);
+        }
+        return new Person(new Name(firstName + " " + lastName), new Phone(phone),
+                new Birthday(generateBirthday(j)),
+                new Email(firstName + "@" + email),
+                new Address("Victoria 34 Arran Street 45, #" + units),
+                new Score(score), tag);
+
+    }
+
+    /**
+     * Returns a birthday string based on input.
+     */
+    public static String generateBirthday(int i) {
+        int n = i % 7;
+        return birthdays[n];
+    }
+
+    //@@author Linus
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         try {

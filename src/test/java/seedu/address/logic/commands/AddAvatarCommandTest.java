@@ -28,10 +28,11 @@ public class AddAvatarCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
     @Test
-    public void execute_webUrlUnfilteredList_success() throws Exception {
+    public void checkAvatarCommandSuccess() throws Exception {
+
         ReadOnlyPerson updatedAvatarPicPerson = model.getFilteredPersonList().get(INDEX_FIRST_PERSON.getZeroBased());
         Person updatedAvatarPerson = new Person(updatedAvatarPicPerson);
-        Avatar avatarPic = new Avatar();
+        Avatar avatarPic = new Avatar(VALID_WEB_IMAGE_URL_A);
         updatedAvatarPerson.setAvatarPic(avatarPic);
         AddAvatarCommand updateAvatarPicCommand = prepareCommand(INDEX_FIRST_PERSON, avatarPic);
 
@@ -43,7 +44,6 @@ public class AddAvatarCommandTest {
 
         assertCommandSuccess(updateAvatarPicCommand, model, expectedMessage, expectedModel);
 
-        System.out.println(model.getFilteredPersonList().get(0).getAvatarPic().source);
     }
 
     @Test
