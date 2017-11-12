@@ -12,7 +12,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 
 /**
  * Represents a Person's avatar picture in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidUrl(String)}
  */
 public class Avatar {
     public static final String MESSAGE_AVATAR_PIC_CONSTRAINTS =
@@ -22,8 +21,7 @@ public class Avatar {
     public static final String DEFAULT_URL = "http://139.59.227.237/public/default.jpg";
 
     /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
+     * The first character of the address must not be a whitespace
      */
     public static final String AVATAR_PIC_VALIDATION_REGEX = "[^\\s].*";
 
