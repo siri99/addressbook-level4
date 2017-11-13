@@ -5,16 +5,14 @@
 :stylesDir: stylesheets
 
 Begin your test by launching Unibook. A window should open, providing you with a wonderful new list of friends. +
+
 Sample Data is provided. +
-Download the UniBook.jar. +
-Run UniBook. +
-Delete the first person in the list by clicking the red 'X' in the upper right corner of the personcard. +
-Close Unibook. +
-In the same directory as UniBook.jar, locate the /data/ directory, which contains addressbook.xml. +
-Download [T13-B2][UniBook]SampleData.xml and move it to the /data/ directory. +
-Delete the addressbook.xml file. +
-Rename [T13-B2][UniBook]SampleData.xml 'addressbook.xml'.
-Launch UniBook again, and observe the 55 sample data entries provided for testing.
+
+1. Download the UniBook.jar. +
+2. In the same directory as UniBook.jar, create the /data/ directory. +
+3. Download [T13-B2][UniBook]SampleData.xml and move it to the /data/ directory. +
+4. Rename [T13-B2][UniBook]SampleData.xml to 'addressbook.xml'.
+5. Launch UniBook, and observe the 30 sample data entries provided for testing.
 
 == Command Line Functions
 
