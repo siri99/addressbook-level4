@@ -42,9 +42,9 @@ The person at index 1 now has an updated birthday and score field.
 
 === Add an avatar to a person
 
-Enter the command _avatar 7 u/https://upload.wikimedia.org/wikipedia/commons/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg_ +
-Wait a couple of seconds until the text under the command line updates to _'Update avatar picture for Person: George Washington'_
-Click on another person, then click on George Washington again. Observe that the profile picture is now the image sourced by the url.
+Enter the command _avatar 31 u/https://upload.wikimedia.org/wikipedia/commons/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg_ +
+Wait a couple of seconds until the text under the command line updates to *Update avatar picture for Person: *and the name of the person at index 31. +
+Click on another person, then click on the person at index 31 again. Observe that the profile picture is now the image sourced by the url.
 
 === Sort the list
 Enter the command _sort_ +
@@ -75,6 +75,7 @@ _ufv_ is an alias command that works the same way as _unfav_. +
 For example, _unfav 1_ and _unfv 1_ mean the same thing. +
 
 Enter the command _fav_ and the index number that appears next to George Washington, his index on the list. +
+For example, if the index of George Washington is 1, enter _fav 1_ +
 Observe that the text under the command line states that George Washington has been added to the Favourite List.
 
 Enter the command _favlist_ +
