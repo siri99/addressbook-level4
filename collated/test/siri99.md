@@ -780,7 +780,7 @@ public class UnfavCommandTest {
 ```
 ###### \java\seedu\address\logic\parser\AddCommandParserTest.java
 ``` java
-        
+
 ```
 ###### \java\seedu\address\logic\parser\AddCommandParserTest.java
 ``` java
