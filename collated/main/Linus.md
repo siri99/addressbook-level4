@@ -531,7 +531,7 @@ public class Avatar {
     private static String[] birthdays = {"01/09/1988", "03/08/1975", "02/02/1989", "31/12/1966", "28/05/1956",
         "03/02/1999", "13/12/2000"};
 
-    private static int sampleDataSize = 8;
+    private static int sampleDataSize = 6;
 
     public static Person[] getSamplePersons() {
         /*
