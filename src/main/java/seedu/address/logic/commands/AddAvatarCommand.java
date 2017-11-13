@@ -6,11 +6,9 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE_URL;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -144,10 +142,11 @@ public class AddAvatarCommand extends Command {
             }
             try {
                 URL url = new URL(avatar.toString());
-                InputStream in = url.openStream();
-                Files.copy(in, Paths.get(newFile), StandardCopyOption.REPLACE_EXISTING);
-                in.close();
-                newAvatar = new Avatar("file://" + Paths.get(newFile).toAbsolutePath().toUri().getPath());
+
+                /*
+                * Updates avatar with url link
+                * */
+                newAvatar = new Avatar(url.toString());
             } catch (IOException ioe) {
                 throw new CommandException("Image failed to download");
             } catch (IllegalValueException ive) {
