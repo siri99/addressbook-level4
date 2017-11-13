@@ -627,7 +627,7 @@ image::AddAvatarClassDiagram.png[width="800"]
 
 * AddAvatar Logic Sequence Diagram
 
-image::AddAvatarLogicSequenceDiagram.png[width="800"]
+image::avatarCommandLogic.png[width="800"]
 
 The command to add avatar image is “avatar INDEX u/Image URL”.
 
@@ -660,7 +660,39 @@ whole main window.
 
 image::themeMenuHighLevelDiagram.png[width="800"]
 
+The function below is to change the theme to dark theme
+----
+    private void handleDarkTheme() {
+
+        int size = scene.getRoot().getStylesheets().size();
+
+        for (int i = 0; i < size; i++) {
+            scene.getRoot().getStylesheets().remove(0);
+        }
+
+        scene.getRoot().getStylesheets().add("view/DarkTheme.css");
+        scene.getRoot().getStylesheets().add("view/Extensions.css");
+
+    }
+----
+
+The function below is to change the theme to light theme
+----
+    private void handleLightTheme() {
+
+        int size = scene.getRoot().getStylesheets().size();
+        for (int i = 0; i < size; i++) {
+
+            scene.getRoot().getStylesheets().remove(0);
+
+        }
+        scene.getRoot().getStylesheets().add("view/LightTheme.css");
+
+    }
+----
+
 // end::themeMenu[]
+
 // tag::browsePanel[]
 
 === Broswer Panel
