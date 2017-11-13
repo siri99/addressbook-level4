@@ -229,11 +229,6 @@
     public static final String VALID_SCORE_BOB = "2";
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
-
-    public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
-    public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
-    public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
-    public static final String PHONE_DESC_BOB = " " + PREFIX_PHONE + VALID_PHONE_BOB;
 ```
 ###### \java\seedu\address\logic\commands\CommandTestUtil.java
 ``` java
@@ -778,56 +773,27 @@ public class UnfavCommandTest {
 ```
 ###### \java\seedu\address\logic\parser\AddCommandParserTest.java
 ``` java
-        Person expectedPerson = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withBirthday(VALID_BIRTHDAY_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withScore(VALID_SCORE_BOB).withTags(VALID_TAG_FRIEND).build();
+        //multiple birthdays - last birthdays accepted
+        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_AMY
+                + BIRTHDAY_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_AMY + TAG_DESC_FRIEND,
+                new AddCommand(expectedPerson));
 ```
 ###### \java\seedu\address\logic\parser\AddCommandParserTest.java
 ``` java
-
-        // multiple names - last name accepted
-        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_AMY + NAME_DESC_BOB + PHONE_DESC_BOB
-                + BIRTHDAY_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_BOB + TAG_DESC_FRIEND,
-                new AddCommand(expectedPerson));
-
-        // multiple phones - last phone accepted
-        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_AMY + PHONE_DESC_BOB
-                + BIRTHDAY_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_BOB + TAG_DESC_FRIEND,
-                new AddCommand(expectedPerson));
-
-        // multiple emails - last email accepted
-        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
-                + EMAIL_DESC_AMY + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_BOB + TAG_DESC_FRIEND,
-                new AddCommand(expectedPerson));
-
-        // multiple addresses - last address accepted
-        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
-                + EMAIL_DESC_BOB + ADDRESS_DESC_AMY + ADDRESS_DESC_BOB + SCORE_DESC_BOB + TAG_DESC_FRIEND,
-                new AddCommand(expectedPerson));
-
-        // multiple scores - last score accepted
-        //assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
-        //      + ADDRESS_DESC_BOB + SCORE_DESC_AMY + SCORE_DESC_BOB + TAG_DESC_FRIEND,
-        //      new AddCommand(expectedPerson));
-
-        // multiple tags - all accepted
-        Person expectedPersonMultipleTags = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                .withBirthday(VALID_BIRTHDAY_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withScore(VALID_SCORE_BOB).withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
-        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
-                        + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                new AddCommand(expectedPersonMultipleTags));
-    }
-
-    @Test
-    public void parse_optionalFieldsMissing_success() {
-        // zero tags
-        Person expectedPerson = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
-                .withBirthday(VALID_BIRTHDAY_AMY).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withScore(VALID_SCORE_AMY).withTags().build();
+        
+```
+###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+``` java
+        // birthday field missing
+        Person expectedPersonNoBirthday = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
+                .withBirthday("No Birthday Listed").withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
+                .withScore(VALID_SCORE_AMY).withTags(VALID_TAG_FRIEND).build();
         assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY
-                + BIRTHDAY_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + SCORE_DESC_AMY,
-                new AddCommand(expectedPerson));
+                        + EMAIL_DESC_AMY + ADDRESS_DESC_AMY + SCORE_DESC_AMY + TAG_DESC_FRIEND,
+                new AddCommand(expectedPersonNoBirthday));
+```
+###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+``` java
     }
 
     @Test
@@ -850,10 +816,6 @@ public class UnfavCommandTest {
         assertParseFailure(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB
                 + EMAIL_DESC_BOB + VALID_ADDRESS_BOB + SCORE_DESC_BOB, expectedMessage);
 
-        // missing score prefix
-        //assertParseFailure(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB
-        //+ EMAIL_DESC_BOB + ADDRESS_DESC_BOB + VALID_SCORE_BOB, expectedMessage);
-
         // all prefixes missing
         assertParseFailure(parser, AddCommand.COMMAND_WORD + VALID_NAME_BOB + VALID_PHONE_BOB
                 + VALID_EMAIL_BOB + VALID_ADDRESS_BOB + VALID_SCORE_BOB, expectedMessage);
@@ -871,10 +833,16 @@ public class UnfavCommandTest {
                 + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 Phone.MESSAGE_PHONE_CONSTRAINTS);
 
+```
+###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+``` java
         //invalid birthday
         assertParseFailure(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + INVALID_BIRTHDAY_DESC
                 + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 Birthday.MESSAGE_BIRTHDAY_CONSTRAINTS);
+```
+###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+``` java
 
         // invalid email
         assertParseFailure(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
@@ -886,21 +854,6 @@ public class UnfavCommandTest {
                 + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC + SCORE_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
                 Address.MESSAGE_ADDRESS_CONSTRAINTS);
 
-        // invalid score
-        assertParseFailure(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
-                + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + INVALID_SCORE_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                Score.MESSAGE_SCORE_CONSTRAINTS);
-
-        // invalid tag
-        assertParseFailure(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
-                + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_BOB + INVALID_TAG_DESC + VALID_TAG_FRIEND,
-                Tag.MESSAGE_TAG_CONSTRAINTS);
-
-        // two invalid values, only first invalid value reported
-        assertParseFailure(parser, AddCommand.COMMAND_WORD + INVALID_NAME_DESC + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB
-                + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC + SCORE_DESC_BOB, Name.MESSAGE_NAME_CONSTRAINTS);
-    }
-}
 ```
 ###### \java\seedu\address\logic\parser\EditCommandParserTest.java
 ``` java
@@ -925,63 +878,6 @@ public class UnfavCommandTest {
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // score
-        userInput = targetIndex.getOneBased() + SCORE_DESC_AMY;
-        descriptor = new EditPersonDescriptorBuilder().withScore(VALID_SCORE_AMY).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // tags
-        userInput = targetIndex.getOneBased() + TAG_DESC_FRIEND;
-        descriptor = new EditPersonDescriptorBuilder().withTags(VALID_TAG_FRIEND).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased()  + PHONE_DESC_AMY + BIRTHDAY_DESC_AMY + ADDRESS_DESC_AMY
-                + EMAIL_DESC_AMY + TAG_DESC_FRIEND + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EMAIL_DESC_AMY
-                + TAG_DESC_FRIEND + PHONE_DESC_BOB + ADDRESS_DESC_BOB + EMAIL_DESC_BOB + TAG_DESC_HUSBAND;
-
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_PHONE_BOB)
-                .withBirthday(VALID_BIRTHDAY_AMY).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_invalidValueFollowedByValidValue_success() {
-        // no other valid values specified
-        Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + INVALID_PHONE_DESC + PHONE_DESC_BOB;
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_PHONE_BOB).build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-
-        // other valid values specified
-        userInput = targetIndex.getOneBased() + EMAIL_DESC_BOB + INVALID_PHONE_DESC + ADDRESS_DESC_BOB
-                + PHONE_DESC_BOB;
-        descriptor = new EditPersonDescriptorBuilder().withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
-                .withAddress(VALID_ADDRESS_BOB).build();
-        expectedCommand = new EditCommand(targetIndex, descriptor);
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-
-    @Test
-    public void parse_resetTags_success() {
-        Index targetIndex = INDEX_THIRD_PERSON;
-        String userInput = targetIndex.getOneBased() + TAG_EMPTY;
-
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withTags().build();
-        EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
-
-        assertParseSuccess(parser, userInput, expectedCommand);
-    }
-}
 ```
 ###### \java\seedu\address\logic\parser\FavCommandParserTest.java
 ``` java
@@ -1590,20 +1486,6 @@ public class BirthdayTest {
     /**
      *Sets the {@code Score} of the {@code Person} that we are building.
      */
-    public PersonBuilder withScore(String score) {
-        try {
-            this.person.setScore(new Score(score));
-        } catch (IllegalValueException ive) {
-            throw new IllegalArgumentException("score is expected to be unique");
-        }
-        return this;
-    }
-
-    public Person build() {
-        return this.person;
-    }
-
-}
 ```
 ###### \java\seedu\address\ui\testutil\GuiTestAssert.java
 ``` java

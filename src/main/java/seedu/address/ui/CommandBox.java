@@ -112,8 +112,8 @@ public class CommandBox extends UiPart<Region> {
         String commandText = commandTextField.getText();
         try {
             if (logic.getCurrentList().contains("favlist") && ((commandText.contains("delete")
-                    || commandText.contains("edit")) || commandText.contains("sort"))) {
-                commandResult = new CommandResult("Edit/Delete/Sort commands do not work in Favourite List");
+                    || commandText.contains("edit")) || commandText.contains("sort") || commandText.contains("find"))) {
+                commandResult = new CommandResult("Edit/Delete/Sort/Find commands do not work in Favourite List");
                 initHistory();
                 historySnapshot.next();
                 // process result of the command

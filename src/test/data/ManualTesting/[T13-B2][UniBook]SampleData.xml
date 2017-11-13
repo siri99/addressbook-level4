@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addressbook>
     <persons>
-        <name>Roy Herason</name>
+        <name>Alice Walker</name>
         <phone>90909099</phone>
-        <birthday>01/09/1988</birthday>
+        <birthday>11/09/1988</birthday>
         <email>Roy@gmail.com</email>
-        <address>Victoria 34 Arran Street 45, #0</address>
+        <address>Sheffield 34 Arran Street 51, #0</address>
         <score>Group score: 0</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
     </persons>
@@ -20,7 +20,7 @@
         <tagged>colleagues</tagged>
     </persons>
     <persons>
-        <name>Roy Thompson</name>
+        <name>Mary Thompson</name>
         <phone>33222111</phone>
         <birthday>02/02/1989</birthday>
         <email>Roy@outlook</email>
@@ -31,9 +31,9 @@
         <tagged>friends</tagged>
     </persons>
     <persons>
-        <name>Roy Curry</name>
+        <name>Renee William</name>
         <phone>84456723</phone>
-        <birthday>No Birthday Listed</birthday>
+        <birthday>16/08/1968</birthday>
         <email>Roy@hotmail</email>
         <address>Blk 45 Aljunied Street 85, #3</address>
         <score>Group score: 3</score>
@@ -43,10 +43,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Roy Westbrook</name>
+        <name>Peter Westbrook</name>
         <phone>90111123</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Roy@qq.com</email>
+        <email>peter@qq.com</email>
         <address>Blk 45 Aljunied Street 85, #4</address>
         <score>Group score: 4</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -56,10 +56,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Roy Harden</name>
+        <name>Agatha Christie</name>
         <phone>12345678</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Roy@sina.com</email>
+        <email>agatha@westmail.com</email>
         <address>Blk 45 Aljunied Street 85, #5</address>
         <score>Group score: 5</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -70,10 +70,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Roy Herason</name>
+        <name>Joanne Rowling</name>
         <phone>98363363</phone>
-        <birthday>13/12/2000</birthday>
-        <email>Roy@gmail.com</email>
+        <birthday>13/12/2006</birthday>
+        <email>joannerowling@gmail.com</email>
         <address>Victoria 34 Arran Street 45, #6</address>
         <score>Group score: 6</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -85,29 +85,29 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>David Herason</name>
+        <name>Michael Herason</name>
         <phone>90909099</phone>
-        <birthday>01/09/1988</birthday>
-        <email>David@gmail.com</email>
+        <birthday>01/09/1979</birthday>
+        <email>Michael99@gmail.com</email>
         <address>Victoria 34 Arran Street 45, #0</address>
         <score>Group score: 0</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
     </persons>
     <persons>
-        <name>David Trump</name>
+        <name>Susan Collins</name>
         <phone>87878888</phone>
-        <birthday>03/08/1975</birthday>
-        <email>David@yahoo</email>
+        <birthday>15/06/1995</birthday>
+        <email>susan@gmail</email>
         <address>Victoria 34 Arran Street 45, #1</address>
         <score>Group score: 1</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
         <tagged>colleagues</tagged>
     </persons>
     <persons>
-        <name>David Thompson</name>
+        <name>Catherine Bryer</name>
         <phone>33222111</phone>
-        <birthday>02/02/1989</birthday>
-        <email>David@outlook</email>
+        <birthday>01/12/1992</birthday>
+        <email>catherine@outlook</email>
         <address>Victoria 34 Arran Street 45, #2</address>
         <score>Group score: 2</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -115,10 +115,10 @@
         <tagged>friends</tagged>
     </persons>
     <persons>
-        <name>David Curry</name>
+        <name>Joyce Walker</name>
         <phone>84456723</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>David@hotmail</email>
+        <email>Joyce@hotmail</email>
         <address>Blk 45 Aljunied Street 85, #3</address>
         <score>Group score: 3</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -127,10 +127,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>David Westbrook</name>
+        <name>Oliver Twist</name>
         <phone>90111123</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>David@qq.com</email>
+        <email>oliverT@qq.com</email>
         <address>Blk 45 Aljunied Street 85, #4</address>
         <score>Group score: 4</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -140,69 +140,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>David Harden</name>
-        <phone>12345678</phone>
-        <birthday>No Birthday Listed</birthday>
-        <email>David@sina.com</email>
-        <address>Blk 45 Aljunied Street 85, #5</address>
-        <score>Group score: 5</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>customers</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>David Herason</name>
-        <phone>98363363</phone>
-        <birthday>13/12/2000</birthday>
-        <email>David@gmail.com</email>
-        <address>Victoria 34 Arran Street 45, #6</address>
-        <score>Group score: 6</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>lawyers</tagged>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>customers</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Alex Herason</name>
-        <phone>90909099</phone>
-        <birthday>01/09/1988</birthday>
-        <email>Alex@gmail.com</email>
-        <address>Victoria 34 Arran Street 45, #0</address>
-        <score>Group score: 0</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-    </persons>
-    <persons>
-        <name>Alex Trump</name>
-        <phone>87878888</phone>
-        <birthday>03/08/1975</birthday>
-        <email>Alex@yahoo</email>
-        <address>Victoria 34 Arran Street 45, #1</address>
-        <score>Group score: 1</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-    </persons>
-    <persons>
-        <name>Alex Thompson</name>
-        <phone>33222111</phone>
-        <birthday>02/02/1989</birthday>
-        <email>Alex@outlook</email>
-        <address>Victoria 34 Arran Street 45, #2</address>
-        <score>Group score: 2</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>friends</tagged>
-    </persons>
-    <persons>
-        <name>Alex Curry</name>
+        <name>Harry Potter</name>
         <phone>84456723</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Alex@hotmail</email>
+        <email>harry@hotmail</email>
         <address>Blk 45 Aljunied Street 85, #3</address>
         <score>Group score: 3</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -211,10 +152,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Alex Westbrook</name>
+        <name>Ron Weasley</name>
         <phone>90111123</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Alex@qq.com</email>
+        <email>ron@qq.com</email>
         <address>Blk 45 Aljunied Street 85, #4</address>
         <score>Group score: 4</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -227,7 +168,7 @@
         <name>Alex Harden</name>
         <phone>12345678</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Alex@sina.com</email>
+        <email>alex@outlook.com</email>
         <address>Blk 45 Aljunied Street 85, #5</address>
         <score>Group score: 5</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -238,178 +179,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Alex Herason</name>
+        <name>John Herason</name>
         <phone>98363363</phone>
         <birthday>13/12/2000</birthday>
-        <email>Alex@gmail.com</email>
-        <address>Victoria 34 Arran Street 45, #6</address>
-        <score>Group score: 6</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>lawyers</tagged>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>customers</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Linus Herason</name>
-        <phone>90909099</phone>
-        <birthday>01/09/1988</birthday>
-        <email>Linus@gmail.com</email>
-        <address>Victoria 34 Arran Street 45, #0</address>
-        <score>Group score: 0</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-    </persons>
-    <persons>
-        <name>Linus Trump</name>
-        <phone>87878888</phone>
-        <birthday>03/08/1975</birthday>
-        <email>Linus@yahoo</email>
-        <address>Victoria 34 Arran Street 45, #1</address>
-        <score>Group score: 1</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-    </persons>
-    <persons>
-        <name>Linus Thompson</name>
-        <phone>33222111</phone>
-        <birthday>02/02/1989</birthday>
-        <email>Linus@outlook</email>
-        <address>Victoria 34 Arran Street 45, #2</address>
-        <score>Group score: 2</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>friends</tagged>
-    </persons>
-    <persons>
-        <name>Linus Curry</name>
-        <phone>84456723</phone>
-        <birthday>No Birthday Listed</birthday>
-        <email>Linus@hotmail</email>
-        <address>Blk 45 Aljunied Street 85, #3</address>
-        <score>Group score: 3</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Linus Westbrook</name>
-        <phone>90111123</phone>
-        <birthday>No Birthday Listed</birthday>
-        <email>Linus@qq.com</email>
-        <address>Blk 45 Aljunied Street 85, #4</address>
-        <score>Group score: 4</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Linus Harden</name>
-        <phone>12345678</phone>
-        <birthday>No Birthday Listed</birthday>
-        <email>Linus@sina.com</email>
-        <address>Blk 45 Aljunied Street 85, #5</address>
-        <score>Group score: 5</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>customers</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Linus Herason</name>
-        <phone>98363363</phone>
-        <birthday>13/12/2000</birthday>
-        <email>Linus@gmail.com</email>
-        <address>Victoria 34 Arran Street 45, #6</address>
-        <score>Group score: 6</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>lawyers</tagged>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>customers</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Siri Herason</name>
-        <phone>90909099</phone>
-        <birthday>01/09/1988</birthday>
-        <email>Siri@gmail.com</email>
-        <address>Victoria 34 Arran Street 45, #0</address>
-        <score>Group score: 0</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-    </persons>
-    <persons>
-        <name>Siri Trump</name>
-        <phone>87878888</phone>
-        <birthday>03/08/1975</birthday>
-        <email>Siri@yahoo</email>
-        <address>Victoria 34 Arran Street 45, #1</address>
-        <score>Group score: 1</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-    </persons>
-    <persons>
-        <name>Siri Thompson</name>
-        <phone>33222111</phone>
-        <birthday>02/02/1989</birthday>
-        <email>Siri@outlook</email>
-        <address>Victoria 34 Arran Street 45, #2</address>
-        <score>Group score: 2</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>friends</tagged>
-    </persons>
-    <persons>
-        <name>Siri Curry</name>
-        <phone>84456723</phone>
-        <birthday>No Birthday Listed</birthday>
-        <email>Siri@hotmail</email>
-        <address>Blk 45 Aljunied Street 85, #3</address>
-        <score>Group score: 3</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Siri Westbrook</name>
-        <phone>90111123</phone>
-        <birthday>No Birthday Listed</birthday>
-        <email>Siri@qq.com</email>
-        <address>Blk 45 Aljunied Street 85, #4</address>
-        <score>Group score: 4</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Siri Harden</name>
-        <phone>12345678</phone>
-        <birthday>No Birthday Listed</birthday>
-        <email>Siri@sina.com</email>
-        <address>Blk 45 Aljunied Street 85, #5</address>
-        <score>Group score: 5</score>
-        <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>students</tagged>
-        <tagged>customers</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
-    </persons>
-    <persons>
-        <name>Siri Herason</name>
-        <phone>98363363</phone>
-        <birthday>13/12/2000</birthday>
-        <email>Siri@gmail.com</email>
+        <email>johnny@gmail.com</email>
         <address>Victoria 34 Arran Street 45, #6</address>
         <score>Group score: 6</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -430,20 +203,20 @@
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
     </persons>
     <persons>
-        <name>Hector Trump</name>
+        <name>William Trump</name>
         <phone>87878888</phone>
         <birthday>03/08/1975</birthday>
-        <email>Hector@yahoo</email>
+        <email>will05@yahoo</email>
         <address>Victoria 34 Arran Street 45, #1</address>
         <score>Group score: 1</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
         <tagged>colleagues</tagged>
     </persons>
     <persons>
-        <name>Hector Thompson</name>
+        <name>Bernice Thompson</name>
         <phone>33222111</phone>
         <birthday>02/02/1989</birthday>
-        <email>Hector@outlook</email>
+        <email>bernice@outlook</email>
         <address>Victoria 34 Arran Street 45, #2</address>
         <score>Group score: 2</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -451,49 +224,47 @@
         <tagged>friends</tagged>
     </persons>
     <persons>
-        <name>Hector Curry</name>
+        <name>Draco Malfoy</name>
         <phone>84456723</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Hector@hotmail</email>
+        <email>draco@hotmail</email>
         <address>Blk 45 Aljunied Street 85, #3</address>
         <score>Group score: 3</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
-        <tagged>colleagues</tagged>
-        <tagged>friends</tagged>
-        <tagged>president</tagged>
+        <tagged>classmate</tagged>
+        <tagged>enemy</tagged>
     </persons>
     <persons>
-        <name>Hector Westbrook</name>
+        <name>George Westbrook</name>
         <phone>90111123</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Hector@qq.com</email>
+        <email>george@qq.com</email>
         <address>Blk 45 Aljunied Street 85, #4</address>
         <score>Group score: 4</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
         <tagged>colleagues</tagged>
         <tagged>students</tagged>
-        <tagged>friends</tagged>
+        <tagged>classmate</tagged>
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Hector Harden</name>
+        <name>Leo Dicaprio</name>
         <phone>12345678</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Hector@sina.com</email>
+        <email>leo@sina.com</email>
         <address>Blk 45 Aljunied Street 85, #5</address>
         <score>Group score: 5</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
         <tagged>colleagues</tagged>
-        <tagged>students</tagged>
+        <tagged>actor</tagged>
         <tagged>customers</tagged>
         <tagged>friends</tagged>
-        <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Hector Herason</name>
+        <name>Achilles Myer</name>
         <phone>98363363</phone>
         <birthday>13/12/2000</birthday>
-        <email>Hector@gmail.com</email>
+        <email>myer@gmail.com</email>
         <address>Victoria 34 Arran Street 45, #6</address>
         <score>Group score: 6</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -505,10 +276,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Achilles Herason</name>
+        <name>Stephanie meyer</name>
         <phone>90909099</phone>
         <birthday>01/09/1988</birthday>
-        <email>Achilles@gmail.com</email>
+        <email>steph@gmail.com</email>
         <address>Victoria 34 Arran Street 45, #0</address>
         <score>Group score: 0</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -547,10 +318,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Achilles Westbrook</name>
+        <name>Dave Westbrook</name>
         <phone>90111123</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Achilles@qq.com</email>
+        <email>dave@qq.com</email>
         <address>Blk 45 Aljunied Street 85, #4</address>
         <score>Group score: 4</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -560,10 +331,10 @@
         <tagged>president</tagged>
     </persons>
     <persons>
-        <name>Achilles Harden</name>
+        <name>steve harrington</name>
         <phone>12345678</phone>
         <birthday>No Birthday Listed</birthday>
-        <email>Achilles@sina.com</email>
+        <email>steve@sina.com</email>
         <address>Blk 45 Aljunied Street 85, #5</address>
         <score>Group score: 5</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
@@ -571,13 +342,13 @@
         <tagged>students</tagged>
         <tagged>customers</tagged>
         <tagged>friends</tagged>
-        <tagged>president</tagged>
+        <tagged>neighbour</tagged>
     </persons>
     <persons>
-        <name>Achilles Herason</name>
+        <name>Elena Oslo</name>
         <phone>98363363</phone>
         <birthday>13/12/2000</birthday>
-        <email>Achilles@gmail.com</email>
+        <email>elena@gmail.com</email>
         <address>Victoria 34 Arran Street 45, #6</address>
         <score>Group score: 6</score>
         <avatar>http://139.59.227.237/public/default.jpg</avatar>
