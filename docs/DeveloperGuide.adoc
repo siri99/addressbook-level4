@@ -479,7 +479,7 @@ switch (sortFilter) {
     }
 ----
 
-image::SortCommandSequenceDiagram.PNG[width="800"]
+image::SortCommandSequenceDiagram.png[width="800"]
 _Figure 3.3.1 : Sequence Diagram of the sort command_
 
 The Collections.sort method is used in sortPersonsByName, sortPersonsByBirthday and sortPersonsByScore in UniquePersonList
