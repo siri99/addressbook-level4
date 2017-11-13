@@ -35,7 +35,7 @@ Enter the command _edit 1 p/91234567 b/29/02/2015_
 Displays the erorr message as a non-leap year will not have 29th Feb.
 
 Enter the command _edit 1 p/91234567 b/29/20/2015_
-Displays the erorr message as a 20 is not a valid month number.
+Displays the erorr message as 20 is not a valid month number.
 
 Enter the command _edit 1 p/91234567 b/19/05/2015 s/8_
 The person at index 1 now has an updated birthday and score field.
@@ -43,7 +43,7 @@ The person at index 1 now has an updated birthday and score field.
 === Add an avatar to a person
 
 Enter the command _avatar 7 u/https://upload.wikimedia.org/wikipedia/commons/b/b6/Gilbert_Stuart_Williamstown_Portrait_of_George_Washington.jpg_ +
-Wait a couple of seconds until the text under the command line updates to *Update avatar picture for Person: George Washington*
+Wait a couple of seconds until the text under the command line updates to _'Update avatar picture for Person: George Washington'_
 Click on another person, then click on George Washington again. Observe that the profile picture is now the image sourced by the url.
 
 === Sort the list
@@ -80,11 +80,11 @@ Observe the new list that now contains our only favourited contact, George Washi
 Enter the command _list_ +
 Observe that the list has returned to the main list of all contacts.
 
-Enter the command _fv 1_ +
+Enter the command _fv 5_ +
 
 Enter the command _favlist_ +
 Observe that the favourite list now contains two persons, George Washington,
-and the person at index 1 of main list that you just added to favourite list in the previous command.
+and the person at index 5 of main list that you just added to favourite list in the previous command.
 
 Enter the command _unfav 2_ +
 Observe that the list no longer has the second person added, and again only contains George Washington.
