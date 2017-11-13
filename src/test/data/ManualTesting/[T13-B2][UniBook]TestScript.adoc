@@ -59,6 +59,9 @@ Locate George Washington in the list now sorted by Group Score using his value f
 Enter the command _sort name_ +
 Locate George Washington in the now alphabetically sorted list. He should appear near the middle of the list.
 
+Enter the command _sort xyzzz_ +
+Displays error message stating invalid command fomat.
+
 Enter the command _sort b_ +
 Locate George Washington in the list now sorted by Birthday (day and month) using his birthday, 22/2/1732. He should appear near the beginning of the list.
 
