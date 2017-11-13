@@ -22,7 +22,8 @@ include::../UserGuide.adoc[tag=avatar]
 ---
 
 ==== Justification
-Add avatar command gives the user function that they can upload their avatar image by
+
+Addavatar command gives the user function that they can upload their avatar image by
 specifying the URL of the image.
 
 Example command:
@@ -89,13 +90,12 @@ include::../UserGuide.adoc[tag=theme]
 ---
 
 === Implementation
----
+
 #Start of Extract [from: Dev Guide]#
 
 include::../DeveloperGuide.adoc[tag=themeMenu]
 
 #End of Extract#
----
 
 === Enhancement Added: Browse Panel
 
