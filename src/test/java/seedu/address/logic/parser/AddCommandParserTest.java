@@ -82,6 +82,13 @@ public class AddCommandParserTest {
                 + EMAIL_DESC_BOB + ADDRESS_DESC_AMY + ADDRESS_DESC_BOB + SCORE_DESC_BOB + TAG_DESC_FRIEND,
                 new AddCommand(expectedPerson));
 
+        //@@author siri99
+        //multiple birthdays - last birthdays accepted
+        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_AMY
+                + BIRTHDAY_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_AMY + TAG_DESC_FRIEND,
+                new AddCommand(expectedPerson));
+        //@@author siri99
+
         //@@author Henning
         //multiple scores - last score accepted
         assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_BOB

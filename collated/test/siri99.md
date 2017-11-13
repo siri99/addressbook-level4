@@ -773,6 +773,17 @@ public class UnfavCommandTest {
 ```
 ###### \java\seedu\address\logic\parser\AddCommandParserTest.java
 ``` java
+        //multiple birthdays - last birthdays accepted
+        assertParseSuccess(parser, AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_BOB + BIRTHDAY_DESC_AMY
+                + BIRTHDAY_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB + SCORE_DESC_AMY + TAG_DESC_FRIEND,
+                new AddCommand(expectedPerson));
+```
+###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+``` java
+        
+```
+###### \java\seedu\address\logic\parser\AddCommandParserTest.java
+``` java
         // birthday field missing
         Person expectedPersonNoBirthday = new PersonBuilder().withName(VALID_NAME_AMY).withPhone(VALID_PHONE_AMY)
                 .withBirthday("No Birthday Listed").withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)

@@ -433,7 +433,7 @@ public class Avatar {
     public static final String MESSAGE_AVATAR_PIC_CONSTRAINTS =
             "Person's avatar must be a valid image URL";
     public static final String MESSAGE_AVATAR_PIC_EXPIRED =
-            "This avatar is invalid, pls select type another image URL";
+            "This avatar is invalid, select another image URL";
     public static final String DEFAULT_URL = "http://139.59.227.237/public/default.jpg";
 
     /*
@@ -1039,13 +1039,14 @@ public class Avatar {
             <div class="card-header">Home command</div>
             <div class="card-body text-primary">
                 <h4 class="card-title">Goes back to the home panel. </h4>
+                <p class="card-text">Example: home </p>
             </div>
         </div>
         <div class="card border-secondary mb-3">
             <div class="card-header">Avatar command</div>
             <div class="card-body text-info">
                 <h4 class="card-title">Adds an avatar image for selected person. </h4>
-                <p class="card-text">Parameters: avtar INDEX u/Image URL</p>
+                <p class="card-text">Parameters: INDEX u/Image URL (INDEX must be a positive integer) </p>
                 <p class="card-text">Example: avatar 1 u/http://139.59.227.237/public/avatar3.jpg</p>
             </div>
         </div>
@@ -1053,25 +1054,31 @@ public class Avatar {
             <div class="card-header">Fav command</div>
             <div class="card-body text-success">
                 <h4 class="card-title">Adds the person identified by the index number used in the last person listing
-                    to the favourite list. Format: fav INDEX fv INDEX </h4>
-                <p class="card-text">Parameters: fav INDEX | fv INDEX.</p>
+                    to the favourite list. </h4>
+                <p class="card-text">Parameters: INDEX (must be a positive integer) </p>
                 <p class="card-text">Example: fav 1</p>
             </div>
         </div>
         <div class="card border-warning mb-3">
-            <div class="card-header">Unfav command</div>
+            <div class="card-header">Favlist command</div>
             <div class="card-body text-warning">
-                <h4 class="card-title">Removes the person identified by the index number used in the favourite list from the favourite list.</h4>
-                    <p class="card-title">Parameters: unfav INDEX | unfv INDEX.</p>
-                    <p class="card-text">Example: unfav 1</p>
+                <h4 class="card-title">Shows a list of all the persons in the Favourite List.</h4>
+                    <p class="card-title">Example: favlist</p>
             </div>
         </div>
         <div class="card border-primary mb-3">
-            <div class="card-header">Favlist command</div>
+            <div class="card-header">Unfav command</div>
             <div class="card-body text-primary">
-                <h4 class="card-title">Shows a list of all the persons in the Favourite List. </h4>
-                <p class="card-title">Parameters: unfav INDEX | unfv INDEX.</p>
+                <h4 class="card-title">Removes the person identified by the index number used in the favourite list from the favourite list.</h4>
+                <p class="card-title">Parameters: INDEX (must be a positive integer) </p>
                 <p class="card-text">Example: unfav 1</p>
+            </div>
+        </div>
+        <div class="card border-secondary mb-3">
+            <div class="card-header">Sort command</div>
+            <div class="card-body text-info">
+                <h4 class="card-title">Sorts the list by name (default) or according to given filter.</h4>
+                <p class="card-text">Example 1: sort | Example 2: sort birthday | Example 3: sort score </p>
             </div>
         </div>
         <div class="card border-success mb-3">
@@ -1093,31 +1100,36 @@ public class Avatar {
             <div class="card-body text-secondary">
                 <h4 class="card-title">Deletes the person identified by the index number used in the last person listing.</h4>
                 <p class="card-text">Parameters: INDEX (must be a positive integer)</p>
+                <p class="card-text">Example: delete 2</p>
             </div>
         </div>
         <div class="card border-primary mb-3">
             <div class="card-header">Find command</div>
             <div class="card-body text-primary">
                 <h4 class="card-title">Finds persons whose names contain any of the given keywords.</h4>
-                <p class="card-text">Parameters: find KEYWORD [MORE_KEYWORDS]...</p>
+                <p class="card-text">Parameters: KEYWORD [MORE_KEYWORDS]... (KEYWORDS can be name, substring of name or tags)</p>
+                <p class="card-text">Example: find friends david</p>
             </div>
         </div>
         <div class="card border-danger mb-3">
             <div class="card-header">Clear command</div>
             <div class="card-body text-danger">
                 <h4 class="card-title">Clears all entries from the address book.</h4>
+                <p class="card-text">Example: clear</p>
             </div>
         </div>
         <div class="card border-warning mb-3">
             <div class="card-header">Undo command</div>
             <div class="card-body text-warning">
                 <h4 class="card-title">Restores the address book to the state before the previous undoable command was executed.</h4>
+                <p class="card-text">Example: undo </p>
             </div>
         </div>
         <div class="card border-secondary mb-3">
             <div class="card-header">Redo command</div>
             <div class="card-body text-info">
                 <h4 class="card-title">Reverses the most recent undo command.</h4>
+                <p class="card-text">Example: redo </p>
             </div>
         </div>
 

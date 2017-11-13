@@ -17,7 +17,7 @@ public class Avatar {
     public static final String MESSAGE_AVATAR_PIC_CONSTRAINTS =
             "Person's avatar must be a valid image URL";
     public static final String MESSAGE_AVATAR_PIC_EXPIRED =
-            "This avatar is invalid, pls select type another image URL";
+            "This avatar is invalid, select another image URL";
     public static final String DEFAULT_URL = "http://139.59.227.237/public/default.jpg";
 
     /*
