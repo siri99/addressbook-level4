@@ -1148,6 +1148,8 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 
 |`*` |novice user |see a home window at the start of this program |it will be more convenient (implemented v1.4)
 
+|`* *` |user |create and manage events |store details and remainders of project meetings, social gatherings etc to avoid forgetting. (coming in v2.0)
+
 |`* *` |experienced user| import other data into my addressbook| I can easily manage my all of my data (coming in v2.0)
 
 |`* *` |experienced user| export my data as csv, json, spreedsheet file| I can backup my data or send it to another app (coming in v2.0)
