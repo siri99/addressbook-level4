@@ -443,7 +443,7 @@ Imports contacts from external text file to the addressbook. +
 Format: `import fileAddress` or `imp fileAddress`
 // end::import[]
 
-=== Add Events `event` (coming in v2.0)
+=== Adding Events `event` (coming in v2.0)
 
 Currently, the events window is static for all users. It is to be
 implemented in v2.0.
